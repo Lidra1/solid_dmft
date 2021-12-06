@@ -1,83 +1,39 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>CaFeO3 CSC with VASP PLOs &mdash; solid_dmft  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-
-  
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="reporting issues" href="../../issues.html" />
     <link rel="prev" title="tutorials" href="../../tutorials.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> solid_dmft
-          
-
-          
-            
             <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-            
-            
               <div class="version">
-                3.0.0
+                3.0.9
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -85,18 +41,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
@@ -205,73 +150,31 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7E588A" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">solid_dmft</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../../tutorials.html">tutorials</a> &raquo;</li>
-        
       <li>CaFeO3 CSC with VASP PLOs</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/tutorials/CaFeO3_csc_plo/tutorial.ipynb.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS for nbsphinx extension */
@@ -497,7 +400,7 @@ div.rendered_html tbody tr:hover {
 <p>Disclaimer:</p>
 <p>Heavy calculations. Current parameters won’t give converged solution but are simplified to give results on x cores in x hrs.</p>
 <div class="section" id="CaFeO3-CSC-with-VASP-PLOs">
-<h1>CaFeO3 CSC with VASP PLOs<a class="headerlink" href="#CaFeO3-CSC-with-VASP-PLOs" title="Permalink to this headline">¶</a></h1>
+<h1>CaFeO3 CSC with VASP PLOs<a class="headerlink" href="#CaFeO3-CSC-with-VASP-PLOs" title="Permalink to this headline"></a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
@@ -511,7 +414,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)">
-<h2>Running the initial SCF DFT calculation (~ 1 core hour)<a class="headerlink" href="#Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)" title="Permalink to this headline">¶</a></h2>
+<h2>Running the initial SCF DFT calculation (~ 1 core hour)<a class="headerlink" href="#Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)" title="Permalink to this headline"></a></h2>
 <p>Get started: - Go into folder <code class="docutils literal notranslate"><span class="pre">1_dft_scf</span></code> - Insert POTCAR as concatenation of <code class="docutils literal notranslate"><span class="pre">PAW_PBE</span> <span class="pre">Ca_sv</span></code>, <code class="docutils literal notranslate"><span class="pre">PAW_PBE</span> <span class="pre">Fe_pv</span></code> and <code class="docutils literal notranslate"><span class="pre">PAW_PBE</span> <span class="pre">O</span></code> - Goal: get well-converged charge density</p>
 <p>Input files: - INCAR: large number of steps for good convergence (cheap calculation which will be starting point for future calculations) - POSCAR: CaFeO3 close to experimental low-temperature structure (P21/n symmetry) -&gt; insulating in experiment - KPOINTS: approximately unidistant grid of 7 x 7 x 5</p>
 <p>Run Vasp with <code class="docutils literal notranslate"><span class="pre">mpirun</span> <span class="pre">-n</span> <span class="pre">8</span> <span class="pre">vasp_std</span></code>.</p>
@@ -561,7 +464,7 @@ div.rendered_html tbody tr:hover {
 <p>Because of t2g contribuations in the O-p-dominated energy range, we use the whole energy range shown to define the correlated subspace via the projectors.</p>
 </div>
 <div class="section" id="Input-files-for-CSC-DMFT-calculations">
-<h2>Input files for CSC DMFT calculations<a class="headerlink" href="#Input-files-for-CSC-DMFT-calculations" title="Permalink to this headline">¶</a></h2>
+<h2>Input files for CSC DMFT calculations<a class="headerlink" href="#Input-files-for-CSC-DMFT-calculations" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li>Explain plo.cfg, dmft_config.ini</li>
 <li>Say how to adjust parameters for well-converged calculations</li>
@@ -569,7 +472,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 </div>
 <div class="section" id="Running-the-CSC-DMFT-calculations">
-<h2>Running the CSC DMFT calculations<a class="headerlink" href="#Running-the-CSC-DMFT-calculations" title="Permalink to this headline">¶</a></h2>
+<h2>Running the CSC DMFT calculations<a class="headerlink" href="#Running-the-CSC-DMFT-calculations" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li>Link relevant files like CHGCAR, KPOINTS, POSCAR, POTCAR from previous directory by running <code class="docutils literal notranslate"><span class="pre">./2_1_link_files.sh</span></code></li>
 <li>Explain CSC principle (shortly), how Vasp works in CSC mode (vasp.lock) and what GAMMA file does</li>
@@ -634,50 +537,33 @@ div.rendered_html tbody tr:hover {
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../../issues.html" class="btn btn-neutral float-right" title="reporting issues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../../tutorials.html" class="btn btn-neutral float-left" title="tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../issues.html" class="btn btn-neutral float-right" title="reporting issues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.
-
-    </p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

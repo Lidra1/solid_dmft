@@ -1,83 +1,39 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>greens_function_mixer.py &mdash; solid_dmft  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-
-  
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="initial_self_energies.py" href="initial_sigma.html" />
     <link rel="prev" title="formatter.py" href="formatter.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> solid_dmft
-          
-
-          
-            
             <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-            
-            
               <div class="version">
-                3.0.0
+                3.0.9
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -85,18 +41,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
@@ -205,75 +150,32 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7E588A" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">solid_dmft</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../../documentation.html">documentation</a> &raquo;</li>
-        
           <li><a href="../dmft_tools.html">dmft tools modules</a> &raquo;</li>
-        
       <li>greens_function_mixer.py</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/reference/dmft_tools/gf_mixer.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS overrides for sphinx_rtd_theme */
@@ -299,17 +201,17 @@
 }
 </style>
 <div class="section" id="module-solid_dmft.dmft_tools.greens_functions_mixer">
-<span id="greens-function-mixer-py"></span><h1>greens_function_mixer.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.greens_functions_mixer" title="Permalink to this headline">¶</a></h1>
+<span id="greens-function-mixer-py"></span><h1>greens_function_mixer.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.greens_functions_mixer" title="Permalink to this headline"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.greens_functions_mixer._bgf_to_vec">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">_bgf_to_vec</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">bgf</span></span></em>, <em><span class="n"><span class="pre">deg_shells</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#_bgf_to_vec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer._bgf_to_vec" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">_bgf_to_vec</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">bgf</span></span></em>, <em><span class="n"><span class="pre">deg_shells</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#_bgf_to_vec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer._bgf_to_vec" title="Permalink to this definition"></a></dt>
 <dd><p>flattens a BlockGf to a 1d numpy array
 if deg_shells is given, only non-deg shells are given back</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.greens_functions_mixer._broyden_update">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">_broyden_update</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">it</span></span></em>, <em><span class="n"><span class="pre">broyler</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">deg_shells</span></span></em>, <em><span class="n"><span class="pre">G0_freq</span></span></em>, <em><span class="n"><span class="pre">G0_freq_previous</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#_broyden_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer._broyden_update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">_broyden_update</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">it</span></span></em>, <em><span class="n"><span class="pre">broyler</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">deg_shells</span></span></em>, <em><span class="n"><span class="pre">G0_freq</span></span></em>, <em><span class="n"><span class="pre">G0_freq_previous</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#_broyden_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer._broyden_update" title="Permalink to this definition"></a></dt>
 <dd><p>calculates the broyden update of G0 using the algorithm presented in:
 doi.org/10.1103/PhysRevB.80.125125 (Rok Zitko) &amp;
 doi.org/10.1103/PhysRevB.38.12807 (D.D. Johnson)</p>
@@ -336,77 +238,60 @@ where dmft_step gives back the normal defined G0=inverse(Gloc^-1 - Sigma)</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.greens_functions_mixer._vec_to_bgf">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">_vec_to_bgf</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">vec</span></span></em>, <em><span class="n"><span class="pre">bgf</span></span></em>, <em><span class="n"><span class="pre">deg_shells</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#_vec_to_bgf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer._vec_to_bgf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">_vec_to_bgf</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">vec</span></span></em>, <em><span class="n"><span class="pre">bgf</span></span></em>, <em><span class="n"><span class="pre">deg_shells</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#_vec_to_bgf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer._vec_to_bgf" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.greens_functions_mixer.init_cpa">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">init_cpa</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">solvers</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#init_cpa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer.init_cpa" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">init_cpa</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">solvers</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#init_cpa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer.init_cpa" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.greens_functions_mixer.mix_cpa">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">mix_cpa</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">cpa_G0_freq</span></span></em>, <em><span class="n"><span class="pre">n_inequiv_shells</span></span></em>, <em><span class="n"><span class="pre">solvers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#mix_cpa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer.mix_cpa" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">mix_cpa</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">cpa_G0_freq</span></span></em>, <em><span class="n"><span class="pre">n_inequiv_shells</span></span></em>, <em><span class="n"><span class="pre">solvers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#mix_cpa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer.mix_cpa" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.greens_functions_mixer.mix_g0">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">mix_g0</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">solver</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">icrsh</span></span></em>, <em><span class="n"><span class="pre">archive</span></span></em>, <em><span class="n"><span class="pre">G0_freq_previous</span></span></em>, <em><span class="n"><span class="pre">it</span></span></em>, <em><span class="n"><span class="pre">deg_shell</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#mix_g0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer.mix_g0" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">mix_g0</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">solver</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">icrsh</span></span></em>, <em><span class="n"><span class="pre">archive</span></span></em>, <em><span class="n"><span class="pre">G0_freq_previous</span></span></em>, <em><span class="n"><span class="pre">it</span></span></em>, <em><span class="n"><span class="pre">deg_shell</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#mix_g0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer.mix_g0" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.greens_functions_mixer.mix_sigma">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">mix_sigma</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">n_inequiv_shells</span></span></em>, <em><span class="n"><span class="pre">solvers</span></span></em>, <em><span class="n"><span class="pre">Sigma_freq_previous</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#mix_sigma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer.mix_sigma" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.greens_functions_mixer.</span></code><code class="sig-name descname"><span class="pre">mix_sigma</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">n_inequiv_shells</span></span></em>, <em><span class="n"><span class="pre">solvers</span></span></em>, <em><span class="n"><span class="pre">Sigma_freq_previous</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/greens_functions_mixer.html#mix_sigma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.greens_functions_mixer.mix_sigma" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </div>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="initial_sigma.html" class="btn btn-neutral float-right" title="initial_self_energies.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="formatter.html" class="btn btn-neutral float-left" title="formatter.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="initial_sigma.html" class="btn btn-neutral float-right" title="initial_self_energies.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.
-
-    </p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

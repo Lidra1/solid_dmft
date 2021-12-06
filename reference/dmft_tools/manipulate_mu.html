@@ -1,83 +1,39 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>manipulate_chemical_potential.py &mdash; solid_dmft  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-
-  
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="observables.py" href="observables.html" />
     <link rel="prev" title="legendre_filter.py" href="legendre_filter.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> solid_dmft
-          
-
-          
-            
             <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-            
-            
               <div class="version">
-                3.0.0
+                3.0.9
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -85,18 +41,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
@@ -205,75 +150,32 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7E588A" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">solid_dmft</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../../documentation.html">documentation</a> &raquo;</li>
-        
           <li><a href="../dmft_tools.html">dmft tools modules</a> &raquo;</li>
-        
       <li>manipulate_chemical_potential.py</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/reference/dmft_tools/manipulate_mu.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS overrides for sphinx_rtd_theme */
@@ -299,12 +201,12 @@
 }
 </style>
 <div class="section" id="module-solid_dmft.dmft_tools.manipulate_chemical_potential">
-<span id="manipulate-chemical-potential-py"></span><h1>manipulate_chemical_potential.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.manipulate_chemical_potential" title="Permalink to this headline">¶</a></h1>
+<span id="manipulate-chemical-potential-py"></span><h1>manipulate_chemical_potential.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.manipulate_chemical_potential" title="Permalink to this headline"></a></h1>
 <p>Contains all the functions related to setting the chemical potential in the
 next iteration.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.manipulate_chemical_potential._determine_band_edge">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">_determine_band_edge</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">mesh</span></span></em>, <em><span class="n"><span class="pre">spectral_function</span></span></em>, <em><span class="n"><span class="pre">spectral_func_threshold</span></span></em>, <em><span class="n"><span class="pre">valence_band</span></span></em>, <em><span class="n"><span class="pre">edge_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#_determine_band_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential._determine_band_edge" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">_determine_band_edge</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">mesh</span></span></em>, <em><span class="n"><span class="pre">spectral_function</span></span></em>, <em><span class="n"><span class="pre">spectral_func_threshold</span></span></em>, <em><span class="n"><span class="pre">valence_band</span></span></em>, <em><span class="n"><span class="pre">edge_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#_determine_band_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential._determine_band_edge" title="Permalink to this definition"></a></dt>
 <dd><p>Finds the band edge of a spectral function. This is done in two steps:
 starting from the Fermi energy, looks for the first peak
 (&gt;spectral_func_threshold and local maximum on discrete grid). Then moves
@@ -349,7 +251,7 @@ the conduction band (i.e. the lower band edge).</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.manipulate_chemical_potential._initialize_lattice_gf">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">_initialize_lattice_gf</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#_initialize_lattice_gf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential._initialize_lattice_gf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">_initialize_lattice_gf</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#_initialize_lattice_gf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential._initialize_lattice_gf" title="Permalink to this definition"></a></dt>
 <dd><p>Creates lattice Green’s function (GF) that is averaged over orbitals,
 blocks and spins. Returns lattice GF as input for an analytical
 continuation as well as G_lattice(tau=beta/2) (proxy for the spectral
@@ -389,7 +291,7 @@ Matsubara frequency.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.manipulate_chemical_potential._mix_chemical_potential">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">_mix_chemical_potential</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">density_tot</span></span></em>, <em><span class="n"><span class="pre">density_required</span></span></em>, <em><span class="n"><span class="pre">previous_mu</span></span></em>, <em><span class="n"><span class="pre">predicted_mu</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#_mix_chemical_potential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential._mix_chemical_potential" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">_mix_chemical_potential</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">density_tot</span></span></em>, <em><span class="n"><span class="pre">density_required</span></span></em>, <em><span class="n"><span class="pre">previous_mu</span></span></em>, <em><span class="n"><span class="pre">predicted_mu</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#_mix_chemical_potential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential._mix_chemical_potential" title="Permalink to this definition"></a></dt>
 <dd><p>Mixes the previous chemical potential and the predicted potential with linear
 mixing:
 new_mu = factor * predicted_mu + (1-factor) * previous_mu, with
@@ -433,7 +335,7 @@ under the constrain of 0 &lt;= factor &lt;= 1.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.manipulate_chemical_potential._set_mu_to_gap_middle_with_maxent">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">_set_mu_to_gap_middle_with_maxent</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">gf_lattice_iw</span></span></em>, <em><span class="n"><span class="pre">archive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#_set_mu_to_gap_middle_with_maxent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential._set_mu_to_gap_middle_with_maxent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">_set_mu_to_gap_middle_with_maxent</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">gf_lattice_iw</span></span></em>, <em><span class="n"><span class="pre">archive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#_set_mu_to_gap_middle_with_maxent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential._set_mu_to_gap_middle_with_maxent" title="Permalink to this definition"></a></dt>
 <dd><p>Bundles running maxent on the total lattice GF, analyzing the spectral
 function and determining the new chemical potential.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -473,7 +375,7 @@ None if not master node or if something went wrong.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.manipulate_chemical_potential.set_initial_mu">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">set_initial_mu</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">iteration_offset</span></span></em>, <em><span class="n"><span class="pre">archive</span></span></em>, <em><span class="n"><span class="pre">shell_multiplicity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#set_initial_mu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential.set_initial_mu" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">set_initial_mu</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">iteration_offset</span></span></em>, <em><span class="n"><span class="pre">archive</span></span></em>, <em><span class="n"><span class="pre">shell_multiplicity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#set_initial_mu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential.set_initial_mu" title="Permalink to this definition"></a></dt>
 <dd><p>Handles the different ways of setting the initial chemical potential mu:
 - Chemical potential set to fixed value: uses this value
 - New calculation: determines mu from dichotomy method
@@ -525,7 +427,7 @@ middle. Otherwise, gets mu from dichotomy and applies mu mixing to result.</dd>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="solid_dmft.dmft_tools.manipulate_chemical_potential.update_mu">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">update_mu</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">it</span></span></em>, <em><span class="n"><span class="pre">archive</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#update_mu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential.update_mu" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.manipulate_chemical_potential.</span></code><code class="sig-name descname"><span class="pre">update_mu</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">it</span></span></em>, <em><span class="n"><span class="pre">archive</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/manipulate_chemical_potential.html#update_mu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.manipulate_chemical_potential.update_mu" title="Permalink to this definition"></a></dt>
 <dd><p>Handles the different ways of updating the chemical potential mu:
 - Chemical potential set to fixed value: uses this value
 - Chemical potential not updated this iteration: nothing happens.
@@ -569,50 +471,33 @@ dichotomy and applies mu mixing to result.</div></blockquote>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="observables.html" class="btn btn-neutral float-right" title="observables.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="legendre_filter.html" class="btn btn-neutral float-left" title="legendre_filter.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="observables.html" class="btn btn-neutral float-right" title="observables.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.
-
-    </p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

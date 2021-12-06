@@ -1,83 +1,39 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Running solid_dmft on a cluster &mdash; solid_dmft  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-
-  
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="tutorials" href="../tutorials.html" />
     <link rel="prev" title="run on your machine" href="run_locally.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> solid_dmft
-          
-
-          
-            
             <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-            
-            
               <div class="version">
-                3.0.0
+                3.0.9
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -85,18 +41,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#prerequisites">Prerequisites</a></li>
@@ -205,73 +150,31 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7E588A" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">solid_dmft</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../documentation.html">documentation</a> &raquo;</li>
-        
       <li>Running solid_dmft on a cluster</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/md_notes/run_cluster.md.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS overrides for sphinx_rtd_theme */
@@ -297,15 +200,15 @@
 }
 </style>
 <div class="section" id="running-solid-dmft-on-a-cluster">
-<h1>Running solid_dmft on a cluster<a class="headerlink" href="#running-solid-dmft-on-a-cluster" title="Permalink to this headline">¶</a></h1>
+<h1>Running solid_dmft on a cluster<a class="headerlink" href="#running-solid-dmft-on-a-cluster" title="Permalink to this headline"></a></h1>
 <div class="section" id="running-on-cscs-daint">
-<h2>Running on CSCS daint<a class="headerlink" href="#running-on-cscs-daint" title="Permalink to this headline">¶</a></h2>
+<h2>Running on CSCS daint<a class="headerlink" href="#running-on-cscs-daint" title="Permalink to this headline"></a></h2>
 <p>in some directories one can also find example job files to run everything on
 daint. Note, that one has to first load the desired docker images with sarus
 on daint: <a class="reference external" href="https://user.cscs.ch/tools/containers/sarus/" rel="noopener noreferrer" target="_blank">https://user.cscs.ch/tools/containers/sarus/</a>, see the <a class="reference external" href="http://README.md" rel="noopener noreferrer" target="_blank">README.md</a> in the <code class="docutils literal notranslate"><span class="pre">/Docker</span></code> folder.</p>
 </div>
 <div class="section" id="one-shot-job-on-daint">
-<h2>one shot job on daint<a class="headerlink" href="#one-shot-job-on-daint" title="Permalink to this headline">¶</a></h2>
+<h2>one shot job on daint<a class="headerlink" href="#one-shot-job-on-daint" title="Permalink to this headline"></a></h2>
 <p>one shot is quite straight forward. Just get the newest version of these
 scripts, go to a working directory and then create job file that looks like
 this:</p>
@@ -330,7 +233,7 @@ srun sarus run --mpi --mount=type=bind,source=$SCRATCH,destination=$SCRATCH --mo
 <code class="docutils literal notranslate"><span class="pre">solid_dmft.py</span></code> script. Unfortunately the new sarus container enginge does not mounts automatically user directories. Therefore, one needs to specify with <code class="docutils literal notranslate"><span class="pre">--mount</span></code> to mount the scratch and apps folder manually. Then, one executes in the container bash to first go into the current dir and then executes python and the dmft script.</p>
 </div>
 <div class="section" id="csc-calculations-on-daint">
-<h2>CSC calculations on daint<a class="headerlink" href="#csc-calculations-on-daint" title="Permalink to this headline">¶</a></h2>
+<h2>CSC calculations on daint<a class="headerlink" href="#csc-calculations-on-daint" title="Permalink to this headline"></a></h2>
 <p>CSC calculations need the parameter <code class="docutils literal notranslate"><span class="pre">csc</span> <span class="pre">=</span> <span class="pre">True</span></code> and the mandatory parameters from the group <code class="docutils literal notranslate"><span class="pre">dft</span></code>.
 Then, solid_dmft automatically starts VASP on as many cores as specified.
 Note that VASP runs on cores that are already used by solid_dmft.
@@ -368,50 +271,33 @@ For a 80 atom unit cell 2 nodes are useful, but for a 20 atom unit cell not at a
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../tutorials.html" class="btn btn-neutral float-right" title="tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="run_locally.html" class="btn btn-neutral float-left" title="run on your machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tutorials.html" class="btn btn-neutral float-right" title="tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.
-
-    </p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

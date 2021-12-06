@@ -1,83 +1,39 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>solver.py &mdash; solid_dmft  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-
-  
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="postprocessing tools" href="../postprocessing.html" />
     <link rel="prev" title="results_to_archive.py" href="results_arch.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> solid_dmft
-          
-
-          
-            
             <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
-          
           </a>
-
-          
-            
-            
               <div class="version">
-                3.0.0
+                3.0.9
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -85,18 +41,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
@@ -205,75 +150,32 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7E588A" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">solid_dmft</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../../documentation.html">documentation</a> &raquo;</li>
-        
           <li><a href="../dmft_tools.html">dmft tools modules</a> &raquo;</li>
-        
       <li>solver.py</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/reference/dmft_tools/solver.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS overrides for sphinx_rtd_theme */
@@ -298,249 +200,39 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="module-solid_dmft.dmft_tools.solver">
-<span id="solver-py"></span><h1>solver.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.solver" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.solver.</span></code><code class="sig-name descname"><span class="pre">SolverStructure</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">solver_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">icrsh</span></span></em>, <em><span class="n"><span class="pre">h_int</span></span></em>, <em><span class="n"><span class="pre">iteration_offset</span></span></em>, <em><span class="n"><span class="pre">solver_struct_ftps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handles all soliDMFT solver objects and contains TRIQS solver instance.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure.__dict__">
-<code class="sig-name descname"><span class="pre">__dict__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">mappingproxy({'__module__':</span> <span class="pre">'solid_dmft.dmft_tools.solver',</span> <span class="pre">'__doc__':</span> <span class="pre">'\n</span>&#160;&#160;&#160; <span class="pre">Handles</span> <span class="pre">all</span> <span class="pre">soliDMFT</span> <span class="pre">solver</span> <span class="pre">objects</span> <span class="pre">and</span> <span class="pre">contains</span> <span class="pre">TRIQS</span> <span class="pre">solver</span> <span class="pre">instance.\n</span>&#160;&#160;&#160; <span class="pre">',</span> <span class="pre">'__init__':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure.__init__&gt;,</span> <span class="pre">'_init_ImFreq_objects':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._init_ImFreq_objects&gt;,</span> <span class="pre">'_init_ReFreq_objects':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._init_ReFreq_objects&gt;,</span> <span class="pre">'_init_ReFreq_hubbardI':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._init_ReFreq_hubbardI&gt;,</span> <span class="pre">'solve':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure.solve&gt;,</span> <span class="pre">'_create_cthyb_solver':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._create_cthyb_solver&gt;,</span> <span class="pre">'_create_ctint_solver':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._create_ctint_solver&gt;,</span> <span class="pre">'_create_hubbardI_solver':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._create_hubbardI_solver&gt;,</span> <span class="pre">'_create_inchworm_solver':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._create_inchworm_solver&gt;,</span> <span class="pre">'_create_ctseg_solver':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._create_ctseg_solver&gt;,</span> <span class="pre">'_create_ftps_solver':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._create_ftps_solver&gt;,</span> <span class="pre">'_cthyb_postprocessing':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._cthyb_postprocessing&gt;,</span> <span class="pre">'_ctint_postprocessing':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._ctint_postprocessing&gt;,</span> <span class="pre">'_hubbardI_postprocessing':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._hubbardI_postprocessing&gt;,</span> <span class="pre">'_inchworm_postprocessing':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._inchworm_postprocessing&gt;,</span> <span class="pre">'_ftps_postprocessing':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._ftps_postprocessing&gt;,</span> <span class="pre">'_ctseg_postprocessing':</span> <span class="pre">&lt;function</span> <span class="pre">SolverStructure._ctseg_postprocessing&gt;,</span> <span class="pre">'__dict__':</span> <span class="pre">&lt;attribute</span> <span class="pre">'__dict__'</span> <span class="pre">of</span> <span class="pre">'SolverStructure'</span> <span class="pre">objects&gt;,</span> <span class="pre">'__weakref__':</span> <span class="pre">&lt;attribute</span> <span class="pre">'__weakref__'</span> <span class="pre">of</span> <span class="pre">'SolverStructure'</span> <span class="pre">objects&gt;,</span> <span class="pre">'__annotations__':</span> <span class="pre">{}})</span></em><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure.__dict__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">solver_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">icrsh</span></span></em>, <em><span class="n"><span class="pre">h_int</span></span></em>, <em><span class="n"><span class="pre">iteration_offset</span></span></em>, <em><span class="n"><span class="pre">solver_struct_ftps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialisation of the solver instance with h_int for impurity “icrsh” based on soliDMFT parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>general_paramuters: dict</strong> :</p>
-<blockquote>
-<div><p>general parameters as dict</p>
-</div></blockquote>
-<p><strong>solver_params: dict</strong> :</p>
-<blockquote>
-<div><p>solver-specific parameters as dict</p>
-</div></blockquote>
-<p><strong>sum_k: triqs.dft_tools.sumk object</strong> :</p>
-<blockquote>
-<div><p>SumkDFT instance</p>
-</div></blockquote>
-<p><strong>icrsh: int</strong> :</p>
-<blockquote>
-<div><p>correlated shell index</p>
-</div></blockquote>
-<p><strong>h_int: triqs.operator object</strong> :</p>
-<blockquote>
-<div><p>interaction Hamiltonian of correlated shell</p>
-</div></blockquote>
-<p><strong>iteration_offset: int</strong> :</p>
-<blockquote class="last">
-<div><p>number of iterations this run is based on</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure.__module__">
-<code class="sig-name descname"><span class="pre">__module__</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'solid_dmft.dmft_tools.solver'</span></em><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure.__module__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure.__weakref__">
-<code class="sig-name descname"><span class="pre">__weakref__</span></code><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure.__weakref__" title="Permalink to this definition">¶</a></dt>
-<dd><p>list of weak references to the object (if defined)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._create_cthyb_solver">
-<code class="sig-name descname"><span class="pre">_create_cthyb_solver</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._create_cthyb_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._create_cthyb_solver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize cthyb solver instance</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._create_ctint_solver">
-<code class="sig-name descname"><span class="pre">_create_ctint_solver</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._create_ctint_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._create_ctint_solver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize ctint solver instance</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._create_ctseg_solver">
-<code class="sig-name descname"><span class="pre">_create_ctseg_solver</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._create_ctseg_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._create_ctseg_solver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize cthyb solver instance</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._create_ftps_solver">
-<code class="sig-name descname"><span class="pre">_create_ftps_solver</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._create_ftps_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._create_ftps_solver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize ftps solver instance</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._create_hubbardI_solver">
-<code class="sig-name descname"><span class="pre">_create_hubbardI_solver</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._create_hubbardI_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._create_hubbardI_solver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize hubbardI solver instance</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._create_inchworm_solver">
-<code class="sig-name descname"><span class="pre">_create_inchworm_solver</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._create_inchworm_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._create_inchworm_solver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize inchworm solver instance</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._cthyb_postprocessing">
-<code class="sig-name descname"><span class="pre">_cthyb_postprocessing</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._cthyb_postprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._cthyb_postprocessing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Organize G_freq, G_time, Sigma_freq and G_l from cthyb solver</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._ctint_postprocessing">
-<code class="sig-name descname"><span class="pre">_ctint_postprocessing</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._ctint_postprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._ctint_postprocessing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Organize G_freq, G_time, Sigma_freq and G_l from cthyb solver</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._ctseg_postprocessing">
-<code class="sig-name descname"><span class="pre">_ctseg_postprocessing</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._ctseg_postprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._ctseg_postprocessing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Organize G_freq, G_time, Sigma_freq and G_l from cthyb solver</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._ftps_postprocessing">
-<code class="sig-name descname"><span class="pre">_ftps_postprocessing</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._ftps_postprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._ftps_postprocessing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Organize G_freq, G_time, Sigma_freq and G_l from ftps solver</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._hubbardI_postprocessing">
-<code class="sig-name descname"><span class="pre">_hubbardI_postprocessing</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._hubbardI_postprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._hubbardI_postprocessing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Organize G_freq, G_time, Sigma_freq and G_l from hubbardI solver</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._inchworm_postprocessing">
-<code class="sig-name descname"><span class="pre">_inchworm_postprocessing</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._inchworm_postprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._inchworm_postprocessing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Organize G_freq, G_time, Sigma_freq and G_l from inchworm solver</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._init_ImFreq_objects">
-<code class="sig-name descname"><span class="pre">_init_ImFreq_objects</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._init_ImFreq_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._init_ImFreq_objects" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize all ImFreq objects</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._init_ReFreq_hubbardI">
-<code class="sig-name descname"><span class="pre">_init_ReFreq_hubbardI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._init_ReFreq_hubbardI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._init_ReFreq_hubbardI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize all ReFreq objects</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure._init_ReFreq_objects">
-<code class="sig-name descname"><span class="pre">_init_ReFreq_objects</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure._init_ReFreq_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure._init_ReFreq_objects" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize all ReFreq objects</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver.SolverStructure.solve">
-<code class="sig-name descname"><span class="pre">solve</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#SolverStructure.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver.SolverStructure.solve" title="Permalink to this definition">¶</a></dt>
-<dd><p>solve command</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.solver._gf_fit_tail_fraction">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.solver.</span></code><code class="sig-name descname"><span class="pre">_gf_fit_tail_fraction</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">Gf</span></span></em>, <em><span class="n"><span class="pre">fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">known_moments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/solver.html#_gf_fit_tail_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.solver._gf_fit_tail_fraction" title="Permalink to this definition">¶</a></dt>
-<dd><p>fits the tail of Gf object by making a polynomial
-fit of the Gf on the given fraction of the Gf mesh
-and replacing that part of the Gf by the fit</p>
-<p>0.4 fits the last 40% of the Gf and replaces the
-part with the tail</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Gf</strong> : BlockGf (Green’s function) object</p>
-<p><strong>fraction: float, optional default 0.4</strong> :</p>
-<blockquote>
-<div><p>fraction of the Gf to fit</p>
-</div></blockquote>
-<p><strong>replace: float, optional default fraction</strong> :</p>
-<blockquote>
-<div><p>fraction of the Gf to replace</p>
-</div></blockquote>
-<p><strong>known_moments: np.array</strong> :</p>
-<blockquote>
-<div><p>known moments as numpy array</p>
-</div></blockquote>
-<p><strong>Returns</strong> :</p>
-<p><strong>——-</strong> :</p>
-<p><strong>Gf_fit</strong> : BlockGf (Green’s function) object</p>
-<blockquote class="last">
-<div><p>fitted Gf</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+<div class="section" id="solver-py">
+<h1>solver.py<a class="headerlink" href="#solver-py" title="Permalink to this headline"></a></h1>
 </div>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../postprocessing.html" class="btn btn-neutral float-right" title="postprocessing tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="results_arch.html" class="btn btn-neutral float-left" title="results_to_archive.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../postprocessing.html" class="btn btn-neutral float-right" title="postprocessing tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.
-
-    </p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -50,6 +50,42 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#code-structure">code structure:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="md_notes/w90_interface.html">Wannier90 interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/w90_interface.html#orbital-order-in-the-w90-converter">orbital order in the W90 converter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="md_notes/vasp_csc.html">interface to VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#general-remarks">General remarks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#locproj-bug-for-individual-projections">LOCPROJ bug for individual projections:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#convergence-of-projectors-with-vasp">convergence of projectors with Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#enabling-csc-calculations-with-wannier90-projectors">Enabling CSC calculations with Wannier90 projectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#speeding-up-by-not-writing-projectors-at-every-step">Speeding up by not writing projectors at every step</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#run-solid-dmft">run solid_dmft</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="md_notes/docker.html">Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#running-a-docker-container">Running a docker container</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="md_notes/run_locally.html">run on your machine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/run_locally.html#csc-calculations-locally">CSC calculations locally</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="md_notes/run_cluster.html">Running solid_dmft on a cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/run_cluster.html#running-on-cscs-daint">Running on CSCS daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/run_cluster.html#one-shot-job-on-daint">one shot job on daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="md_notes/run_cluster.html#csc-calculations-on-daint">CSC calculations on daint</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="documentation.html#module-reference-manual">module reference manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/csc_flow.html">CSC flow module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference/dft_managers.html">dft managers</a><ul>
@@ -92,41 +128,6 @@
 <li class="toctree-l4"><a class="reference internal" href="reference/util/update_dmft_config.html">update_dmft_config.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/util/update_results_h5.html">update_results_h5.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/util/write_kslice_to_h5.html">write_kslice_to_h5.py</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="md_notes/w90_interface.html">Wannier90 interface</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/w90_interface.html#orbital-order-in-the-w90-converter">orbital order in the W90 converter</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="md_notes/vasp_csc.html">interface to VASP</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#general-remarks">General remarks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#locproj-bug-for-individual-projections">LOCPROJ bug for individual projections:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#convergence-of-projectors-with-vasp">convergence of projectors with Vasp</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#enabling-csc-calculations-with-wannier90-projectors">Enabling CSC calculations with Wannier90 projectors</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#speeding-up-by-not-writing-projectors-at-every-step">Speeding up by not writing projectors at every step</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#run-solid-dmft">run solid_dmft</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="md_notes/docker.html">Docker</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#running-a-docker-container">Running a docker container</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="md_notes/run_locally.html">run on your machine</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/run_locally.html#csc-calculations-locally">CSC calculations locally</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="md_notes/run_cluster.html">Running solid_dmft on a cluster</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/run_cluster.html#running-on-cscs-daint">Running on CSCS daint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/run_cluster.html#one-shot-job-on-daint">one shot job on daint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/run_cluster.html#csc-calculations-on-daint">CSC calculations on daint</a></li>
 </ul>
 </li>
 </ul>
@@ -197,25 +198,35 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-solid_dmft"><span id="index-0"></span></span><a class="reference internal image-reference" href="_images/logo_solid_dmft.png"><img alt="_images/logo_solid_dmft.png" class="align-center" src="_images/logo_solid_dmft.png" style="width: 800px;" /></a>
-<div class="section" id="solid-dmft">
+<span class="target" id="module-solid_dmft"><span id="index-0"></span></span><div class="section" id="solid-dmft">
 <h1>solid_dmft<a class="headerlink" href="#solid-dmft" title="Permalink to this headline"></a></h1>
 <div class="sidebar">
 <p class="first sidebar-title">solid_dmft 3.0.0</p>
 <p>This is the homepage of solid_dmft v3.0.0.
-For changes see the <a class="reference internal" href="ChangeLog.html#changelog"><span class="std std-ref">changelog page</span></a>.</p>
+For changes see the <a class="reference internal" href="ChangeLog.html#changelog"><span class="std std-ref">changelog page</span></a>.
+visit us on:</p>
 <blockquote class="last">
-<div><a class="reference external image-reference" href="https://github.com/flatironinstitute/solid_dmft" rel="noopener noreferrer" target="_blank"><img alt="_images/logo_github.png" class="align-center" src="_images/logo_github.png" style="width: 75%;" /></a>
+<div><a class="reference external image-reference" href="https://github.com/flatironinstitute/solid_dmft" rel="noopener noreferrer" target="_blank"><img alt="_images/logo_github.png" class="align-center" src="_images/logo_github.png" style="width: 60%;" /></a>
 </div></blockquote>
 </div>
-<p>This program allows to perform DFT+DMFT ‘’one-shot’’ and CSC
-calculations from h5 archives or VASP/Quantum Espresso input files for
-multiband systems using the TRIQS package, in combination with the CThyb
-solver and SumkDFT from DFT-tools. Runs with triqs 3.x.x</p>
-<p>Learn how to use solid_dmft in the <a class="reference internal" href="documentation.html#documentation"><span class="std std-ref">documentation</span></a>.</p>
+<p>This program allows to perform DFT+DMFT ‘’one-shot’’ and charge self-consistent
+(CSC) calculations from h5 archives or VASP/Quantum Espresso input files for
+multiband systems using the TRIQS software library, and the DFT code interface
+<a class="reference external" href="https://triqs.github.io/dft_tools" rel="noopener noreferrer" target="_blank">triqs/DFTTools</a>. Works with triqs &gt;3.x.x.
+solid_dmft takes advantage of various impurity solvers available in triqs: cthyb,
+HubbardI, ForkTPS, ctint, and ctseg. Postprocessing scripts are available to
+perform analytic continuation and calculate spectral functions.</p>
+<p>For installation use the same branch / tag as your triqs installation. More
+information under <a class="reference internal" href="install.html#installation"><span class="std std-ref">Installation</span></a>.</p>
+<p>Learn how to use solid_dmft in the <a class="reference internal" href="documentation.html#documentation"><span class="std std-ref">documentation</span></a> and the <a class="reference internal" href="tutorials.html#tutorials"><span class="std std-ref">tutorials</span></a>.</p>
+<div class="section" id="workflow-of-dft-dmft-calculations-with-solid-dmft">
+<h2>Workflow of DFT+DMFT calculations with solid_dmft<a class="headerlink" href="#workflow-of-dft-dmft-calculations-with-solid-dmft" title="Permalink to this headline"></a></h2>
+<a class="reference internal image-reference" href="_static/workflow.png"><img alt="_static/workflow.png" class="align-center" src="_static/workflow.png" style="width: 100%;" /></a>
+<hr class="docutils" />
 <div class="toctree-wrapper compound">
 </div>
 <a class="reference external image-reference" href="https://www.simonsfoundation.org/flatiron/center-for-computational-quantum-physics" rel="noopener noreferrer" target="_blank"><img alt="_images/flatiron.png" class="align-center" src="_images/flatiron.png" style="width: 300px;" /></a>
+</div>
 </div>
 
 

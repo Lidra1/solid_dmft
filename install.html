@@ -204,11 +204,11 @@
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
 <ol class="arabic">
-<li><p class="first">The <a class="reference external" href="https://triqs.github.io/triqs/latest/index.html#welcome" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.0.2)"><span class="xref std std-ref">TRIQS</span></a> library, see <span class="xref std std-ref">TRIQS installation instruction</span>.
-In the following, we assume that TRIQS is installed in the directory <code class="docutils literal notranslate"><span class="pre">path_to_triqs</span></code>.</p>
+<li><p class="first">The <a class="reference external" href="https://triqs.github.io/triqs/latest/index.html#welcome" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.0.2)"><span class="xref std std-ref">TRIQS</span></a> library, see <a class="reference external" href="https://triqs.github.io/triqs/latest/install.html" rel="noopener noreferrer" target="_blank">TRIQS installation instruction</a>.
+In the following, we assume that <a class="reference external" href="https://triqs.github.io/triqs/latest/index.html#welcome" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.0.2)"><span class="xref std std-ref">TRIQS</span></a>, <a class="reference external" href="https://triqs.github.io/dft_tools" rel="noopener noreferrer" target="_blank">triqs/dft_tools</a>, and at least one of the impurity solvers <a class="reference external" href="https://triqs.github.io/triqs/latest/applications.html" rel="noopener noreferrer" target="_blank">available in TRIQS</a>, e.g. cthyb, HubbardI, ctseg, FTPS, or ctint is installed in the directory <code class="docutils literal notranslate"><span class="pre">path_to_triqs</span></code>.</p>
 </li>
 <li><p class="first">make sure to install besides the triqs requirements also the python packages:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip3 install --user scipy argparse
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip3 install --user scipy argparse pytest
 </pre></div>
 </div>
 </li>
@@ -217,10 +217,15 @@ In the following, we assume that TRIQS is installed in the directory <code class
 <div class="section" id="installation-steps">
 <h2>Installation steps<a class="headerlink" href="#installation-steps" title="Permalink to this headline"></a></h2>
 <ol class="arabic">
-<li><p class="first">Download the source code of the latest stable version by cloning the <code class="docutils literal notranslate"><span class="pre">flatironinstitute/solid_dmft</span></code> repository from GitHub:</p>
+<li><p class="first">clone the <code class="docutils literal notranslate"><span class="pre">flatironinstitute/solid_dmft</span></code> repository from GitHub:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/flatironinstitute/solid_dmft solid_dmft.src
 </pre></div>
 </div>
+</li>
+<li><p class="first">checkout the branch of solid_dmft matching your triqs version. For example if you use the <cite>3.0.x</cite> branch of triqs, dfttools. and cthyb:</p>
+<blockquote>
+<div><p>$ git checkout 3.0.x</p>
+</div></blockquote>
 </li>
 <li><p class="first">Create and move to a new directory where you will compile the code:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir solid_dmft.build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> solid_dmft.build
@@ -261,16 +266,16 @@ python packages are needed:</p>
 <h2>Version compatibility<a class="headerlink" href="#version-compatibility" title="Permalink to this headline"></a></h2>
 <p>Keep in mind that the version of <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> must be compatible with your TRIQS library version,
 see <a class="reference external" href="https://triqs.github.io/triqs/latest/versions.html#versions" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.0.2)"><span class="xref std std-ref">TRIQS website</span></a>.
-In particular the Major and Minor Version numbers have to be the same.
-To use a particular version, go into the directory with the sources, and look at all available versions:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> solid_dmft.src <span class="o">&amp;&amp;</span> git tag
+In particular the Major Version numbers have to be the same.
+To use a particular version, go into the directory with the sources, and look at all available branches:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> solid_dmft.src <span class="o">&amp;&amp;</span> git branch -vv
 </pre></div>
 </div>
 <p>Checkout the version of the code that you want:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout <span class="m">3</span>.0.x
 </pre></div>
 </div>
-<p>and follow steps 2 to 4 above to compile the code.</p>
+<p>and follow steps 3 to 6 above to compile the code.</p>
 </div>
 <div class="section" id="custom-cmake-options">
 <h2>Custom CMake options<a class="headerlink" href="#custom-cmake-options" title="Permalink to this headline"></a></h2>

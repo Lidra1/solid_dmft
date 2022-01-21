@@ -315,8 +315,8 @@
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
                     <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
-            <span class="n">block_sc</span><span class="o">.</span><span class="n">set_Gaux_w_from_Aaux_w</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">block_res</span><span class="o">.</span><span class="n">omega</span><span class="p">,</span> <span class="n">np_interp_A</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
-                                            <span class="n">np_omega</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">w_min</span><span class="o">=-</span><span class="mi">12</span><span class="p">,</span> <span class="n">w_max</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+            <span class="n">block_sc</span><span class="o">.</span><span class="n">set_Gaux_w_from_Aaux_w</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">block_res</span><span class="o">.</span><span class="n">omega</span><span class="p">,</span> <span class="n">np_interp_A</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>
+                                            <span class="n">np_omega</span><span class="o">=</span><span class="mi">3001</span><span class="p">,</span> <span class="n">w_min</span><span class="o">=-</span><span class="mi">12</span><span class="p">,</span> <span class="n">w_max</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
     <span class="n">sigma_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">BlockGf</span><span class="p">(</span><span class="n">name_list</span><span class="o">=</span><span class="n">continuator</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
                        <span class="n">block_list</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">S_w</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">continuator</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
@@ -388,6 +388,8 @@
         <span class="n">function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 
     <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
+
+    <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
            </div>

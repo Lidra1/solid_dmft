@@ -472,7 +472,7 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">w90_path</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
 <span class="n">w90_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;w90_seed&#39;</span><span class="p">:</span> <span class="s1">&#39;svo&#39;</span><span class="p">,</span> <span class="s1">&#39;w90_path&#39;</span><span class="p">:</span> <span class="n">w90_path</span><span class="p">,</span> <span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mf">12.3958</span><span class="p">,</span> <span class="s1">&#39;n_orb&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;add_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">}</span>
+            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;add_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">}</span>
 
 <span class="n">orbital_order_to</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dxy&#39;</span><span class="p">,</span> <span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">]</span>
 <span class="n">proj_on_orb</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1"># or &#39;dxy&#39; etc</span>
@@ -656,7 +656,7 @@ Warning: could not identify MPI environment!
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Starting serial run at: 2022-02-07 10:50:27.432700
+Starting serial run at: 2022-02-07 14:25:44.772668
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -665,11 +665,11 @@ Starting serial run at: 2022-02-07 10:50:27.432700
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 H(R=0):
-      0.5811+0.0000j  0.0500+0.0000j  0.0000-0.0500j
-      0.0500+0.0000j  0.5811+0.0000j  0.0000-0.0500j
-      0.0000+0.0500j  0.0000+0.0500j  0.5811+0.0000j
+      0.5811+0.0000j  0.0000+0.0000j  0.0000+0.0000j
+      0.0000+0.0000j  0.5811+0.0000j  0.0000+0.0000j
+      0.0000+0.0000j  0.0000+0.0000j  0.5811+0.0000j
 Setting Sigma from ./svo_example.h5
-Run took 1.305 s
+Run took 1.140 s
 </pre></div></div>
 </div>
 <p>That’s it. Now you can look at the output:</p>

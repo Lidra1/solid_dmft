@@ -2,16 +2,24 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "59030970",
+   "id": "753f97ba",
    "metadata": {},
    "source": [
     "# Plotting the spectral function"
    ]
   },
   {
+   "cell_type": "markdown",
+   "id": "21b5701e",
+   "metadata": {},
+   "source": [
+    "In this tutorial we go through the steps to plot tight-binding bands from a Wannier90 Hamiltonian and spectralfunctions with analytically continued (real-frequency) self-energies obtained from DMFT."
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "538d5097",
+   "id": "2fb0d774",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -32,24 +40,115 @@
   },
   {
    "cell_type": "markdown",
-   "id": "881f5054",
+   "id": "c73e9501",
    "metadata": {},
    "source": [
-    "## Optional: ASE Brillouin Zone"
+    "## Configuration"
    ]
   },
   {
    "cell_type": "markdown",
-   "id": "45fb10a2",
+   "id": "6c4032d3",
    "metadata": {},
    "source": [
-    "Before we start, it might be helpful to have a brief look at the Brillouin Zone by loading an input file of your favorite DFT code (Quantum Espresso in this case). ASE will write out the special $k$-points, which we use later. Alternatively, you can of course define the dictionary `kpts_dict` yourself. Careful, it might not define $Z$, which is needed and added below."
+    "The script makes use of the `triqs.lattice.utils` class, which allows to set up a tight-binding model based on a Wannier90 Hamiltonian. Additionally, you may upload a self-energy in the usual `solid_dmft` format to compute correlated spectral properties.\n",
+    "Currently, the following options are implemented:\n",
+    "<ol>\n",
+    "<li>bandstructure</li>\n",
+    "<li>Fermi slice</li>\n",
+    "</ol>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9dad827f",
+   "metadata": {},
+   "source": [
+    "### Basic options"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "579b37ee",
+   "metadata": {},
+   "source": [
+    "We start with configuring these options. For this example we try a tight-binding bandstructure including the correlated bands (`kslice = False`, `'tb': True`, `'alatt': True`), but feel free to come back here to explore. Alternatively to an intensity plot of the correlated bands (`qp_bands`), you can compute the correlated quasiparticle bands assuming a Fermi liquid regime.\\\n",
+    "The options for $\\Sigma(\\omega)$ are `calc` or `model`, which performs a Fermi liquid linearization in the low-frequency regime. The latter will be reworked, so better stick with `calc` for now."
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "9c004356",
+   "id": "d51e33ec",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "kslice = False\n",
+    "\n",
+    "bands_config = {'tb': True, 'alatt': True, 'qp_bands': False, 'sigma': 'calc'}\n",
+    "kslice_config = {'tb': True, 'alatt': True, 'qp_bands': False, 'sigma': 'calc'}\n",
+    "config = kslice_config if kslice else bands_config"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ac06b8e0",
+   "metadata": {},
+   "source": [
+    "### Wannier90"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7896bbd3",
+   "metadata": {},
+   "source": [
+    "Next we will set up the Wannier90 Input. Provide the path, seedname, chemical potential and orbital order used in Wannier90. You may add a spin-component, and any other local Hamiltonian. For `t2g` models the orbital order can be changed (to `orbital_order_to`) and a local spin-orbit coupling term can be added (`add_lambda`). The spectral properties can be viewed projected on a specific orbital."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "881f6ed4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "w90_path = './correlated_bandstructure/'\n",
+    "w90_dict = {'w90_seed': 'svo', 'w90_path': w90_path, 'mu': 12.3958, 'n_orb': 3,\n",
+    "            'orbital_order_w90': ['dxz', 'dyz', 'dxy'], 'add_spin': True, 'add_lambda': [0.1] * 3}\n",
+    "\n",
+    "orbital_order_to = ['dxy', 'dxz', 'dyz']\n",
+    "proj_on_orb = None # or 'dxy' etc"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ee9ea213",
+   "metadata": {},
+   "source": [
+    "### BZ configuration"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d0cb0e92",
+   "metadata": {},
+   "source": [
+    "#### Optional: ASE Brillouin Zone"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "72439d9d",
+   "metadata": {},
+   "source": [
+    "It might be helpful to have a brief look at the Brillouin Zone by loading an input file of your favorite DFT code (Quantum Espresso in this case). ASE will write out the special $k$-points, which we can use to configure the BZ path. Alternatively, you can of course define the dictionary `kpts_dict` yourself. Careful, it might not define $Z$, which is needed and added below."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "5869e0d6",
    "metadata": {},
    "outputs": [
     {
@@ -68,7 +167,7 @@
        "<Axes3DSubplot:>"
       ]
      },
-     "execution_count": 2,
+     "execution_count": 4,
      "metadata": {},
      "output_type": "execute_result"
     },
@@ -102,7 +201,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "96ab44f2",
+   "id": "c2cce501",
    "metadata": {},
    "source": [
     "---"
@@ -110,98 +209,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "dc169386",
-   "metadata": {},
-   "source": [
-    "## Configuration"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "90dc4ae3",
-   "metadata": {},
-   "source": [
-    "The script makes use of the `triqs.lattice.utils` class, which allows to set up a tight-binding model based on a Wannier90 Hamiltonian. Additionally, you may upload a self-energy in the usual `solid_dmft` format to compute correlated spectral properties.\n",
-    "Currently, the following options are implemented:\n",
-    "<ol>\n",
-    "<li>bandstructure</li>\n",
-    "<li>Fermi slice</li>\n",
-    "</ol>"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "8ddaea64",
-   "metadata": {},
-   "source": [
-    "### Basic options"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "018b9c07",
-   "metadata": {},
-   "source": [
-    "We start with configuring these options. For this example we try a tight-binding bandstructure including the correlated bands (`kslice = False`, `'tb': True`, `'alatt': True`), but feel free to come back here to explore. Alternatively to an intensity plot of the correlated bands (`qp_bands`), you can compute the correlated quasiparticle bands assuming a Fermi liquid regime.\\\n",
-    "The options for $\\Sigma(\\omega)$ are `calc` or `model`, which performs a Fermi liquid linearization in the low-frequency regime. The latter will be reworked, so better stick with `calc` for now."
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 3,
-   "id": "ced06988",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "kslice = False\n",
-    "\n",
-    "bands_config = {'tb': True, 'alatt': True, 'qp_bands': False, 'sigma': 'calc'}\n",
-    "kslice_config = {'tb': True, 'alatt': True, 'qp_bands': False, 'sigma': 'calc'}\n",
-    "config = kslice_config if kslice else bands_config"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "60000124",
-   "metadata": {},
-   "source": [
-    "### Wannier90"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "d0ca290b",
-   "metadata": {},
-   "source": [
-    "Next we will set up the Wannier90 Input. Provide the path, seedname, chemical potential and orbital order used in Wannier90. You may add a spin-component, and any other local Hamiltonian. For `t2g` models the orbital order can be changed (to `orbital_order_to`) and a local spin-orbit coupling term can be added (`add_lambda`). The spectral properties can be viewed projected on a specific orbital."
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 4,
-   "id": "364a4f3f",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "w90_path = './correlated_bandstructure/'\n",
-    "w90_dict = {'w90_seed': 'svo', 'w90_path': w90_path, 'mu': 12.3958, 'n_orb': 3,\n",
-    "            'orbital_order_w90': ['dxz', 'dyz', 'dxy'], 'add_spin': True, 'add_lambda': [0.1] * 3}\n",
-    "\n",
-    "orbital_order_to = ['dxy', 'dxz', 'dyz']\n",
-    "proj_on_orb = None # or 'dxy' etc"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "659e525c",
-   "metadata": {},
-   "source": [
-    "### BZ configuration"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "5d776347",
+   "id": "4110800d",
    "metadata": {},
    "source": [
     "Depending on whether you select `kslice=True` or `False`, a corresponding `tb_config` needs to be provided containing information about the $k$-points, resolution (`n_k`) or `kz`-plane in the case of the Fermi slice. Here we just import the $k$-point dictionary provided by ASE above and add the $Z$-point. If you are unhappy with the resolution of the final plot, come back here and crank up `n_k`. For the kslice, the first letter corresponds to the upper left corner of the plotted Brillouin zone, followed by the lower left corner and the lower right one ($Y$, $\\Gamma$, and $X$ in this case)."
@@ -210,7 +218,7 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "ec0314fb",
+   "id": "672f34f3",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -228,7 +236,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "e156f66a",
+   "id": "f8537563",
    "metadata": {},
    "source": [
     "### Self-energy"
@@ -236,7 +244,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5a366a78",
+   "id": "a6c64aed",
    "metadata": {},
    "source": [
     "Here we provide the info needed from the h5Archive, like the self-energy, iteration count, spin and block component and the frequency mesh used for the interpolation. The values for the mesh of course depend on the quantity of interest. For a kslice the resolution around $\\omega=0$ is crucial and we need only a small energy window, while for a bandstructure we are also interested in high energy features."
@@ -245,7 +253,7 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "id": "95dd44e3",
+   "id": "54863512",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -261,7 +269,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "e2be9f4f",
+   "id": "151d903e",
    "metadata": {},
    "source": [
     "__Optional__: for completeness and as a sanity check we quickly take a look at the self-energy. Make sure you provide a physical one!"
@@ -270,7 +278,7 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "837ce359",
+   "id": "f160541c",
    "metadata": {},
    "outputs": [
     {
@@ -309,7 +317,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "b9ee2179",
+   "id": "70738e90",
    "metadata": {},
    "source": [
     "### Plotting options"
@@ -317,7 +325,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d8a9f3b8",
+   "id": "d81da788",
    "metadata": {},
    "source": [
     "Finally, you can choose colormaps for each of the functionalities from any of the available on <a href=\"https://matplotlib.org/stable/tutorials/colors/colormaps.html\">matplotlib colormaps</a>. `vmin` determines the scaling of the logarithmically scaled colorplots. The corresponding tight-binding bands will have the maximum value of the colormap. By the way, colormaps can be reversed by appending `_r` to the identifier."
@@ -326,7 +334,7 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "3b6b8b69",
+   "id": "8fad8fcf",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -336,15 +344,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "a1cfb3d3",
+   "id": "1edee3a5",
    "metadata": {},
    "source": [
-    "## Run"
+    "## Run and Plotting"
    ]
   },
   {
    "cell_type": "markdown",
-   "id": "695eee0b",
+   "id": "63b1a8d9",
    "metadata": {},
    "source": [
     "Now that everything is set up we may hit run. Caution, if you use a lot of $k$-points, this may take a while! In the current example, it should be done within a second."
@@ -353,7 +361,7 @@
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "81be4088",
+   "id": "d4b1b024",
    "metadata": {},
    "outputs": [
     {
@@ -367,7 +375,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "Starting serial run at: 2022-02-07 10:33:41.781339\n"
+      "Starting serial run at: 2022-02-07 10:42:10.389077\n"
      ]
     },
     {
@@ -379,7 +387,7 @@
       "      0.0500+0.0000j  0.5811+0.0000j  0.0000-0.0500j\n",
       "      0.0000+0.0500j  0.0000+0.0500j  0.5811+0.0000j\n",
       "Setting Sigma from ./correlated_bandstructure/svo_example.h5\n",
-      "Run took 1.323 s\n"
+      "Run took 1.441 s\n"
      ]
     }
    ],
@@ -394,7 +402,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "133a6eef",
+   "id": "0c0a4ced",
    "metadata": {},
    "source": [
     "That's it. Now you can look at the output:"
@@ -403,7 +411,7 @@
   {
    "cell_type": "code",
    "execution_count": 10,
-   "id": "536e988d",
+   "id": "56ab7020",
    "metadata": {},
    "outputs": [
     {
@@ -435,7 +443,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3082b9ef",
+   "id": "f126b9b8",
    "metadata": {},
    "source": [
     "---"

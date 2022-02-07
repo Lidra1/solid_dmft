@@ -146,7 +146,6 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Plotting the spectral function</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Optional:-ASE-Brillouin-Zone">Optional: ASE Brillouin Zone</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Configuration">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Basic-options">Basic options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Wannier90">Wannier90</a></li>
@@ -155,7 +154,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#Plotting-options">Plotting options</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Run">Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Run-and-Plotting">Run and Plotting</a></li>
 </ul>
 </li>
 </ul>
@@ -416,6 +415,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Plotting-the-spectral-function">
 <h1>Plotting the spectral function<a class="headerlink" href="#Plotting-the-spectral-function" title="Permalink to this headline"></a></h1>
+<p>In this tutorial we go through the steps to plot tight-binding bands from a Wannier90 Hamiltonian and spectralfunctions with analytically continued (real-frequency) self-energies obtained from DMFT.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -437,11 +437,56 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="section" id="Optional:-ASE-Brillouin-Zone">
-<h2>Optional: ASE Brillouin Zone<a class="headerlink" href="#Optional:-ASE-Brillouin-Zone" title="Permalink to this headline"></a></h2>
-<p>Before we start, it might be helpful to have a brief look at the Brillouin Zone by loading an input file of your favorite DFT code (Quantum Espresso in this case). ASE will write out the special <span class="math notranslate nohighlight">\(k\)</span>-points, which we use later. Alternatively, you can of course define the dictionary <code class="docutils literal notranslate"><span class="pre">kpts_dict</span></code> yourself. Careful, it might not define <span class="math notranslate nohighlight">\(Z\)</span>, which is needed and added below.</p>
-<div class="nbinput docutils container">
+<div class="section" id="Configuration">
+<h2>Configuration<a class="headerlink" href="#Configuration" title="Permalink to this headline"></a></h2>
+<p>The script makes use of the <code class="docutils literal notranslate"><span class="pre">triqs.lattice.utils</span></code> class, which allows to set up a tight-binding model based on a Wannier90 Hamiltonian. Additionally, you may upload a self-energy in the usual <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> format to compute correlated spectral properties. Currently, the following options are implemented:</p>
+<ol><li><p>bandstructure</p>
+</li><li><p>Fermi slice</p>
+</li></ol><div class="section" id="Basic-options">
+<h3>Basic options<a class="headerlink" href="#Basic-options" title="Permalink to this headline"></a></h3>
+<div class="line-block">
+<div class="line">We start with configuring these options. For this example we try a tight-binding bandstructure including the correlated bands (<code class="docutils literal notranslate"><span class="pre">kslice</span> <span class="pre">=</span> <span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">'tb':</span> <span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">'alatt':</span> <span class="pre">True</span></code>), but feel free to come back here to explore. Alternatively to an intensity plot of the correlated bands (<code class="docutils literal notranslate"><span class="pre">qp_bands</span></code>), you can compute the correlated quasiparticle bands assuming a Fermi liquid regime.</div>
+<div class="line">The options for <span class="math notranslate nohighlight">\(\Sigma(\omega)\)</span> are <code class="docutils literal notranslate"><span class="pre">calc</span></code> or <code class="docutils literal notranslate"><span class="pre">model</span></code>, which performs a Fermi liquid linearization in the low-frequency regime. The latter will be reworked, so better stick with <code class="docutils literal notranslate"><span class="pre">calc</span></code> for now.</div>
+</div>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">kslice</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="n">bands_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tb&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;alatt&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;qp_bands&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="s1">&#39;calc&#39;</span><span class="p">}</span>
+<span class="n">kslice_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tb&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;alatt&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;qp_bands&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="s1">&#39;calc&#39;</span><span class="p">}</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">kslice_config</span> <span class="k">if</span> <span class="n">kslice</span> <span class="k">else</span> <span class="n">bands_config</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Wannier90">
+<h3>Wannier90<a class="headerlink" href="#Wannier90" title="Permalink to this headline"></a></h3>
+<p>Next we will set up the Wannier90 Input. Provide the path, seedname, chemical potential and orbital order used in Wannier90. You may add a spin-component, and any other local Hamiltonian. For <code class="docutils literal notranslate"><span class="pre">t2g</span></code> models the orbital order can be changed (to <code class="docutils literal notranslate"><span class="pre">orbital_order_to</span></code>) and a local spin-orbit coupling term can be added (<code class="docutils literal notranslate"><span class="pre">add_lambda</span></code>). The spectral properties can be viewed projected on a specific orbital.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">w90_path</span> <span class="o">=</span> <span class="s1">&#39;./correlated_bandstructure/&#39;</span>
+<span class="n">w90_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;w90_seed&#39;</span><span class="p">:</span> <span class="s1">&#39;svo&#39;</span><span class="p">,</span> <span class="s1">&#39;w90_path&#39;</span><span class="p">:</span> <span class="n">w90_path</span><span class="p">,</span> <span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mf">12.3958</span><span class="p">,</span> <span class="s1">&#39;n_orb&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;add_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="n">orbital_order_to</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dxy&#39;</span><span class="p">,</span> <span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">]</span>
+<span class="n">proj_on_orb</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1"># or &#39;dxy&#39; etc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="BZ-configuration">
+<h3>BZ configuration<a class="headerlink" href="#BZ-configuration" title="Permalink to this headline"></a></h3>
+<div class="section" id="Optional:-ASE-Brillouin-Zone">
+<h4>Optional: ASE Brillouin Zone<a class="headerlink" href="#Optional:-ASE-Brillouin-Zone" title="Permalink to this headline"></a></h4>
+<p>It might be helpful to have a brief look at the Brillouin Zone by loading an input file of your favorite DFT code (Quantum Espresso in this case). ASE will write out the special <span class="math notranslate nohighlight">\(k\)</span>-points, which we can use to configure the BZ path. Alternatively, you can of course define the dictionary <code class="docutils literal notranslate"><span class="pre">kpts_dict</span></code> yourself. Careful, it might not define <span class="math notranslate nohighlight">\(Z\)</span>, which is needed and added below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -472,7 +517,7 @@ X [0.  0.5 0. ]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -484,56 +529,10 @@ X [0.  0.5 0. ]
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_4_2.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_4_2.png" />
-</div>
+<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_14_2.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_14_2.png" />
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="Configuration">
-<h2>Configuration<a class="headerlink" href="#Configuration" title="Permalink to this headline"></a></h2>
-<p>The script makes use of the <code class="docutils literal notranslate"><span class="pre">triqs.lattice.utils</span></code> class, which allows to set up a tight-binding model based on a Wannier90 Hamiltonian. Additionally, you may upload a self-energy in the usual <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> format to compute correlated spectral properties. Currently, the following options are implemented:</p>
-<ol><li><p>bandstructure</p>
-</li><li><p>Fermi slice</p>
-</li></ol><div class="section" id="Basic-options">
-<h3>Basic options<a class="headerlink" href="#Basic-options" title="Permalink to this headline"></a></h3>
-<div class="line-block">
-<div class="line">We start with configuring these options. For this example we try a tight-binding bandstructure including the correlated bands (<code class="docutils literal notranslate"><span class="pre">kslice</span> <span class="pre">=</span> <span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">'tb':</span> <span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">'alatt':</span> <span class="pre">True</span></code>), but feel free to come back here to explore. Alternatively to an intensity plot of the correlated bands (<code class="docutils literal notranslate"><span class="pre">qp_bands</span></code>), you can compute the correlated quasiparticle bands assuming a Fermi liquid regime.</div>
-<div class="line">The options for <span class="math notranslate nohighlight">\(\Sigma(\omega)\)</span> are <code class="docutils literal notranslate"><span class="pre">calc</span></code> or <code class="docutils literal notranslate"><span class="pre">model</span></code>, which performs a Fermi liquid linearization in the low-frequency regime. The latter will be reworked, so better stick with <code class="docutils literal notranslate"><span class="pre">calc</span></code> for now.</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">kslice</span> <span class="o">=</span> <span class="bp">False</span>
-
-<span class="n">bands_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tb&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;alatt&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;qp_bands&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="s1">&#39;calc&#39;</span><span class="p">}</span>
-<span class="n">kslice_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tb&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;alatt&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;qp_bands&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="s1">&#39;calc&#39;</span><span class="p">}</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">kslice_config</span> <span class="k">if</span> <span class="n">kslice</span> <span class="k">else</span> <span class="n">bands_config</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="Wannier90">
-<h3>Wannier90<a class="headerlink" href="#Wannier90" title="Permalink to this headline"></a></h3>
-<p>Next we will set up the Wannier90 Input. Provide the path, seedname, chemical potential and orbital order used in Wannier90. You may add a spin-component, and any other local Hamiltonian. For <code class="docutils literal notranslate"><span class="pre">t2g</span></code> models the orbital order can be changed (to <code class="docutils literal notranslate"><span class="pre">orbital_order_to</span></code>) and a local spin-orbit coupling term can be added (<code class="docutils literal notranslate"><span class="pre">add_lambda</span></code>). The spectral properties can be viewed projected on a specific orbital.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">w90_path</span> <span class="o">=</span> <span class="s1">&#39;./correlated_bandstructure/&#39;</span>
-<span class="n">w90_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;w90_seed&#39;</span><span class="p">:</span> <span class="s1">&#39;svo&#39;</span><span class="p">,</span> <span class="s1">&#39;w90_path&#39;</span><span class="p">:</span> <span class="n">w90_path</span><span class="p">,</span> <span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mf">12.3958</span><span class="p">,</span> <span class="s1">&#39;n_orb&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;add_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">}</span>
-
-<span class="n">orbital_order_to</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dxy&#39;</span><span class="p">,</span> <span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">]</span>
-<span class="n">proj_on_orb</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1"># or &#39;dxy&#39; etc</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="BZ-configuration">
-<h3>BZ configuration<a class="headerlink" href="#BZ-configuration" title="Permalink to this headline"></a></h3>
 <p>Depending on whether you select <code class="docutils literal notranslate"><span class="pre">kslice=True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, a corresponding <code class="docutils literal notranslate"><span class="pre">tb_config</span></code> needs to be provided containing information about the <span class="math notranslate nohighlight">\(k\)</span>-points, resolution (<code class="docutils literal notranslate"><span class="pre">n_k</span></code>) or <code class="docutils literal notranslate"><span class="pre">kz</span></code>-plane in the case of the Fermi slice. Here we just import the <span class="math notranslate nohighlight">\(k\)</span>-point dictionary provided by ASE above and add the <span class="math notranslate nohighlight">\(Z\)</span>-point. If you are unhappy with the resolution of the final plot, come back here and crank up <code class="docutils literal notranslate"><span class="pre">n_k</span></code>. For the kslice, the first letter corresponds to the upper left corner
 of the plotted Brillouin zone, followed by the lower left corner and the lower right one (<span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(\Gamma\)</span>, and <span class="math notranslate nohighlight">\(X\)</span> in this case).</p>
 <div class="nbinput nblast docutils container">
@@ -552,6 +551,7 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 
 <span class="n">tb_config</span> <span class="o">=</span> <span class="n">tb_kslice</span> <span class="k">if</span> <span class="n">kslice</span> <span class="k">else</span> <span class="n">tb_bands</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -605,7 +605,7 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_21_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_21_0.png" />
+<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_22_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_22_0.png" />
 </div>
 </div>
 </div>
@@ -624,8 +624,8 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 </div>
 </div>
 </div>
-<div class="section" id="Run">
-<h2>Run<a class="headerlink" href="#Run" title="Permalink to this headline"></a></h2>
+<div class="section" id="Run-and-Plotting">
+<h2>Run and Plotting<a class="headerlink" href="#Run-and-Plotting" title="Permalink to this headline"></a></h2>
 <p>Now that everything is set up we may hit run. Caution, if you use a lot of <span class="math notranslate nohighlight">\(k\)</span>-points, this may take a while! In the current example, it should be done within a second.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -654,7 +654,7 @@ Warning: could not identify MPI environment!
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Starting serial run at: 2022-02-07 10:33:41.781339
+Starting serial run at: 2022-02-07 10:42:10.389077
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -667,7 +667,7 @@ H(R=0):
       0.0500+0.0000j  0.5811+0.0000j  0.0000-0.0500j
       0.0000+0.0500j  0.0000+0.0500j  0.5811+0.0000j
 Setting Sigma from ./correlated_bandstructure/svo_example.h5
-Run took 1.323 s
+Run took 1.441 s
 </pre></div></div>
 </div>
 <p>That’s it. Now you can look at the output:</p>
@@ -694,7 +694,7 @@ Run took 1.323 s
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_29_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_29_0.png" />
+<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_0.png" />
 </div>
 </div>
 <hr class="docutils" />

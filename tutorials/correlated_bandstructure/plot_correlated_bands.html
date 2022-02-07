@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Optional: ASE Brillouin Zone &mdash; solid_dmft  documentation</title>
+  <title>Plotting the spectral function &mdash; solid_dmft  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
@@ -145,16 +145,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../CaFeO3_csc_plo/tutorial.html#Running-the-CSC-DMFT-calculations">Running the CSC DMFT calculations</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Optional: ASE Brillouin Zone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Configuration">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Basic-options">Basic options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Wannier90">Wannier90</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#BZ-configuration">BZ configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Self-energy">Self-energy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Plotting-options">Plotting options</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Plotting the spectral function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Optional:-ASE-Brillouin-Zone">Optional: ASE Brillouin Zone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Basic-options">Basic options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Wannier90">Wannier90</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#BZ-configuration">BZ configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Self-energy">Self-energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plotting-options">Plotting options</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Run">Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Run">Run</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../issues.html">reporting issues</a></li>
@@ -179,7 +182,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../tutorials.html">tutorials</a> &raquo;</li>
-      <li>Optional: ASE Brillouin Zone</li>
+      <li>Plotting the spectral function</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/tutorials/correlated_bandstructure/plot_correlated_bands.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -411,6 +414,8 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
+<div class="section" id="Plotting-the-spectral-function">
+<h1>Plotting the spectral function<a class="headerlink" href="#Plotting-the-spectral-function" title="Permalink to this headline"></a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -428,14 +433,12 @@ div.rendered_html tbody tr:hover {
 <span class="kn">from</span> <span class="nn">ase.io.espresso</span> <span class="kn">import</span> <span class="n">read_espresso_in</span>
 
 <span class="kn">from</span> <span class="nn">h5</span> <span class="kn">import</span> <span class="n">HDFArchive</span>
-
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../python/solid_dmft/postprocessing&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">plot_correlated_bands</span> <span class="kn">as</span> <span class="nn">pcb</span>
+<span class="kn">from</span> <span class="nn">solid_dmft.postprocessing</span> <span class="kn">import</span> <span class="n">plot_correlated_bands</span> <span class="k">as</span> <span class="n">pcb</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="Optional:-ASE-Brillouin-Zone">
-<h1>Optional: ASE Brillouin Zone<a class="headerlink" href="#Optional:-ASE-Brillouin-Zone" title="Permalink to this headline"></a></h1>
+<h2>Optional: ASE Brillouin Zone<a class="headerlink" href="#Optional:-ASE-Brillouin-Zone" title="Permalink to this headline"></a></h2>
 <p>Before we start, it might be helpful to have a brief look at the Brillouin Zone by loading an input file of your favorite DFT code (Quantum Espresso in this case). ASE will write out the special <span class="math notranslate nohighlight">\(k\)</span>-points, which we use later. Alternatively, you can of course define the dictionary <code class="docutils literal notranslate"><span class="pre">kpts_dict</span></code> yourself. Careful, it might not define <span class="math notranslate nohighlight">\(Z\)</span>, which is needed and added below.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -481,18 +484,18 @@ X [0.  0.5 0. ]
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_3_2.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_3_2.png" />
+<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_4_2.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_4_2.png" />
 </div>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="Configuration">
-<h1>Configuration<a class="headerlink" href="#Configuration" title="Permalink to this headline"></a></h1>
+<h2>Configuration<a class="headerlink" href="#Configuration" title="Permalink to this headline"></a></h2>
 <p>The script makes use of the <code class="docutils literal notranslate"><span class="pre">triqs.lattice.utils</span></code> class, which allows to set up a tight-binding model based on a Wannier90 Hamiltonian. Additionally, you may upload a self-energy in the usual <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> format to compute correlated spectral properties. Currently, the following options are implemented:</p>
 <ol><li><p>bandstructure</p>
 </li><li><p>Fermi slice</p>
 </li></ol><div class="section" id="Basic-options">
-<h2>Basic options<a class="headerlink" href="#Basic-options" title="Permalink to this headline"></a></h2>
+<h3>Basic options<a class="headerlink" href="#Basic-options" title="Permalink to this headline"></a></h3>
 <div class="line-block">
 <div class="line">We start with configuring these options. For this example we try a tight-binding bandstructure including the correlated bands (<code class="docutils literal notranslate"><span class="pre">kslice</span> <span class="pre">=</span> <span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">'tb':</span> <span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">'alatt':</span> <span class="pre">True</span></code>), but feel free to come back here to explore. Alternatively to an intensity plot of the correlated bands (<code class="docutils literal notranslate"><span class="pre">qp_bands</span></code>), you can compute the correlated quasiparticle bands assuming a Fermi liquid regime.</div>
 <div class="line">The options for <span class="math notranslate nohighlight">\(\Sigma(\omega)\)</span> are <code class="docutils literal notranslate"><span class="pre">calc</span></code> or <code class="docutils literal notranslate"><span class="pre">model</span></code>, which performs a Fermi liquid linearization in the low-frequency regime. The latter will be reworked, so better stick with <code class="docutils literal notranslate"><span class="pre">calc</span></code> for now.</div>
@@ -512,7 +515,7 @@ X [0.  0.5 0. ]
 </div>
 </div>
 <div class="section" id="Wannier90">
-<h2>Wannier90<a class="headerlink" href="#Wannier90" title="Permalink to this headline"></a></h2>
+<h3>Wannier90<a class="headerlink" href="#Wannier90" title="Permalink to this headline"></a></h3>
 <p>Next we will set up the Wannier90 Input. Provide the path, seedname, chemical potential and orbital order used in Wannier90. You may add a spin-component, and any other local Hamiltonian. For <code class="docutils literal notranslate"><span class="pre">t2g</span></code> models the orbital order can be changed (to <code class="docutils literal notranslate"><span class="pre">orbital_order_to</span></code>) and a local spin-orbit coupling term can be added (<code class="docutils literal notranslate"><span class="pre">add_lambda</span></code>). The spectral properties can be viewed projected on a specific orbital.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -530,7 +533,7 @@ X [0.  0.5 0. ]
 </div>
 </div>
 <div class="section" id="BZ-configuration">
-<h2>BZ configuration<a class="headerlink" href="#BZ-configuration" title="Permalink to this headline"></a></h2>
+<h3>BZ configuration<a class="headerlink" href="#BZ-configuration" title="Permalink to this headline"></a></h3>
 <p>Depending on whether you select <code class="docutils literal notranslate"><span class="pre">kslice=True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, a corresponding <code class="docutils literal notranslate"><span class="pre">tb_config</span></code> needs to be provided containing information about the <span class="math notranslate nohighlight">\(k\)</span>-points, resolution (<code class="docutils literal notranslate"><span class="pre">n_k</span></code>) or <code class="docutils literal notranslate"><span class="pre">kz</span></code>-plane in the case of the Fermi slice. Here we just import the <span class="math notranslate nohighlight">\(k\)</span>-point dictionary provided by ASE above and add the <span class="math notranslate nohighlight">\(Z\)</span>-point. If you are unhappy with the resolution of the final plot, come back here and crank up <code class="docutils literal notranslate"><span class="pre">n_k</span></code>. For the kslice, the first letter corresponds to the upper left corner
 of the plotted Brillouin zone, followed by the lower left corner and the lower right one (<span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(\Gamma\)</span>, and <span class="math notranslate nohighlight">\(X\)</span> in this case).</p>
 <div class="nbinput nblast docutils container">
@@ -553,7 +556,7 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 </div>
 </div>
 <div class="section" id="Self-energy">
-<h2>Self-energy<a class="headerlink" href="#Self-energy" title="Permalink to this headline"></a></h2>
+<h3>Self-energy<a class="headerlink" href="#Self-energy" title="Permalink to this headline"></a></h3>
 <p>Here we provide the info needed from the h5Archive, like the self-energy, iteration count, spin and block component and the frequency mesh used for the interpolation. The values for the mesh of course depend on the quantity of interest. For a kslice the resolution around <span class="math notranslate nohighlight">\(\omega=0\)</span> is crucial and we need only a small energy window, while for a bandstructure we are also interested in high energy features.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -598,19 +601,50 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">/tmp/ipykernel_1688069/3319349834.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> orb <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">0</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> sp <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;up_0&#39;</span>
+<span class="ansi-green-fg">----&gt; 8</span><span class="ansi-red-fg"> </span>freq_mesh <span class="ansi-blue-fg">=</span> np<span class="ansi-blue-fg">.</span>array<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>w<span class="ansi-blue-fg">.</span>value <span class="ansi-green-fg">for</span> w <span class="ansi-green-fg">in</span> sigma_freq<span class="ansi-blue-fg">[</span>sp<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">[</span>orb<span class="ansi-blue-fg">,</span>orb<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>mesh<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      9</span>
+<span class="ansi-green-intense-fg ansi-bold">     10</span> ax<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>plot<span class="ansi-blue-fg">(</span>freq_mesh<span class="ansi-blue-fg">,</span> sigma_freq<span class="ansi-blue-fg">[</span>sp<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">[</span>orb<span class="ansi-blue-fg">,</span>orb<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>data<span class="ansi-blue-fg">.</span>real<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/work/codes/ccq-software-build/triqs/3_unst_nixpack_llvm/installation/lib/python3.9/site-packages/h5/archive.py</span> in <span class="ansi-cyan-fg">__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-intense-fg ansi-bold">    203</span>             <span class="ansi-green-fg">for</span> s <span class="ansi-green-fg">in</span> l<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">:</span> a <span class="ansi-blue-fg">=</span> a<span class="ansi-blue-fg">.</span>get_raw<span class="ansi-blue-fg">(</span>s<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    204</span>             <span class="ansi-green-fg">return</span> a<span class="ansi-blue-fg">[</span>l<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">--&gt; 205</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>__getitem1__<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">,</span>self<span class="ansi-blue-fg">.</span>_reconstruct_python_objects<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    206</span>
+<span class="ansi-green-intense-fg ansi-bold">    207</span>     <span class="ansi-red-fg">#-------------------------------------------------------------------------</span>
+
+<span class="ansi-green-fg">~/work/codes/ccq-software-build/triqs/3_unst_nixpack_llvm/installation/lib/python3.9/site-packages/h5/archive.py</span> in <span class="ansi-cyan-fg">__getitem1__</span><span class="ansi-blue-fg">(self, key, reconstruct_python_object, hdf5_format)</span>
+<span class="ansi-green-intense-fg ansi-bold">    209</span>
+<span class="ansi-green-intense-fg ansi-bold">    210</span>         <span class="ansi-green-fg">if</span> key <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">in</span> self <span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 211</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> KeyError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Key %s does not exist.&#34;</span><span class="ansi-blue-fg">%</span>key<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    212</span>
+<span class="ansi-green-intense-fg ansi-bold">    213</span>         <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>is_group<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">TypeError</span>: not all arguments converted during string formatting
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_20_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_20_0.png" />
+<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_21_1.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_21_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="Plotting-options">
-<h2>Plotting options<a class="headerlink" href="#Plotting-options" title="Permalink to this headline"></a></h2>
+<h3>Plotting options<a class="headerlink" href="#Plotting-options" title="Permalink to this headline"></a></h3>
 <p>Finally, you can choose colormaps for each of the functionalities from any of the available on matplotlib colormaps. <code class="docutils literal notranslate"><span class="pre">vmin</span></code> determines the scaling of the logarithmically scaled colorplots. The corresponding tight-binding bands will have the maximum value of the colormap. By the way, colormaps can be reversed by appending <code class="docutils literal notranslate"><span class="pre">_r</span></code> to the identifier.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -622,10 +656,10 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 </div>
 </div>
 <div class="section" id="Run">
-<h1>Run<a class="headerlink" href="#Run" title="Permalink to this headline"></a></h1>
+<h2>Run<a class="headerlink" href="#Run" title="Permalink to this headline"></a></h2>
 <p>Now that everything is set up we may hit run. Caution, if you use a lot of <span class="math notranslate nohighlight">\(k\)</span>-points, this may take a while! In the current example, it should be done within a second.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -638,38 +672,9 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Warning: could not identify MPI environment!
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-Starting serial run at: 2022-02-04 12:45:08.746768
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-H(R=0):
-      0.5811+0.0000j  0.0500+0.0000j  0.0000-0.0500j
-      0.0500+0.0000j  0.5811+0.0000j  0.0000-0.0500j
-      0.0000+0.0500j  0.0000+0.0500j  0.5811+0.0000j
-Setting Sigma from ./correlated_bandstructure/svo_example.h5
-Run took 1.320 s
-</pre></div></div>
-</div>
 <p>That’s it. Now you can look at the output:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -687,14 +692,8 @@ Run took 1.320 s
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_28_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_28_0.png" />
-</div>
-</div>
 <hr class="docutils" />
+</div>
 </div>
 
 

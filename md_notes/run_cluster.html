@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Running solid_dmft on a cluster &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>Running solid_dmft on a cluster &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft
-            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../reference/postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../reference/postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../reference/postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../reference/read_config.html">read config parser</a><ul>
@@ -193,13 +188,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -213,15 +208,15 @@
 }
 </style>
 <div class="section" id="running-solid-dmft-on-a-cluster">
-<h1>Running solid_dmft on a cluster<a class="headerlink" href="#running-solid-dmft-on-a-cluster" title="Permalink to this headline"></a></h1>
+<h1>Running solid_dmft on a cluster<a class="headerlink" href="#running-solid-dmft-on-a-cluster" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="running-on-cscs-daint">
-<h2>Running on CSCS daint<a class="headerlink" href="#running-on-cscs-daint" title="Permalink to this headline"></a></h2>
+<h2>Running on CSCS daint<a class="headerlink" href="#running-on-cscs-daint" title="Permalink to this headline">¶</a></h2>
 <p>in some directories one can also find example job files to run everything on
 daint. Note, that one has to first load the desired docker images with sarus
 on daint: <a class="reference external" href="https://user.cscs.ch/tools/containers/sarus/" rel="noopener noreferrer" target="_blank">https://user.cscs.ch/tools/containers/sarus/</a>, see the <a class="reference external" href="http://README.md" rel="noopener noreferrer" target="_blank">README.md</a> in the <code class="docutils literal notranslate"><span class="pre">/Docker</span></code> folder.</p>
 </div>
 <div class="section" id="one-shot-job-on-daint">
-<h2>one shot job on daint<a class="headerlink" href="#one-shot-job-on-daint" title="Permalink to this headline"></a></h2>
+<h2>one shot job on daint<a class="headerlink" href="#one-shot-job-on-daint" title="Permalink to this headline">¶</a></h2>
 <p>one shot is quite straight forward. Just get the newest version of these
 scripts, go to a working directory and then create job file that looks like
 this:</p>
@@ -246,7 +241,7 @@ srun sarus run --mpi --mount=type=bind,source=$SCRATCH,destination=$SCRATCH --mo
 <code class="docutils literal notranslate"><span class="pre">solid_dmft.py</span></code> script. Unfortunately the new sarus container enginge does not mounts automatically user directories. Therefore, one needs to specify with <code class="docutils literal notranslate"><span class="pre">--mount</span></code> to mount the scratch and apps folder manually. Then, one executes in the container bash to first go into the current dir and then executes python and the dmft script.</p>
 </div>
 <div class="section" id="csc-calculations-on-daint">
-<h2>CSC calculations on daint<a class="headerlink" href="#csc-calculations-on-daint" title="Permalink to this headline"></a></h2>
+<h2>CSC calculations on daint<a class="headerlink" href="#csc-calculations-on-daint" title="Permalink to this headline">¶</a></h2>
 <p>CSC calculations need the parameter <code class="docutils literal notranslate"><span class="pre">csc</span> <span class="pre">=</span> <span class="pre">True</span></code> and the mandatory parameters from the group <code class="docutils literal notranslate"><span class="pre">dft</span></code>.
 Then, solid_dmft automatically starts VASP on as many cores as specified.
 Note that VASP runs on cores that are already used by solid_dmft.

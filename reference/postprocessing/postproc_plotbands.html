@@ -3,24 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>postproc_plotbands.py &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>postproc_plotbands.py &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="read config parser" href="../read_config.html" />
-    <link rel="prev" title="maxent_sigma.py" href="maxent_sigma.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,11 +23,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -42,7 +36,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-steps">Installation steps</a></li>
@@ -50,7 +44,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../documentation.html">documentation</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../documentation.html#code-structure">code structure:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../md_notes/w90_interface.html">Wannier90 interface</a><ul>
@@ -87,7 +81,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../documentation.html#module-reference-manual">module reference manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">module reference manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../csc_flow.html">CSC flow module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dft_managers.html">dft managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../dft_managers/qe_manager.html">qe_manager.py</a></li>
@@ -109,12 +103,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../dmft_tools/solver.html">solver.py</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="../postprocessing.html">postprocessing tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../postprocessing.html">postprocessing tools</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="make_spaghetti.html">make_spaghetti.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../read_config.html">read config parser</a><ul>
@@ -177,8 +170,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../documentation.html">documentation</a> &raquo;</li>
-          <li><a href="../postprocessing.html">postprocessing tools</a> &raquo;</li>
       <li>postproc_plotbands.py</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/reference/postprocessing/postproc_plotbands.rst.txt" rel="nofollow"> View page source</a>
@@ -194,13 +185,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -214,16 +205,13 @@
 }
 </style>
 <div class="section" id="postproc-plotbands-py">
-<h1>postproc_plotbands.py<a class="headerlink" href="#postproc-plotbands-py" title="Permalink to this headline"></a></h1>
+<h1>postproc_plotbands.py<a class="headerlink" href="#postproc-plotbands-py" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="maxent_sigma.html" class="btn btn-neutral float-left" title="maxent_sigma.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../read_config.html" class="btn btn-neutral float-right" title="read config parser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

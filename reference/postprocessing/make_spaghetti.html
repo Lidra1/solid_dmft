@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>make_spaghetti.py &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>make_spaghetti.py &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../read_config.html">read config parser</a><ul>
@@ -194,13 +189,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -214,7 +209,7 @@
 }
 </style>
 <div class="section" id="module-solid_dmft.postprocessing.make_spaghetti">
-<span id="make-spaghetti-py"></span><h1>make_spaghetti.py<a class="headerlink" href="#module-solid_dmft.postprocessing.make_spaghetti" title="Permalink to this headline"></a></h1>
+<span id="make-spaghetti-py"></span><h1>make_spaghetti.py<a class="headerlink" href="#module-solid_dmft.postprocessing.make_spaghetti" title="Permalink to this headline">¶</a></h1>
 <p>Script to combine the information from maxent_sigma.py and the dft_bands_input
 to generate the DMFT spectral function and DMFT band structure from Sigma(omega).</p>
 <dl class="docutils">
@@ -227,26 +222,26 @@ hopping matrix of SumkDFT as in dmft_cycle.py.</p>
 </dl>
 <p>Author: Max Merkel, 2020-2021</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.make_spaghetti._initialize_sum_k_tools">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.make_spaghetti.</span></code><code class="sig-name descname"><span class="pre">_initialize_sum_k_tools</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">chemical_potential</span></span></em>, <em><span class="n"><span class="pre">dc_potential</span></span></em>, <em><span class="n"><span class="pre">dc_energy</span></span></em>, <em><span class="n"><span class="pre">sigma_w</span></span></em>, <em><span class="n"><span class="pre">block_structure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/make_spaghetti.html#_initialize_sum_k_tools"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.make_spaghetti._initialize_sum_k_tools" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.postprocessing.make_spaghetti._initialize_sum_k_tools">
+<code class="descclassname"><span class="pre">solid_dmft.postprocessing.make_spaghetti.</span></code><code class="descname"><span class="pre">_initialize_sum_k_tools</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">chemical_potential</span></span></em>, <em><span class="n"><span class="pre">dc_potential</span></span></em>, <em><span class="n"><span class="pre">dc_energy</span></span></em>, <em><span class="n"><span class="pre">sigma_w</span></span></em>, <em><span class="n"><span class="pre">block_structure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/make_spaghetti.html#_initialize_sum_k_tools"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.make_spaghetti._initialize_sum_k_tools" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates the SumKDFTTools objects that will calculate the spectral properties.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.make_spaghetti._read_h5">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.make_spaghetti.</span></code><code class="sig-name descname"><span class="pre">_read_h5</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/make_spaghetti.html#_read_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.make_spaghetti._read_h5" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.postprocessing.make_spaghetti._read_h5">
+<code class="descclassname"><span class="pre">solid_dmft.postprocessing.make_spaghetti.</span></code><code class="descname"><span class="pre">_read_h5</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/make_spaghetti.html#_read_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.make_spaghetti._read_h5" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads Sigma(omega), the DC, mu and the kpoints from the h5</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.make_spaghetti._write_dos_and_spaghetti_to_h5">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.make_spaghetti.</span></code><code class="sig-name descname"><span class="pre">_write_dos_and_spaghetti_to_h5</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">mesh</span></span></em>, <em><span class="n"><span class="pre">dos</span></span></em>, <em><span class="n"><span class="pre">dos_proj</span></span></em>, <em><span class="n"><span class="pre">dos_proj_orb</span></span></em>, <em><span class="n"><span class="pre">spaghetti</span></span></em>, <em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/make_spaghetti.html#_write_dos_and_spaghetti_to_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.make_spaghetti._write_dos_and_spaghetti_to_h5" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.postprocessing.make_spaghetti._write_dos_and_spaghetti_to_h5">
+<code class="descclassname"><span class="pre">solid_dmft.postprocessing.make_spaghetti.</span></code><code class="descname"><span class="pre">_write_dos_and_spaghetti_to_h5</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">mesh</span></span></em>, <em><span class="n"><span class="pre">dos</span></span></em>, <em><span class="n"><span class="pre">dos_proj</span></span></em>, <em><span class="n"><span class="pre">dos_proj_orb</span></span></em>, <em><span class="n"><span class="pre">spaghetti</span></span></em>, <em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/make_spaghetti.html#_write_dos_and_spaghetti_to_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.make_spaghetti._write_dos_and_spaghetti_to_h5" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes different spectral functions and the spaghetti to the h5 archive.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.make_spaghetti.main">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.make_spaghetti.</span></code><code class="sig-name descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/make_spaghetti.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.make_spaghetti.main" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.postprocessing.make_spaghetti.main">
+<code class="descclassname"><span class="pre">solid_dmft.postprocessing.make_spaghetti.</span></code><code class="descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/make_spaghetti.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.make_spaghetti.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>Theoretically, spectral functions not needed but good as comparison.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

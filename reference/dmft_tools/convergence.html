@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>convergence.py &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>convergence.py &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../read_config.html">read config parser</a><ul>
@@ -194,13 +189,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -214,18 +209,18 @@
 }
 </style>
 <div class="section" id="module-solid_dmft.dmft_tools.convergence">
-<span id="convergence-py"></span><h1>convergence.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.convergence" title="Permalink to this headline"></a></h1>
+<span id="convergence-py"></span><h1>convergence.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.convergence" title="Permalink to this headline">¶</a></h1>
 <p>contain helper functions to check convergence</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.convergence._generate_header">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="sig-name descname"><span class="pre">_generate_header</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#_generate_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence._generate_header" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.convergence._generate_header">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="descname"><span class="pre">_generate_header</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#_generate_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence._generate_header" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates the headers that are used in write_header_to_file.
 Returns a dict with {file_name: header_string}</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.convergence.calc_convergence_quantities">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="sig-name descname"><span class="pre">calc_convergence_quantities</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">conv_obs</span></span></em>, <em><span class="n"><span class="pre">observables</span></span></em>, <em><span class="n"><span class="pre">solvers</span></span></em>, <em><span class="n"><span class="pre">G0_old</span></span></em>, <em><span class="n"><span class="pre">G_loc_all</span></span></em>, <em><span class="n"><span class="pre">Sigma_freq_previous</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#calc_convergence_quantities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.calc_convergence_quantities" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.convergence.calc_convergence_quantities">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="descname"><span class="pre">calc_convergence_quantities</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">conv_obs</span></span></em>, <em><span class="n"><span class="pre">observables</span></span></em>, <em><span class="n"><span class="pre">solvers</span></span></em>, <em><span class="n"><span class="pre">G0_old</span></span></em>, <em><span class="n"><span class="pre">G_loc_all</span></span></em>, <em><span class="n"><span class="pre">Sigma_freq_previous</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#calc_convergence_quantities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.calc_convergence_quantities" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculations convergence quantities, i.e. the difference in observables
 between the last and second to last iteration.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -271,8 +266,8 @@ between the last and second to last iteration.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.convergence.check_convergence">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="sig-name descname"><span class="pre">check_convergence</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">n_inequiv_shells</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">conv_obs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#check_convergence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.check_convergence" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.convergence.check_convergence">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="descname"><span class="pre">check_convergence</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">n_inequiv_shells</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">conv_obs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#check_convergence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.check_convergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>check last iteration for convergence</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -304,8 +299,8 @@ is set</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.convergence.max_G_diff">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="sig-name descname"><span class="pre">max_G_diff</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">G1</span></span></em>, <em><span class="n"><span class="pre">G2</span></span></em>, <em><span class="n"><span class="pre">wg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#max_G_diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.max_G_diff" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.convergence.max_G_diff">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="descname"><span class="pre">max_G_diff</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">G1</span></span></em>, <em><span class="n"><span class="pre">G2</span></span></em>, <em><span class="n"><span class="pre">wg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#max_G_diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.max_G_diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculates difference between two block Gfs
 uses numpy linalg norm on the last indices to calculate
 norm at then makes a weighted sum 1/w_i^wg to give more
@@ -335,8 +330,8 @@ meshes the weights are set to 1</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.convergence.prep_conv_file">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="sig-name descname"><span class="pre">prep_conv_file</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#prep_conv_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.prep_conv_file" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.convergence.prep_conv_file">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="descname"><span class="pre">prep_conv_file</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#prep_conv_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.prep_conv_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes the header to the conv files</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -359,8 +354,8 @@ meshes the weights are set to 1</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.convergence.prep_conv_obs">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="sig-name descname"><span class="pre">prep_conv_obs</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">h5_archive</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#prep_conv_obs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.prep_conv_obs" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.convergence.prep_conv_obs">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="descname"><span class="pre">prep_conv_obs</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">h5_archive</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#prep_conv_obs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.prep_conv_obs" title="Permalink to this definition">¶</a></dt>
 <dd><p>prepares the conv arrays and files for the DMFT calculation</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -383,8 +378,8 @@ meshes the weights are set to 1</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.convergence.write_conv">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="sig-name descname"><span class="pre">write_conv</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">conv_obs</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#write_conv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.write_conv" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.convergence.write_conv">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.convergence.</span></code><code class="descname"><span class="pre">write_conv</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">conv_obs</span></span></em>, <em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/convergence.html#write_conv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.convergence.write_conv" title="Permalink to this definition">¶</a></dt>
 <dd><p>writes the last entries of the conv arrays to the files</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

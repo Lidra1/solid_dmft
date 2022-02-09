@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>read config parser &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>read config parser &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -20,7 +17,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="util" href="util.html" />
-    <link rel="prev" title="postproc_plotbands.py" href="postprocessing/postproc_plotbands.html" /> 
+    <link rel="prev" title="maxent_sigma.py" href="postprocessing/maxent_sigma.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft
-            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">read config parser</a><ul>
@@ -193,13 +188,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -213,7 +208,7 @@
 }
 </style>
 <div class="section" id="module-solid_dmft.read_config">
-<span id="read-config-parser"></span><h1>read config parser<a class="headerlink" href="#module-solid_dmft.read_config" title="Permalink to this headline"></a></h1>
+<span id="read-config-parser"></span><h1>read config parser<a class="headerlink" href="#module-solid_dmft.read_config" title="Permalink to this headline">¶</a></h1>
 <p>Provides the read_config function to read the config file</p>
 <p>Reads the config file (default dmft_config.ini) with python’s configparser
 module. It consists of at least the section ‘general’, and optionally of the
@@ -224,7 +219,7 @@ the line! For default values, the string ‘none’ is used. NoneType cannot be
 saved in an h5 archive (in the framework that we are using).</p>
 <p>List of all parameters, sorted by sections:</p>
 <div class="section" id="general">
-<h2>general<a class="headerlink" href="#general" title="Permalink to this headline"></a></h2>
+<h2>general<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>seedname<span class="classifier">str or list of str</span></dt><dd>seedname for h5 archive or for multiple if calculations should be connected</dd>
 <dt>jobname<span class="classifier">str or list of str, optional, default=seedname</span></dt><dd>one or multiple jobnames specifying the output directories</dd>
@@ -326,7 +321,7 @@ avoid getting stuck in an insulating state with wrong occupation.</dd>
 </dl>
 </div>
 <div class="section" id="solver">
-<h2>solver<a class="headerlink" href="#solver" title="Permalink to this headline"></a></h2>
+<h2>solver<a class="headerlink" href="#solver" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>store_solver: bool, optional default = False</dt><dd>store the whole solver object under DMFT_input in h5 archive</dd>
 </dl>
@@ -395,7 +390,7 @@ Sigma_iw will automatically be calculated via
 </dl>
 </div>
 <div class="section" id="dft">
-<h2>dft<a class="headerlink" href="#dft" title="Permalink to this headline"></a></h2>
+<h2>dft<a class="headerlink" href="#dft" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>dft_code<span class="classifier">string</span></dt><dd>‘vasp’ or ‘qe’</dd>
 <dt>n_cores<span class="classifier">int</span></dt><dd>number of cores for the DFT code (VASP)</dd>
@@ -410,7 +405,7 @@ w90: uses Wannier90, requires LWANNIER90 in the INCAR</dd>
 </dl>
 </div>
 <div class="section" id="advanced">
-<h2>advanced<a class="headerlink" href="#advanced" title="Permalink to this headline"></a></h2>
+<h2>advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>dc_factor<span class="classifier">float, optional, default = ‘none’ (corresponds to 1)</span></dt><dd>If given, scales the dc energy by multiplying with this factor, usually &lt; 1</dd>
 <dt>dc_fixed_value<span class="classifier">float, optional, default = ‘none’</span></dt><dd>If given, it sets the DC (energy/imp) to this fixed value. Overwrites EVERY other DC configuration parameter if DC is turned on</dd>
@@ -424,13 +419,13 @@ after the block structure finder to all impurities.</dd>
 If not given and map_solver_struct is used, no symmetrization will happen.</dd>
 </dl>
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config.BOOL_PARSER">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">BOOL_PARSER</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_dmft.read_config.BOOL_PARSER" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config.BOOL_PARSER">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">BOOL_PARSER</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#solid_dmft.read_config.BOOL_PARSER" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config._apply_default_values">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">_apply_default_values</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_apply_default_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._apply_default_values" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config._apply_default_values">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">_apply_default_values</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_apply_default_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._apply_default_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies default values to all parameters that were not given in the config.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -460,8 +455,8 @@ unnecessary parameters were actually given in the config file.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config._check_if_params_used">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">_check_if_params_used</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">parameters</span></span></em>, <em><span class="n"><span class="pre">default_values_used</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_check_if_params_used"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._check_if_params_used" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config._check_if_params_used">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">_check_if_params_used</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">parameters</span></span></em>, <em><span class="n"><span class="pre">default_values_used</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_check_if_params_used"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._check_if_params_used" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the parameters in the config file are used or unnecessary.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -500,8 +495,8 @@ are required, have no default and are missing from the config file.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config._checks_validity_criterion">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">_checks_validity_criterion</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_checks_validity_criterion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._checks_validity_criterion" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config._checks_validity_criterion">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">_checks_validity_criterion</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_checks_validity_criterion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._checks_validity_criterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks the validity criterion from the PROPERTIES_PARAMS.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -527,8 +522,8 @@ do not fulfill their validity criterion.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config._config_add_empty_sections">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">_config_add_empty_sections</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_config_add_empty_sections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._config_add_empty_sections" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config._config_add_empty_sections">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">_config_add_empty_sections</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_config_add_empty_sections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._config_add_empty_sections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds empty sections if no parameters in the whole section were given.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -551,8 +546,8 @@ do not fulfill their validity criterion.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config._config_find_default_section_entries">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">_config_find_default_section_entries</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_config_find_default_section_entries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._config_find_default_section_entries" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config._config_find_default_section_entries">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">_config_find_default_section_entries</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_config_find_default_section_entries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._config_find_default_section_entries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns all items in the default section.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -575,8 +570,8 @@ do not fulfill their validity criterion.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config._config_remove_unused_sections">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">_config_remove_unused_sections</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_config_remove_unused_sections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._config_remove_unused_sections" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config._config_remove_unused_sections">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">_config_remove_unused_sections</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_config_remove_unused_sections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._config_remove_unused_sections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes sections that are not supported by this program.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -603,8 +598,8 @@ do not fulfill their validity criterion.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config._convert_params">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">_convert_params</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_convert_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._convert_params" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config._convert_params">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">_convert_params</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_convert_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._convert_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies the converter given in the PROPERTIES_PARAMS to the config. If no
 converter is given, a default string conversion is used.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -631,8 +626,8 @@ the PROPERTIES_PARAMS.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config._find_nonexistent_params">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">_find_nonexistent_params</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_find_nonexistent_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._find_nonexistent_params" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config._find_nonexistent_params">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">_find_nonexistent_params</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#_find_nonexistent_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config._find_nonexistent_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns all parameters that are in the config but not in the
 PROPERTIES_PARAMS and are therefore not recognized by the program.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -658,8 +653,8 @@ names.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.read_config.read_config">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="sig-name descname"><span class="pre">read_config</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#read_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config.read_config" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.read_config.read_config">
+<code class="descclassname"><span class="pre">solid_dmft.read_config.</span></code><code class="descname"><span class="pre">read_config</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/read_config.html#read_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.read_config.read_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads in the config file, checks its sections and parameters and returns
 the parameters sorted by their categories.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -696,7 +691,7 @@ validity criterion.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="postprocessing/postproc_plotbands.html" class="btn btn-neutral float-left" title="postproc_plotbands.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="postprocessing/maxent_sigma.html" class="btn btn-neutral float-left" title="maxent_sigma.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="util.html" class="btn btn-neutral float-right" title="util" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>legendre_filter.py &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>legendre_filter.py &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../read_config.html">read config parser</a><ul>
@@ -194,13 +189,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -214,10 +209,10 @@
 }
 </style>
 <div class="section" id="module-solid_dmft.dmft_tools.legendre_filter">
-<span id="legendre-filter-py"></span><h1>legendre_filter.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.legendre_filter" title="Permalink to this headline"></a></h1>
+<span id="legendre-filter-py"></span><h1>legendre_filter.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.legendre_filter" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.legendre_filter.apply">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.legendre_filter.</span></code><code class="sig-name descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">G_tau</span></span></em>, <em><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em><span class="n"><span class="pre">G_l_cut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-19</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/legendre_filter.html#apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.legendre_filter.apply" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.legendre_filter.apply">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.legendre_filter.</span></code><code class="descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">G_tau</span></span></em>, <em><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em><span class="n"><span class="pre">G_l_cut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-19</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/legendre_filter.html#apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.legendre_filter.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter binned imaginary time Green’s function
 using a Legendre filter of given order and coefficient threshold.</p>
 <table class="docutils field-list" frame="void" rules="none">

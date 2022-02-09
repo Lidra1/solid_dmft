@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSC flow module &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>CSC flow module &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft
-            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="read_config.html">read config parser</a><ul>
@@ -193,13 +188,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -212,8 +207,91 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="csc-flow-module">
-<h1>CSC flow module<a class="headerlink" href="#csc-flow-module" title="Permalink to this headline"></a></h1>
+<div class="section" id="module-solid_dmft.csc_flow">
+<span id="csc-flow-module"></span><h1>CSC flow module<a class="headerlink" href="#module-solid_dmft.csc_flow" title="Permalink to this headline">¶</a></h1>
+<p>contains the CSC flow control functions</p>
+<dl class="py function">
+<dt id="solid_dmft.csc_flow._read_irred_kpoints_from_vasp">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">_read_irred_kpoints_from_vasp</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#_read_irred_kpoints_from_vasp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow._read_irred_kpoints_from_vasp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.csc_flow._run_plo_converter">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">_run_plo_converter</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#_run_plo_converter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow._run_plo_converter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.csc_flow._run_qe">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">_run_qe</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">dft_params</span></span></em>, <em><span class="n"><span class="pre">iter_dmft</span></span></em>, <em><span class="n"><span class="pre">iteration_offset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#_run_qe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow._run_qe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.csc_flow._run_w90converter">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">_run_w90converter</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">seedname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#_run_w90converter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow._run_w90converter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.csc_flow._run_wannier90">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">_run_wannier90</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">dft_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#_run_wannier90"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow._run_wannier90" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.csc_flow._set_projections_suppressed">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">_set_projections_suppressed</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">suppressed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#_set_projections_suppressed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow._set_projections_suppressed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.csc_flow._store_dft_eigvals">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">_store_dft_eigvals</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">path_to_h5</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span></em>, <em><span class="n"><span class="pre">projector_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#_store_dft_eigvals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow._store_dft_eigvals" title="Permalink to this definition">¶</a></dt>
+<dd><p>save the eigenvalues from LOCPROJ/wannier90 file to h5 archive</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.csc_flow.csc_flow_control">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">csc_flow_control</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">solver_params</span></span></em>, <em><span class="n"><span class="pre">dft_params</span></span></em>, <em><span class="n"><span class="pre">advanced_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#csc_flow_control"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow.csc_flow_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to run the csc cycle. It writes and removes the vasp.lock file to
+start and stop Vasp, run the converter, run the dmft cycle and abort the job
+if all iterations are finished.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>general_params</strong> : dict</p>
+<blockquote>
+<div><p>general parameters as a dict</p>
+</div></blockquote>
+<p><strong>solver_params</strong> : dict</p>
+<blockquote>
+<div><p>solver parameters as a dict</p>
+</div></blockquote>
+<p><strong>dft_params</strong> : dict</p>
+<blockquote>
+<div><p>dft parameters as a dict</p>
+</div></blockquote>
+<p><strong>advanced_params</strong> : dict</p>
+<blockquote>
+<div><p>advanced parameters as a dict</p>
+</div></blockquote>
+<p><strong>__Returns:__</strong> :</p>
+<p class="last"><strong>nothing</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.csc_flow.read_dft_energy_qe">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">read_dft_energy_qe</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">seedname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#read_dft_energy_qe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow.read_dft_energy_qe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads DFT energy from quantum espresso’s seedname.scf.out.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.csc_flow.read_dft_energy_vasp">
+<code class="descclassname"><span class="pre">solid_dmft.csc_flow.</span></code><code class="descname"><span class="pre">read_dft_energy_vasp</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solid_dmft/csc_flow.html#read_dft_energy_vasp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.csc_flow.read_dft_energy_vasp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads DFT energy from the last line of Vasp’s OSZICAR.</p>
+</dd></dl>
+
 </div>
 
 

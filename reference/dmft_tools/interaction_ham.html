@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>interaction_hamiltonian.py &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>interaction_hamiltonian.py &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../read_config.html">read config parser</a><ul>
@@ -194,13 +189,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -214,11 +209,11 @@
 }
 </style>
 <div class="section" id="module-solid_dmft.dmft_tools.interaction_hamiltonian">
-<span id="interaction-hamiltonian-py"></span><h1>interaction_hamiltonian.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.interaction_hamiltonian" title="Permalink to this headline"></a></h1>
+<span id="interaction-hamiltonian-py"></span><h1>interaction_hamiltonian.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.interaction_hamiltonian" title="Permalink to this headline">¶</a></h1>
 <p>Contains all functions related to constructing the interaction Hamiltonian.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_2index_for_SO">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_adapt_U_2index_for_SO</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">Umat</span></span></em>, <em><span class="n"><span class="pre">Upmat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_adapt_U_2index_for_SO"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_2index_for_SO" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_2index_for_SO">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_adapt_U_2index_for_SO</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">Umat</span></span></em>, <em><span class="n"><span class="pre">Upmat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_adapt_U_2index_for_SO"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_2index_for_SO" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes the two-index U matrices such that for a system consisting of a
 single block ‘ud’ with the entries (1, up), (1, down), (2, up), (2, down),
 … the matrices are consistent with the case without spin-orbit coupling.</p>
@@ -254,8 +249,8 @@ in SO, all spins have the same nominal spin ‘ud’.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_4index_for_SO">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_adapt_U_4index_for_SO</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">Umat_full</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_adapt_U_4index_for_SO"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_4index_for_SO" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_4index_for_SO">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_adapt_U_4index_for_SO</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">Umat_full</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_adapt_U_4index_for_SO"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_4index_for_SO" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes the four-index U matrix such that for a system consisting of a
 single block ‘ud’ with the entries (1, up), (1, down), (2, up), (2, down),
 … the matrix is consistent with the case without spin-orbit coupling.
@@ -282,64 +277,64 @@ indices i, k correspond to spin sigma, and indices j, l to sigma’.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._construct_density_density">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_construct_density_density</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">Umat_full_rotated</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_construct_density_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._construct_density_density" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._construct_density_density">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_construct_density_density</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">Umat_full_rotated</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_construct_density_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._construct_density_density" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs the density-density Slater-Hamiltonian from the four-index
 interaction matrix.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._construct_dynamic">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_construct_dynamic</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_construct_dynamic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._construct_dynamic" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._construct_dynamic">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_construct_dynamic</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_construct_dynamic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._construct_dynamic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs the interaction Hamiltonian for a frequency-dependent interaction.
 Works only without spin-orbit coupling and only for one orbital.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._construct_kanamori">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_construct_kanamori</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_construct_kanamori"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._construct_kanamori" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._construct_kanamori">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_construct_kanamori</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_construct_kanamori"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._construct_kanamori" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs the Kanamori interaction Hamiltonian. Only Kanamori does not
 need the full four-index matrix. Therefore, we can construct it directly
 from the parameters U and J.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._construct_slater">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_construct_slater</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">Umat_full_rotated</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_construct_slater"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._construct_slater" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._construct_slater">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_construct_slater</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">Umat_full_rotated</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_construct_slater"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._construct_slater" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs the full Slater-Hamiltonian from the four-index interaction
 matrix.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._extract_U_J_list">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_extract_U_J_list</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">param_name</span></span></em>, <em><span class="n"><span class="pre">n_inequiv_shells</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_extract_U_J_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._extract_U_J_list" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._extract_U_J_list">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_extract_U_J_list</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">param_name</span></span></em>, <em><span class="n"><span class="pre">n_inequiv_shells</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_extract_U_J_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._extract_U_J_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if param_name (‘U’ or ‘J’) are a single value or different per
 inequivalent shell. If just a single value is given, this value is
 applied to each shell.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._generate_four_index_u_matrix">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_generate_four_index_u_matrix</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_generate_four_index_u_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._generate_four_index_u_matrix" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._generate_four_index_u_matrix">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_generate_four_index_u_matrix</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_generate_four_index_u_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._generate_four_index_u_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates the four-index interaction matrix per impurity with the interaction
 parameters U and J (and ratio_F4_F2 for the d shell).</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._load_crpa_interaction_matrix">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_load_crpa_interaction_matrix</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UIJKL'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_load_crpa_interaction_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._load_crpa_interaction_matrix" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._load_crpa_interaction_matrix">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_load_crpa_interaction_matrix</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UIJKL'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_load_crpa_interaction_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._load_crpa_interaction_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads VASP cRPA data to use as an interaction Hamiltonian.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian._rotate_four_index_matrix">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">_rotate_four_index_matrix</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">Umat_full</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_rotate_four_index_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._rotate_four_index_matrix" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._rotate_four_index_matrix">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_rotate_four_index_matrix</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">Umat_full</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_rotate_four_index_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._rotate_four_index_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rotates the four index matrix into the local frame.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dmft_tools.interaction_hamiltonian.construct">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="sig-name descname"><span class="pre">construct</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">advanced_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#construct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian.construct" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian.construct">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">construct</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sum_k</span></span></em>, <em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">advanced_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#construct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian.construct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs the interaction Hamiltonian. Currently implemented are the
 Kanamori Hamiltonian (usually for 2 or 3 orbitals), the density-density and
 the full Slater Hamiltonian (for 2, 3, or 5 orbitals).

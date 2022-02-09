@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qe_manager.py &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>qe_manager.py &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../read_config.html">read config parser</a><ul>
@@ -194,13 +189,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -214,12 +209,12 @@
 }
 </style>
 <div class="section" id="module-solid_dmft.dft_managers.qe_manager">
-<span id="qe-manager-py"></span><h1>qe_manager.py<a class="headerlink" href="#module-solid_dmft.dft_managers.qe_manager" title="Permalink to this headline"></a></h1>
+<span id="qe-manager-py"></span><h1>qe_manager.py<a class="headerlink" href="#module-solid_dmft.dft_managers.qe_manager" title="Permalink to this headline">¶</a></h1>
 <p>Contains the handling of the QE process. It can start QE, reactivate it,
 check if the lock file is there and finally kill QE. Needed for CSC calculations.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dft_managers.qe_manager._create_hostfile">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="sig-name descname"><span class="pre">_create_hostfile</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">number_cores</span></span></em>, <em><span class="n"><span class="pre">cluster_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#_create_hostfile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager._create_hostfile" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dft_managers.qe_manager._create_hostfile">
+<code class="descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="descname"><span class="pre">_create_hostfile</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">number_cores</span></span></em>, <em><span class="n"><span class="pre">cluster_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#_create_hostfile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager._create_hostfile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes a host file for the mpirun. This tells mpi which nodes to ssh into
 and start VASP on. The format of the hist file depends on the type of MPI
 that is used.</p>
@@ -239,8 +234,8 @@ that is used.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dft_managers.qe_manager._find_path_to_mpi_command">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="sig-name descname"><span class="pre">_find_path_to_mpi_command</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">env_vars</span></span></em>, <em><span class="n"><span class="pre">mpi_exe</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#_find_path_to_mpi_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager._find_path_to_mpi_command" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dft_managers.qe_manager._find_path_to_mpi_command">
+<code class="descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="descname"><span class="pre">_find_path_to_mpi_command</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">env_vars</span></span></em>, <em><span class="n"><span class="pre">mpi_exe</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#_find_path_to_mpi_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager._find_path_to_mpi_command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the complete path for the mpi executable by scanning the directories
 of $PATH.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -259,8 +254,8 @@ of $PATH.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dft_managers.qe_manager._fork_and_start_qe">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="sig-name descname"><span class="pre">_fork_and_start_qe</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">mpi_exe</span></span></em>, <em><span class="n"><span class="pre">arguments</span></span></em>, <em><span class="n"><span class="pre">env_vars</span></span></em>, <em><span class="n"><span class="pre">seedname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#_fork_and_start_qe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager._fork_and_start_qe" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dft_managers.qe_manager._fork_and_start_qe">
+<code class="descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="descname"><span class="pre">_fork_and_start_qe</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">mpi_exe</span></span></em>, <em><span class="n"><span class="pre">arguments</span></span></em>, <em><span class="n"><span class="pre">env_vars</span></span></em>, <em><span class="n"><span class="pre">seedname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#_fork_and_start_qe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager._fork_and_start_qe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forks a process from the master process that then calls mpi to start vasp.
 The child process running VASP never leaves this function whereas the main
 process returns the child’s process id and continues.</p>
@@ -282,8 +277,8 @@ process returns the child’s process id and continues.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dft_managers.qe_manager._get_mpi_arguments">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="sig-name descname"><span class="pre">_get_mpi_arguments</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">cluster_name</span></span></em>, <em><span class="n"><span class="pre">mpi_exe</span></span></em>, <em><span class="n"><span class="pre">number_cores</span></span></em>, <em><span class="n"><span class="pre">qe_exec</span></span></em>, <em><span class="n"><span class="pre">hostfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#_get_mpi_arguments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager._get_mpi_arguments" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dft_managers.qe_manager._get_mpi_arguments">
+<code class="descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="descname"><span class="pre">_get_mpi_arguments</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">cluster_name</span></span></em>, <em><span class="n"><span class="pre">mpi_exe</span></span></em>, <em><span class="n"><span class="pre">number_cores</span></span></em>, <em><span class="n"><span class="pre">qe_exec</span></span></em>, <em><span class="n"><span class="pre">hostfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#_get_mpi_arguments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager._get_mpi_arguments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Depending on the settings of the cluster and the type of MPI used,
 the arguments to the mpi call have to be different. The most technical part
 of the vasp handler.</p>
@@ -306,8 +301,8 @@ of the vasp handler.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dft_managers.qe_manager.poll_barrier">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="sig-name descname"><span class="pre">poll_barrier</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">comm</span></span></em>, <em><span class="n"><span class="pre">poll_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#poll_barrier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager.poll_barrier" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dft_managers.qe_manager.poll_barrier">
+<code class="descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="descname"><span class="pre">poll_barrier</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">comm</span></span></em>, <em><span class="n"><span class="pre">poll_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#poll_barrier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager.poll_barrier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use asynchronous synchronization, otherwise mpi.barrier uses up all the CPU time during
 the run of subprocess.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -323,8 +318,8 @@ the run of subprocess.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.dft_managers.qe_manager.start">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">number_cores</span></span></em>, <em><span class="n"><span class="pre">qe_file_ext</span></span></em>, <em><span class="n"><span class="pre">qe_exec</span></span></em>, <em><span class="n"><span class="pre">cluster_name</span></span></em>, <em><span class="n"><span class="pre">seedname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager.start" title="Permalink to this definition"></a></dt>
+<dt id="solid_dmft.dft_managers.qe_manager.start">
+<code class="descclassname"><span class="pre">solid_dmft.dft_managers.qe_manager.</span></code><code class="descname"><span class="pre">start</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">number_cores</span></span></em>, <em><span class="n"><span class="pre">qe_file_ext</span></span></em>, <em><span class="n"><span class="pre">qe_exec</span></span></em>, <em><span class="n"><span class="pre">cluster_name</span></span></em>, <em><span class="n"><span class="pre">seedname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dft_managers/qe_manager.html#start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dft_managers.qe_manager.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts the VASP child process. Takes care of initializing a clean
 environment for the child process. This is needed so that VASP does not
 get confused with all the standard slurm environment variables.</p>

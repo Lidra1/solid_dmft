@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>maxent_sigma.py &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>maxent_sigma.py &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -19,7 +16,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="postproc_plotbands.py" href="postproc_plotbands.html" />
+    <link rel="next" title="read config parser" href="../read_config.html" />
     <link rel="prev" title="maxent_gf_latt.py" href="maxent_gf_latt.html" /> 
 </head>
 
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../read_config.html">read config parser</a><ul>
@@ -194,13 +189,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -213,140 +208,8 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="module-solid_dmft.postprocessing.maxent_sigma">
-<span id="maxent-sigma-py"></span><h1>maxent_sigma.py<a class="headerlink" href="#module-solid_dmft.postprocessing.maxent_sigma" title="Permalink to this headline"></a></h1>
-<p>Analytic continuation of the self-energy using maxent on an auxiliary Green’s
-function.</p>
-<p>Reads Sigma(i omega) from the h5 archive and writes Sigma(omega) back. See
-the docstring of main() for more information.</p>
-<p>mpi parallelized for the maxent routine over all blocks and for the continuator
-extraction over omega points.</p>
-<p>Author: Maximilian Merkel, Materials Theory Group, ETH Zurich, 2020 - 2022</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_sigma._create_sigma_continuator">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_sigma.</span></code><code class="sig-name descname"><span class="pre">_create_sigma_continuator</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">sigma_iw</span></span></em>, <em><span class="n"><span class="pre">dc_potential</span></span></em>, <em><span class="n"><span class="pre">chemical_potential</span></span></em>, <em><span class="n"><span class="pre">continuator_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_sigma.html#_create_sigma_continuator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_sigma._create_sigma_continuator" title="Permalink to this definition"></a></dt>
-<dd><p>Initializes the inversion and direct sigma continuator. Returns a list of
-continuators. Types of supported auxiliary Green’s functions:
-* ‘inversion_dc’: inversion continuator, constant C = dc_potential for the impurity
-* ‘inversion_sigmainf’: inversion continuator, constant C = Sigma(i infinity) + chemical potential
-* ‘direct’: direct continuator</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_sigma._get_sigma_omega_from_aux">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_sigma.</span></code><code class="sig-name descname"><span class="pre">_get_sigma_omega_from_aux</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">continuators</span></span></em>, <em><span class="n"><span class="pre">aux_spectral_funcs</span></span></em>, <em><span class="n"><span class="pre">aux_omega_mesh</span></span></em>, <em><span class="n"><span class="pre">omega_min</span></span></em>, <em><span class="n"><span class="pre">omega_max</span></span></em>, <em><span class="n"><span class="pre">n_points_interp</span></span></em>, <em><span class="n"><span class="pre">n_points_final</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_sigma.html#_get_sigma_omega_from_aux"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_sigma._get_sigma_omega_from_aux" title="Permalink to this definition"></a></dt>
-<dd><p>Extracts the real-frequency self energy from the auxiliary Green’s function.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_sigma._read_h5">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_sigma.</span></code><code class="sig-name descname"><span class="pre">_read_h5</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_sigma.html#_read_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_sigma._read_h5" title="Permalink to this definition"></a></dt>
-<dd><p>Reads the h5 archive to get the Matsubara self energy, the double-counting potential
-and the chemical potential.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_sigma._run_maxent">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_sigma.</span></code><code class="sig-name descname"><span class="pre">_run_maxent</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">continuators</span></span></em>, <em><span class="n"><span class="pre">error</span></span></em>, <em><span class="n"><span class="pre">omega_min</span></span></em>, <em><span class="n"><span class="pre">omega_max</span></span></em>, <em><span class="n"><span class="pre">n_points_maxent</span></span></em>, <em><span class="n"><span class="pre">n_points_alpha</span></span></em>, <em><span class="n"><span class="pre">analyzer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_sigma.html#_run_maxent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_sigma._run_maxent" title="Permalink to this definition"></a></dt>
-<dd><p>Uses maxent to continue the auxiliary Green’s function obtained from the
-continuator. The range for alpha is set to 1e-6 to 1e2.
-Returns the real-frequency auxiliary Green’s function</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_sigma._write_sigma_omega_to_h5">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_sigma.</span></code><code class="sig-name descname"><span class="pre">_write_sigma_omega_to_h5</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">g_aux_w</span></span></em>, <em><span class="n"><span class="pre">sigma_w</span></span></em>, <em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_sigma.html#_write_sigma_omega_to_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_sigma._write_sigma_omega_to_h5" title="Permalink to this definition"></a></dt>
-<dd><p>Writes real-frequency self energy to h5 archive.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_sigma.main">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_sigma.</span></code><code class="sig-name descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">continuator_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'inversion_sigmainf'</span></span></em>, <em><span class="n"><span class="pre">maxent_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em><span class="n"><span class="pre">omega_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">12.0</span></span></em>, <em><span class="n"><span class="pre">omega_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12.0</span></span></em>, <em><span class="n"><span class="pre">n_points_maxent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em><span class="n"><span class="pre">n_points_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em><span class="n"><span class="pre">analyzer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LineFitAnalyzer'</span></span></em>, <em><span class="n"><span class="pre">n_points_interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em><span class="n"><span class="pre">n_points_final</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_sigma.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_sigma.main" title="Permalink to this definition"></a></dt>
-<dd><p>Main function that reads the Matsubara self-energy from h5, analytically continues it,
-writes the results back to the h5 archive and also returns the results.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>external_path</strong> : string</p>
-<blockquote>
-<div><p>Path to the h5 archive to read from and write to</p>
-</div></blockquote>
-<p><strong>iteration</strong> : int/string</p>
-<blockquote>
-<div><p>Iteration to read from and write to. Default to last_iter</p>
-</div></blockquote>
-<p><strong>continuator_type</strong> : string</p>
-<blockquote>
-<div><p>Type of continuator to use, one of ‘inversion_sigmainf’, ‘inversion_dc’, ‘direct’</p>
-</div></blockquote>
-<p><strong>maxent_error</strong> : float</p>
-<blockquote>
-<div><p>The error that is used for the analyzers.</p>
-</div></blockquote>
-<p><strong>omega_min</strong> : float</p>
-<blockquote>
-<div><p>Lower end of range where Sigma is being continued. Range has to comprise
-all features of the self-energy because the real part of it comes from
-the Kramers-Kronig relation applied to the auxiliary spectral function.
-For example, if the real-frequency self-energy bends at omega_min or
-omega_max, there are neglegcted features and the range should be extended.</p>
-</div></blockquote>
-<p><strong>omega_max</strong> : float</p>
-<blockquote>
-<div><p>Upper end of range where Sigma is being continued. See omega_min.</p>
-</div></blockquote>
-<p><strong>n_points_maxent</strong> : int</p>
-<blockquote>
-<div><p>Number of omega points on the hyperbolic mesh used in analytically
-continuing the auxiliary GF</p>
-</div></blockquote>
-<p><strong>n_points_alpha</strong> : int</p>
-<blockquote>
-<div><p>Number of points that the MaxEnt alpha parameter is varied on logarithmically</p>
-</div></blockquote>
-<p><strong>analyzer</strong> : string</p>
-<blockquote>
-<div><p>Analyzer used int MaxEnt, one of ‘LineFitAnalyzer’, ‘Chi2CurvatureAnalyzer’,
-‘ClassicAnalyzer’, ‘EntropyAnalyzer’, ‘BryanAnalyzer’</p>
-</div></blockquote>
-<p><strong>n_points_interp</strong> : int</p>
-<blockquote>
-<div><p>Number of points where auxiliary GF is interpolated to integrate over
-it for the Kramers-Kronig relation</p>
-</div></blockquote>
-<p><strong>n_points_final</strong> : int</p>
-<blockquote>
-<div><p>Number of omega points the complex auxiliary GF and therefore the
-continued self-energy has on a linear grid between omega_min and omega_max</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>sigma_w</strong> : list of triqs.gf.BlockGf</p>
-<blockquote>
-<div><p>Sigma(omega) per inequivalent shell</p>
-</div></blockquote>
-<p><strong>g_aux_w</strong> : list of triqs.gf.BlockGf</p>
-<blockquote>
-<div><p>G_aux(omega) per inequivalent shell</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NotImplementedError</strong> :</p>
-<blockquote class="last">
-<div><p>– When a wrong continuator type or maxent analyzer is chose
-– For direct continuator: when the self energy contains blocks larger
-than 1x1 (no off-diagonal continuation possible)
-– For inversion_dc continuator: when the DC is not a diagonal matrix with
-the same entry for all blocks of an impurity. Otherwise, issues like
-the global frame violating the block structure would come up.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+<div class="section" id="maxent-sigma-py">
+<h1>maxent_sigma.py<a class="headerlink" href="#maxent-sigma-py" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -354,7 +217,7 @@ the global frame violating the block structure would come up.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="maxent_gf_latt.html" class="btn btn-neutral float-left" title="maxent_gf_latt.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="postproc_plotbands.html" class="btn btn-neutral float-right" title="postproc_plotbands.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../read_config.html" class="btn btn-neutral float-right" title="read config parser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>solid_dmft.dft_managers.qe_manager &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <title>solid_dmft.dft_managers.qe_manager &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -26,11 +23,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../../index.html" class="icon icon-home"> solid_dmft<img src="../../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -112,7 +108,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../reference/postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../reference/postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../reference/read_config.html">read config parser</a><ul>
@@ -219,7 +214,7 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">shlex</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -359,9 +354,9 @@
 
     <span class="k">if</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;scf&#39;</span><span class="p">,</span> <span class="s1">&#39;nscf&#39;</span><span class="p">,</span> <span class="s1">&#39;pw2wan&#39;</span><span class="p">,</span> <span class="s1">&#39;mod_scf&#39;</span><span class="p">,</span> <span class="s1">&#39;bnd&#39;</span><span class="p">,</span> <span class="s1">&#39;bands&#39;</span><span class="p">,</span> <span class="s1">&#39;proj&#39;</span><span class="p">]:</span>
 
-        <span class="n">inp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{seedname}</span><span class="s1">.</span><span class="si">{qe_file_ext}</span><span class="s1">.in&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{seedname}</span><span class="s1">.</span><span class="si">{qe_file_ext}</span><span class="s1">.out&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-        <span class="n">err</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="si">{seedname}</span><span class="s1">.</span><span class="si">{qe_file_ext}</span><span class="s1">.err&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">inp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">qe_file_ext</span><span class="si">}</span><span class="s1">.in&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">qe_file_ext</span><span class="si">}</span><span class="s1">.out&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">qe_file_ext</span><span class="si">}</span><span class="s1">.err&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
 
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  soliDMFT: Starting </span><span class="si">{}</span><span class="s1"> calculation...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qe_file_ext</span><span class="p">))</span>
 
@@ -422,13 +417,13 @@
         <span class="n">mpi_exe</span> <span class="o">=</span> <span class="n">_find_path_to_mpi_command</span><span class="p">(</span><span class="n">env_vars</span><span class="p">,</span> <span class="s1">&#39;mpirun&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;scf&#39;</span><span class="p">,</span> <span class="s1">&#39;nscf&#39;</span><span class="p">,</span> <span class="s1">&#39;mod_scf&#39;</span><span class="p">,</span> <span class="s1">&#39;bnd&#39;</span><span class="p">]:</span>
-            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="n">f</span><span class="s1">&#39;pw.x -nk </span><span class="si">{number_cores}</span><span class="s1">&#39;</span>
+            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;pw.x -nk </span><span class="si">{</span><span class="n">number_cores</span><span class="si">}</span><span class="s1">&#39;</span>
         <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;pw2wan&#39;</span><span class="p">]:</span>
             <span class="n">qe_exec</span> <span class="o">+=</span> <span class="s1">&#39;pw2wannier90.x -nk 1 -pd .true.&#39;</span>
         <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;bands&#39;</span><span class="p">]:</span>
-            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="n">f</span><span class="s1">&#39;bands.x -nk </span><span class="si">{number_cores}</span><span class="s1">&#39;</span>
+            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;bands.x -nk </span><span class="si">{</span><span class="n">number_cores</span><span class="si">}</span><span class="s1">&#39;</span>
         <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;proj&#39;</span><span class="p">]:</span>
-            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="n">f</span><span class="s1">&#39;projwfc.x -nk </span><span class="si">{number_cores}</span><span class="s1">&#39;</span>
+            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;projwfc.x -nk </span><span class="si">{</span><span class="n">number_cores</span><span class="si">}</span><span class="s1">&#39;</span>
         <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;win_pp&#39;</span><span class="p">]:</span>
             <span class="n">qe_exec</span> <span class="o">+=</span> <span class="s1">&#39;wannier90.x -pp&#39;</span>
         <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">]:</span>

@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>maxent_gf_imp.py &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>maxent_gf_imp.py &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../read_config.html">read config parser</a><ul>
@@ -194,13 +189,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -213,70 +208,8 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="module-solid_dmft.postprocessing.maxent_gf_imp">
-<span id="maxent-gf-imp-py"></span><h1>maxent_gf_imp.py<a class="headerlink" href="#module-solid_dmft.postprocessing.maxent_gf_imp" title="Permalink to this headline"></a></h1>
-<p>Analytic continuation of the impurity Green’s function to the impurity spectral
-function using maxent.</p>
-<p>Reads G_imp(i omega) from the h5 archive and writes A_imp(omega) back.</p>
-<p>Author: Max Merkel, 2020</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_gf_imp._get_nondegenerate_greens_functions">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_gf_imp.</span></code><code class="sig-name descname"><span class="pre">_get_nondegenerate_greens_functions</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">spins_degenerate</span></span></em>, <em><span class="n"><span class="pre">block</span></span></em>, <em><span class="n"><span class="pre">block_gf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_gf_imp.html#_get_nondegenerate_greens_functions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_gf_imp._get_nondegenerate_greens_functions" title="Permalink to this definition"></a></dt>
-<dd><p>If spins_degenerate and there is a corresponding up, down pair (same names),
-it returns the averaged from up and down for the up index and None for the down
-index. This way, the gf will only be continued analytically once for each spin pair.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_gf_imp._read_h5">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_gf_imp.</span></code><code class="sig-name descname"><span class="pre">_read_h5</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_gf_imp.html#_read_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_gf_imp._read_h5" title="Permalink to this definition"></a></dt>
-<dd><p>Reads the block Green’s function G(tau) from h5 archive.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_gf_imp._run_maxent">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_gf_imp.</span></code><code class="sig-name descname"><span class="pre">_run_maxent</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">gf_imp_tau</span></span></em>, <em><span class="n"><span class="pre">spins_degenerate</span></span></em>, <em><span class="n"><span class="pre">maxent_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.03</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_gf_imp.html#_run_maxent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_gf_imp._run_maxent" title="Permalink to this definition"></a></dt>
-<dd><p>Runs maxent to get the spectral function from the list of block GF.
-If spins_degenerate, pairs with the same name except up&lt;-&gt;down switched
-will only be calculated once.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_gf_imp._unpack_maxent_results">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_gf_imp.</span></code><code class="sig-name descname"><span class="pre">_unpack_maxent_results</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_gf_imp.html#_unpack_maxent_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_gf_imp._unpack_maxent_results" title="Permalink to this definition"></a></dt>
-<dd><p>Converts maxent result to impurity list of dict with mesh
-and spectral function from each analyzer.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_gf_imp._write_spectral_function_to_h5">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_gf_imp.</span></code><code class="sig-name descname"><span class="pre">_write_spectral_function_to_h5</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">unpacked_results</span></span></em>, <em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_gf_imp.html#_write_spectral_function_to_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_gf_imp._write_spectral_function_to_h5" title="Permalink to this definition"></a></dt>
-<dd><p>Writes the mesh and the maxent result for each analyzer to h5 archive.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="solid_dmft.postprocessing.maxent_gf_imp.main">
-<code class="sig-prename descclassname"><span class="pre">solid_dmft.postprocessing.maxent_gf_imp.</span></code><code class="sig-name descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/postprocessing/maxent_gf_imp.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.postprocessing.maxent_gf_imp.main" title="Permalink to this definition"></a></dt>
-<dd><p>Main function that reads the impurity Greens function from h5, analytically continues it
-and writes the result back to the h5 archive.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>external_path: string, path of the h5 archive</strong> :</p>
-<p><strong>iteration: int/string, optional, iteration to read from and write to</strong> :</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>list of dict, per impurity: dict containing the omega mesh</strong> :</p>
-<blockquote class="last">
-<div><p>and A_imp from two different analyzers</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+<div class="section" id="maxent-gf-imp-py">
+<h1>maxent_gf_imp.py<a class="headerlink" href="#maxent-gf-imp-py" title="Permalink to this headline">¶</a></h1>
 </div>
 
 

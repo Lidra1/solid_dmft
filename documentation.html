@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>documentation &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <title>documentation &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="index.html" class="icon icon-home"> solid_dmft
-            <img src="_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="index.html" class="icon icon-home"> solid_dmft<img src="_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="reference/read_config.html">read config parser</a><ul>
@@ -192,13 +187,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -212,14 +207,14 @@
 }
 </style>
 <div class="section" id="documentation">
-<span id="id1"></span><h1>documentation<a class="headerlink" href="#documentation" title="Permalink to this headline"></a></h1>
+<span id="id1"></span><h1>documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="code-structure">
-<h2>code structure:<a class="headerlink" href="#code-structure" title="Permalink to this headline"></a></h2>
+<h2>code structure:<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/code_structure.png"><img alt="_images/code_structure.png" class="align-center" src="_images/code_structure.png" style="width: 100%;" /></a>
 <p>more details in the reference manual below.</p>
 </div>
 <div class="section" id="dft-code-interfaces">
-<h2>DFT code interfaces<a class="headerlink" href="#dft-code-interfaces" title="Permalink to this headline"></a></h2>
+<h2>DFT code interfaces<a class="headerlink" href="#dft-code-interfaces" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="md_notes/w90_interface.html">Wannier90 interface</a><ul>
@@ -238,7 +233,7 @@
 </div>
 </div>
 <div class="section" id="run-solid-dmft">
-<h2>run solid_dmft<a class="headerlink" href="#run-solid-dmft" title="Permalink to this headline"></a></h2>
+<h2>run solid_dmft<a class="headerlink" href="#run-solid-dmft" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 <ul>
@@ -264,7 +259,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="module-reference-manual">
-<h2>module reference manual<a class="headerlink" href="#module-reference-manual" title="Permalink to this headline"></a></h2>
+<h2>module reference manual<a class="headerlink" href="#module-reference-manual" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="reference/csc_flow.html">CSC flow module</a></li>
@@ -293,7 +288,6 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/read_config.html">read config parser</a><ul>

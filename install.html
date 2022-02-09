@@ -3,15 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; solid_dmft  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <title>Installation &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -28,11 +25,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="index.html" class="icon icon-home"> solid_dmft
-            <img src="_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="index.html" class="icon icon-home"> solid_dmft<img src="_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.0.9
+                3.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -114,7 +110,6 @@
 <li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/postproc_plotbands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="reference/read_config.html">read config parser</a><ul>
@@ -192,13 +187,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
+.nbinput.nblast.container,
+.nboutput.nblast.container {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast + .nbinput {
+.nblast.container + .nbinput.container {
     margin-top: -19px;
 }
 
@@ -212,9 +207,9 @@
 }
 </style>
 <div class="section" id="installation">
-<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">The <a class="reference external" href="https://triqs.github.io/triqs/latest/index.html#welcome" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.0.2)"><span class="xref std std-ref">TRIQS</span></a> library, see <a class="reference external" href="https://triqs.github.io/triqs/latest/install.html" rel="noopener noreferrer" target="_blank">TRIQS installation instruction</a>.
 In the following, we assume that <a class="reference external" href="https://triqs.github.io/triqs/latest/index.html#welcome" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.0.2)"><span class="xref std std-ref">TRIQS</span></a>, <a class="reference external" href="https://triqs.github.io/dft_tools" rel="noopener noreferrer" target="_blank">triqs/dft_tools</a>, and at least one of the impurity solvers <a class="reference external" href="https://triqs.github.io/triqs/latest/applications.html" rel="noopener noreferrer" target="_blank">available in TRIQS</a>, e.g. cthyb, HubbardI, ctseg, FTPS, or ctint is installed in the directory <code class="docutils literal notranslate"><span class="pre">path_to_triqs</span></code>.</p>
@@ -227,7 +222,7 @@ In the following, we assume that <a class="reference external" href="https://tri
 </ol>
 </div>
 <div class="section" id="installation-steps">
-<h2>Installation steps<a class="headerlink" href="#installation-steps" title="Permalink to this headline"></a></h2>
+<h2>Installation steps<a class="headerlink" href="#installation-steps" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">clone the <code class="docutils literal notranslate"><span class="pre">flatironinstitute/solid_dmft</span></code> repository from GitHub:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/flatironinstitute/solid_dmft solid_dmft.src
@@ -275,7 +270,7 @@ python packages are needed:</p>
 </div>
 </div>
 <div class="section" id="version-compatibility">
-<h2>Version compatibility<a class="headerlink" href="#version-compatibility" title="Permalink to this headline"></a></h2>
+<h2>Version compatibility<a class="headerlink" href="#version-compatibility" title="Permalink to this headline">¶</a></h2>
 <p>Keep in mind that the version of <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> must be compatible with your TRIQS library version,
 see <a class="reference external" href="https://triqs.github.io/triqs/latest/versions.html#versions" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.0.2)"><span class="xref std std-ref">TRIQS website</span></a>.
 In particular the Major Version numbers have to be the same.
@@ -290,7 +285,7 @@ To use a particular version, go into the directory with the sources, and look at
 <p>and follow steps 3 to 6 above to compile the code.</p>
 </div>
 <div class="section" id="custom-cmake-options">
-<h2>Custom CMake options<a class="headerlink" href="#custom-cmake-options" title="Permalink to this headline"></a></h2>
+<h2>Custom CMake options<a class="headerlink" href="#custom-cmake-options" title="Permalink to this headline">¶</a></h2>
 <p>The compilation of <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> can be configured using CMake-options:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake ../solid_dmft.src -DOPTION1<span class="o">=</span>value1 -DOPTION2<span class="o">=</span>value2 ...
 </pre></div>

@@ -108,6 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/plot_correlated_bands.html">postproc_plotbands.py</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="reference/read_config.html">read config parser</a><ul>
@@ -188,8 +189,10 @@
  | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
@@ -224,6 +227,10 @@
       <li><a href="reference/dmft_tools/gf_mixer.html#solid_dmft.dmft_tools.greens_functions_mixer._bgf_to_vec">_bgf_to_vec() (in module solid_dmft.dmft_tools.greens_functions_mixer)</a>
 </li>
       <li><a href="reference/dmft_tools/gf_mixer.html#solid_dmft.dmft_tools.greens_functions_mixer._broyden_update">_broyden_update() (in module solid_dmft.dmft_tools.greens_functions_mixer)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._calc_alatt">_calc_alatt() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._calc_kslice">_calc_kslice() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
 </li>
       <li><a href="reference/dmft_cycle.html#solid_dmft.dmft_cycle._calculate_rotation_matrix">_calculate_rotation_matrix() (in module solid_dmft.dmft_cycle)</a>
 </li>
@@ -301,6 +308,8 @@
 </li>
       <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager._fork_and_start_vasp">_fork_and_start_vasp() (in module solid_dmft.dft_managers.vasp_manager)</a>
 </li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._fract_ind_to_val">_fract_ind_to_val() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
       <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._ftps_postprocessing">_ftps_postprocessing() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
 </li>
       <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._generate_four_index_u_matrix">_generate_four_index_u_matrix() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
@@ -327,6 +336,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/postprocessing/maxent_sigma.html#solid_dmft.postprocessing.maxent_sigma._get_sigma_omega_from_aux">_get_sigma_omega_from_aux() (in module solid_dmft.postprocessing.maxent_sigma)</a>
 </li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._get_tb_bands">_get_tb_bands() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
       <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver._gf_fit_tail_fraction">_gf_fit_tail_fraction() (in module solid_dmft.dmft_tools.solver)</a>
 </li>
       <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._hubbardI_postprocessing">_hubbardI_postprocessing() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
@@ -342,6 +353,8 @@
       <li><a href="reference/dmft_tools/manipulate_mu.html#solid_dmft.dmft_tools.manipulate_chemical_potential._initialize_lattice_gf">_initialize_lattice_gf() (in module solid_dmft.dmft_tools.manipulate_chemical_potential)</a>
 </li>
       <li><a href="reference/postprocessing/make_spaghetti.html#solid_dmft.postprocessing.make_spaghetti._initialize_sum_k_tools">_initialize_sum_k_tools() (in module solid_dmft.postprocessing.make_spaghetti)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._linefit">_linefit() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
 </li>
       <li><a href="reference/util/update_dmft_config.html#solid_dmft.util.update_dmft_config._load_config_file">_load_config_file() (in module solid_dmft.util.update_dmft_config)</a>
 </li>
@@ -398,6 +411,12 @@
       <li><a href="reference/dmft_tools/manipulate_mu.html#solid_dmft.dmft_tools.manipulate_chemical_potential._set_mu_to_gap_middle_with_maxent">_set_mu_to_gap_middle_with_maxent() (in module solid_dmft.dmft_tools.manipulate_chemical_potential)</a>
 </li>
       <li><a href="reference/csc_flow.html#solid_dmft.csc_flow._set_projections_suppressed">_set_projections_suppressed() (in module solid_dmft.csc_flow)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._setup_plot_bands">_setup_plot_bands() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._sigma_from_dmft">_sigma_from_dmft() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._sigma_from_model">_sigma_from_model() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
 </li>
       <li><a href="reference/csc_flow.html#solid_dmft.csc_flow._store_dft_eigvals">_store_dft_eigvals() (in module solid_dmft.csc_flow)</a>
 </li>
@@ -483,6 +502,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/dmft_tools/initial_sigma.html#solid_dmft.dmft_tools.initial_self_energies.calculate_double_counting">calculate_double_counting() (in module solid_dmft.dmft_tools.initial_self_energies)</a>
 </li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.change_basis">change_basis() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
       <li><a href="reference/dmft_tools/convergence.html#solid_dmft.dmft_tools.convergence.check_convergence">check_convergence() (in module solid_dmft.dmft_tools.convergence)</a>
 </li>
       <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian.construct">construct() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
@@ -506,6 +527,20 @@
   </ul></td>
 </tr></table>
 
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.get_dmft_bands">get_dmft_bands() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.get_kx_ky_FS">get_kx_ky_FS() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.get_tb_kslice">get_tb_kslice() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -522,6 +557,14 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager.kill">kill() (in module solid_dmft.dft_managers.vasp_manager)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.lambda_matrix_w90_t2g">lambda_matrix_w90_t2g() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -597,6 +640,8 @@
 </li>
         <li><a href="reference/postprocessing/maxent_sigma.html#module-solid_dmft.postprocessing.maxent_sigma">solid_dmft.postprocessing.maxent_sigma</a>
 </li>
+        <li><a href="reference/postprocessing/plot_correlated_bands.html#module-solid_dmft.postprocessing.plot_correlated_bands">solid_dmft.postprocessing.plot_correlated_bands</a>
+</li>
         <li><a href="reference/read_config.html#module-solid_dmft.read_config">solid_dmft.read_config</a>
 </li>
         <li><a href="reference/util/symmetrize_gamma_file.html#module-solid_dmft.util.symmetrize_gamma_file">solid_dmft.util.symmetrize_gamma_file</a>
@@ -614,6 +659,10 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.plot_bands">plot_bands() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.plot_kslice">plot_kslice() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+</li>
       <li><a href="reference/dft_managers/qe_manager.html#solid_dmft.dft_managers.qe_manager.poll_barrier">poll_barrier() (in module solid_dmft.dft_managers.qe_manager)</a>
 </li>
       <li><a href="reference/dmft_tools/convergence.html#solid_dmft.dmft_tools.convergence.prep_conv_file">prep_conv_file() (in module solid_dmft.dmft_tools.convergence)</a>
@@ -627,6 +676,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/dmft_tools/formatter.html#solid_dmft.dmft_tools.formatter.print_local_density">print_local_density() (in module solid_dmft.dmft_tools.formatter)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.print_matrix">print_matrix() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
 </li>
       <li><a href="reference/dmft_tools/formatter.html#solid_dmft.dmft_tools.formatter.print_rotation_matrix">print_rotation_matrix() (in module solid_dmft.dmft_tools.formatter)</a>
 </li>
@@ -663,6 +714,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/dmft_tools/manipulate_mu.html#solid_dmft.dmft_tools.manipulate_chemical_potential.set_initial_mu">set_initial_mu() (in module solid_dmft.dmft_tools.manipulate_chemical_potential)</a>
+</li>
+      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.setup_plot_kslice">setup_plot_kslice() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
 </li>
       <li><a href="index.html#index-0">solid_dmft</a>
 
@@ -754,8 +807,6 @@
         <li><a href="reference/dmft_tools/manipulate_mu.html#module-solid_dmft.dmft_tools.manipulate_chemical_potential">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     solid_dmft.dmft_tools.observables
 
@@ -763,6 +814,8 @@
         <li><a href="reference/dmft_tools/observables.html#module-solid_dmft.dmft_tools.observables">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     solid_dmft.dmft_tools.results_to_archive
 
@@ -803,6 +856,13 @@
 
       <ul>
         <li><a href="reference/postprocessing/maxent_sigma.html#module-solid_dmft.postprocessing.maxent_sigma">module</a>
+</li>
+      </ul></li>
+      <li>
+    solid_dmft.postprocessing.plot_correlated_bands
+
+      <ul>
+        <li><a href="reference/postprocessing/plot_correlated_bands.html#module-solid_dmft.postprocessing.plot_correlated_bands">module</a>
 </li>
       </ul></li>
       <li>

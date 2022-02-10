@@ -515,7 +515,7 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">w90_path</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
 <span class="n">w90_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;w90_seed&#39;</span><span class="p">:</span> <span class="s1">&#39;svo&#39;</span><span class="p">,</span> <span class="s1">&#39;w90_path&#39;</span><span class="p">:</span> <span class="n">w90_path</span><span class="p">,</span> <span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mf">12.3958</span><span class="p">,</span> <span class="s1">&#39;n_orb&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;add_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">}</span>
+            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;add_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">}</span>
 
 <span class="n">orbital_order_to</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dxy&#39;</span><span class="p">,</span> <span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">]</span>
 <span class="n">proj_on_orb</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># or &#39;dxy&#39; etc</span>
@@ -651,12 +651,57 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 <img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_22_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_22_0.png" />
 </div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">sigma_freq</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+triqs.gf.meshes.MeshReFreq
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">triqs.gf</span> <span class="kn">import</span> <span class="n">MeshReFreq</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">sigma_freq</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="n">MeshReFreq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
 </div>
 <div class="section" id="Plotting-options">
 <h3>Plotting options<a class="headerlink" href="#Plotting-options" title="Permalink to this headline">¶</a></h3>
 <p>Finally, you can choose colormaps for each of the functionalities from any of the available on matplotlib colormaps. <code class="docutils literal notranslate"><span class="pre">vmin</span></code> determines the scaling of the logarithmically scaled colorplots. The corresponding tight-binding bands will have the maximum value of the colormap. By the way, colormaps can be reversed by appending <code class="docutils literal notranslate"><span class="pre">_r</span></code> to the identifier.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -671,8 +716,22 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 <div class="section" id="Run-and-Plotting">
 <h2>Run and Plotting<a class="headerlink" href="#Run-and-Plotting" title="Permalink to this headline">¶</a></h2>
 <p>Now that everything is set up we may hit run. Caution, if you use a lot of <span class="math notranslate nohighlight">\(k\)</span>-points, this may take a while! In the current example, it should be done within a second.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
+<span class="kn">import</span> <span class="nn">importlib</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/mnt/home/sbeck/work/codes/triqs/solid_dmft/python/solid_dmft/postprocessing&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">plot_correlated_bands</span>
+<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">plot_correlated_bands</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">plot_correlated_bands</span> <span class="k">as</span> <span class="nn">pcb</span>
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -699,7 +758,7 @@ Warning: could not identify MPI environment!
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Starting serial run at: 2022-02-07 14:25:44.772668
+Starting serial run at: 2022-02-10 18:19:08.594970
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -712,12 +771,12 @@ H(R=0):
       0.0000+0.0000j  0.5811+0.0000j  0.0000+0.0000j
       0.0000+0.0000j  0.0000+0.0000j  0.5811+0.0000j
 Setting Sigma from ./svo_example.h5
-Run took 1.140 s
+Run took 1.266 s
 </pre></div></div>
 </div>
 <p>That’s it. Now you can look at the output:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -741,7 +800,7 @@ Run took 1.140 s
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_0.png" />
+<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_34_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_34_0.png" />
 </div>
 </div>
 <hr class="docutils" />

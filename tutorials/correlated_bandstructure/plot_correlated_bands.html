@@ -651,57 +651,12 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 <img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_22_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_22_0.png" />
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">type</span><span class="p">(</span><span class="n">sigma_freq</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-triqs.gf.meshes.MeshReFreq
-</pre></div></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">triqs.gf</span> <span class="kn">import</span> <span class="n">MeshReFreq</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">sigma_freq</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="n">MeshReFreq</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-True
-</pre></div></div>
-</div>
 </div>
 <div class="section" id="Plotting-options">
 <h3>Plotting options<a class="headerlink" href="#Plotting-options" title="Permalink to this headline">¶</a></h3>
 <p>Finally, you can choose colormaps for each of the functionalities from any of the available on matplotlib colormaps. <code class="docutils literal notranslate"><span class="pre">vmin</span></code> determines the scaling of the logarithmically scaled colorplots. The corresponding tight-binding bands will have the maximum value of the colormap. By the way, colormaps can be reversed by appending <code class="docutils literal notranslate"><span class="pre">_r</span></code> to the identifier.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -716,22 +671,8 @@ True
 <div class="section" id="Run-and-Plotting">
 <h2>Run and Plotting<a class="headerlink" href="#Run-and-Plotting" title="Permalink to this headline">¶</a></h2>
 <p>Now that everything is set up we may hit run. Caution, if you use a lot of <span class="math notranslate nohighlight">\(k\)</span>-points, this may take a while! In the current example, it should be done within a second.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
-<span class="kn">import</span> <span class="nn">importlib</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/mnt/home/sbeck/work/codes/triqs/solid_dmft/python/solid_dmft/postprocessing&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">plot_correlated_bands</span>
-<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">plot_correlated_bands</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">plot_correlated_bands</span> <span class="k">as</span> <span class="nn">pcb</span>
-</pre></div>
-</div>
-</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -758,7 +699,7 @@ Warning: could not identify MPI environment!
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Starting serial run at: 2022-02-10 18:19:08.594970
+Starting serial run at: 2022-02-12 17:26:28.389271
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -771,12 +712,12 @@ H(R=0):
       0.0000+0.0000j  0.5811+0.0000j  0.0000+0.0000j
       0.0000+0.0000j  0.0000+0.0000j  0.5811+0.0000j
 Setting Sigma from ./svo_example.h5
-Run took 1.266 s
+Run took 0.630 s
 </pre></div></div>
 </div>
 <p>That’s it. Now you can look at the output:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -796,11 +737,20 @@ Run took 1.266 s
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/__w/solid_dmft/solid_dmft/solid_dmft.build/python/solid_dmft/postprocessing/plot_correlated_bands.py:415: MatplotlibDeprecationWarning: shading=&#39;flat&#39; when X and Y have the same dimensions as C is deprecated since 3.3.  Either specify the corners of the quadrilaterals with X and Y, or pass shading=&#39;auto&#39;, &#39;nearest&#39; or &#39;gouraud&#39;, or set rcParams[&#39;pcolor.shading&#39;].  This will become an error two minor releases later.
+  graph = ax.pcolormesh(kw_x, kw_y, alatt_k_w.T, cmap=plot_dict[&#39;colorscheme_bands&#39;], norm=Normalize(vmin=plot_dict[&#39;vmin&#39;], vmax=np.max(alatt_k_w)))
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_34_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_34_0.png" />
+<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_1.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_1.png" />
 </div>
 </div>
 <hr class="docutils" />

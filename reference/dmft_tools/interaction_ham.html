@@ -213,43 +213,6 @@
 <span id="interaction-hamiltonian-py"></span><h1>interaction_hamiltonian.py<a class="headerlink" href="#module-solid_dmft.dmft_tools.interaction_hamiltonian" title="Permalink to this headline">¶</a></h1>
 <p>Contains all functions related to constructing the interaction Hamiltonian.</p>
 <dl class="py function">
-<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_2index_for_SO">
-<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_adapt_U_2index_for_SO</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">Umat</span></span></em>, <em><span class="n"><span class="pre">Upmat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_adapt_U_2index_for_SO"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_2index_for_SO" title="Permalink to this definition">¶</a></dt>
-<dd><p>Changes the two-index U matrices such that for a system consisting of a
-single block ‘ud’ with the entries (1, up), (1, down), (2, up), (2, down),
-… the matrices are consistent with the case without spin-orbit coupling.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Umat</strong> : numpy array</p>
-<blockquote>
-<div><p>The two-index interaction matrix for parallel spins without SO.</p>
-</div></blockquote>
-<p><strong>Upmat</strong> : numpy array</p>
-<blockquote>
-<div><p>The two-index interaction matrix for antiparallel spins without SO.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Umat_SO</strong> : numpy array</p>
-<blockquote>
-<div><p>The two-index interaction matrix for parallel spins. Because in SO all
-entries have nominal spin ‘ud’, this matrix now contains the original
-Umat and Upmat.</p>
-</div></blockquote>
-<p><strong>Upmat_SO</strong> : numpy array</p>
-<blockquote class="last">
-<div><p>The two-index interaction matrix for antiparallel spins. Unused because
-in SO, all spins have the same nominal spin ‘ud’.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py function">
 <dt id="solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_4index_for_SO">
 <code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_adapt_U_4index_for_SO</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">Umat_full</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_adapt_U_4index_for_SO"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_4index_for_SO" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes the four-index U matrix such that for a system consisting of a
@@ -297,6 +260,13 @@ Works only without spin-orbit coupling and only for one orbital.</p>
 <dd><p>Constructs the Kanamori interaction Hamiltonian. Only Kanamori does not
 need the full four-index matrix. Therefore, we can construct it directly
 from the parameters U and J.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="solid_dmft.dmft_tools.interaction_hamiltonian._construct_kanamori_soc">
+<code class="descclassname"><span class="pre">solid_dmft.dmft_tools.interaction_hamiltonian.</span></code><code class="descname"><span class="pre">_construct_kanamori_soc</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">U_int</span></span></em>, <em><span class="n"><span class="pre">J_hund</span></span></em>, <em><span class="n"><span class="pre">orb_names</span></span></em>, <em><span class="n"><span class="pre">map_operator_structure</span></span></em>, <em><span class="n"><span class="pre">H_dump</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/solid_dmft/dmft_tools/interaction_hamiltonian.html#_construct_kanamori_soc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#solid_dmft.dmft_tools.interaction_hamiltonian._construct_kanamori_soc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adapted from triqs.operators.util.hamiltonians.h_int_kanamori. Assumes
+that spin_names == [‘ud’] and that map_operator_structure is given.</p>
 </dd></dl>
 
 <dl class="py function">

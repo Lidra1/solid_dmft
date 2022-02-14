@@ -214,12 +214,11 @@
 <span class="c1"># system</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
 
 <span class="c1"># triqs</span>
 <span class="kn">from</span> <span class="nn">h5</span> <span class="kn">import</span> <span class="n">HDFArchive</span>
 <span class="kn">import</span> <span class="nn">triqs.utility.mpi</span> <span class="k">as</span> <span class="nn">mpi</span>
-<span class="kn">from</span> <span class="nn">triqs.operators</span> <span class="kn">import</span> <span class="n">util</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_dag</span><span class="p">,</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">triqs.operators</span> <span class="kn">import</span> <span class="n">util</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">forktps</span> <span class="k">as</span> <span class="nn">ftps</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
@@ -295,36 +294,36 @@
     <span class="k">return</span> <span class="n">u_matrix_four_indices_per_shell</span></div>
 
 
-<span class="c1"># def _adapt_U_2index_for_SO(Umat, Upmat):</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     Changes the two-index U matrices such that for a system consisting of a</span>
-<span class="c1">#     single block &#39;ud&#39; with the entries (1, up), (1, down), (2, up), (2, down),</span>
-<span class="c1">#     ... the matrices are consistent with the case without spin-orbit coupling.</span>
+<div class="viewcode-block" id="_adapt_U_2index_for_SO"><a class="viewcode-back" href="../../../reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_2index_for_SO">[docs]</a><span class="k">def</span> <span class="nf">_adapt_U_2index_for_SO</span><span class="p">(</span><span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Changes the two-index U matrices such that for a system consisting of a</span>
+<span class="sd">    single block &#39;ud&#39; with the entries (1, up), (1, down), (2, up), (2, down),</span>
+<span class="sd">    ... the matrices are consistent with the case without spin-orbit coupling.</span>
 
-<span class="c1">#     Parameters</span>
-<span class="c1">#     ----------</span>
-<span class="c1">#     Umat : numpy array</span>
-<span class="c1">#         The two-index interaction matrix for parallel spins without SO.</span>
-<span class="c1">#     Upmat : numpy array</span>
-<span class="c1">#         The two-index interaction matrix for antiparallel spins without SO.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Umat : numpy array</span>
+<span class="sd">        The two-index interaction matrix for parallel spins without SO.</span>
+<span class="sd">    Upmat : numpy array</span>
+<span class="sd">        The two-index interaction matrix for antiparallel spins without SO.</span>
 
-<span class="c1">#     Returns</span>
-<span class="c1">#     -------</span>
-<span class="c1">#     Umat_SO : numpy array</span>
-<span class="c1">#         The two-index interaction matrix for parallel spins. Because in SO all</span>
-<span class="c1">#         entries have nominal spin &#39;ud&#39;, this matrix now contains the original</span>
-<span class="c1">#         Umat and Upmat.</span>
-<span class="c1">#     Upmat_SO : numpy array</span>
-<span class="c1">#         The two-index interaction matrix for antiparallel spins. Unused because</span>
-<span class="c1">#         in SO, all spins have the same nominal spin &#39;ud&#39;.</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Umat_SO : numpy array</span>
+<span class="sd">        The two-index interaction matrix for parallel spins. Because in SO all</span>
+<span class="sd">        entries have nominal spin &#39;ud&#39;, this matrix now contains the original</span>
+<span class="sd">        Umat and Upmat.</span>
+<span class="sd">    Upmat_SO : numpy array</span>
+<span class="sd">        The two-index interaction matrix for antiparallel spins. Unused because</span>
+<span class="sd">        in SO, all spins have the same nominal spin &#39;ud&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="c1">#     Umat_SO = np.zeros(np.array(Umat.shape)*2, dtype=Umat.dtype)</span>
-<span class="c1">#     Umat_SO[::2, ::2] = Umat_SO[1::2, 1::2] = Umat</span>
-<span class="c1">#     Umat_SO[::2, 1::2] = Umat_SO[1::2, ::2] = Upmat</span>
-<span class="c1">#     Upmat_SO = None</span>
+    <span class="n">Umat_SO</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Umat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">Umat</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">Umat_SO</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Umat_SO</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Umat</span>
+    <span class="n">Umat_SO</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Umat_SO</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Upmat</span>
+    <span class="n">Upmat_SO</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="c1">#     return Umat_SO, Upmat_SO</span>
+    <span class="k">return</span> <span class="n">Umat_SO</span><span class="p">,</span> <span class="n">Upmat_SO</span></div>
 
 
 <div class="viewcode-block" id="_adapt_U_4index_for_SO"><a class="viewcode-back" href="../../../reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_4index_for_SO">[docs]</a><span class="k">def</span> <span class="nf">_adapt_U_4index_for_SO</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">):</span>
@@ -365,7 +364,7 @@
     <span class="k">for</span> <span class="n">icrsh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">):</span>
         <span class="c1"># ish points to the shell representative of the current group</span>
         <span class="n">ish</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span>
-        <span class="n">orb_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]))</span>
+        <span class="n">orb_names</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">n_orb</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -384,104 +383,19 @@
                 <span class="n">up</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span>
                 <span class="n">j</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span>
             <span class="n">h_int</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">ftps</span><span class="o">.</span><span class="n">solver_core</span><span class="o">.</span><span class="n">HInt</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span> <span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">up</span><span class="o">=</span><span class="n">up</span><span class="p">,</span> <span class="n">dd</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Constructs U matrix</span>
             <span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">U_matrix_kanamori</span><span class="p">(</span><span class="n">n_orb</span><span class="o">=</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">U_int</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span>
                                                  <span class="n">J_hund</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span> <span class="o">=</span> <span class="n">_adapt_U_2index_for_SO</span><span class="p">(</span><span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span><span class="p">)</span>
 
             <span class="n">h_int</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">h_int_kanamori</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">spin_block_names</span><span class="p">[</span><span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span><span class="p">],</span> <span class="n">orb_names</span><span class="p">,</span>
                                                <span class="n">map_operator_structure</span><span class="o">=</span><span class="n">sum_k</span><span class="o">.</span><span class="n">sumk_to_solver</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span>
                                                <span class="n">U</span><span class="o">=</span><span class="n">Umat</span><span class="p">,</span> <span class="n">Uprime</span><span class="o">=</span><span class="n">Upmat</span><span class="p">,</span> <span class="n">J_hund</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span>
                                                <span class="n">H_dump</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;jobname&#39;</span><span class="p">],</span> <span class="s1">&#39;H.txt&#39;</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">h_int</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">_construct_kanamori_soc</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span>
-                                                   <span class="n">orb_names</span><span class="p">,</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">sumk_to_solver</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span>
-                                                   <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;jobname&#39;</span><span class="p">],</span> <span class="s1">&#39;H.txt&#39;</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">h_int</span></div>
-
-
-<div class="viewcode-block" id="_construct_kanamori_soc"><a class="viewcode-back" href="../../../reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._construct_kanamori_soc">[docs]</a><span class="k">def</span> <span class="nf">_construct_kanamori_soc</span><span class="p">(</span><span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">map_operator_structure</span><span class="p">,</span> <span class="n">H_dump</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Adapted from triqs.operators.util.hamiltonians.h_int_kanamori. Assumes</span>
-<span class="sd">    that spin_names == [&#39;ud&#39;] and that map_operator_structure is given.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">if</span> <span class="n">H_dump</span><span class="p">:</span>
-        <span class="n">H_dump_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">H_dump</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-        <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Kanamori Hamiltonian:&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-
-    <span class="n">H</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">()</span>
-    <span class="n">mkind</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">op_struct</span><span class="o">.</span><span class="n">get_mkind</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">map_operator_structure</span><span class="p">)</span>
-
-    <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;ud&#39;</span>
-
-    <span class="c1"># density terms:</span>
-    <span class="c1"># TODO: reformulate in terms of Umat and Upmat for consistency with triqs?</span>
-    <span class="k">if</span> <span class="n">H_dump</span><span class="p">:</span>
-        <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Density-density terms:&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a2</span><span class="p">:</span> <span class="c1"># same spin and orbital</span>
-            <span class="k">continue</span>
-
-        <span class="k">if</span> <span class="n">a1</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">a2</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:</span> <span class="c1"># same orbital (, different spins)</span>
-            <span class="n">U_val</span> <span class="o">=</span> <span class="n">U_int</span>
-        <span class="k">elif</span> <span class="n">a1</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="n">a2</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span> <span class="c1"># different spins (, different orbitals)</span>
-            <span class="n">U_val</span> <span class="o">=</span> <span class="n">U_int</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">J_hund</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c1"># same spins (, different orbitals)</span>
-            <span class="n">U_val</span> <span class="o">=</span> <span class="n">U_int</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">J_hund</span>
-
-        <span class="n">H_term</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">U_val</span> <span class="o">*</span> <span class="n">n</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">))</span> <span class="o">*</span> <span class="n">n</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">))</span>
-        <span class="n">H</span> <span class="o">+=</span> <span class="n">H_term</span>
-
-        <span class="c1"># Dump terms of H</span>
-        <span class="k">if</span> <span class="n">H_dump</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">H_term</span><span class="o">.</span><span class="n">is_zero</span><span class="p">():</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">U_val</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-
-    <span class="c1"># spin-flip terms:</span>
-    <span class="k">if</span> <span class="n">H_dump</span><span class="p">:</span>
-        <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Spin-flip terms:&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">a4</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a2</span> <span class="ow">or</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a3</span> <span class="ow">or</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a4</span> <span class="ow">or</span> <span class="n">a2</span> <span class="o">==</span> <span class="n">a3</span> <span class="ow">or</span> <span class="n">a2</span> <span class="o">==</span> <span class="n">a4</span> <span class="ow">or</span> <span class="n">a3</span> <span class="o">==</span> <span class="n">a4</span><span class="p">:</span>
-            <span class="k">continue</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">a1</span><span class="o">//</span><span class="mi">2</span> <span class="o">==</span> <span class="n">a2</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a3</span><span class="o">//</span><span class="mi">2</span> <span class="o">==</span> <span class="n">a4</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a1</span><span class="o">//</span><span class="mi">2</span> <span class="o">!=</span> <span class="n">a3</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a1</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span> <span class="n">a3</span><span class="o">%</span><span class="mi">2</span><span class="p">):</span>
-            <span class="k">continue</span>
-
-        <span class="n">H_term</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">J_hund</span> <span class="o">*</span> <span class="n">c_dag</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">))</span> <span class="o">*</span> <span class="n">c</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">))</span> <span class="o">*</span> <span class="n">c_dag</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a3</span><span class="p">))</span> <span class="o">*</span> <span class="n">c</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a4</span><span class="p">))</span>
-        <span class="n">H</span> <span class="o">+=</span> <span class="n">H_term</span>
-
-        <span class="c1"># Dump terms of H</span>
-        <span class="k">if</span> <span class="n">H_dump</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">H_term</span><span class="o">.</span><span class="n">is_zero</span><span class="p">():</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a3</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a4</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="o">-</span><span class="n">J_hund</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-
-    <span class="c1"># pair-hopping terms:</span>
-    <span class="k">if</span> <span class="n">H_dump</span><span class="p">:</span>
-        <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Pair-hopping terms:&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">a4</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a2</span> <span class="ow">or</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a3</span> <span class="ow">or</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a4</span> <span class="ow">or</span> <span class="n">a2</span> <span class="o">==</span> <span class="n">a3</span> <span class="ow">or</span> <span class="n">a2</span> <span class="o">==</span> <span class="n">a4</span> <span class="ow">or</span> <span class="n">a3</span> <span class="o">==</span> <span class="n">a4</span><span class="p">:</span>
-            <span class="k">continue</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">a1</span><span class="o">//</span><span class="mi">2</span> <span class="o">==</span> <span class="n">a2</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a3</span><span class="o">//</span><span class="mi">2</span> <span class="o">==</span> <span class="n">a4</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a1</span><span class="o">//</span><span class="mi">2</span> <span class="o">!=</span> <span class="n">a3</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a1</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span> <span class="n">a3</span><span class="o">%</span><span class="mi">2</span><span class="p">):</span>
-            <span class="k">continue</span>
-
-        <span class="n">H_term</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">J_hund</span> <span class="o">*</span> <span class="n">c_dag</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">))</span> <span class="o">*</span> <span class="n">c_dag</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">))</span> <span class="o">*</span> <span class="n">c</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a4</span><span class="p">))</span> <span class="o">*</span> <span class="n">c</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a3</span><span class="p">))</span>
-        <span class="n">H</span> <span class="o">+=</span> <span class="n">H_term</span>
-
-        <span class="c1"># Dump terms of H</span>
-        <span class="k">if</span> <span class="n">H_dump</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">H_term</span><span class="o">.</span><span class="n">is_zero</span><span class="p">():</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a3</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a4</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="o">-</span><span class="n">J_hund</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">H</span></div>
 
 
 <div class="viewcode-block" id="_construct_dynamic"><a class="viewcode-back" href="../../../reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._construct_dynamic">[docs]</a><span class="k">def</span> <span class="nf">_construct_dynamic</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">):</span>

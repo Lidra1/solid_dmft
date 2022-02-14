@@ -515,7 +515,7 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">w90_path</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
 <span class="n">w90_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;w90_seed&#39;</span><span class="p">:</span> <span class="s1">&#39;svo&#39;</span><span class="p">,</span> <span class="s1">&#39;w90_path&#39;</span><span class="p">:</span> <span class="n">w90_path</span><span class="p">,</span> <span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mf">12.3958</span><span class="p">,</span> <span class="s1">&#39;n_orb&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;add_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">}</span>
+            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;add_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">}</span>
 
 <span class="n">orbital_order_to</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dxy&#39;</span><span class="p">,</span> <span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">]</span>
 <span class="n">proj_on_orb</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># or &#39;dxy&#39; etc</span>
@@ -699,7 +699,7 @@ Warning: could not identify MPI environment!
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Starting serial run at: 2022-02-14 14:01:56.728503
+Starting serial run at: 2022-02-07 14:25:44.772668
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -712,7 +712,7 @@ H(R=0):
       0.0000+0.0000j  0.5811+0.0000j  0.0000+0.0000j
       0.0000+0.0000j  0.0000+0.0000j  0.5811+0.0000j
 Setting Sigma from ./svo_example.h5
-Run took 0.626 s
+Run took 1.140 s
 </pre></div></div>
 </div>
 <p>That’s it. Now you can look at the output:</p>
@@ -737,20 +737,11 @@ Run took 0.626 s
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/__w/solid_dmft/solid_dmft/solid_dmft.build/python/solid_dmft/postprocessing/plot_correlated_bands.py:415: MatplotlibDeprecationWarning: shading=&#39;flat&#39; when X and Y have the same dimensions as C is deprecated since 3.3.  Either specify the corners of the quadrilaterals with X and Y, or pass shading=&#39;auto&#39;, &#39;nearest&#39; or &#39;gouraud&#39;, or set rcParams[&#39;pcolor.shading&#39;].  This will become an error two minor releases later.
-  graph = ax.pcolormesh(kw_x, kw_y, alatt_k_w.T, cmap=plot_dict[&#39;colorscheme_bands&#39;], norm=Normalize(vmin=plot_dict[&#39;vmin&#39;], vmax=np.max(alatt_k_w)))
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_1.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_1.png" />
+<img alt="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_0.png" src="../../_images/tutorials_correlated_bandstructure_plot_correlated_bands_30_0.png" />
 </div>
 </div>
 <hr class="docutils" />

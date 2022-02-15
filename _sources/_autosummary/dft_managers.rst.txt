@@ -1,0 +1,25 @@
+﻿dft\_managers
+=============
+
+.. automodule:: dft_managers
+
+   
+   
+   
+
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: autosummary_module_template.rst 
+   :recursive:
+
+
+    dft_managers.qe_manager
+    dft_managers.vasp_manager
+
+
+

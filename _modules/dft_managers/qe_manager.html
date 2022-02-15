@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dft_managers.qe_manager &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7E588A" >
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#version-compatibility">Version compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#code-structure">code structure:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/w90_interface.html">Wannier90 interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/w90_interface.html#orbital-order-in-the-w90-converter">orbital order in the W90 converter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/vasp_csc.html">interface to VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#general-remarks">General remarks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#locproj-bug-for-individual-projections">LOCPROJ bug for individual projections:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#convergence-of-projectors-with-vasp">convergence of projectors with Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#enabling-csc-calculations-with-wannier90-projectors">Enabling CSC calculations with Wannier90 projectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#speeding-up-by-not-writing-projectors-at-every-step">Speeding up by not writing projectors at every step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cRPA_VASP/README.html">How to do cRPA calculations with VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#file-description">file description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#workflow">Workflow:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#important-flags">important flags:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#convergency-tests">convergency tests:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#parameterization-of-u-and-j-from-crpa-calculations">Parameterization of U and J from cRPA calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#general-sidemarks">general sidemarks:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#version-and-compilation">version and compilation:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#run-solid-dmft">run solid_dmft</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/docker.html">Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_locally.html">run on your machine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_locally.html#csc-calculations-locally">CSC calculations locally</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_cluster.html">Running solid_dmft on a cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#running-on-cscs-daint">Running on CSCS daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#one-shot-job-on-daint">one shot job on daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#csc-calculations-on-daint">CSC calculations on daint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">module reference manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dft_managers.html">dft_managers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dmft_tools.html">dmft_tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.formatter.html">dmft_tools.formatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.greens_functions_mixer.html">dmft_tools.greens_functions_mixer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.initial_self_energies.html">dmft_tools.initial_self_energies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.interaction_hamiltonian.html">dmft_tools.interaction_hamiltonian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.legendre_filter.html">dmft_tools.legendre_filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.manipulate_chemical_potential.html">dmft_tools.manipulate_chemical_potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.observables.html">dmft_tools.observables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.results_to_archive.html">dmft_tools.results_to_archive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.solver.html">dmft_tools.solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/postprocessing.html">postprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html">postprocessing.eval_U_cRPA_Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.make_spaghetti.html">postprocessing.make_spaghetti</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_gf_imp.html">postprocessing.maxent_gf_imp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_gf_latt.html">postprocessing.maxent_gf_latt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_sigma.html">postprocessing.maxent_sigma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.plot_correlated_bands.html">postprocessing.plot_correlated_bands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/read_config.html">read_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#general">general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#solver">solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#dft">dft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#advanced">advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/util.html">util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.symmetrize_gamma_file.html">util.symmetrize_gamma_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.update_dmft_config.html">util.update_dmft_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.update_results_h5.html">util.update_results_h5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.write_kslice_to_h5.html">util.write_kslice_to_h5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html">CaFeO3 CSC with VASP PLOs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)">Running the initial SCF DFT calculation (~ 1 core hour)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-CSC-DMFT-calculations">Running the CSC DMFT calculations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html">Plotting the spectral function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Basic-options">Basic options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Wannier90">Wannier90</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#BZ-configuration">BZ configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Self-energy">Self-energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Plotting-options">Plotting options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Run-and-Plotting">Run and Plotting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues.html">reporting issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7E588A" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">solid_dmft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>dft_managers.qe_manager</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dft_managers.qe_manager</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># solid_dmft - A versatile python wrapper to perform DFT+DMFT calculations</span>
+<span class="c1">#              utilizing the TRIQS software library</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright (C) 2018-2020, ETH Zurich</span>
+<span class="c1"># Copyright (C) 2021, The Simons Foundation</span>
+<span class="c1">#      authors: A. Hampel, M. Merkel, and S. Beck</span>
+<span class="c1">#</span>
+<span class="c1"># solid_dmft is free software: you can redistribute it and/or modify it under the</span>
+<span class="c1"># terms of the GNU General Public License as published by the Free Software</span>
+<span class="c1"># Foundation, either version 3 of the License, or (at your option) any later</span>
+<span class="c1"># version.</span>
+<span class="c1">#</span>
+<span class="c1"># solid_dmft is distributed in the hope that it will be useful, but WITHOUT ANY</span>
+<span class="c1"># WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A</span>
+<span class="c1"># PARTICULAR PURPOSE. See the GNU General Public License for more details.</span>
+
+<span class="c1"># You should have received a copy of the GNU General Public License along with</span>
+<span class="c1"># solid_dmft (in the file COPYING.txt in this directory). If not, see</span>
+<span class="c1"># &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">################################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Contains the handling of the QE process. It can start QE, reactivate it,</span>
+<span class="sd">check if the lock file is there and finally kill QE. Needed for CSC calculations.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">shlex</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">triqs.utility.mpi</span> <span class="k">as</span> <span class="nn">mpi</span>
+
+
+<span class="k">def</span> <span class="nf">_create_hostfile</span><span class="p">(</span><span class="n">number_cores</span><span class="p">,</span> <span class="n">cluster_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Writes a host file for the mpirun. This tells mpi which nodes to ssh into</span>
+<span class="sd">    and start VASP on. The format of the hist file depends on the type of MPI</span>
+<span class="sd">    that is used.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_cores: int, the number of cores that vasp runs on</span>
+<span class="sd">    cluster_name: string, the name of the server</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    string: name of the hostfile if not run locally and if called by master node</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">cluster_name</span> <span class="o">==</span> <span class="s1">&#39;local&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">hostnames</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">(),</span> <span class="n">root</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
+        <span class="c1"># create hostfile based on first number_cores ranks</span>
+        <span class="n">hosts</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">hostname</span> <span class="ow">in</span> <span class="n">hostnames</span><span class="p">[:</span><span class="n">number_cores</span><span class="p">]:</span>
+            <span class="n">hosts</span><span class="p">[</span><span class="n">hostname</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">mask_hostfile</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rusty&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> slots=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="c1"># OpenMPI format</span>
+                         <span class="s1">&#39;rusty-intra&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> slots=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="c1">#OpenMPI format</span>
+                         <span class="s1">&#39;rusty-ompi2&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> slots=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="c1"># OpenMPI format</span>
+                         <span class="s1">&#39;daint&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="c1"># MPICH format</span>
+                        <span class="p">}[</span><span class="n">cluster_name</span><span class="p">]</span>
+
+        <span class="n">hostfile</span> <span class="o">=</span> <span class="s1">&#39;dft.hostfile&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">hostfile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mask_hostfile</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">hosts</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+        <span class="k">return</span> <span class="n">hostfile</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">_find_path_to_mpi_command</span><span class="p">(</span><span class="n">env_vars</span><span class="p">,</span> <span class="n">mpi_exe</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Finds the complete path for the mpi executable by scanning the directories</span>
+<span class="sd">    of $PATH.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    env_vars: dict of string, environment variables containing PATH</span>
+<span class="sd">    mpi_exe: string, mpi command</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    string: absolute path to mpi command</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">for</span> <span class="n">path_directory</span> <span class="ow">in</span> <span class="n">env_vars</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PATH&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">path_directory</span><span class="p">:</span>
+            <span class="n">potential_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_directory</span><span class="p">,</span> <span class="n">mpi_exe</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">potential_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">F_OK</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">X_OK</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">potential_path</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">_get_mpi_arguments</span><span class="p">(</span><span class="n">cluster_name</span><span class="p">,</span> <span class="n">mpi_exe</span><span class="p">,</span> <span class="n">number_cores</span><span class="p">,</span> <span class="n">qe_exec</span><span class="p">,</span> <span class="n">hostfile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Depending on the settings of the cluster and the type of MPI used,</span>
+<span class="sd">    the arguments to the mpi call have to be different. The most technical part</span>
+<span class="sd">    of the vasp handler.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cluster_name: string, name of the cluster so that settings can be tailored to it</span>
+<span class="sd">    mpi_exe: string, mpi command</span>
+<span class="sd">    number_cores: int, the number of cores that vasp runs on</span>
+<span class="sd">    vasp_command: string, the command to start vasp</span>
+<span class="sd">    hostfile: string, name of the hostfile</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of string: arguments to start mpi with</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">cluster_name</span> <span class="o">==</span> <span class="s1">&#39;local&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">mpi_exe</span><span class="p">,</span> <span class="s1">&#39;-np&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_cores</span><span class="p">)]</span> <span class="o">+</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">qe_exec</span><span class="p">)</span>
+
+    <span class="c1"># For the second node, mpirun starts VASP by using ssh</span>
+    <span class="c1"># Therefore we need to handover the env variables with -x</span>
+    <span class="k">if</span> <span class="n">cluster_name</span> <span class="o">==</span> <span class="s1">&#39;rusty&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">mpi_exe</span><span class="p">,</span> <span class="s1">&#39;-hostfile&#39;</span><span class="p">,</span> <span class="n">hostfile</span><span class="p">,</span> <span class="s1">&#39;-np&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_cores</span><span class="p">),</span>
+                <span class="s1">&#39;-mca&#39;</span><span class="p">,</span> <span class="s1">&#39;mtl&#39;</span><span class="p">,</span> <span class="s1">&#39;^psm,psm2,ofi&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-mca&#39;</span><span class="p">,</span> <span class="s1">&#39;btl&#39;</span><span class="p">,</span> <span class="s1">&#39;^vader,openib,usnix&#39;</span> <span class="p">,</span>
+                <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="s1">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="s1">&#39;PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="s1">&#39;OMP_NUM_THREADS&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">qe_exec</span><span class="p">)</span>
+    <span class="c1"># Run mpi with intra-node communication among ranks (on a single node).</span>
+    <span class="k">if</span> <span class="n">cluster_name</span> <span class="o">==</span> <span class="s1">&#39;rusty-intra&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">mpi_exe</span><span class="p">,</span> <span class="s1">&#39;-np&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_cores</span><span class="p">),</span>
+                <span class="s1">&#39;--mca&#39;</span><span class="p">,</span> <span class="s1">&#39;pml&#39;</span><span class="p">,</span> <span class="s1">&#39;ob1&#39;</span><span class="p">,</span> <span class="s1">&#39;--mca&#39;</span><span class="p">,</span> <span class="s1">&#39;btl&#39;</span><span class="p">,</span> <span class="s1">&#39;self,vader&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="s1">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="s1">&#39;PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="s1">&#39;OMP_NUM_THREADS&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">qe_exec</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cluster_name</span> <span class="o">==</span> <span class="s1">&#39;rusty-ompi2&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">mpi_exe</span><span class="p">,</span> <span class="s1">&#39;-hostfile&#39;</span><span class="p">,</span> <span class="n">hostfile</span><span class="p">,</span> <span class="s1">&#39;-np&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_cores</span><span class="p">),</span>
+                <span class="s1">&#39;-mca&#39;</span><span class="p">,</span> <span class="s1">&#39;mtl&#39;</span><span class="p">,</span> <span class="s1">&#39;^psm2,ofi&#39;</span><span class="p">,</span> <span class="s1">&#39;-mca&#39;</span><span class="p">,</span> <span class="s1">&#39;btl&#39;</span><span class="p">,</span> <span class="s1">&#39;^vader&#39;</span> <span class="p">,</span><span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="s1">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="s1">&#39;PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="s1">&#39;OMP_NUM_THREADS&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">qe_exec</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cluster_name</span> <span class="o">==</span> <span class="s1">&#39;daint&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">mpi_exe</span><span class="p">,</span> <span class="s1">&#39;-launcher&#39;</span><span class="p">,</span> <span class="s1">&#39;ssh&#39;</span><span class="p">,</span> <span class="s1">&#39;-hostfile&#39;</span><span class="p">,</span> <span class="n">hostfile</span><span class="p">,</span>
+                <span class="s1">&#39;-np&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_cores</span><span class="p">),</span> <span class="s1">&#39;-envlist&#39;</span><span class="p">,</span> <span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">qe_exec</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">_fork_and_start_qe</span><span class="p">(</span><span class="n">mpi_exe</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">env_vars</span><span class="p">,</span> <span class="n">seedname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Forks a process from the master process that then calls mpi to start vasp.</span>
+<span class="sd">    The child process running VASP never leaves this function whereas the main</span>
+<span class="sd">    process returns the child&#39;s process id and continues.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mpi_exe: string, mpi command</span>
+<span class="sd">    arguments: list of string, arguments to start mpi with</span>
+<span class="sd">    env_vars: dict of string, environment variables containing PATH</span>
+<span class="sd">    seedname: string, QE input file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int: id of the VASP child process</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mpi_arguments</span><span class="p">,</span> <span class="n">qe_file_ext</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;scf&#39;</span><span class="p">,</span> <span class="s1">&#39;nscf&#39;</span><span class="p">,</span> <span class="s1">&#39;pw2wan&#39;</span><span class="p">,</span> <span class="s1">&#39;mod_scf&#39;</span><span class="p">,</span> <span class="s1">&#39;bnd&#39;</span><span class="p">,</span> <span class="s1">&#39;bands&#39;</span><span class="p">,</span> <span class="s1">&#39;proj&#39;</span><span class="p">]:</span>
+
+        <span class="n">inp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">qe_file_ext</span><span class="si">}</span><span class="s1">.in&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">qe_file_ext</span><span class="si">}</span><span class="s1">.out&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">qe_file_ext</span><span class="si">}</span><span class="s1">.err&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  soliDMFT: Starting </span><span class="si">{}</span><span class="s1"> calculation...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qe_file_ext</span><span class="p">))</span>
+
+        <span class="c1"># start subprocess</span>
+        <span class="n">qe_process_id</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">mpi_arguments</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="n">inp</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env_vars</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                       <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># write output and error file</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">qe_process_id</span><span class="o">.</span><span class="n">stdout</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">qe_process_id</span><span class="o">.</span><span class="n">stderr</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">err</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">qe_process_id</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;QE calculation failed. Exiting programm.&#39;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="s1">&#39;win&#39;</span> <span class="ow">in</span> <span class="n">qe_file_ext</span><span class="p">:</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  soliDMFT: Starting Wannier90 </span><span class="si">{}</span><span class="s1">...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qe_file_ext</span><span class="p">))</span>
+
+        <span class="c1"># don&#39;t need any piping for Wannier90</span>
+        <span class="n">qe_process_id</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">(</span><span class="n">mpi_arguments</span> <span class="o">+</span> <span class="p">[</span><span class="n">seedname</span><span class="p">],</span> <span class="n">env</span><span class="o">=</span><span class="n">env_vars</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">qe_process_id</span>
+
+
+<div class="viewcode-block" id="start"><a class="viewcode-back" href="../../_autosummary/dft_managers.qe_manager.html#dft_managers.qe_manager.start">[docs]</a><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">number_cores</span><span class="p">,</span> <span class="n">qe_file_ext</span><span class="p">,</span> <span class="n">qe_exec</span><span class="p">,</span> <span class="n">cluster_name</span><span class="p">,</span> <span class="n">seedname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Starts the VASP child process. Takes care of initializing a clean</span>
+<span class="sd">    environment for the child process. This is needed so that VASP does not</span>
+<span class="sd">    get confused with all the standard slurm environment variables.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    number_cores: int, the number of cores that vasp runs on</span>
+<span class="sd">    vasp_command: string, the command to start vasp</span>
+<span class="sd">    cluster_name: string, name of the cluster so that settings can be tailored to it</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># get MPI env</span>
+    <span class="n">qe_process_id</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">hostfile</span> <span class="o">=</span> <span class="n">_create_hostfile</span><span class="p">(</span><span class="n">number_cores</span><span class="p">,</span> <span class="n">cluster_name</span><span class="p">)</span>
+    <span class="n">qe_exec_path</span> <span class="o">=</span> <span class="n">qe_exec</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">qe_exec</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">qe_exec</span> <span class="o">=</span> <span class="n">qe_exec_path</span>
+
+    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
+        <span class="c1"># clean environment</span>
+        <span class="n">env_vars</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;SHELL&#39;</span><span class="p">,</span> <span class="s1">&#39;PWD&#39;</span><span class="p">,</span> <span class="s1">&#39;HOME&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;OMP_NUM_THREADS&#39;</span><span class="p">,</span> <span class="s1">&#39;OMPI_MCA_btl_vader_single_copy_mechanism&#39;</span><span class="p">]:</span>
+            <span class="n">var</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">var_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">var</span><span class="p">:</span>
+                <span class="n">env_vars</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span>
+
+        <span class="c1"># assuming that mpirun points to the correct mpi env</span>
+        <span class="n">mpi_exe</span> <span class="o">=</span> <span class="n">_find_path_to_mpi_command</span><span class="p">(</span><span class="n">env_vars</span><span class="p">,</span> <span class="s1">&#39;mpirun&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;scf&#39;</span><span class="p">,</span> <span class="s1">&#39;nscf&#39;</span><span class="p">,</span> <span class="s1">&#39;mod_scf&#39;</span><span class="p">,</span> <span class="s1">&#39;bnd&#39;</span><span class="p">]:</span>
+            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;pw.x -nk </span><span class="si">{</span><span class="n">number_cores</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;pw2wan&#39;</span><span class="p">]:</span>
+            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="s1">&#39;pw2wannier90.x -nk 1 -pd .true.&#39;</span>
+        <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;bands&#39;</span><span class="p">]:</span>
+            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;bands.x -nk </span><span class="si">{</span><span class="n">number_cores</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;proj&#39;</span><span class="p">]:</span>
+            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;projwfc.x -nk </span><span class="si">{</span><span class="n">number_cores</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;win_pp&#39;</span><span class="p">]:</span>
+            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="s1">&#39;wannier90.x -pp&#39;</span>
+        <span class="k">elif</span> <span class="n">qe_file_ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">]:</span>
+            <span class="n">qe_exec</span> <span class="o">+=</span> <span class="s1">&#39;wannier90.x&#39;</span>
+
+        <span class="n">arguments</span> <span class="o">=</span> <span class="n">_get_mpi_arguments</span><span class="p">(</span><span class="n">cluster_name</span><span class="p">,</span> <span class="n">mpi_exe</span><span class="p">,</span> <span class="n">number_cores</span><span class="p">,</span> <span class="n">qe_exec</span><span class="p">,</span> <span class="n">hostfile</span><span class="p">)</span>
+        <span class="n">qe_process_id</span> <span class="o">=</span> <span class="n">_fork_and_start_qe</span><span class="p">(</span><span class="n">mpi_exe</span><span class="p">,</span> <span class="p">(</span><span class="n">arguments</span><span class="p">,</span> <span class="n">qe_file_ext</span><span class="p">),</span> <span class="n">env_vars</span><span class="p">,</span> <span class="n">seedname</span><span class="p">)</span>
+
+    <span class="n">poll_barrier</span><span class="p">(</span><span class="n">mpi</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="p">)</span>
+    <span class="n">qe_process_id</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">qe_process_id</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">qe_process_id</span></div>
+
+
+<div class="viewcode-block" id="poll_barrier"><a class="viewcode-back" href="../../_autosummary/dft_managers.qe_manager.html#dft_managers.qe_manager.poll_barrier">[docs]</a><span class="k">def</span> <span class="nf">poll_barrier</span><span class="p">(</span><span class="n">comm</span><span class="p">,</span> <span class="n">poll_interval</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Use asynchronous synchronization, otherwise mpi.barrier uses up all the CPU time during</span>
+<span class="sd">    the run of subprocess.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    comm: MPI communicator</span>
+<span class="sd">    poll_interval: float, time step for pinging the status of the sleeping ranks</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">req</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Ibarrier</span><span class="p">()</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">req</span><span class="o">.</span><span class="n">Test</span><span class="p">():</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">poll_interval</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>postprocessing.eval_U_cRPA_Vasp &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7E588A" >
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#version-compatibility">Version compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#code-structure">code structure:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/w90_interface.html">Wannier90 interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/w90_interface.html#orbital-order-in-the-w90-converter">orbital order in the W90 converter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/vasp_csc.html">interface to VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#general-remarks">General remarks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#locproj-bug-for-individual-projections">LOCPROJ bug for individual projections:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#convergence-of-projectors-with-vasp">convergence of projectors with Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#enabling-csc-calculations-with-wannier90-projectors">Enabling CSC calculations with Wannier90 projectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#speeding-up-by-not-writing-projectors-at-every-step">Speeding up by not writing projectors at every step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cRPA_VASP/README.html">How to do cRPA calculations with VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#file-description">file description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#workflow">Workflow:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#important-flags">important flags:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#convergency-tests">convergency tests:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#parameterization-of-u-and-j-from-crpa-calculations">Parameterization of U and J from cRPA calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#general-sidemarks">general sidemarks:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#version-and-compilation">version and compilation:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#run-solid-dmft">run solid_dmft</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/docker.html">Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_locally.html">run on your machine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_locally.html#csc-calculations-locally">CSC calculations locally</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_cluster.html">Running solid_dmft on a cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#running-on-cscs-daint">Running on CSCS daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#one-shot-job-on-daint">one shot job on daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#csc-calculations-on-daint">CSC calculations on daint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">module reference manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dft_managers.html">dft_managers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dmft_tools.html">dmft_tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.formatter.html">dmft_tools.formatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.greens_functions_mixer.html">dmft_tools.greens_functions_mixer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.initial_self_energies.html">dmft_tools.initial_self_energies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.interaction_hamiltonian.html">dmft_tools.interaction_hamiltonian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.legendre_filter.html">dmft_tools.legendre_filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.manipulate_chemical_potential.html">dmft_tools.manipulate_chemical_potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.observables.html">dmft_tools.observables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.results_to_archive.html">dmft_tools.results_to_archive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.solver.html">dmft_tools.solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/postprocessing.html">postprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html">postprocessing.eval_U_cRPA_Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.make_spaghetti.html">postprocessing.make_spaghetti</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_gf_imp.html">postprocessing.maxent_gf_imp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_gf_latt.html">postprocessing.maxent_gf_latt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_sigma.html">postprocessing.maxent_sigma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.plot_correlated_bands.html">postprocessing.plot_correlated_bands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/read_config.html">read_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#general">general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#solver">solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#dft">dft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#advanced">advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/util.html">util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.symmetrize_gamma_file.html">util.symmetrize_gamma_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.update_dmft_config.html">util.update_dmft_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.update_results_h5.html">util.update_results_h5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.write_kslice_to_h5.html">util.write_kslice_to_h5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html">CaFeO3 CSC with VASP PLOs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)">Running the initial SCF DFT calculation (~ 1 core hour)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-CSC-DMFT-calculations">Running the CSC DMFT calculations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html">Plotting the spectral function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Basic-options">Basic options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Wannier90">Wannier90</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#BZ-configuration">BZ configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Self-energy">Self-energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Plotting-options">Plotting options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Run-and-Plotting">Run and Plotting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues.html">reporting issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7E588A" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">solid_dmft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>postprocessing.eval_U_cRPA_Vasp</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for postprocessing.eval_U_cRPA_Vasp</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">python functions for reading Uijkl from a VASP cRPA run and the evaluating the matrix</span>
+<span class="sd">elements for different basis sets.</span>
+
+<span class="sd">Copyright (C) 2020, A. Hampel and M. Merkel from Materials Theory Group</span>
+<span class="sd">at ETH Zurich</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="read_uijkl"><a class="viewcode-back" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.read_uijkl">[docs]</a><span class="k">def</span> <span class="nf">read_uijkl</span><span class="p">(</span><span class="n">path_to_uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    reads the VASP UIJKL files or the vijkl file if wanted</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path_to_uijkl : string</span>
+<span class="sd">        path to Uijkl like file</span>
+<span class="sd">    n_sites: int</span>
+<span class="sd">        number of different atoms (Wannier centers)</span>
+<span class="sd">    n_orb : int</span>
+<span class="sd">        number of orbitals per atom</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    uijkl : numpy array</span>
+<span class="sd">        uijkl Coulomb tensor</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">n_sites</span><span class="o">*</span><span class="n">n_orb</span>
+    <span class="n">uijkl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">dim</span><span class="p">))</span>
+    <span class="n">data</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">path_to_uijkl</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">uijkl</span></div>
+
+
+<div class="viewcode-block" id="red_to_2ind"><a class="viewcode-back" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.red_to_2ind">[docs]</a><span class="k">def</span> <span class="nf">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    reduces the 4index coulomb matrix to a 2index matrix and</span>
+<span class="sd">    follows the procedure given in PRB96 seth,peil,georges:</span>
+<span class="sd">    U_antipar = U_mm&#39;^oo&#39; = U_mm&#39;mm&#39; (Coulomb Int)</span>
+<span class="sd">    U_par = U_mm&#39;^oo = U_mm&#39;mm&#39; - U_mm&#39;m&#39;m (for intersite interaction)</span>
+<span class="sd">    U_ijij (Hunds coupling)</span>
+<span class="sd">    the indices in VASP are switched: U_ijkl ---VASP--&gt; U_ikjl</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    uijkl : numpy array</span>
+<span class="sd">        4d numpy array of Coulomb tensor</span>
+<span class="sd">    n_sites: int</span>
+<span class="sd">        number of different atoms (Wannier centers)</span>
+<span class="sd">    n_orb : int</span>
+<span class="sd">        number of orbitals per atom</span>
+<span class="sd">    out : bool</span>
+<span class="sd">        verbose mode</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Uij_anti : numpy array</span>
+<span class="sd">        red 2 index matrix U_mm&#39;mm&#39;</span>
+<span class="sd">    Uiijj : numpy array</span>
+<span class="sd">        red 2 index matrix U_iijj</span>
+<span class="sd">    Uijji : numpy array</span>
+<span class="sd">        red 2 index matrix Uijji</span>
+<span class="sd">    Uij_par : numpy array</span>
+<span class="sd">        red 2 index matrix U_mm\&#39;mm\&#39; - U_mm\&#39;m\&#39;m</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">n_sites</span><span class="o">*</span><span class="n">n_orb</span>
+
+    <span class="c1"># create 2 index matrix</span>
+    <span class="n">Uij_anti</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
+    <span class="n">Uij_par</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
+    <span class="n">Uiijj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
+    <span class="n">Uijji</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">dim</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">dim</span><span class="p">):</span>
+            <span class="c1"># the indices in VASP are switched: U_ijkl ---VASP--&gt; U_ikjl</span>
+            <span class="n">Uij_anti</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">Uij_par</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">Uiijj</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span>  <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">Uijji</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;reduced U anti-parallel = U_mm</span><span class="se">\&#39;</span><span class="s1">\^oo</span><span class="se">\&#39;</span><span class="s1"> = U_mm</span><span class="se">\&#39;</span><span class="s1">mm</span><span class="se">\&#39;</span><span class="s1"> matrix : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uij_anti</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;reduced U parallel = U_mm</span><span class="se">\&#39;</span><span class="s1">\^oo = U_mm</span><span class="se">\&#39;</span><span class="s1">mm</span><span class="se">\&#39;</span><span class="s1"> - U_mm</span><span class="se">\&#39;</span><span class="s1">m</span><span class="se">\&#39;</span><span class="s1">m matrix : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uij_par</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;reduced Uijji : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uijji</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;reduced Uiijj : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uiijj</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Uij_anti</span><span class="p">,</span><span class="n">Uiijj</span><span class="p">,</span><span class="n">Uijji</span><span class="p">,</span><span class="n">Uij_par</span></div>
+
+
+<div class="viewcode-block" id="calc_kan_params"><a class="viewcode-back" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calc_kan_params">[docs]</a><span class="k">def</span> <span class="nf">calc_kan_params</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    calculates the kanamori interaction parameters from a</span>
+<span class="sd">    given Uijkl matrix. Follows the procedure given in</span>
+<span class="sd">    PHYSICAL REVIEW B 86, 165105 (2012) Vaugier,Biermann</span>
+<span class="sd">    formula 30,31,32</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    uijkl : numpy array</span>
+<span class="sd">        4d numpy array of Coulomb tensor</span>
+<span class="sd">    n_sites: int</span>
+<span class="sd">        number of different atoms (Wannier centers)</span>
+<span class="sd">    n_orb : int</span>
+<span class="sd">        number of orbitals per atom</span>
+<span class="sd">    out : bool</span>
+<span class="sd">        verbose mode</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int_params : direct</span>
+<span class="sd">        kanamori parameters</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">int_params</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">n_sites</span><span class="o">*</span><span class="n">n_orb</span>
+
+    <span class="c1"># calculate intra-orbital U</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+        <span class="n">U</span> <span class="o">+=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">U</span><span class="o">/</span><span class="p">(</span><span class="n">n_orb</span><span class="p">)</span>
+    <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span>
+
+    <span class="c1"># calculate the U&#39;</span>
+    <span class="n">Uprime</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+                <span class="n">Uprime</span> <span class="o">+=</span>  <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+    <span class="n">Uprime</span> <span class="o">=</span> <span class="n">Uprime</span><span class="o">/</span> <span class="p">(</span><span class="n">n_orb</span><span class="o">*</span><span class="p">(</span><span class="n">n_orb</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;Uprime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Uprime</span>
+
+    <span class="c1"># calculate J</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+                <span class="n">J</span> <span class="o">+=</span>  <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">J</span><span class="o">/</span> <span class="p">(</span><span class="n">n_orb</span><span class="o">*</span><span class="p">(</span><span class="n">n_orb</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">J</span>
+
+    <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;U= &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;U</span><span class="se">\&#39;</span><span class="s1">= &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Uprime</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;J= &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">int_params</span></div>
+
+<div class="viewcode-block" id="calc_u_avg_fulld"><a class="viewcode-back" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calc_u_avg_fulld">[docs]</a><span class="k">def</span> <span class="nf">calc_u_avg_fulld</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    calculates the coulomb integrals from a</span>
+<span class="sd">    given Uijkl matrix for full d shells. Follows the procedure given</span>
+<span class="sd">    in Pavarini  - 2014 - arXiv - 1411 6906 - julich school U matrix</span>
+<span class="sd">    page 8 or as done in</span>
+<span class="sd">    PHYSICAL REVIEW B 86, 165105 (2012) Vaugier,Biermann</span>
+<span class="sd">    formula 23, 25</span>
+<span class="sd">    works atm only for full d shell (l=2)</span>
+
+<span class="sd">    Returns F0=U, and J=(F2+F4)/2</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    uijkl : numpy array</span>
+<span class="sd">        4d numpy array of Coulomb tensor</span>
+<span class="sd">    n_sites: int</span>
+<span class="sd">        number of different atoms (Wannier centers)</span>
+<span class="sd">    n_orb : int</span>
+<span class="sd">        number of orbitals per atom</span>
+<span class="sd">    out : bool</span>
+<span class="sd">        verbose mode</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int_params : direct</span>
+<span class="sd">        Slater parameters</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">int_params</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">n_sites</span><span class="o">*</span><span class="n">n_orb</span>
+    <span class="n">Uij_anti</span><span class="p">,</span><span class="n">Uiijj</span><span class="p">,</span><span class="n">Uijji</span><span class="p">,</span><span class="n">Uij_par</span> <span class="o">=</span> <span class="n">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+    <span class="c1"># U_antipar = U_mm&#39;^oo&#39; = U_mm&#39;mm&#39; (Coulomb Int)</span>
+    <span class="c1"># U_par = U_mm&#39;^oo = U_mm&#39;mm&#39; - U_mm&#39;m&#39;m (for intersite interaction)</span>
+    <span class="c1"># here we assume cubic harmonics (real harmonics) as basis functions in the order</span>
+    <span class="c1"># dz2 dxz dyz dx2-y2 dxy</span>
+    <span class="c1"># triqs basis: basis ordered as (xy,yz,z^2,xz,x^2-y^2)</span>
+
+    <span class="c1"># calculate J</span>
+    <span class="n">J_cubic</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+                <span class="n">J_cubic</span> <span class="o">+=</span>  <span class="n">Uijji</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+    <span class="n">J_cubic</span> <span class="o">=</span> <span class="n">J_cubic</span><span class="o">/</span><span class="p">(</span><span class="mf">20.0</span><span class="p">)</span>
+    <span class="c1"># 20 for 2l(2l+1)</span>
+    <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;J_cubic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">J_cubic</span>
+
+    <span class="c1"># conversion from cubic to spherical:</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="mf">7.0</span> <span class="o">*</span> <span class="n">J_cubic</span> <span class="o">/</span> <span class="mf">5.0</span>
+
+    <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">J</span>
+
+    <span class="c1"># calculate intra-orbital U</span>
+    <span class="n">U_0</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+            <span class="n">U_0</span> <span class="o">+=</span> <span class="n">Uij_anti</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">U_0</span> <span class="o">=</span> <span class="n">U_0</span> <span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_orb</span><span class="p">)</span>
+    <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;U_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">U_0</span>
+
+    <span class="c1"># now conversion from cubic to spherical</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">U_0</span> <span class="o">-</span> <span class="p">(</span> <span class="mf">8.0</span><span class="o">*</span><span class="n">J_cubic</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">)</span>
+
+    <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span>
+
+    <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cubic U_0= &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U_0</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cubic J_cubic= &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">J_cubic</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spherical F0=U= &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spherical J=(F2+f4)/14 = &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">int_params</span></div>
+
+<div class="viewcode-block" id="calculate_interaction_from_averaging"><a class="viewcode-back" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calculate_interaction_from_averaging">[docs]</a><span class="k">def</span> <span class="nf">calculate_interaction_from_averaging</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    calculates U,J by averaging directly the Uijkl matrix</span>
+<span class="sd">    ignoring if tensor is given in spherical or cubic basis.</span>
+<span class="sd">    The assumption here is that the averaging gives indepentendly</span>
+<span class="sd">    of the choosen basis (cubic or spherical harmonics) the same results</span>
+<span class="sd">    if Uijkl is a true Slater matrix.</span>
+
+<span class="sd">    Returns F0=U, and J=(F2+F4)/2</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    uijkl : numpy array</span>
+<span class="sd">        4d numpy array of Coulomb tensor</span>
+<span class="sd">    n_sites: int</span>
+<span class="sd">        number of different atoms (Wannier centers)</span>
+<span class="sd">    n_orb : int</span>
+<span class="sd">        number of orbitals per atom</span>
+<span class="sd">    out : bool</span>
+<span class="sd">        verbose mode</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    U, J: tuple</span>
+<span class="sd">        Slater parameters</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">l</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">n_sites</span><span class="o">*</span><span class="n">n_orb</span>
+    <span class="n">Uij_anti</span><span class="p">,</span><span class="n">Uiijj</span><span class="p">,</span><span class="n">Uijji</span><span class="p">,</span><span class="n">Uij_par</span> <span class="o">=</span> <span class="n">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+    <span class="c1"># Calculates Slater-averaged parameters directly</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_sites</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_sites</span>
+    <span class="k">for</span> <span class="n">impurity</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_sites</span><span class="p">):</span>
+        <span class="n">u_ijij_imp</span> <span class="o">=</span> <span class="n">Uij_anti</span><span class="p">[</span><span class="n">impurity</span><span class="o">*</span><span class="n">n_orb</span><span class="p">:(</span><span class="n">impurity</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">impurity</span><span class="o">*</span><span class="n">n_orb</span><span class="p">:(</span><span class="n">impurity</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n_orb</span><span class="p">]</span>
+        <span class="n">U</span><span class="p">[</span><span class="n">impurity</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">u_ijij_imp</span><span class="p">)</span>
+
+        <span class="n">u_iijj_imp</span> <span class="o">=</span> <span class="n">Uiijj</span><span class="p">[</span><span class="n">impurity</span><span class="o">*</span><span class="n">n_orb</span><span class="p">:(</span><span class="n">impurity</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">impurity</span><span class="o">*</span><span class="n">n_orb</span><span class="p">:(</span><span class="n">impurity</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n_orb</span><span class="p">]</span>
+        <span class="n">J</span><span class="p">[</span><span class="n">impurity</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u_iijj_imp</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">U</span><span class="p">[</span><span class="n">impurity</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spherical F0=U= &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spherical J=(F2+f4)/14 = &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">U</span><span class="p">,</span> <span class="n">J</span></div>
+
+<div class="viewcode-block" id="fit_slater_fulld"><a class="viewcode-back" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.fit_slater_fulld">[docs]</a><span class="k">def</span> <span class="nf">fit_slater_fulld</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">U_init</span><span class="p">,</span><span class="n">J_init</span><span class="p">,</span><span class="n">fixed_F4_F2</span><span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    finds best Slater parameters U, J for given Uijkl tensor</span>
+<span class="sd">    using the triqs U_matrix operator routine</span>
+<span class="sd">    assumes F4/F2=0.625</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="kn">from</span> <span class="nn">triqs.operators.util.U_matrix</span> <span class="kn">import</span> <span class="n">U_matrix</span><span class="p">,</span> <span class="n">reduce_4index_to_2index</span>
+    <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+    <span class="c1"># transform U matrix orbital basis ijkl to nmop, note the last two indices need to be switched in the T matrices</span>
+    <span class="k">def</span> <span class="nf">transformU</span><span class="p">(</span><span class="n">U_matrix</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;im,jn,ijkl,lo,kp-&gt;mnpo&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">U_matrix</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">minimizer</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+        <span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span> <span class="o">=</span> <span class="n">parameters</span>
+        <span class="n">Umat_full</span> <span class="o">=</span> <span class="n">U_matrix</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">U_int</span><span class="o">=</span><span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span><span class="o">=</span><span class="n">J_hund</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+        <span class="n">Umat_full</span> <span class="o">=</span> <span class="n">transformU</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">,</span> <span class="n">rot_def_to_w90</span><span class="p">)</span>
+
+        <span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span> <span class="o">=</span> <span class="n">reduce_4index_to_2index</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">)</span>
+        <span class="n">u_iijj_crpa</span> <span class="o">=</span> <span class="n">Uiijj</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">u_iijj_slater</span> <span class="o">=</span> <span class="n">Upmat</span> <span class="o">-</span> <span class="n">Umat</span>
+        <span class="n">u_ijij_crpa</span> <span class="o">=</span> <span class="n">Uij_anti</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">u_ijij_slater</span> <span class="o">=</span> <span class="n">Upmat</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">u_iijj_crpa</span> <span class="o">-</span> <span class="n">u_iijj_slater</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">u_ijij_crpa</span> <span class="o">-</span> <span class="n">u_ijij_slater</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">minimizer_radial</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+        <span class="n">F0</span><span class="p">,</span> <span class="n">F2</span><span class="p">,</span> <span class="n">F4</span> <span class="o">=</span> <span class="n">parameters</span>
+        <span class="n">Umat_full</span> <span class="o">=</span> <span class="n">U_matrix</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">radial_integrals</span><span class="o">=</span><span class="p">[</span><span class="n">F0</span><span class="p">,</span><span class="n">F2</span><span class="p">,</span><span class="n">F4</span><span class="p">],</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+        <span class="n">Umat_full</span> <span class="o">=</span> <span class="n">transformU</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">,</span> <span class="n">rot_def_to_w90</span><span class="p">)</span>
+
+        <span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span> <span class="o">=</span> <span class="n">reduce_4index_to_2index</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">)</span>
+        <span class="n">u_iijj_crpa</span> <span class="o">=</span> <span class="n">Uiijj</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">u_iijj_slater</span> <span class="o">=</span> <span class="n">Upmat</span> <span class="o">-</span> <span class="n">Umat</span>
+        <span class="n">u_ijij_crpa</span> <span class="o">=</span> <span class="n">Uij_anti</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">u_ijij_slater</span> <span class="o">=</span> <span class="n">Upmat</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">u_iijj_crpa</span> <span class="o">-</span> <span class="n">u_iijj_slater</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">u_ijij_crpa</span> <span class="o">-</span> <span class="n">u_ijij_slater</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># rot triqs d basis to w90 default basis!</span>
+    <span class="c1"># check your order of orbitals assuming:</span>
+    <span class="c1"># dz2, dxz, dyz, dx2-y2, dxy</span>
+    <span class="n">rot_def_to_w90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                               <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+    <span class="n">Uij_anti</span><span class="p">,</span><span class="n">Uiijj</span><span class="p">,</span><span class="n">Uijji</span><span class="p">,</span><span class="n">Uij_par</span> <span class="o">=</span> <span class="n">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">fixed_F4_F2</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">minimizer</span><span class="p">,</span> <span class="p">(</span><span class="n">U_init</span><span class="p">,</span><span class="n">J_init</span><span class="p">))</span>
+
+        <span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Final results from fit: U = </span><span class="si">{:.3f}</span><span class="s1"> eV, J = </span><span class="si">{:.3f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimize error&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># start with 0.63 as guess</span>
+        <span class="n">F0</span> <span class="o">=</span> <span class="n">U_init</span>
+        <span class="n">F2</span> <span class="o">=</span> <span class="n">J_init</span> <span class="o">*</span> <span class="mf">14.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">0.63</span><span class="p">)</span>
+        <span class="n">F4</span> <span class="o">=</span> <span class="mf">0.630</span> <span class="o">*</span> <span class="n">F2</span>
+
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="p">(</span><span class="n">F0</span><span class="p">,</span> <span class="n">F2</span><span class="p">,</span> <span class="n">F4</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Initial guess: F0 = </span><span class="si">{0[0]:.3f}</span><span class="s1"> eV, F2 = </span><span class="si">{0[1]:.3f}</span><span class="s1"> eV, F4 = </span><span class="si">{0[2]:.3f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">initial_guess</span><span class="p">))</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">minimizer_radial</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">)</span>
+        <span class="n">F0</span><span class="p">,</span> <span class="n">F2</span><span class="p">,</span> <span class="n">F4</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Final results from fit: F0 = </span><span class="si">{:.3f}</span><span class="s1"> eV, F2 = </span><span class="si">{:.3f}</span><span class="s1"> eV, F4 = </span><span class="si">{:.3f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">F0</span><span class="p">,</span> <span class="n">F2</span><span class="p">,</span> <span class="n">F4</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(F2+F4)/14 = </span><span class="si">{:.3f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">F2</span><span class="o">+</span><span class="n">F4</span><span class="p">)</span><span class="o">/</span><span class="mi">14</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;F4/F2 = </span><span class="si">{:.3f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">F4</span><span class="o">/</span><span class="n">F2</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimize error&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
+        <span class="n">U_int</span> <span class="o">=</span> <span class="n">F0</span>
+        <span class="n">J_hund</span> <span class="o">=</span> <span class="p">(</span><span class="n">F2</span><span class="o">+</span><span class="n">F4</span><span class="p">)</span><span class="o">/</span><span class="mi">14</span>
+
+
+    <span class="k">return</span> <span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span></div>
+
+<span class="c1"># example for a five orbital model</span>
+<span class="c1"># uijkl=read_uijkl(&#39;UIJKL&#39;,1,5)</span>
+<span class="c1"># calc_u_avg_fulld(uijkl,n_sites=1,n_orb=5,out=True)</span>
+<span class="c1"># print(&#39;now via fitting with fixed F4/F2=0.63 ratio&#39;)</span>
+<span class="c1"># fit_slater_fulld(uijkl,1,3,1, fixed_F4_F2 = True)</span>
+<span class="c1"># print(&#39;now directly fitting F0,F2,F4&#39;)</span>
+<span class="c1"># fit_slater_fulld(uijkl,1,3,1, fixed_F4_F2 = False)</span>
+
+<span class="c1"># calculate_interaction_from_averaging(uijkl, 1, 5, out=True)</span>
+
+
+<span class="c1"># example for 3 orbital kanamori</span>
+<span class="c1"># uijkl=read_uijkl(&#39;UIJKL&#39;,1,3)</span>
+<span class="c1"># calc_kan_params(uijkl,1,3,out=True)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

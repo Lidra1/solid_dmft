@@ -59,6 +59,16 @@
 <li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#speeding-up-by-not-writing-projectors-at-every-step">Speeding up by not writing projectors at every step</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="cRPA_VASP/README.html">How to do cRPA calculations with VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#file-description">file description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#workflow">Workflow:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#important-flags">important flags:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#convergency-tests">convergency tests:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#parameterization-of-u-and-j-from-crpa-calculations">Parameterization of U and J from cRPA calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#general-sidemarks">general sidemarks:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#version-and-compilation">version and compilation:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="documentation.html#run-solid-dmft">run solid_dmft</a><ul>
@@ -66,7 +76,6 @@
 <li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#running-a-docker-container">Running a docker container</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="md_notes/run_locally.html">run on your machine</a><ul>
@@ -82,47 +91,48 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="documentation.html#module-reference-manual">module reference manual</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/csc_flow.html">CSC flow module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/dft_managers.html">dft managers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/dft_managers/qe_manager.html">qe_manager.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dft_managers/vasp_manager.html">vasp_manager.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/dft_managers.html">dft_managers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/dmft_cycle.html">dmft cycle module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/dmft_tools.html">dmft tools modules</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/afm_mapping.html">afm_mapping.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/convergence.html">convergence.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/formatter.html">formatter.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/gf_mixer.html">greens_function_mixer.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/initial_sigma.html">initial_self_energies.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/interaction_ham.html">interaction_hamiltonian.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/legendre_filter.html">legendre_filter.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/manipulate_mu.html">manipulate_chemical_potential.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/observables.html">observables.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/results_arch.html">results_to_archive.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/solver.html">solver.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/dmft_tools.html">dmft_tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.formatter.html">dmft_tools.formatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.greens_functions_mixer.html">dmft_tools.greens_functions_mixer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.initial_self_energies.html">dmft_tools.initial_self_energies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.interaction_hamiltonian.html">dmft_tools.interaction_hamiltonian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.legendre_filter.html">dmft_tools.legendre_filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.manipulate_chemical_potential.html">dmft_tools.manipulate_chemical_potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.observables.html">dmft_tools.observables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.results_to_archive.html">dmft_tools.results_to_archive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.solver.html">dmft_tools.solver</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/postprocessing.html">postprocessing tools</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/make_spaghetti.html">make_spaghetti.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/plot_correlated_bands.html">postproc_plotbands.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/postprocessing.html">postprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html">postprocessing.eval_U_cRPA_Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.make_spaghetti.html">postprocessing.make_spaghetti</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.maxent_gf_imp.html">postprocessing.maxent_gf_imp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.maxent_gf_latt.html">postprocessing.maxent_gf_latt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.maxent_sigma.html">postprocessing.maxent_sigma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.plot_correlated_bands.html">postprocessing.plot_correlated_bands</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/read_config.html">read config parser</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/read_config.html#general">general</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/read_config.html#solver">solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/read_config.html#dft">dft</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/read_config.html#advanced">advanced</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/read_config.html">read_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/read_config.html#general">general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/read_config.html#solver">solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/read_config.html#dft">dft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/read_config.html#advanced">advanced</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/util.html">util</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/util/symmetrize_gamma_file.html">symmetrize_gamma_file.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/util/update_dmft_config.html">update_dmft_config.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/util/update_results_h5.html">update_results_h5.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/util/write_kslice_to_h5.html">write_kslice_to_h5.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/util.html">util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/util.symmetrize_gamma_file.html">util.symmetrize_gamma_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/util.update_dmft_config.html">util.update_dmft_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/util.update_results_h5.html">util.update_results_h5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/util.write_kslice_to_h5.html">util.write_kslice_to_h5</a></li>
 </ul>
 </li>
 </ul>
@@ -189,6 +199,7 @@
  | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#K"><strong>K</strong></a>
@@ -204,261 +215,11 @@
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure.__dict__">__dict__ (solid_dmft.dmft_tools.solver.SolverStructure attribute)</a>
+      <li><a href="_autosummary/dmft_tools.solver.html#dmft_tools.solver.SolverStructure.__init__">__init__() (dmft_tools.solver.SolverStructure method)</a>
 </li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure.__init__">__init__() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure.__module__">__module__ (solid_dmft.dmft_tools.solver.SolverStructure attribute)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure.__weakref__">__weakref__ (solid_dmft.dmft_tools.solver.SolverStructure attribute)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._adapt_U_4index_for_SO">_adapt_U_4index_for_SO() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/read_config.html#solid_dmft.read_config._apply_default_values">_apply_default_values() (in module solid_dmft.read_config)</a>
-</li>
-      <li><a href="reference/util/update_dmft_config.html#solid_dmft.util.update_dmft_config._backup_old_file">_backup_old_file() (in module solid_dmft.util.update_dmft_config)</a>
-
-      <ul>
-        <li><a href="reference/util/update_results_h5.html#solid_dmft.util.update_results_h5._backup_old_file">(in module solid_dmft.util.update_results_h5)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/dmft_tools/gf_mixer.html#solid_dmft.dmft_tools.greens_functions_mixer._bgf_to_vec">_bgf_to_vec() (in module solid_dmft.dmft_tools.greens_functions_mixer)</a>
-</li>
-      <li><a href="reference/dmft_tools/gf_mixer.html#solid_dmft.dmft_tools.greens_functions_mixer._broyden_update">_broyden_update() (in module solid_dmft.dmft_tools.greens_functions_mixer)</a>
-</li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._calc_alatt">_calc_alatt() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
-</li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._calc_kslice">_calc_kslice() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
-</li>
-      <li><a href="reference/dmft_cycle.html#solid_dmft.dmft_cycle._calculate_rotation_matrix">_calculate_rotation_matrix() (in module solid_dmft.dmft_cycle)</a>
-</li>
-      <li><a href="reference/read_config.html#solid_dmft.read_config._check_if_params_used">_check_if_params_used() (in module solid_dmft.read_config)</a>
-</li>
-      <li><a href="reference/util/symmetrize_gamma_file.html#solid_dmft.util.symmetrize_gamma_file._check_kpoint_order">_check_kpoint_order() (in module solid_dmft.util.symmetrize_gamma_file)</a>
-</li>
-      <li><a href="reference/read_config.html#solid_dmft.read_config._checks_validity_criterion">_checks_validity_criterion() (in module solid_dmft.read_config)</a>
-</li>
-      <li><a href="reference/dmft_cycle.html#solid_dmft.dmft_cycle._chi_SzSz_setup">_chi_SzSz_setup() (in module solid_dmft.dmft_cycle)</a>
-</li>
-      <li><a href="reference/dmft_tools/results_arch.html#solid_dmft.dmft_tools.results_to_archive._compile_information">_compile_information() (in module solid_dmft.dmft_tools.results_to_archive)</a>
-</li>
-      <li><a href="reference/read_config.html#solid_dmft.read_config._config_add_empty_sections">_config_add_empty_sections() (in module solid_dmft.read_config)</a>
-</li>
-      <li><a href="reference/read_config.html#solid_dmft.read_config._config_find_default_section_entries">_config_find_default_section_entries() (in module solid_dmft.read_config)</a>
-</li>
-      <li><a href="reference/read_config.html#solid_dmft.read_config._config_remove_unused_sections">_config_remove_unused_sections() (in module solid_dmft.read_config)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._construct_density_density">_construct_density_density() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._construct_dynamic">_construct_dynamic() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._construct_kanamori">_construct_kanamori() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._construct_kanamori_soc">_construct_kanamori_soc() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._construct_slater">_construct_slater() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/read_config.html#solid_dmft.read_config._convert_params">_convert_params() (in module solid_dmft.read_config)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._create_cthyb_solver">_create_cthyb_solver() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._create_ctint_solver">_create_ctint_solver() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._create_ctseg_solver">_create_ctseg_solver() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._create_ftps_solver">_create_ftps_solver() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dft_managers/qe_manager.html#solid_dmft.dft_managers.qe_manager._create_hostfile">_create_hostfile() (in module solid_dmft.dft_managers.qe_manager)</a>
-
-      <ul>
-        <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager._create_hostfile">(in module solid_dmft.dft_managers.vasp_manager)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._create_hubbardI_solver">_create_hubbardI_solver() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._create_inchworm_solver">_create_inchworm_solver() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/postprocessing/maxent_sigma.html#solid_dmft.postprocessing.maxent_sigma._create_sigma_continuator">_create_sigma_continuator() (in module solid_dmft.postprocessing.maxent_sigma)</a>
-</li>
-      <li><a href="reference/util/symmetrize_gamma_file.html#solid_dmft.util.symmetrize_gamma_file._create_symmetry_mapping">_create_symmetry_mapping() (in module solid_dmft.util.symmetrize_gamma_file)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._cthyb_postprocessing">_cthyb_postprocessing() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._ctint_postprocessing">_ctint_postprocessing() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._ctseg_postprocessing">_ctseg_postprocessing() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/manipulate_mu.html#solid_dmft.dmft_tools.manipulate_chemical_potential._determine_band_edge">_determine_band_edge() (in module solid_dmft.dmft_tools.manipulate_chemical_potential)</a>
-</li>
-      <li><a href="reference/dmft_cycle.html#solid_dmft.dmft_cycle._determine_block_structure">_determine_block_structure() (in module solid_dmft.dmft_cycle)</a>
-</li>
-      <li><a href="reference/dmft_cycle.html#solid_dmft.dmft_cycle._dmft_step">_dmft_step() (in module solid_dmft.dmft_cycle)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._extract_U_J_list">_extract_U_J_list() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/read_config.html#solid_dmft.read_config._find_nonexistent_params">_find_nonexistent_params() (in module solid_dmft.read_config)</a>
-</li>
-      <li><a href="reference/dft_managers/qe_manager.html#solid_dmft.dft_managers.qe_manager._find_path_to_mpi_command">_find_path_to_mpi_command() (in module solid_dmft.dft_managers.qe_manager)</a>
-
-      <ul>
-        <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager._find_path_to_mpi_command">(in module solid_dmft.dft_managers.vasp_manager)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/dft_managers/qe_manager.html#solid_dmft.dft_managers.qe_manager._fork_and_start_qe">_fork_and_start_qe() (in module solid_dmft.dft_managers.qe_manager)</a>
-</li>
-      <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager._fork_and_start_vasp">_fork_and_start_vasp() (in module solid_dmft.dft_managers.vasp_manager)</a>
-</li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._fract_ind_to_val">_fract_ind_to_val() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._ftps_postprocessing">_ftps_postprocessing() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._generate_four_index_u_matrix">_generate_four_index_u_matrix() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/dmft_tools/convergence.html#solid_dmft.dmft_tools.convergence._generate_header">_generate_header() (in module solid_dmft.dmft_tools.convergence)</a>
-
-      <ul>
-        <li><a href="reference/dmft_tools/observables.html#solid_dmft.dmft_tools.observables._generate_header">(in module solid_dmft.dmft_tools.observables)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/dft_managers/qe_manager.html#solid_dmft.dft_managers.qe_manager._get_mpi_arguments">_get_mpi_arguments() (in module solid_dmft.dft_managers.qe_manager)</a>
-
-      <ul>
-        <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager._get_mpi_arguments">(in module solid_dmft.dft_managers.vasp_manager)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/postprocessing/maxent_gf_imp.html#solid_dmft.postprocessing.maxent_gf_imp._get_nondegenerate_greens_functions">_get_nondegenerate_greens_functions() (in module solid_dmft.postprocessing.maxent_gf_imp)</a>
-
-      <ul>
-        <li><a href="reference/postprocessing/maxent_gf_latt.html#solid_dmft.postprocessing.maxent_gf_latt._get_nondegenerate_greens_functions">(in module solid_dmft.postprocessing.maxent_gf_latt)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/postprocessing/maxent_sigma.html#solid_dmft.postprocessing.maxent_sigma._get_sigma_omega_from_aux">_get_sigma_omega_from_aux() (in module solid_dmft.postprocessing.maxent_sigma)</a>
-</li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._get_tb_bands">_get_tb_bands() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver._gf_fit_tail_fraction">_gf_fit_tail_fraction() (in module solid_dmft.dmft_tools.solver)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._hubbardI_postprocessing">_hubbardI_postprocessing() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._inchworm_postprocessing">_inchworm_postprocessing() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._init_ImFreq_objects">_init_ImFreq_objects() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._init_ReFreq_hubbardI">_init_ReFreq_hubbardI() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure._init_ReFreq_objects">_init_ReFreq_objects() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/manipulate_mu.html#solid_dmft.dmft_tools.manipulate_chemical_potential._initialize_lattice_gf">_initialize_lattice_gf() (in module solid_dmft.dmft_tools.manipulate_chemical_potential)</a>
-</li>
-      <li><a href="reference/postprocessing/make_spaghetti.html#solid_dmft.postprocessing.make_spaghetti._initialize_sum_k_tools">_initialize_sum_k_tools() (in module solid_dmft.postprocessing.make_spaghetti)</a>
-</li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._linefit">_linefit() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
-</li>
-      <li><a href="reference/util/update_dmft_config.html#solid_dmft.util.update_dmft_config._load_config_file">_load_config_file() (in module solid_dmft.util.update_dmft_config)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._load_crpa_interaction_matrix">_load_crpa_interaction_matrix() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/dmft_tools/initial_sigma.html#solid_dmft.dmft_tools.initial_self_energies._load_sigma_from_h5">_load_sigma_from_h5() (in module solid_dmft.dmft_tools.initial_self_energies)</a>
-</li>
-      <li><a href="reference/dmft_tools/manipulate_mu.html#solid_dmft.dmft_tools.manipulate_chemical_potential._mix_chemical_potential">_mix_chemical_potential() (in module solid_dmft.dmft_tools.manipulate_chemical_potential)</a>
-</li>
-      <li><a href="reference/util/symmetrize_gamma_file.html#solid_dmft.util.symmetrize_gamma_file._read_archive">_read_archive() (in module solid_dmft.util.symmetrize_gamma_file)</a>
-</li>
-      <li><a href="reference/util/write_kslice_to_h5.html#solid_dmft.util.write_kslice_to_h5._read_bands">_read_bands() (in module solid_dmft.util.write_kslice_to_h5)</a>
-</li>
-      <li><a href="reference/util/symmetrize_gamma_file.html#solid_dmft.util.symmetrize_gamma_file._read_gamma">_read_gamma() (in module solid_dmft.util.symmetrize_gamma_file)</a>
-</li>
-      <li><a href="reference/postprocessing/make_spaghetti.html#solid_dmft.postprocessing.make_spaghetti._read_h5">_read_h5() (in module solid_dmft.postprocessing.make_spaghetti)</a>
-
-      <ul>
-        <li><a href="reference/postprocessing/maxent_gf_imp.html#solid_dmft.postprocessing.maxent_gf_imp._read_h5">(in module solid_dmft.postprocessing.maxent_gf_imp)</a>
-</li>
-        <li><a href="reference/postprocessing/maxent_gf_latt.html#solid_dmft.postprocessing.maxent_gf_latt._read_h5">(in module solid_dmft.postprocessing.maxent_gf_latt)</a>
-</li>
-        <li><a href="reference/postprocessing/maxent_sigma.html#solid_dmft.postprocessing.maxent_sigma._read_h5">(in module solid_dmft.postprocessing.maxent_sigma)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/util/write_kslice_to_h5.html#solid_dmft.util.write_kslice_to_h5._read_h5_dft_input_proj_mat">_read_h5_dft_input_proj_mat() (in module solid_dmft.util.write_kslice_to_h5)</a>
-</li>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow._read_irred_kpoints_from_vasp">_read_irred_kpoints_from_vasp() (in module solid_dmft.csc_flow)</a>
-</li>
-      <li><a href="reference/postprocessing/maxent_gf_latt.html#solid_dmft.postprocessing.maxent_gf_latt._read_lattice_gf_from_h5">_read_lattice_gf_from_h5() (in module solid_dmft.postprocessing.maxent_gf_latt)</a>
-</li>
-      <li><a href="reference/util/symmetrize_gamma_file.html#solid_dmft.util.symmetrize_gamma_file._read_symmetries_outcar">_read_symmetries_outcar() (in module solid_dmft.util.symmetrize_gamma_file)</a>
-</li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian._rotate_four_index_matrix">_rotate_four_index_matrix() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
-</li>
-      <li><a href="reference/postprocessing/maxent_gf_imp.html#solid_dmft.postprocessing.maxent_gf_imp._run_maxent">_run_maxent() (in module solid_dmft.postprocessing.maxent_gf_imp)</a>
-
-      <ul>
-        <li><a href="reference/postprocessing/maxent_gf_latt.html#solid_dmft.postprocessing.maxent_gf_latt._run_maxent">(in module solid_dmft.postprocessing.maxent_gf_latt)</a>
-</li>
-        <li><a href="reference/postprocessing/maxent_sigma.html#solid_dmft.postprocessing.maxent_sigma._run_maxent">(in module solid_dmft.postprocessing.maxent_sigma)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow._run_plo_converter">_run_plo_converter() (in module solid_dmft.csc_flow)</a>
-</li>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow._run_qe">_run_qe() (in module solid_dmft.csc_flow)</a>
-</li>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow._run_w90converter">_run_w90converter() (in module solid_dmft.csc_flow)</a>
-</li>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow._run_wannier90">_run_wannier90() (in module solid_dmft.csc_flow)</a>
-</li>
-      <li><a href="reference/dmft_tools/initial_sigma.html#solid_dmft.dmft_tools.initial_self_energies._set_loaded_sigma">_set_loaded_sigma() (in module solid_dmft.dmft_tools.initial_self_energies)</a>
-</li>
-      <li><a href="reference/dmft_tools/manipulate_mu.html#solid_dmft.dmft_tools.manipulate_chemical_potential._set_mu_to_gap_middle_with_maxent">_set_mu_to_gap_middle_with_maxent() (in module solid_dmft.dmft_tools.manipulate_chemical_potential)</a>
-</li>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow._set_projections_suppressed">_set_projections_suppressed() (in module solid_dmft.csc_flow)</a>
-</li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._setup_plot_bands">_setup_plot_bands() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
-</li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._sigma_from_dmft">_sigma_from_dmft() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
-</li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands._sigma_from_model">_sigma_from_model() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
-</li>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow._store_dft_eigvals">_store_dft_eigvals() (in module solid_dmft.csc_flow)</a>
-</li>
-      <li><a href="reference/dmft_tools/initial_sigma.html#solid_dmft.dmft_tools.initial_self_energies._sumk_sigma_to_solver_struct">_sumk_sigma_to_solver_struct() (in module solid_dmft.dmft_tools.initial_self_energies)</a>
-</li>
-      <li><a href="reference/util/symmetrize_gamma_file.html#solid_dmft.util.symmetrize_gamma_file._symmetrize_gamma">_symmetrize_gamma() (in module solid_dmft.util.symmetrize_gamma_file)</a>
-</li>
-      <li><a href="reference/postprocessing/maxent_gf_imp.html#solid_dmft.postprocessing.maxent_gf_imp._unpack_maxent_results">_unpack_maxent_results() (in module solid_dmft.postprocessing.maxent_gf_imp)</a>
-
-      <ul>
-        <li><a href="reference/postprocessing/maxent_gf_latt.html#solid_dmft.postprocessing.maxent_gf_latt._unpack_maxent_results">(in module solid_dmft.postprocessing.maxent_gf_latt)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/util/update_results_h5.html#solid_dmft.util.update_results_h5._update_observables">_update_observables() (in module solid_dmft.util.update_results_h5)</a>
-</li>
-      <li><a href="reference/util/update_dmft_config.html#solid_dmft.util.update_dmft_config._update_params">_update_params() (in module solid_dmft.util.update_dmft_config)</a>
-</li>
-      <li><a href="reference/util/update_results_h5.html#solid_dmft.util.update_results_h5._update_results_per_iteration">_update_results_per_iteration() (in module solid_dmft.util.update_results_h5)</a>
-</li>
-      <li><a href="reference/util/update_dmft_config.html#solid_dmft.util.update_dmft_config._update_section_names">_update_section_names() (in module solid_dmft.util.update_dmft_config)</a>
-</li>
-      <li><a href="reference/dmft_tools/gf_mixer.html#solid_dmft.dmft_tools.greens_functions_mixer._vec_to_bgf">_vec_to_bgf() (in module solid_dmft.dmft_tools.greens_functions_mixer)</a>
-</li>
-      <li><a href="reference/util/update_dmft_config.html#solid_dmft.util.update_dmft_config._write_config_file">_write_config_file() (in module solid_dmft.util.update_dmft_config)</a>
-</li>
-      <li><a href="reference/util/write_kslice_to_h5.html#solid_dmft.util.write_kslice_to_h5._write_dft_bands_input_to_h5">_write_dft_bands_input_to_h5() (in module solid_dmft.util.write_kslice_to_h5)</a>
-</li>
-      <li><a href="reference/postprocessing/make_spaghetti.html#solid_dmft.postprocessing.make_spaghetti._write_dos_and_spaghetti_to_h5">_write_dos_and_spaghetti_to_h5() (in module solid_dmft.postprocessing.make_spaghetti)</a>
-</li>
-      <li><a href="reference/postprocessing/maxent_gf_latt.html#solid_dmft.postprocessing.maxent_gf_latt._write_lattice_gf_to_h5">_write_lattice_gf_to_h5() (in module solid_dmft.postprocessing.maxent_gf_latt)</a>
-</li>
-      <li><a href="reference/postprocessing/maxent_sigma.html#solid_dmft.postprocessing.maxent_sigma._write_sigma_omega_to_h5">_write_sigma_omega_to_h5() (in module solid_dmft.postprocessing.maxent_sigma)</a>
-</li>
-      <li><a href="reference/postprocessing/maxent_gf_imp.html#solid_dmft.postprocessing.maxent_gf_imp._write_spectral_function_to_h5">_write_spectral_function_to_h5() (in module solid_dmft.postprocessing.maxent_gf_imp)</a>
-
-      <ul>
-        <li><a href="reference/postprocessing/maxent_gf_latt.html#solid_dmft.postprocessing.maxent_gf_latt._write_spectral_function_to_h5">(in module solid_dmft.postprocessing.maxent_gf_latt)</a>
-</li>
-      </ul></li>
-      <li><a href="reference/util/symmetrize_gamma_file.html#solid_dmft.util.symmetrize_gamma_file._write_symmetrized_gamma">_write_symmetrized_gamma() (in module solid_dmft.util.symmetrize_gamma_file)</a>
-</li>
-      <li><a href="reference/util/symmetrize_gamma_file.html#solid_dmft.util.symmetrize_gamma_file._write_symmetrized_gamma_irred_only">_write_symmetrized_gamma_irred_only() (in module solid_dmft.util.symmetrize_gamma_file)</a>
+      <li><a href="_autosummary/dmft_tools.solver.html#dmft_tools.solver.SolverStructure.__module__">__module__ (dmft_tools.solver.SolverStructure attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -466,16 +227,16 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/observables.html#solid_dmft.dmft_tools.observables.add_dft_values_as_zeroth_iteration">add_dft_values_as_zeroth_iteration() (in module solid_dmft.dmft_tools.observables)</a>
+      <li><a href="_autosummary/dmft_tools.observables.html#dmft_tools.observables.add_dft_values_as_zeroth_iteration">add_dft_values_as_zeroth_iteration() (in module dmft_tools.observables)</a>
 </li>
-      <li><a href="reference/dmft_tools/observables.html#solid_dmft.dmft_tools.observables.add_dmft_observables">add_dmft_observables() (in module solid_dmft.dmft_tools.observables)</a>
+      <li><a href="_autosummary/dmft_tools.observables.html#dmft_tools.observables.add_dmft_observables">add_dmft_observables() (in module dmft_tools.observables)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/afm_mapping.html#solid_dmft.dmft_tools.afm_mapping.apply">apply() (in module solid_dmft.dmft_tools.afm_mapping)</a>
+      <li><a href="_autosummary/dmft_tools.afm_mapping.html#dmft_tools.afm_mapping.apply">apply() (in module dmft_tools.afm_mapping)</a>
 
       <ul>
-        <li><a href="reference/dmft_tools/legendre_filter.html#solid_dmft.dmft_tools.legendre_filter.apply">(in module solid_dmft.dmft_tools.legendre_filter)</a>
+        <li><a href="_autosummary/dmft_tools.legendre_filter.html#dmft_tools.legendre_filter.apply">(in module dmft_tools.legendre_filter)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -484,7 +245,7 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/read_config.html#solid_dmft.read_config.BOOL_PARSER">BOOL_PARSER() (in module solid_dmft.read_config)</a>
+      <li><a href="_autosummary/read_config.html#read_config.BOOL_PARSER">BOOL_PARSER() (in module read_config)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -492,27 +253,40 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/observables.html#solid_dmft.dmft_tools.observables.calc_bandcorr_man">calc_bandcorr_man() (in module solid_dmft.dmft_tools.observables)</a>
+      <li><a href="_autosummary/dmft_tools.observables.html#dmft_tools.observables.calc_bandcorr_man">calc_bandcorr_man() (in module dmft_tools.observables)</a>
 </li>
-      <li><a href="reference/dmft_tools/convergence.html#solid_dmft.dmft_tools.convergence.calc_convergence_quantities">calc_convergence_quantities() (in module solid_dmft.dmft_tools.convergence)</a>
+      <li><a href="_autosummary/dmft_tools.convergence.html#dmft_tools.convergence.calc_convergence_quantities">calc_convergence_quantities() (in module dmft_tools.convergence)</a>
 </li>
-      <li><a href="reference/dmft_tools/observables.html#solid_dmft.dmft_tools.observables.calc_dft_kin_en">calc_dft_kin_en() (in module solid_dmft.dmft_tools.observables)</a>
+      <li><a href="_autosummary/dmft_tools.observables.html#dmft_tools.observables.calc_dft_kin_en">calc_dft_kin_en() (in module dmft_tools.observables)</a>
 </li>
-      <li><a href="reference/dmft_tools/observables.html#solid_dmft.dmft_tools.observables.calc_Z">calc_Z() (in module solid_dmft.dmft_tools.observables)</a>
+      <li><a href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calc_kan_params">calc_kan_params() (in module postprocessing.eval_U_cRPA_Vasp)</a>
 </li>
-      <li><a href="reference/dmft_tools/initial_sigma.html#solid_dmft.dmft_tools.initial_self_energies.calculate_double_counting">calculate_double_counting() (in module solid_dmft.dmft_tools.initial_self_energies)</a>
+      <li><a href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calc_u_avg_fulld">calc_u_avg_fulld() (in module postprocessing.eval_U_cRPA_Vasp)</a>
+</li>
+      <li><a href="_autosummary/dmft_tools.observables.html#dmft_tools.observables.calc_Z">calc_Z() (in module dmft_tools.observables)</a>
+</li>
+      <li><a href="_autosummary/dmft_tools.initial_self_energies.html#dmft_tools.initial_self_energies.calculate_double_counting">calculate_double_counting() (in module dmft_tools.initial_self_energies)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.change_basis">change_basis() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      <li><a href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calculate_interaction_from_averaging">calculate_interaction_from_averaging() (in module postprocessing.eval_U_cRPA_Vasp)</a>
 </li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.check_and_convert_plotting">check_and_convert_plotting() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.change_basis">change_basis() (in module postprocessing.plot_correlated_bands)</a>
 </li>
-      <li><a href="reference/dmft_tools/convergence.html#solid_dmft.dmft_tools.convergence.check_convergence">check_convergence() (in module solid_dmft.dmft_tools.convergence)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.check_and_convert_plotting">check_and_convert_plotting() (in module postprocessing.plot_correlated_bands)</a>
 </li>
-      <li><a href="reference/dmft_tools/interaction_ham.html#solid_dmft.dmft_tools.interaction_hamiltonian.construct">construct() (in module solid_dmft.dmft_tools.interaction_hamiltonian)</a>
+      <li><a href="_autosummary/dmft_tools.convergence.html#dmft_tools.convergence.check_convergence">check_convergence() (in module dmft_tools.convergence)</a>
 </li>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow.csc_flow_control">csc_flow_control() (in module solid_dmft.csc_flow)</a>
+      <li><a href="_autosummary/dmft_tools.interaction_hamiltonian.html#dmft_tools.interaction_hamiltonian.construct">construct() (in module dmft_tools.interaction_hamiltonian)</a>
+</li>
+      <li>
+    csc_flow
+
+      <ul>
+        <li><a href="_autosummary/csc_flow.html#module-csc_flow">module</a>
+</li>
+      </ul></li>
+      <li><a href="_autosummary/csc_flow.html#csc_flow.csc_flow_control">csc_flow_control() (in module csc_flow)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -520,13 +294,133 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/afm_mapping.html#solid_dmft.dmft_tools.afm_mapping.determine">determine() (in module solid_dmft.dmft_tools.afm_mapping)</a>
+      <li><a href="_autosummary/dmft_tools.afm_mapping.html#dmft_tools.afm_mapping.determine">determine() (in module dmft_tools.afm_mapping)</a>
 </li>
+      <li><a href="_autosummary/dmft_tools.initial_self_energies.html#dmft_tools.initial_self_energies.determine_dc_and_initial_sigma">determine_dc_and_initial_sigma() (in module dmft_tools.initial_self_energies)</a>
+</li>
+      <li>
+    dft_managers
+
+      <ul>
+        <li><a href="_autosummary/dft_managers.html#module-dft_managers">module</a>
+</li>
+      </ul></li>
+      <li>
+    dft_managers.qe_manager
+
+      <ul>
+        <li><a href="_autosummary/dft_managers.qe_manager.html#module-dft_managers.qe_manager">module</a>
+</li>
+      </ul></li>
+      <li>
+    dft_managers.vasp_manager
+
+      <ul>
+        <li><a href="_autosummary/dft_managers.vasp_manager.html#module-dft_managers.vasp_manager">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_cycle
+
+      <ul>
+        <li><a href="_autosummary/dmft_cycle.html#module-dmft_cycle">module</a>
+</li>
+      </ul></li>
+      <li><a href="_autosummary/dmft_cycle.html#dmft_cycle.dmft_cycle">dmft_cycle() (in module dmft_cycle)</a>
+</li>
+      <li>
+    dmft_tools
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.html#module-dmft_tools">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_tools.afm_mapping
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.afm_mapping.html#module-dmft_tools.afm_mapping">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_tools.convergence
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.convergence.html#module-dmft_tools.convergence">module</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/initial_sigma.html#solid_dmft.dmft_tools.initial_self_energies.determine_dc_and_initial_sigma">determine_dc_and_initial_sigma() (in module solid_dmft.dmft_tools.initial_self_energies)</a>
+      <li>
+    dmft_tools.formatter
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.formatter.html#module-dmft_tools.formatter">module</a>
 </li>
-      <li><a href="reference/dmft_cycle.html#solid_dmft.dmft_cycle.dmft_cycle">dmft_cycle() (in module solid_dmft.dmft_cycle)</a>
+      </ul></li>
+      <li>
+    dmft_tools.greens_functions_mixer
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.greens_functions_mixer.html#module-dmft_tools.greens_functions_mixer">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_tools.initial_self_energies
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.initial_self_energies.html#module-dmft_tools.initial_self_energies">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_tools.interaction_hamiltonian
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.interaction_hamiltonian.html#module-dmft_tools.interaction_hamiltonian">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_tools.legendre_filter
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.legendre_filter.html#module-dmft_tools.legendre_filter">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_tools.manipulate_chemical_potential
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.manipulate_chemical_potential.html#module-dmft_tools.manipulate_chemical_potential">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_tools.observables
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.observables.html#module-dmft_tools.observables">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_tools.results_to_archive
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.results_to_archive.html#module-dmft_tools.results_to_archive">module</a>
+</li>
+      </ul></li>
+      <li>
+    dmft_tools.solver
+
+      <ul>
+        <li><a href="_autosummary/dmft_tools.solver.html#module-dmft_tools.solver">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.fit_slater_fulld">fit_slater_fulld() (in module postprocessing.eval_U_cRPA_Vasp)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -534,13 +428,13 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.get_dmft_bands">get_dmft_bands() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.get_dmft_bands">get_dmft_bands() (in module postprocessing.plot_correlated_bands)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.get_kx_ky_FS">get_kx_ky_FS() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.get_kx_ky_FS">get_kx_ky_FS() (in module postprocessing.plot_correlated_bands)</a>
 </li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.get_tb_kslice">get_tb_kslice() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.get_tb_kslice">get_tb_kslice() (in module postprocessing.plot_correlated_bands)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -548,11 +442,11 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/gf_mixer.html#solid_dmft.dmft_tools.greens_functions_mixer.init_cpa">init_cpa() (in module solid_dmft.dmft_tools.greens_functions_mixer)</a>
+      <li><a href="_autosummary/dmft_tools.greens_functions_mixer.html#dmft_tools.greens_functions_mixer.init_cpa">init_cpa() (in module dmft_tools.greens_functions_mixer)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager.is_lock_file_present">is_lock_file_present() (in module solid_dmft.dft_managers.vasp_manager)</a>
+      <li><a href="_autosummary/dft_managers.vasp_manager.html#dft_managers.vasp_manager.is_lock_file_present">is_lock_file_present() (in module dft_managers.vasp_manager)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -560,7 +454,7 @@
 <h2 id="K">K</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager.kill">kill() (in module solid_dmft.dft_managers.vasp_manager)</a>
+      <li><a href="_autosummary/dft_managers.vasp_manager.html#dft_managers.vasp_manager.kill">kill() (in module dft_managers.vasp_manager)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -568,7 +462,7 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.lambda_matrix_w90_t2g">lambda_matrix_w90_t2g() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.lambda_matrix_w90_t2g">lambda_matrix_w90_t2g() (in module postprocessing.plot_correlated_bands)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -576,85 +470,95 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/postprocessing/make_spaghetti.html#solid_dmft.postprocessing.make_spaghetti.main">main() (in module solid_dmft.postprocessing.make_spaghetti)</a>
+      <li><a href="_autosummary/postprocessing.make_spaghetti.html#postprocessing.make_spaghetti.main">main() (in module postprocessing.make_spaghetti)</a>
 
       <ul>
-        <li><a href="reference/postprocessing/maxent_gf_imp.html#solid_dmft.postprocessing.maxent_gf_imp.main">(in module solid_dmft.postprocessing.maxent_gf_imp)</a>
+        <li><a href="_autosummary/postprocessing.maxent_gf_imp.html#postprocessing.maxent_gf_imp.main">(in module postprocessing.maxent_gf_imp)</a>
 </li>
-        <li><a href="reference/postprocessing/maxent_gf_latt.html#solid_dmft.postprocessing.maxent_gf_latt.main">(in module solid_dmft.postprocessing.maxent_gf_latt)</a>
+        <li><a href="_autosummary/postprocessing.maxent_gf_latt.html#postprocessing.maxent_gf_latt.main">(in module postprocessing.maxent_gf_latt)</a>
 </li>
-        <li><a href="reference/postprocessing/maxent_sigma.html#solid_dmft.postprocessing.maxent_sigma.main">(in module solid_dmft.postprocessing.maxent_sigma)</a>
+        <li><a href="_autosummary/postprocessing.maxent_sigma.html#postprocessing.maxent_sigma.main">(in module postprocessing.maxent_sigma)</a>
 </li>
-        <li><a href="reference/util/update_dmft_config.html#solid_dmft.util.update_dmft_config.main">(in module solid_dmft.util.update_dmft_config)</a>
+        <li><a href="_autosummary/util.update_dmft_config.html#util.update_dmft_config.main">(in module util.update_dmft_config)</a>
 </li>
-        <li><a href="reference/util/update_results_h5.html#solid_dmft.util.update_results_h5.main">(in module solid_dmft.util.update_results_h5)</a>
+        <li><a href="_autosummary/util.update_results_h5.html#util.update_results_h5.main">(in module util.update_results_h5)</a>
 </li>
-        <li><a href="reference/util/write_kslice_to_h5.html#solid_dmft.util.write_kslice_to_h5.main">(in module solid_dmft.util.write_kslice_to_h5)</a>
+        <li><a href="_autosummary/util.write_kslice_to_h5.html#util.write_kslice_to_h5.main">(in module util.write_kslice_to_h5)</a>
 </li>
       </ul></li>
-      <li><a href="reference/dmft_tools/convergence.html#solid_dmft.dmft_tools.convergence.max_G_diff">max_G_diff() (in module solid_dmft.dmft_tools.convergence)</a>
+      <li><a href="_autosummary/dmft_tools.convergence.html#dmft_tools.convergence.max_G_diff">max_G_diff() (in module dmft_tools.convergence)</a>
 </li>
-      <li><a href="reference/dmft_tools/gf_mixer.html#solid_dmft.dmft_tools.greens_functions_mixer.mix_cpa">mix_cpa() (in module solid_dmft.dmft_tools.greens_functions_mixer)</a>
+      <li><a href="_autosummary/dmft_tools.greens_functions_mixer.html#dmft_tools.greens_functions_mixer.mix_cpa">mix_cpa() (in module dmft_tools.greens_functions_mixer)</a>
 </li>
-      <li><a href="reference/dmft_tools/gf_mixer.html#solid_dmft.dmft_tools.greens_functions_mixer.mix_g0">mix_g0() (in module solid_dmft.dmft_tools.greens_functions_mixer)</a>
+      <li><a href="_autosummary/dmft_tools.greens_functions_mixer.html#dmft_tools.greens_functions_mixer.mix_g0">mix_g0() (in module dmft_tools.greens_functions_mixer)</a>
 </li>
-      <li><a href="reference/dmft_tools/gf_mixer.html#solid_dmft.dmft_tools.greens_functions_mixer.mix_sigma">mix_sigma() (in module solid_dmft.dmft_tools.greens_functions_mixer)</a>
+      <li><a href="_autosummary/dmft_tools.greens_functions_mixer.html#dmft_tools.greens_functions_mixer.mix_sigma">mix_sigma() (in module dmft_tools.greens_functions_mixer)</a>
 </li>
       <li>
     module
 
       <ul>
+        <li><a href="_autosummary/csc_flow.html#module-csc_flow">csc_flow</a>
+</li>
+        <li><a href="_autosummary/dft_managers.html#module-dft_managers">dft_managers</a>
+</li>
+        <li><a href="_autosummary/dft_managers.qe_manager.html#module-dft_managers.qe_manager">dft_managers.qe_manager</a>
+</li>
+        <li><a href="_autosummary/dft_managers.vasp_manager.html#module-dft_managers.vasp_manager">dft_managers.vasp_manager</a>
+</li>
+        <li><a href="_autosummary/dmft_cycle.html#module-dmft_cycle">dmft_cycle</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.html#module-dmft_tools">dmft_tools</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.afm_mapping.html#module-dmft_tools.afm_mapping">dmft_tools.afm_mapping</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.convergence.html#module-dmft_tools.convergence">dmft_tools.convergence</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.formatter.html#module-dmft_tools.formatter">dmft_tools.formatter</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.greens_functions_mixer.html#module-dmft_tools.greens_functions_mixer">dmft_tools.greens_functions_mixer</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.initial_self_energies.html#module-dmft_tools.initial_self_energies">dmft_tools.initial_self_energies</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.interaction_hamiltonian.html#module-dmft_tools.interaction_hamiltonian">dmft_tools.interaction_hamiltonian</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.legendre_filter.html#module-dmft_tools.legendre_filter">dmft_tools.legendre_filter</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.manipulate_chemical_potential.html#module-dmft_tools.manipulate_chemical_potential">dmft_tools.manipulate_chemical_potential</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.observables.html#module-dmft_tools.observables">dmft_tools.observables</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.results_to_archive.html#module-dmft_tools.results_to_archive">dmft_tools.results_to_archive</a>
+</li>
+        <li><a href="_autosummary/dmft_tools.solver.html#module-dmft_tools.solver">dmft_tools.solver</a>
+</li>
+        <li><a href="_autosummary/postprocessing.html#module-postprocessing">postprocessing</a>
+</li>
+        <li><a href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html#module-postprocessing.eval_U_cRPA_Vasp">postprocessing.eval_U_cRPA_Vasp</a>
+</li>
+        <li><a href="_autosummary/postprocessing.make_spaghetti.html#module-postprocessing.make_spaghetti">postprocessing.make_spaghetti</a>
+</li>
+        <li><a href="_autosummary/postprocessing.maxent_gf_imp.html#module-postprocessing.maxent_gf_imp">postprocessing.maxent_gf_imp</a>
+</li>
+        <li><a href="_autosummary/postprocessing.maxent_gf_latt.html#module-postprocessing.maxent_gf_latt">postprocessing.maxent_gf_latt</a>
+</li>
+        <li><a href="_autosummary/postprocessing.maxent_sigma.html#module-postprocessing.maxent_sigma">postprocessing.maxent_sigma</a>
+</li>
+        <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#module-postprocessing.plot_correlated_bands">postprocessing.plot_correlated_bands</a>
+</li>
+        <li><a href="_autosummary/read_config.html#module-read_config">read_config</a>
+</li>
         <li><a href="index.html#module-solid_dmft">solid_dmft</a>
 </li>
-        <li><a href="reference/csc_flow.html#module-solid_dmft.csc_flow">solid_dmft.csc_flow</a>
+        <li><a href="_autosummary/util.html#module-util">util</a>
 </li>
-        <li><a href="reference/dft_managers/qe_manager.html#module-solid_dmft.dft_managers.qe_manager">solid_dmft.dft_managers.qe_manager</a>
+        <li><a href="_autosummary/util.symmetrize_gamma_file.html#module-util.symmetrize_gamma_file">util.symmetrize_gamma_file</a>
 </li>
-        <li><a href="reference/dft_managers/vasp_manager.html#module-solid_dmft.dft_managers.vasp_manager">solid_dmft.dft_managers.vasp_manager</a>
+        <li><a href="_autosummary/util.update_dmft_config.html#module-util.update_dmft_config">util.update_dmft_config</a>
 </li>
-        <li><a href="reference/dmft_cycle.html#module-solid_dmft.dmft_cycle">solid_dmft.dmft_cycle</a>
+        <li><a href="_autosummary/util.update_results_h5.html#module-util.update_results_h5">util.update_results_h5</a>
 </li>
-        <li><a href="reference/dmft_tools/afm_mapping.html#module-solid_dmft.dmft_tools.afm_mapping">solid_dmft.dmft_tools.afm_mapping</a>
-</li>
-        <li><a href="reference/dmft_tools/convergence.html#module-solid_dmft.dmft_tools.convergence">solid_dmft.dmft_tools.convergence</a>
-</li>
-        <li><a href="reference/dmft_tools/formatter.html#module-solid_dmft.dmft_tools.formatter">solid_dmft.dmft_tools.formatter</a>
-</li>
-        <li><a href="reference/dmft_tools/gf_mixer.html#module-solid_dmft.dmft_tools.greens_functions_mixer">solid_dmft.dmft_tools.greens_functions_mixer</a>
-</li>
-        <li><a href="reference/dmft_tools/initial_sigma.html#module-solid_dmft.dmft_tools.initial_self_energies">solid_dmft.dmft_tools.initial_self_energies</a>
-</li>
-        <li><a href="reference/dmft_tools/interaction_ham.html#module-solid_dmft.dmft_tools.interaction_hamiltonian">solid_dmft.dmft_tools.interaction_hamiltonian</a>
-</li>
-        <li><a href="reference/dmft_tools/legendre_filter.html#module-solid_dmft.dmft_tools.legendre_filter">solid_dmft.dmft_tools.legendre_filter</a>
-</li>
-        <li><a href="reference/dmft_tools/manipulate_mu.html#module-solid_dmft.dmft_tools.manipulate_chemical_potential">solid_dmft.dmft_tools.manipulate_chemical_potential</a>
-</li>
-        <li><a href="reference/dmft_tools/observables.html#module-solid_dmft.dmft_tools.observables">solid_dmft.dmft_tools.observables</a>
-</li>
-        <li><a href="reference/dmft_tools/results_arch.html#module-solid_dmft.dmft_tools.results_to_archive">solid_dmft.dmft_tools.results_to_archive</a>
-</li>
-        <li><a href="reference/dmft_tools/solver.html#module-solid_dmft.dmft_tools.solver">solid_dmft.dmft_tools.solver</a>
-</li>
-        <li><a href="reference/postprocessing/make_spaghetti.html#module-solid_dmft.postprocessing.make_spaghetti">solid_dmft.postprocessing.make_spaghetti</a>
-</li>
-        <li><a href="reference/postprocessing/maxent_gf_imp.html#module-solid_dmft.postprocessing.maxent_gf_imp">solid_dmft.postprocessing.maxent_gf_imp</a>
-</li>
-        <li><a href="reference/postprocessing/maxent_gf_latt.html#module-solid_dmft.postprocessing.maxent_gf_latt">solid_dmft.postprocessing.maxent_gf_latt</a>
-</li>
-        <li><a href="reference/postprocessing/maxent_sigma.html#module-solid_dmft.postprocessing.maxent_sigma">solid_dmft.postprocessing.maxent_sigma</a>
-</li>
-        <li><a href="reference/postprocessing/plot_correlated_bands.html#module-solid_dmft.postprocessing.plot_correlated_bands">solid_dmft.postprocessing.plot_correlated_bands</a>
-</li>
-        <li><a href="reference/read_config.html#module-solid_dmft.read_config">solid_dmft.read_config</a>
-</li>
-        <li><a href="reference/util/symmetrize_gamma_file.html#module-solid_dmft.util.symmetrize_gamma_file">solid_dmft.util.symmetrize_gamma_file</a>
-</li>
-        <li><a href="reference/util/update_dmft_config.html#module-solid_dmft.util.update_dmft_config">solid_dmft.util.update_dmft_config</a>
-</li>
-        <li><a href="reference/util/update_results_h5.html#module-solid_dmft.util.update_results_h5">solid_dmft.util.update_results_h5</a>
-</li>
-        <li><a href="reference/util/write_kslice_to_h5.html#module-solid_dmft.util.write_kslice_to_h5">solid_dmft.util.write_kslice_to_h5</a>
+        <li><a href="_autosummary/util.write_kslice_to_h5.html#module-util.write_kslice_to_h5">util.write_kslice_to_h5</a>
 </li>
       </ul></li>
   </ul></td>
@@ -663,35 +567,84 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.plot_bands">plot_bands() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.plot_bands">plot_bands() (in module postprocessing.plot_correlated_bands)</a>
 </li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.plot_kslice">plot_kslice() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.plot_kslice">plot_kslice() (in module postprocessing.plot_correlated_bands)</a>
 </li>
-      <li><a href="reference/dft_managers/qe_manager.html#solid_dmft.dft_managers.qe_manager.poll_barrier">poll_barrier() (in module solid_dmft.dft_managers.qe_manager)</a>
+      <li><a href="_autosummary/dft_managers.qe_manager.html#dft_managers.qe_manager.poll_barrier">poll_barrier() (in module dft_managers.qe_manager)</a>
 </li>
-      <li><a href="reference/dmft_tools/convergence.html#solid_dmft.dmft_tools.convergence.prep_conv_file">prep_conv_file() (in module solid_dmft.dmft_tools.convergence)</a>
+      <li>
+    postprocessing
+
+      <ul>
+        <li><a href="_autosummary/postprocessing.html#module-postprocessing">module</a>
 </li>
-      <li><a href="reference/dmft_tools/convergence.html#solid_dmft.dmft_tools.convergence.prep_conv_obs">prep_conv_obs() (in module solid_dmft.dmft_tools.convergence)</a>
+      </ul></li>
+      <li>
+    postprocessing.eval_U_cRPA_Vasp
+
+      <ul>
+        <li><a href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html#module-postprocessing.eval_U_cRPA_Vasp">module</a>
 </li>
-      <li><a href="reference/dmft_tools/observables.html#solid_dmft.dmft_tools.observables.prep_observables">prep_observables() (in module solid_dmft.dmft_tools.observables)</a>
+      </ul></li>
+      <li>
+    postprocessing.make_spaghetti
+
+      <ul>
+        <li><a href="_autosummary/postprocessing.make_spaghetti.html#module-postprocessing.make_spaghetti">module</a>
 </li>
-      <li><a href="reference/dmft_tools/formatter.html#solid_dmft.dmft_tools.formatter.print_block_sym">print_block_sym() (in module solid_dmft.dmft_tools.formatter)</a>
+      </ul></li>
+      <li>
+    postprocessing.maxent_gf_imp
+
+      <ul>
+        <li><a href="_autosummary/postprocessing.maxent_gf_imp.html#module-postprocessing.maxent_gf_imp">module</a>
 </li>
+      </ul></li>
+      <li>
+    postprocessing.maxent_gf_latt
+
+      <ul>
+        <li><a href="_autosummary/postprocessing.maxent_gf_latt.html#module-postprocessing.maxent_gf_latt">module</a>
+</li>
+      </ul></li>
+      <li>
+    postprocessing.maxent_sigma
+
+      <ul>
+        <li><a href="_autosummary/postprocessing.maxent_sigma.html#module-postprocessing.maxent_sigma">module</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/formatter.html#solid_dmft.dmft_tools.formatter.print_local_density">print_local_density() (in module solid_dmft.dmft_tools.formatter)</a>
+      <li>
+    postprocessing.plot_correlated_bands
+
+      <ul>
+        <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#module-postprocessing.plot_correlated_bands">module</a>
 </li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.print_matrix">print_matrix() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      </ul></li>
+      <li><a href="_autosummary/dmft_tools.convergence.html#dmft_tools.convergence.prep_conv_file">prep_conv_file() (in module dmft_tools.convergence)</a>
 </li>
-      <li><a href="reference/dmft_tools/formatter.html#solid_dmft.dmft_tools.formatter.print_rotation_matrix">print_rotation_matrix() (in module solid_dmft.dmft_tools.formatter)</a>
+      <li><a href="_autosummary/dmft_tools.convergence.html#dmft_tools.convergence.prep_conv_obs">prep_conv_obs() (in module dmft_tools.convergence)</a>
 </li>
-      <li><a href="reference/dmft_tools/formatter.html#solid_dmft.dmft_tools.formatter.print_summary_convergence">print_summary_convergence() (in module solid_dmft.dmft_tools.formatter)</a>
+      <li><a href="_autosummary/dmft_tools.observables.html#dmft_tools.observables.prep_observables">prep_observables() (in module dmft_tools.observables)</a>
 </li>
-      <li><a href="reference/dmft_tools/formatter.html#solid_dmft.dmft_tools.formatter.print_summary_energetics">print_summary_energetics() (in module solid_dmft.dmft_tools.formatter)</a>
+      <li><a href="_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_block_sym">print_block_sym() (in module dmft_tools.formatter)</a>
 </li>
-      <li><a href="reference/dmft_tools/formatter.html#solid_dmft.dmft_tools.formatter.print_summary_magnetic_occ">print_summary_magnetic_occ() (in module solid_dmft.dmft_tools.formatter)</a>
+      <li><a href="_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_local_density">print_local_density() (in module dmft_tools.formatter)</a>
 </li>
-      <li><a href="reference/dmft_tools/formatter.html#solid_dmft.dmft_tools.formatter.print_summary_observables">print_summary_observables() (in module solid_dmft.dmft_tools.formatter)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.print_matrix">print_matrix() (in module postprocessing.plot_correlated_bands)</a>
+</li>
+      <li><a href="_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_rotation_matrix">print_rotation_matrix() (in module dmft_tools.formatter)</a>
+</li>
+      <li><a href="_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_summary_convergence">print_summary_convergence() (in module dmft_tools.formatter)</a>
+</li>
+      <li><a href="_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_summary_energetics">print_summary_energetics() (in module dmft_tools.formatter)</a>
+</li>
+      <li><a href="_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_summary_magnetic_occ">print_summary_magnetic_occ() (in module dmft_tools.formatter)</a>
+</li>
+      <li><a href="_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_summary_observables">print_summary_observables() (in module dmft_tools.formatter)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -699,17 +652,28 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager.reactivate">reactivate() (in module solid_dmft.dft_managers.vasp_manager)</a>
+      <li><a href="_autosummary/dft_managers.vasp_manager.html#dft_managers.vasp_manager.reactivate">reactivate() (in module dft_managers.vasp_manager)</a>
 </li>
-      <li><a href="reference/read_config.html#solid_dmft.read_config.read_config">read_config() (in module solid_dmft.read_config)</a>
+      <li>
+    read_config
+
+      <ul>
+        <li><a href="_autosummary/read_config.html#module-read_config">module</a>
+</li>
+      </ul></li>
+      <li><a href="_autosummary/read_config.html#read_config.read_config">read_config() (in module read_config)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow.read_dft_energy_qe">read_dft_energy_qe() (in module solid_dmft.csc_flow)</a>
+      <li><a href="_autosummary/csc_flow.html#csc_flow.read_dft_energy_qe">read_dft_energy_qe() (in module csc_flow)</a>
 </li>
-      <li><a href="reference/csc_flow.html#solid_dmft.csc_flow.read_dft_energy_vasp">read_dft_energy_vasp() (in module solid_dmft.csc_flow)</a>
+      <li><a href="_autosummary/csc_flow.html#csc_flow.read_dft_energy_vasp">read_dft_energy_vasp() (in module csc_flow)</a>
 </li>
-      <li><a href="reference/util/symmetrize_gamma_file.html#solid_dmft.util.symmetrize_gamma_file.run">run() (in module solid_dmft.util.symmetrize_gamma_file)</a>
+      <li><a href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.read_uijkl">read_uijkl() (in module postprocessing.eval_U_cRPA_Vasp)</a>
+</li>
+      <li><a href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.red_to_2ind">red_to_2ind() (in module postprocessing.eval_U_cRPA_Vasp)</a>
+</li>
+      <li><a href="_autosummary/util.symmetrize_gamma_file.html#util.symmetrize_gamma_file.run">run() (in module util.symmetrize_gamma_file)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -717,9 +681,9 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/manipulate_mu.html#solid_dmft.dmft_tools.manipulate_chemical_potential.set_initial_mu">set_initial_mu() (in module solid_dmft.dmft_tools.manipulate_chemical_potential)</a>
+      <li><a href="_autosummary/dmft_tools.manipulate_chemical_potential.html#dmft_tools.manipulate_chemical_potential.set_initial_mu">set_initial_mu() (in module dmft_tools.manipulate_chemical_potential)</a>
 </li>
-      <li><a href="reference/postprocessing/plot_correlated_bands.html#solid_dmft.postprocessing.plot_correlated_bands.setup_plot_kslice">setup_plot_kslice() (in module solid_dmft.postprocessing.plot_correlated_bands)</a>
+      <li><a href="_autosummary/postprocessing.plot_correlated_bands.html#postprocessing.plot_correlated_bands.setup_plot_kslice">setup_plot_kslice() (in module postprocessing.plot_correlated_bands)</a>
 </li>
       <li><a href="index.html#index-0">solid_dmft</a>
 
@@ -727,191 +691,16 @@
         <li><a href="index.html#module-solid_dmft">module</a>
 </li>
       </ul></li>
-      <li>
-    solid_dmft.csc_flow
-
-      <ul>
-        <li><a href="reference/csc_flow.html#module-solid_dmft.csc_flow">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dft_managers.qe_manager
-
-      <ul>
-        <li><a href="reference/dft_managers/qe_manager.html#module-solid_dmft.dft_managers.qe_manager">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dft_managers.vasp_manager
-
-      <ul>
-        <li><a href="reference/dft_managers/vasp_manager.html#module-solid_dmft.dft_managers.vasp_manager">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_cycle
-
-      <ul>
-        <li><a href="reference/dmft_cycle.html#module-solid_dmft.dmft_cycle">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.afm_mapping
-
-      <ul>
-        <li><a href="reference/dmft_tools/afm_mapping.html#module-solid_dmft.dmft_tools.afm_mapping">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.convergence
-
-      <ul>
-        <li><a href="reference/dmft_tools/convergence.html#module-solid_dmft.dmft_tools.convergence">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.formatter
-
-      <ul>
-        <li><a href="reference/dmft_tools/formatter.html#module-solid_dmft.dmft_tools.formatter">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.greens_functions_mixer
-
-      <ul>
-        <li><a href="reference/dmft_tools/gf_mixer.html#module-solid_dmft.dmft_tools.greens_functions_mixer">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.initial_self_energies
-
-      <ul>
-        <li><a href="reference/dmft_tools/initial_sigma.html#module-solid_dmft.dmft_tools.initial_self_energies">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.interaction_hamiltonian
-
-      <ul>
-        <li><a href="reference/dmft_tools/interaction_ham.html#module-solid_dmft.dmft_tools.interaction_hamiltonian">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.legendre_filter
-
-      <ul>
-        <li><a href="reference/dmft_tools/legendre_filter.html#module-solid_dmft.dmft_tools.legendre_filter">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.manipulate_chemical_potential
-
-      <ul>
-        <li><a href="reference/dmft_tools/manipulate_mu.html#module-solid_dmft.dmft_tools.manipulate_chemical_potential">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.observables
-
-      <ul>
-        <li><a href="reference/dmft_tools/observables.html#module-solid_dmft.dmft_tools.observables">module</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    solid_dmft.dmft_tools.results_to_archive
+      <li><a href="_autosummary/dmft_tools.solver.html#dmft_tools.solver.SolverStructure.solve">solve() (dmft_tools.solver.SolverStructure method)</a>
+</li>
+      <li><a href="_autosummary/dmft_tools.solver.html#dmft_tools.solver.SolverStructure">SolverStructure (class in dmft_tools.solver)</a>
+</li>
+      <li><a href="_autosummary/dft_managers.qe_manager.html#dft_managers.qe_manager.start">start() (in module dft_managers.qe_manager)</a>
 
       <ul>
-        <li><a href="reference/dmft_tools/results_arch.html#module-solid_dmft.dmft_tools.results_to_archive">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.dmft_tools.solver
-
-      <ul>
-        <li><a href="reference/dmft_tools/solver.html#module-solid_dmft.dmft_tools.solver">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.postprocessing.make_spaghetti
-
-      <ul>
-        <li><a href="reference/postprocessing/make_spaghetti.html#module-solid_dmft.postprocessing.make_spaghetti">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.postprocessing.maxent_gf_imp
-
-      <ul>
-        <li><a href="reference/postprocessing/maxent_gf_imp.html#module-solid_dmft.postprocessing.maxent_gf_imp">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.postprocessing.maxent_gf_latt
-
-      <ul>
-        <li><a href="reference/postprocessing/maxent_gf_latt.html#module-solid_dmft.postprocessing.maxent_gf_latt">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.postprocessing.maxent_sigma
-
-      <ul>
-        <li><a href="reference/postprocessing/maxent_sigma.html#module-solid_dmft.postprocessing.maxent_sigma">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.postprocessing.plot_correlated_bands
-
-      <ul>
-        <li><a href="reference/postprocessing/plot_correlated_bands.html#module-solid_dmft.postprocessing.plot_correlated_bands">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.read_config
-
-      <ul>
-        <li><a href="reference/read_config.html#module-solid_dmft.read_config">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.util.symmetrize_gamma_file
-
-      <ul>
-        <li><a href="reference/util/symmetrize_gamma_file.html#module-solid_dmft.util.symmetrize_gamma_file">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.util.update_dmft_config
-
-      <ul>
-        <li><a href="reference/util/update_dmft_config.html#module-solid_dmft.util.update_dmft_config">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.util.update_results_h5
-
-      <ul>
-        <li><a href="reference/util/update_results_h5.html#module-solid_dmft.util.update_results_h5">module</a>
-</li>
-      </ul></li>
-      <li>
-    solid_dmft.util.write_kslice_to_h5
-
-      <ul>
-        <li><a href="reference/util/write_kslice_to_h5.html#module-solid_dmft.util.write_kslice_to_h5">module</a>
-</li>
-      </ul></li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure.solve">solve() (solid_dmft.dmft_tools.solver.SolverStructure method)</a>
-</li>
-      <li><a href="reference/dmft_tools/solver.html#solid_dmft.dmft_tools.solver.SolverStructure">SolverStructure (class in solid_dmft.dmft_tools.solver)</a>
-</li>
-      <li><a href="reference/dft_managers/qe_manager.html#solid_dmft.dft_managers.qe_manager.start">start() (in module solid_dmft.dft_managers.qe_manager)</a>
-
-      <ul>
-        <li><a href="reference/dft_managers/vasp_manager.html#solid_dmft.dft_managers.vasp_manager.start">(in module solid_dmft.dft_managers.vasp_manager)</a>
+        <li><a href="_autosummary/dft_managers.vasp_manager.html#dft_managers.vasp_manager.start">(in module dft_managers.vasp_manager)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -920,23 +709,60 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/manipulate_mu.html#solid_dmft.dmft_tools.manipulate_chemical_potential.update_mu">update_mu() (in module solid_dmft.dmft_tools.manipulate_chemical_potential)</a>
+      <li><a href="_autosummary/dmft_tools.manipulate_chemical_potential.html#dmft_tools.manipulate_chemical_potential.update_mu">update_mu() (in module dmft_tools.manipulate_chemical_potential)</a>
 </li>
+      <li>
+    util
+
+      <ul>
+        <li><a href="_autosummary/util.html#module-util">module</a>
+</li>
+      </ul></li>
+      <li>
+    util.symmetrize_gamma_file
+
+      <ul>
+        <li><a href="_autosummary/util.symmetrize_gamma_file.html#module-util.symmetrize_gamma_file">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    util.update_dmft_config
+
+      <ul>
+        <li><a href="_autosummary/util.update_dmft_config.html#module-util.update_dmft_config">module</a>
+</li>
+      </ul></li>
+      <li>
+    util.update_results_h5
+
+      <ul>
+        <li><a href="_autosummary/util.update_results_h5.html#module-util.update_results_h5">module</a>
+</li>
+      </ul></li>
+      <li>
+    util.write_kslice_to_h5
+
+      <ul>
+        <li><a href="_autosummary/util.write_kslice_to_h5.html#module-util.write_kslice_to_h5">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/results_arch.html#solid_dmft.dmft_tools.results_to_archive.write">write() (in module solid_dmft.dmft_tools.results_to_archive)</a>
+      <li><a href="_autosummary/dmft_tools.results_to_archive.html#dmft_tools.results_to_archive.write">write() (in module dmft_tools.results_to_archive)</a>
 </li>
-      <li><a href="reference/dmft_tools/convergence.html#solid_dmft.dmft_tools.convergence.write_conv">write_conv() (in module solid_dmft.dmft_tools.convergence)</a>
+      <li><a href="_autosummary/dmft_tools.convergence.html#dmft_tools.convergence.write_conv">write_conv() (in module dmft_tools.convergence)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="reference/dmft_tools/observables.html#solid_dmft.dmft_tools.observables.write_header_to_file">write_header_to_file() (in module solid_dmft.dmft_tools.observables)</a>
+      <li><a href="_autosummary/dmft_tools.observables.html#dmft_tools.observables.write_header_to_file">write_header_to_file() (in module dmft_tools.observables)</a>
 </li>
-      <li><a href="reference/dmft_tools/observables.html#solid_dmft.dmft_tools.observables.write_obs">write_obs() (in module solid_dmft.dmft_tools.observables)</a>
+      <li><a href="_autosummary/dmft_tools.observables.html#dmft_tools.observables.write_obs">write_obs() (in module dmft_tools.observables)</a>
 </li>
   </ul></td>
 </tr></table>

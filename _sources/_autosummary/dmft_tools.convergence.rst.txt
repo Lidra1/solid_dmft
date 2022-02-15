@@ -1,0 +1,12 @@
+dmft\_tools.convergence
+=======================
+
+.. automodule:: dmft_tools.convergence
+
+   
+   
+   
+
+
+
+

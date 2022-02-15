@@ -62,6 +62,16 @@
 <li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#speeding-up-by-not-writing-projectors-at-every-step">Speeding up by not writing projectors at every step</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="cRPA_VASP/README.html">How to do cRPA calculations with VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#file-description">file description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#workflow">Workflow:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#important-flags">important flags:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#convergency-tests">convergency tests:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#parameterization-of-u-and-j-from-crpa-calculations">Parameterization of U and J from cRPA calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#general-sidemarks">general sidemarks:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cRPA_VASP/README.html#version-and-compilation">version and compilation:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="documentation.html#run-solid-dmft">run solid_dmft</a><ul>
@@ -69,7 +79,6 @@
 <li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#running-a-docker-container">Running a docker container</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="md_notes/run_locally.html">run on your machine</a><ul>
@@ -85,47 +94,48 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="documentation.html#module-reference-manual">module reference manual</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/csc_flow.html">CSC flow module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/dft_managers.html">dft managers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/dft_managers/qe_manager.html">qe_manager.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dft_managers/vasp_manager.html">vasp_manager.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/dft_managers.html">dft_managers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/dmft_cycle.html">dmft cycle module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/dmft_tools.html">dmft tools modules</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/afm_mapping.html">afm_mapping.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/convergence.html">convergence.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/formatter.html">formatter.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/gf_mixer.html">greens_function_mixer.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/initial_sigma.html">initial_self_energies.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/interaction_ham.html">interaction_hamiltonian.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/legendre_filter.html">legendre_filter.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/manipulate_mu.html">manipulate_chemical_potential.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/observables.html">observables.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/results_arch.html">results_to_archive.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/dmft_tools/solver.html">solver.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/dmft_tools.html">dmft_tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.formatter.html">dmft_tools.formatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.greens_functions_mixer.html">dmft_tools.greens_functions_mixer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.initial_self_energies.html">dmft_tools.initial_self_energies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.interaction_hamiltonian.html">dmft_tools.interaction_hamiltonian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.legendre_filter.html">dmft_tools.legendre_filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.manipulate_chemical_potential.html">dmft_tools.manipulate_chemical_potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.observables.html">dmft_tools.observables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.results_to_archive.html">dmft_tools.results_to_archive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/dmft_tools.solver.html">dmft_tools.solver</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/postprocessing.html">postprocessing tools</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/make_spaghetti.html">make_spaghetti.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_imp.html">maxent_gf_imp.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_gf_latt.html">maxent_gf_latt.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/maxent_sigma.html">maxent_sigma.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/postprocessing/plot_correlated_bands.html">postproc_plotbands.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/postprocessing.html">postprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.eval_U_cRPA_Vasp.html">postprocessing.eval_U_cRPA_Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.make_spaghetti.html">postprocessing.make_spaghetti</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.maxent_gf_imp.html">postprocessing.maxent_gf_imp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.maxent_gf_latt.html">postprocessing.maxent_gf_latt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.maxent_sigma.html">postprocessing.maxent_sigma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/postprocessing.plot_correlated_bands.html">postprocessing.plot_correlated_bands</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/read_config.html">read config parser</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/read_config.html#general">general</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/read_config.html#solver">solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/read_config.html#dft">dft</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/read_config.html#advanced">advanced</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/read_config.html">read_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/read_config.html#general">general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/read_config.html#solver">solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/read_config.html#dft">dft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/read_config.html#advanced">advanced</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/util.html">util</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/util/symmetrize_gamma_file.html">symmetrize_gamma_file.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/util/update_dmft_config.html">update_dmft_config.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/util/update_results_h5.html">update_results_h5.py</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/util/write_kslice_to_h5.html">write_kslice_to_h5.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/util.html">util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/util.symmetrize_gamma_file.html">util.symmetrize_gamma_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/util.update_dmft_config.html">util.update_dmft_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/util.update_results_h5.html">util.update_results_h5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_autosummary/util.write_kslice_to_h5.html">util.write_kslice_to_h5</a></li>
 </ul>
 </li>
 </ul>

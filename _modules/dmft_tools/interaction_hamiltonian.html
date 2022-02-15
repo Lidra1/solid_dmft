@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dmft_tools.interaction_hamiltonian &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7E588A" >
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#version-compatibility">Version compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#code-structure">code structure:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/w90_interface.html">Wannier90 interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/w90_interface.html#orbital-order-in-the-w90-converter">orbital order in the W90 converter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/vasp_csc.html">interface to VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#general-remarks">General remarks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#locproj-bug-for-individual-projections">LOCPROJ bug for individual projections:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#convergence-of-projectors-with-vasp">convergence of projectors with Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#enabling-csc-calculations-with-wannier90-projectors">Enabling CSC calculations with Wannier90 projectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#speeding-up-by-not-writing-projectors-at-every-step">Speeding up by not writing projectors at every step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cRPA_VASP/README.html">How to do cRPA calculations with VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#file-description">file description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#workflow">Workflow:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#important-flags">important flags:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#convergency-tests">convergency tests:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#parameterization-of-u-and-j-from-crpa-calculations">Parameterization of U and J from cRPA calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#general-sidemarks">general sidemarks:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#version-and-compilation">version and compilation:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#run-solid-dmft">run solid_dmft</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/docker.html">Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_locally.html">run on your machine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_locally.html#csc-calculations-locally">CSC calculations locally</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_cluster.html">Running solid_dmft on a cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#running-on-cscs-daint">Running on CSCS daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#one-shot-job-on-daint">one shot job on daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#csc-calculations-on-daint">CSC calculations on daint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">module reference manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dft_managers.html">dft_managers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dmft_tools.html">dmft_tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.formatter.html">dmft_tools.formatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.greens_functions_mixer.html">dmft_tools.greens_functions_mixer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.initial_self_energies.html">dmft_tools.initial_self_energies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.interaction_hamiltonian.html">dmft_tools.interaction_hamiltonian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.legendre_filter.html">dmft_tools.legendre_filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.manipulate_chemical_potential.html">dmft_tools.manipulate_chemical_potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.observables.html">dmft_tools.observables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.results_to_archive.html">dmft_tools.results_to_archive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.solver.html">dmft_tools.solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/postprocessing.html">postprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html">postprocessing.eval_U_cRPA_Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.make_spaghetti.html">postprocessing.make_spaghetti</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_gf_imp.html">postprocessing.maxent_gf_imp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_gf_latt.html">postprocessing.maxent_gf_latt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_sigma.html">postprocessing.maxent_sigma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.plot_correlated_bands.html">postprocessing.plot_correlated_bands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/read_config.html">read_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#general">general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#solver">solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#dft">dft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#advanced">advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/util.html">util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.symmetrize_gamma_file.html">util.symmetrize_gamma_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.update_dmft_config.html">util.update_dmft_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.update_results_h5.html">util.update_results_h5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.write_kslice_to_h5.html">util.write_kslice_to_h5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html">CaFeO3 CSC with VASP PLOs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)">Running the initial SCF DFT calculation (~ 1 core hour)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-CSC-DMFT-calculations">Running the CSC DMFT calculations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html">Plotting the spectral function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Basic-options">Basic options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Wannier90">Wannier90</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#BZ-configuration">BZ configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Self-energy">Self-energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Plotting-options">Plotting options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Run-and-Plotting">Run and Plotting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues.html">reporting issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7E588A" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">solid_dmft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>dmft_tools.interaction_hamiltonian</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dmft_tools.interaction_hamiltonian</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># solid_dmft - A versatile python wrapper to perform DFT+DMFT calculations</span>
+<span class="c1">#              utilizing the TRIQS software library</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright (C) 2018-2020, ETH Zurich</span>
+<span class="c1"># Copyright (C) 2021, The Simons Foundation</span>
+<span class="c1">#      authors: A. Hampel, M. Merkel, and S. Beck</span>
+<span class="c1">#</span>
+<span class="c1"># solid_dmft is free software: you can redistribute it and/or modify it under the</span>
+<span class="c1"># terms of the GNU General Public License as published by the Free Software</span>
+<span class="c1"># Foundation, either version 3 of the License, or (at your option) any later</span>
+<span class="c1"># version.</span>
+<span class="c1">#</span>
+<span class="c1"># solid_dmft is distributed in the hope that it will be useful, but WITHOUT ANY</span>
+<span class="c1"># WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A</span>
+<span class="c1"># PARTICULAR PURPOSE. See the GNU General Public License for more details.</span>
+
+<span class="c1"># You should have received a copy of the GNU General Public License along with</span>
+<span class="c1"># solid_dmft (in the file COPYING.txt in this directory). If not, see</span>
+<span class="c1"># &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">################################################################################</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Contains all functions related to constructing the interaction Hamiltonian.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># system</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+
+<span class="c1"># triqs</span>
+<span class="kn">from</span> <span class="nn">h5</span> <span class="kn">import</span> <span class="n">HDFArchive</span>
+<span class="kn">import</span> <span class="nn">triqs.utility.mpi</span> <span class="k">as</span> <span class="nn">mpi</span>
+<span class="kn">from</span> <span class="nn">triqs.operators</span> <span class="kn">import</span> <span class="n">util</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_dag</span><span class="p">,</span> <span class="n">Operator</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">forktps</span> <span class="k">as</span> <span class="nn">ftps</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">_extract_U_J_list</span><span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">n_inequiv_shells</span><span class="p">,</span> <span class="n">general_params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks if param_name (&#39;U&#39; or &#39;J&#39;) are a single value or different per</span>
+<span class="sd">    inequivalent shell. If just a single value is given, this value is</span>
+<span class="sd">    applied to each shell.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">formatted_param</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;none&#39;</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span> <span class="k">else</span> <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                       <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">general_params</span><span class="p">[</span><span class="n">param_name</span><span class="p">]]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="n">param_name</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;Assuming </span><span class="si">{}</span><span class="s1"> = &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param_name</span><span class="p">)</span>
+                   <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> for all correlated shells&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">formatted_param</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">general_params</span><span class="p">[</span><span class="n">param_name</span><span class="p">]</span> <span class="o">*=</span> <span class="n">n_inequiv_shells</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="n">param_name</span><span class="p">])</span> <span class="o">==</span> <span class="n">n_inequiv_shells</span><span class="p">:</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> list for correlated shells: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">formatted_param</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;Property list </span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="n">param_name</span><span class="p">])</span>
+                         <span class="o">+</span> <span class="s1">&#39;must have length 1 or n_inequiv_shells&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">general_params</span>
+
+
+<span class="k">def</span> <span class="nf">_load_crpa_interaction_matrix</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;UIJKL&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads VASP cRPA data to use as an interaction Hamiltonian.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_round_to_int</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Loads data from VASP cRPA file</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loading cRPA matrix from file: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">u_matrix_four_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">_round_to_int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">4</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">:</span>
+        <span class="c1"># VASP switches the order of the indices, ijkl -&gt; ikjl</span>
+        <span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">_round_to_int</span><span class="p">(</span><span class="n">entry</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">u_matrix_four_indices</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">entry</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+    <span class="c1"># Slices up the four index U-matrix, separating shells</span>
+    <span class="n">u_matrix_four_indices_per_shell</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span>
+    <span class="n">first_index_shell</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">ish</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_corr_shells</span><span class="p">):</span>
+        <span class="n">n_orb</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]</span>
+        <span class="n">icrsh</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_to_inequiv</span><span class="p">[</span><span class="n">ish</span><span class="p">]</span>
+        <span class="n">u_matrix_temp</span> <span class="o">=</span> <span class="n">u_matrix_four_indices</span><span class="p">[</span><span class="n">first_index_shell</span><span class="p">:</span><span class="n">first_index_shell</span><span class="o">+</span><span class="n">n_orb</span><span class="p">,</span>
+                                              <span class="n">first_index_shell</span><span class="p">:</span><span class="n">first_index_shell</span><span class="o">+</span><span class="n">n_orb</span><span class="p">,</span>
+                                              <span class="n">first_index_shell</span><span class="p">:</span><span class="n">first_index_shell</span><span class="o">+</span><span class="n">n_orb</span><span class="p">,</span>
+                                              <span class="n">first_index_shell</span><span class="p">:</span><span class="n">first_index_shell</span><span class="o">+</span><span class="n">n_orb</span><span class="p">]</span>
+        <span class="c1"># I think for now we should stick with real interactions make real</span>
+        <span class="n">u_matrix_temp</span><span class="o">.</span><span class="n">imag</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="k">if</span> <span class="n">ish</span> <span class="o">==</span> <span class="n">icrsh</span><span class="p">:</span>
+            <span class="n">u_matrix_four_indices_per_shell</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">u_matrix_temp</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">u_matrix_four_indices_per_shell</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span> <span class="n">u_matrix_temp</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+            <span class="c1"># TODO: for some reason, some entries in the matrices differ by a sign. Check that</span>
+            <span class="c1"># mpi.report(np.allclose(np.abs(u_matrix_four_indices_per_shell[icrsh]), np.abs(u_matrix_temp),</span>
+                              <span class="c1"># atol=1e-6, rtol=0))</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;Warning: cRPA matrix for impurity </span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">icrsh</span><span class="p">)</span>
+                  <span class="o">+</span> <span class="s1">&#39;differs for shells </span><span class="si">{}</span><span class="s1"> and </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span> <span class="n">ish</span><span class="p">))</span>
+
+        <span class="n">first_index_shell</span> <span class="o">+=</span> <span class="n">n_orb</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">u_matrix_four_indices</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">first_index_shell</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: different number of orbitals in cRPA matrix than in calculation.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">u_matrix_four_indices_per_shell</span>
+
+
+<span class="c1"># def _adapt_U_2index_for_SO(Umat, Upmat):</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     Changes the two-index U matrices such that for a system consisting of a</span>
+<span class="c1">#     single block &#39;ud&#39; with the entries (1, up), (1, down), (2, up), (2, down),</span>
+<span class="c1">#     ... the matrices are consistent with the case without spin-orbit coupling.</span>
+
+<span class="c1">#     Parameters</span>
+<span class="c1">#     ----------</span>
+<span class="c1">#     Umat : numpy array</span>
+<span class="c1">#         The two-index interaction matrix for parallel spins without SO.</span>
+<span class="c1">#     Upmat : numpy array</span>
+<span class="c1">#         The two-index interaction matrix for antiparallel spins without SO.</span>
+
+<span class="c1">#     Returns</span>
+<span class="c1">#     -------</span>
+<span class="c1">#     Umat_SO : numpy array</span>
+<span class="c1">#         The two-index interaction matrix for parallel spins. Because in SO all</span>
+<span class="c1">#         entries have nominal spin &#39;ud&#39;, this matrix now contains the original</span>
+<span class="c1">#         Umat and Upmat.</span>
+<span class="c1">#     Upmat_SO : numpy array</span>
+<span class="c1">#         The two-index interaction matrix for antiparallel spins. Unused because</span>
+<span class="c1">#         in SO, all spins have the same nominal spin &#39;ud&#39;.</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+
+<span class="c1">#     Umat_SO = np.zeros(np.array(Umat.shape)*2, dtype=Umat.dtype)</span>
+<span class="c1">#     Umat_SO[::2, ::2] = Umat_SO[1::2, 1::2] = Umat</span>
+<span class="c1">#     Umat_SO[::2, 1::2] = Umat_SO[1::2, ::2] = Upmat</span>
+<span class="c1">#     Upmat_SO = None</span>
+
+<span class="c1">#     return Umat_SO, Upmat_SO</span>
+
+
+<span class="k">def</span> <span class="nf">_adapt_U_4index_for_SO</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Changes the four-index U matrix such that for a system consisting of a</span>
+<span class="sd">    single block &#39;ud&#39; with the entries (1, up), (1, down), (2, up), (2, down),</span>
+<span class="sd">    ... the matrix is consistent with the case without spin-orbit coupling.</span>
+<span class="sd">    This can be derived directly from the definition of the Slater Hamiltonian.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Umat_full : numpy array</span>
+<span class="sd">       The four-index interaction matrix without SO.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Umat_full_SO : numpy array</span>
+<span class="sd">        The four-index interaction matrix with SO. For a matrix U_ijkl, the</span>
+<span class="sd">        indices i, k correspond to spin sigma, and indices j, l to sigma&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">Umat_full_SO</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Umat_full</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">Umat_full</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">spin</span><span class="p">,</span> <span class="n">spin_prime</span> <span class="ow">in</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)):</span>
+        <span class="n">Umat_full_SO</span><span class="p">[</span><span class="n">spin</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="n">spin_prime</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="n">spin</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="n">spin_prime</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Umat_full</span>
+
+    <span class="k">return</span> <span class="n">Umat_full_SO</span>
+
+
+<span class="k">def</span> <span class="nf">_construct_kanamori</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs the Kanamori interaction Hamiltonian. Only Kanamori does not</span>
+<span class="sd">    need the full four-index matrix. Therefore, we can construct it directly</span>
+<span class="sd">    from the parameters U and J.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">h_int</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span>
+
+    <span class="k">for</span> <span class="n">icrsh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">):</span>
+        <span class="c1"># ish points to the shell representative of the current group</span>
+        <span class="n">ish</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span>
+        <span class="n">orb_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">n_orb</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="n">n_orb</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span>
+
+        <span class="k">if</span> <span class="n">n_orb</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;warning: are you sure you want to use the kanamori hamiltonian &#39;</span>
+                       <span class="o">+</span> <span class="s1">&#39;outside the t2g or eg manifold?&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;solver_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ftps&#39;</span><span class="p">:</span>
+            <span class="c1"># 1-band modell requires J and U&#39; equals zero</span>
+            <span class="k">if</span> <span class="n">n_orb</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">up</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">up</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span>
+            <span class="n">h_int</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">ftps</span><span class="o">.</span><span class="n">solver_core</span><span class="o">.</span><span class="n">HInt</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span> <span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">up</span><span class="o">=</span><span class="n">up</span><span class="p">,</span> <span class="n">dd</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Constructs U matrix</span>
+            <span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">U_matrix_kanamori</span><span class="p">(</span><span class="n">n_orb</span><span class="o">=</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">U_int</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span>
+                                                 <span class="n">J_hund</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">])</span>
+
+            <span class="n">h_int</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">h_int_kanamori</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">spin_block_names</span><span class="p">[</span><span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span><span class="p">],</span> <span class="n">orb_names</span><span class="p">,</span>
+                                               <span class="n">map_operator_structure</span><span class="o">=</span><span class="n">sum_k</span><span class="o">.</span><span class="n">sumk_to_solver</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span>
+                                               <span class="n">U</span><span class="o">=</span><span class="n">Umat</span><span class="p">,</span> <span class="n">Uprime</span><span class="o">=</span><span class="n">Upmat</span><span class="p">,</span> <span class="n">J_hund</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span>
+                                               <span class="n">H_dump</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;jobname&#39;</span><span class="p">],</span> <span class="s1">&#39;H.txt&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">h_int</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">_construct_kanamori_soc</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span>
+                                                   <span class="n">orb_names</span><span class="p">,</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">sumk_to_solver</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span>
+                                                   <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;jobname&#39;</span><span class="p">],</span> <span class="s1">&#39;H.txt&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">h_int</span>
+
+
+<span class="k">def</span> <span class="nf">_construct_kanamori_soc</span><span class="p">(</span><span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">map_operator_structure</span><span class="p">,</span> <span class="n">H_dump</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adapted from triqs.operators.util.hamiltonians.h_int_kanamori. Assumes</span>
+<span class="sd">    that spin_names == [&#39;ud&#39;] and that map_operator_structure is given.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">H_dump</span><span class="p">:</span>
+        <span class="n">H_dump_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">H_dump</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Kanamori Hamiltonian:&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">H</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">()</span>
+    <span class="n">mkind</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">op_struct</span><span class="o">.</span><span class="n">get_mkind</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">map_operator_structure</span><span class="p">)</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;ud&#39;</span>
+
+    <span class="c1"># density terms:</span>
+    <span class="c1"># TODO: reformulate in terms of Umat and Upmat for consistency with triqs?</span>
+    <span class="k">if</span> <span class="n">H_dump</span><span class="p">:</span>
+        <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Density-density terms:&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a2</span><span class="p">:</span> <span class="c1"># same spin and orbital</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="n">a1</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">a2</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:</span> <span class="c1"># same orbital (, different spins)</span>
+            <span class="n">U_val</span> <span class="o">=</span> <span class="n">U_int</span>
+        <span class="k">elif</span> <span class="n">a1</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="n">a2</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span> <span class="c1"># different spins (, different orbitals)</span>
+            <span class="n">U_val</span> <span class="o">=</span> <span class="n">U_int</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">J_hund</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># same spins (, different orbitals)</span>
+            <span class="n">U_val</span> <span class="o">=</span> <span class="n">U_int</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">J_hund</span>
+
+        <span class="n">H_term</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">U_val</span> <span class="o">*</span> <span class="n">n</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">))</span> <span class="o">*</span> <span class="n">n</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">))</span>
+        <span class="n">H</span> <span class="o">+=</span> <span class="n">H_term</span>
+
+        <span class="c1"># Dump terms of H</span>
+        <span class="k">if</span> <span class="n">H_dump</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">H_term</span><span class="o">.</span><span class="n">is_zero</span><span class="p">():</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">U_val</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># spin-flip terms:</span>
+    <span class="k">if</span> <span class="n">H_dump</span><span class="p">:</span>
+        <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Spin-flip terms:&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">a4</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a2</span> <span class="ow">or</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a3</span> <span class="ow">or</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a4</span> <span class="ow">or</span> <span class="n">a2</span> <span class="o">==</span> <span class="n">a3</span> <span class="ow">or</span> <span class="n">a2</span> <span class="o">==</span> <span class="n">a4</span> <span class="ow">or</span> <span class="n">a3</span> <span class="o">==</span> <span class="n">a4</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">a1</span><span class="o">//</span><span class="mi">2</span> <span class="o">==</span> <span class="n">a2</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a3</span><span class="o">//</span><span class="mi">2</span> <span class="o">==</span> <span class="n">a4</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a1</span><span class="o">//</span><span class="mi">2</span> <span class="o">!=</span> <span class="n">a3</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a1</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span> <span class="n">a3</span><span class="o">%</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="n">H_term</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">J_hund</span> <span class="o">*</span> <span class="n">c_dag</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">))</span> <span class="o">*</span> <span class="n">c</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">))</span> <span class="o">*</span> <span class="n">c_dag</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a3</span><span class="p">))</span> <span class="o">*</span> <span class="n">c</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a4</span><span class="p">))</span>
+        <span class="n">H</span> <span class="o">+=</span> <span class="n">H_term</span>
+
+        <span class="c1"># Dump terms of H</span>
+        <span class="k">if</span> <span class="n">H_dump</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">H_term</span><span class="o">.</span><span class="n">is_zero</span><span class="p">():</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a3</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a4</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="o">-</span><span class="n">J_hund</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># pair-hopping terms:</span>
+    <span class="k">if</span> <span class="n">H_dump</span><span class="p">:</span>
+        <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Pair-hopping terms:&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">a4</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">,</span> <span class="n">orb_names</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a2</span> <span class="ow">or</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a3</span> <span class="ow">or</span> <span class="n">a1</span> <span class="o">==</span> <span class="n">a4</span> <span class="ow">or</span> <span class="n">a2</span> <span class="o">==</span> <span class="n">a3</span> <span class="ow">or</span> <span class="n">a2</span> <span class="o">==</span> <span class="n">a4</span> <span class="ow">or</span> <span class="n">a3</span> <span class="o">==</span> <span class="n">a4</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">a1</span><span class="o">//</span><span class="mi">2</span> <span class="o">==</span> <span class="n">a2</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a3</span><span class="o">//</span><span class="mi">2</span> <span class="o">==</span> <span class="n">a4</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a1</span><span class="o">//</span><span class="mi">2</span> <span class="o">!=</span> <span class="n">a3</span><span class="o">//</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a1</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span> <span class="n">a3</span><span class="o">%</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">continue</span>
+
+        <span class="n">H_term</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">J_hund</span> <span class="o">*</span> <span class="n">c_dag</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">))</span> <span class="o">*</span> <span class="n">c_dag</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">))</span> <span class="o">*</span> <span class="n">c</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a4</span><span class="p">))</span> <span class="o">*</span> <span class="n">c</span><span class="p">(</span><span class="o">*</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a3</span><span class="p">))</span>
+        <span class="n">H</span> <span class="o">+=</span> <span class="n">H_term</span>
+
+        <span class="c1"># Dump terms of H</span>
+        <span class="k">if</span> <span class="n">H_dump</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">H_term</span><span class="o">.</span><span class="n">is_zero</span><span class="p">():</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a1</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a2</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a3</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mkind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a4</span><span class="p">),</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">H_dump_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="o">-</span><span class="n">J_hund</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">H</span>
+
+
+<span class="k">def</span> <span class="nf">_construct_dynamic</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs the interaction Hamiltonian for a frequency-dependent interaction.</span>
+<span class="sd">    Works only without spin-orbit coupling and only for one orbital.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;###### Dynamic U calculation ######, load parameters from input archive.&#39;</span><span class="p">)</span>
+    <span class="n">U_onsite</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
+        <span class="k">with</span> <span class="n">HDFArchive</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;jobname&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+            <span class="n">U_onsite</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="s1">&#39;dynamic_U&#39;</span><span class="p">][</span><span class="s1">&#39;U_scr&#39;</span><span class="p">]</span>
+    <span class="n">U_onsite</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">U_onsite</span><span class="p">)</span>
+
+    <span class="n">h_int</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span>
+    <span class="k">for</span> <span class="n">icrsh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">):</span>
+        <span class="c1"># ish points to the shell representative of the current group</span>
+        <span class="n">ish</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span>
+        <span class="n">orb_names</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">n_orb</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;dynamic U not implemented for SO!=0&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n_orb</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;dynamic U not implemented for more than one orbital&#39;</span><span class="p">)</span>
+
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;onsite interaction value for imp </span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">icrsh</span><span class="p">,</span><span class="n">U_onsite</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]))</span>
+        <span class="n">h_int</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">h_int_density</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">spin_block_names</span><span class="p">[</span><span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span><span class="p">],</span> <span class="n">orb_names</span><span class="p">,</span>
+                                          <span class="n">map_operator_structure</span><span class="o">=</span><span class="n">sum_k</span><span class="o">.</span><span class="n">sumk_to_solver</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span>
+                                          <span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">]]),</span> <span class="n">Uprime</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">U_onsite</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]]]),</span> <span class="n">H_dump</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;jobname&#39;</span><span class="p">],</span> <span class="s1">&#39;H.txt&#39;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">h_int</span>
+
+
+<span class="k">def</span> <span class="nf">_generate_four_index_u_matrix</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates the four-index interaction matrix per impurity with the interaction</span>
+<span class="sd">    parameters U and J (and ratio_F4_F2 for the d shell).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">Umat_full</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span>
+    <span class="k">for</span> <span class="n">icrsh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">):</span>
+        <span class="c1"># ish points to the shell representative of the current group</span>
+        <span class="n">ish</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">n_orb</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="n">n_orb</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span>
+
+        <span class="k">if</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;l&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">slater_integrals</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">U_J_to_radial_integrals</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;l&#39;</span><span class="p">],</span>
+                                                            <span class="n">U_int</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">],</span>
+                                                            <span class="n">J_hund</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Implements parameter R=F4/F2. For R=0.63 equivalent to util.U_J_to_radial_integrals</span>
+            <span class="n">U</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span>
+            <span class="n">J</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span>
+            <span class="n">R</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;ratio_F4_F2&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span>
+            <span class="n">R</span> <span class="o">=</span> <span class="mf">0.63</span> <span class="k">if</span> <span class="n">R</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span> <span class="k">else</span> <span class="n">R</span>
+            <span class="n">slater_integrals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">U</span><span class="p">,</span> <span class="mi">14</span><span class="o">*</span><span class="n">J</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">R</span><span class="p">),</span> <span class="mi">14</span><span class="o">*</span><span class="n">J</span><span class="o">*</span><span class="n">R</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">R</span><span class="p">)])</span>
+
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Impurity </span><span class="si">{}</span><span class="s1">: The corresponding slater integrals are&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">icrsh</span><span class="p">))</span>
+        <span class="n">formatted_slater_integrals</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">slater_integrals</span><span class="p">))],</span> <span class="n">slater_integrals</span><span class="p">))</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">((</span><span class="s1">&#39;F</span><span class="si">{:d}</span><span class="s1"> = </span><span class="si">{:.2f}</span><span class="s1">, &#39;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">slater_integrals</span><span class="p">))</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">formatted_slater_integrals</span><span class="p">))</span>
+
+        <span class="c1"># Constructs U matrix</span>
+        <span class="c1"># construct full spherical symmetric U matrix and transform to cubic basis</span>
+        <span class="c1"># the order for the cubic orbitals is as follows (&quot;xy&quot;,&quot;yz&quot;,&quot;z^2&quot;,&quot;xz&quot;,&quot;x^2-y^2&quot;)</span>
+        <span class="c1"># this is consistent with the order of orbitals in the VASP interface</span>
+        <span class="c1"># but not necessarily with wannier90! This is also true for the f-shell.</span>
+        <span class="n">Umat_full</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">U_matrix</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;l&#39;</span><span class="p">],</span>
+                                         <span class="n">radial_integrals</span><span class="o">=</span><span class="n">slater_integrals</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">n_orb</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">Umat_full</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">eg_submatrix</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">[</span><span class="n">icrsh</span><span class="p">])</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;Using eg subspace of interaction Hamiltonian&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">n_orb</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">Umat_full</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">t2g_submatrix</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">[</span><span class="n">icrsh</span><span class="p">])</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;Using t2g subspace of interaction Hamiltonian&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">n_orb</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Calculations for d shell only support 2, 3 or 5 orbitals&#39;</span>
+                             <span class="o">+</span> <span class="s1">&#39;and for the f shell only 7 orbitals&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Umat_full</span>
+
+
+<span class="k">def</span> <span class="nf">_rotate_four_index_matrix</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">Umat_full</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Rotates the four index matrix into the local frame. &quot;&quot;&quot;</span>
+
+    <span class="n">Umat_full_rotated</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span>
+    <span class="k">for</span> <span class="n">icrsh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">):</span>
+        <span class="n">ish</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span>
+        <span class="c1"># Transposes rotation matrix here because TRIQS has a slightly different definition</span>
+        <span class="n">Umat_full_rotated</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">transform_U_matrix</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">rot_mat</span><span class="p">[</span><span class="n">ish</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;density_density&#39;</span><span class="p">,</span> <span class="s1">&#39;crpa_density_density&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Umat_full_rotated</span><span class="p">,</span> <span class="n">Umat_full</span><span class="p">):</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;WARNING: applying a rotation matrix changes the dens-dens Hamiltonian.</span><span class="se">\n</span><span class="s1">&#39;</span>
+                       <span class="o">+</span> <span class="s1">&#39;This changes the definition of the ignored spin flip and pair hopping.&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;full_slater&#39;</span><span class="p">,</span> <span class="s1">&#39;crpa&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Umat_full_rotated</span><span class="p">,</span> <span class="n">Umat_full</span><span class="p">):</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;WARNING: applying a rotation matrix changes the interaction Hamiltonian.</span><span class="se">\n</span><span class="s1">&#39;</span>
+                       <span class="o">+</span> <span class="s1">&#39;Please ensure that the rotation is correct!&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Umat_full_rotated</span>
+
+
+<span class="k">def</span> <span class="nf">_construct_density_density</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">Umat_full_rotated</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs the density-density Slater-Hamiltonian from the four-index</span>
+<span class="sd">    interaction matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">h_int</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span>
+
+    <span class="c1"># Constructs Hamiltonian from Umat_full_rotated</span>
+    <span class="k">for</span> <span class="n">icrsh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">):</span>
+        <span class="c1"># ish points to the shell representative of the current group</span>
+        <span class="n">ish</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span>
+        <span class="n">orb_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]))</span>
+
+        <span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">reduce_4index_to_2index</span><span class="p">(</span><span class="n">Umat_full_rotated</span><span class="p">[</span><span class="n">icrsh</span><span class="p">])</span>
+        <span class="n">h_int</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">h_int_density</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">spin_block_names</span><span class="p">[</span><span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span><span class="p">],</span> <span class="n">orb_names</span><span class="p">,</span>
+                                          <span class="n">map_operator_structure</span><span class="o">=</span><span class="n">sum_k</span><span class="o">.</span><span class="n">sumk_to_solver</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span>
+                                          <span class="n">U</span><span class="o">=</span><span class="n">Umat</span><span class="p">,</span> <span class="n">Uprime</span><span class="o">=</span><span class="n">Upmat</span><span class="p">,</span> <span class="n">H_dump</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;jobname&#39;</span><span class="p">],</span> <span class="s1">&#39;H.txt&#39;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">h_int</span>
+
+
+<span class="k">def</span> <span class="nf">_construct_slater</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">Umat_full_rotated</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs the full Slater-Hamiltonian from the four-index interaction</span>
+<span class="sd">    matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">h_int</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span>
+    <span class="k">for</span> <span class="n">icrsh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">):</span>
+        <span class="c1"># ish points to the shell representative of the current group</span>
+        <span class="n">ish</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span>
+        <span class="n">orb_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">ish</span><span class="p">][</span><span class="s1">&#39;dim&#39;</span><span class="p">]))</span>
+
+        <span class="n">h_int</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">h_int_slater</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">spin_block_names</span><span class="p">[</span><span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span><span class="p">],</span> <span class="n">orb_names</span><span class="p">,</span>
+                                         <span class="n">map_operator_structure</span><span class="o">=</span><span class="n">sum_k</span><span class="o">.</span><span class="n">sumk_to_solver</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span>
+                                         <span class="n">U_matrix</span><span class="o">=</span><span class="n">Umat_full_rotated</span><span class="p">[</span><span class="n">icrsh</span><span class="p">],</span>
+                                         <span class="n">H_dump</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;jobname&#39;</span><span class="p">],</span> <span class="s1">&#39;H.txt&#39;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">h_int</span>
+
+
+<div class="viewcode-block" id="construct"><a class="viewcode-back" href="../../_autosummary/dmft_tools.interaction_hamiltonian.html#dmft_tools.interaction_hamiltonian.construct">[docs]</a><span class="k">def</span> <span class="nf">construct</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">advanced_params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs the interaction Hamiltonian. Currently implemented are the</span>
+<span class="sd">    Kanamori Hamiltonian (usually for 2 or 3 orbitals), the density-density and</span>
+<span class="sd">    the full Slater Hamiltonian (for 2, 3, or 5 orbitals).</span>
+<span class="sd">    If sum_k.rot_mat is non-identity, we have to consider rotating the interaction</span>
+<span class="sd">    Hamiltonian: the Kanamori Hamiltonian does not change because it is invariant</span>
+<span class="sd">    under orbital mixing but all the other Hamiltonians are at most invariant</span>
+<span class="sd">    under rotations in space. Therefore, sum_k.rot_mat has to be correct before</span>
+<span class="sd">    calling this method.</span>
+
+<span class="sd">    The parameters U and J will be interpreted differently depending on the</span>
+<span class="sd">    type of the interaction Hamiltonian: it is either the Kanamori parameters</span>
+<span class="sd">    for the Kanamori Hamiltonian or the orbital-averaged parameters (consistent</span>
+<span class="sd">    with DFT+U, https://cms.mpi.univie.ac.at/wiki/index.php/LDAUTYPE ) for all</span>
+<span class="sd">    other Hamiltonians.</span>
+
+<span class="sd">    Note also that for all Hamiltonians except Kanamori, the order of the</span>
+<span class="sd">    orbitals matters. The correct order is specified here:</span>
+<span class="sd">    https://triqs.github.io/triqs/2.1.x/reference/operators/util/U_matrix.html#triqs.operators.util.U_matrix.spherical_to_cubic</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+     <span class="c1"># Extracts U and J</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;*** interaction parameters ***&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">param_name</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">):</span>
+        <span class="n">general_params</span> <span class="o">=</span> <span class="n">_extract_U_J_list</span><span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">,</span> <span class="n">general_params</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">param_name</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;dc_U&#39;</span><span class="p">,</span> <span class="s1">&#39;dc_J&#39;</span><span class="p">):</span>
+        <span class="n">advanced_params</span> <span class="o">=</span> <span class="n">_extract_U_J_list</span><span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">,</span> <span class="n">advanced_params</span><span class="p">)</span>
+
+    <span class="c1"># Extracts ratio_F4_F2 if every correlated shell is a d-shell</span>
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;density_density&#39;</span><span class="p">,</span> <span class="s1">&#39;full_slater&#39;</span><span class="p">):</span>
+        <span class="n">general_params</span> <span class="o">=</span> <span class="n">_extract_U_J_list</span><span class="p">(</span><span class="s1">&#39;ratio_F4_F2&#39;</span><span class="p">,</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">,</span> <span class="n">general_params</span><span class="p">)</span>
+
+        <span class="c1"># Checks that all entries are l == 2 or R == &#39;none&#39;</span>
+        <span class="k">for</span> <span class="n">icrsh</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_inequiv_shells</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">corr_shells</span><span class="p">[</span><span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]][</span><span class="s1">&#39;l&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span>
+                    <span class="ow">and</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;ratio_F4_F2&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;none&#39;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Ratio F4/F2 only implemented for d-shells &#39;</span>
+                                 <span class="o">+</span> <span class="s1">&#39;but set in impurity </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">icrsh</span><span class="p">))</span>
+
+    <span class="c1"># Constructs the interaction Hamiltonian. Needs to come after setting sum_k.rot_mat</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Constructing the interaction Hamiltonians&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;kanamori&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_construct_kanamori</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dynamic&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_construct_dynamic</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;density_density&#39;</span><span class="p">,</span> <span class="s1">&#39;full_slater&#39;</span><span class="p">):</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Note: The input parameters U and J here are orbital-averaged parameters.&#39;</span><span class="p">)</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;Note: The order of the orbitals is important. See also the doc string of this method.&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;density_density&#39;</span> <span class="ow">and</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;solver_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ftps&#39;</span><span class="p">:</span>
+        <span class="c1"># TODO: implement</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Note: Density-density not implemented for ftps.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Gets full four-index U matrix</span>
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;density_density&#39;</span><span class="p">,</span> <span class="s1">&#39;full_slater&#39;</span><span class="p">):</span>
+        <span class="n">Umat_full</span> <span class="o">=</span>  <span class="n">_generate_four_index_u_matrix</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;crpa&#39;</span><span class="p">,</span> <span class="s1">&#39;crpa_density_density&#39;</span><span class="p">):</span>
+        <span class="n">Umat_full</span> <span class="o">=</span> <span class="n">_load_crpa_interaction_matrix</span><span class="p">(</span><span class="n">sum_k</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">SO</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">Umat_full</span> <span class="o">=</span> <span class="p">[</span><span class="n">_adapt_U_4index_for_SO</span><span class="p">(</span><span class="n">Umat_full_per_imp</span><span class="p">)</span>
+                     <span class="k">for</span> <span class="n">Umat_full_per_imp</span> <span class="ow">in</span> <span class="n">Umat_full</span><span class="p">]</span>
+
+    <span class="c1"># Rotates the interaction matrix</span>
+    <span class="n">Umat_full_rotated</span> <span class="o">=</span> <span class="n">_rotate_four_index_matrix</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">Umat_full</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;density_density&#39;</span><span class="p">,</span> <span class="s1">&#39;crpa_density_density&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_construct_density_density</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">Umat_full_rotated</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;full_slater&#39;</span><span class="p">,</span> <span class="s1">&#39;crpa&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_construct_slater</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">Umat_full_rotated</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Error when constructing the interaction Hamiltonian.&#39;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>postprocessing.maxent_gf_latt &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #7E588A" >
+            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                3.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#version-compatibility">Version compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#code-structure">code structure:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/w90_interface.html">Wannier90 interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/w90_interface.html#orbital-order-in-the-w90-converter">orbital order in the W90 converter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/vasp_csc.html">interface to VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#general-remarks">General remarks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#locproj-bug-for-individual-projections">LOCPROJ bug for individual projections:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#convergence-of-projectors-with-vasp">convergence of projectors with Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#enabling-csc-calculations-with-wannier90-projectors">Enabling CSC calculations with Wannier90 projectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#speeding-up-by-not-writing-projectors-at-every-step">Speeding up by not writing projectors at every step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cRPA_VASP/README.html">How to do cRPA calculations with VASP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#file-description">file description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#workflow">Workflow:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#important-flags">important flags:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#convergency-tests">convergency tests:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#parameterization-of-u-and-j-from-crpa-calculations">Parameterization of U and J from cRPA calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#general-sidemarks">general sidemarks:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cRPA_VASP/README.html#version-and-compilation">version and compilation:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#run-solid-dmft">run solid_dmft</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/docker.html">Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_locally.html">run on your machine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_locally.html#csc-calculations-locally">CSC calculations locally</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_cluster.html">Running solid_dmft on a cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#running-on-cscs-daint">Running on CSCS daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#one-shot-job-on-daint">one shot job on daint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_cluster.html#csc-calculations-on-daint">CSC calculations on daint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">module reference manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dft_managers.html">dft_managers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dmft_tools.html">dmft_tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.formatter.html">dmft_tools.formatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.greens_functions_mixer.html">dmft_tools.greens_functions_mixer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.initial_self_energies.html">dmft_tools.initial_self_energies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.interaction_hamiltonian.html">dmft_tools.interaction_hamiltonian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.legendre_filter.html">dmft_tools.legendre_filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.manipulate_chemical_potential.html">dmft_tools.manipulate_chemical_potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.observables.html">dmft_tools.observables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.results_to_archive.html">dmft_tools.results_to_archive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dmft_tools.solver.html">dmft_tools.solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/postprocessing.html">postprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.eval_U_cRPA_Vasp.html">postprocessing.eval_U_cRPA_Vasp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.make_spaghetti.html">postprocessing.make_spaghetti</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_gf_imp.html">postprocessing.maxent_gf_imp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_gf_latt.html">postprocessing.maxent_gf_latt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.maxent_sigma.html">postprocessing.maxent_sigma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/postprocessing.plot_correlated_bands.html">postprocessing.plot_correlated_bands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/read_config.html">read_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#general">general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#solver">solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#dft">dft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/read_config.html#advanced">advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_autosummary/util.html">util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.symmetrize_gamma_file.html">util.symmetrize_gamma_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.update_dmft_config.html">util.update_dmft_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.update_results_h5.html">util.update_results_h5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_autosummary/util.write_kslice_to_h5.html">util.write_kslice_to_h5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html">CaFeO3 CSC with VASP PLOs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)">Running the initial SCF DFT calculation (~ 1 core hour)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-CSC-DMFT-calculations">Running the CSC DMFT calculations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html">Plotting the spectral function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Basic-options">Basic options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Wannier90">Wannier90</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#BZ-configuration">BZ configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Self-energy">Self-energy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Plotting-options">Plotting options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html#Run-and-Plotting">Run and Plotting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues.html">reporting issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #7E588A" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">solid_dmft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>postprocessing.maxent_gf_latt</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for postprocessing.maxent_gf_latt</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">################################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># TRIQS: a Toolbox for Research in Interacting Quantum Systems</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright (C) 2016-2018, N. Wentzell</span>
+<span class="c1"># Copyright (C) 2018-2019, Simons Foundation</span>
+<span class="c1">#   author: N. Wentzell</span>
+<span class="c1">#</span>
+<span class="c1"># TRIQS is free software: you can redistribute it and/or modify it under the</span>
+<span class="c1"># terms of the GNU General Public License as published by the Free Software</span>
+<span class="c1"># Foundation, either version 3 of the License, or (at your option) any later</span>
+<span class="c1"># version.</span>
+<span class="c1">#</span>
+<span class="c1"># TRIQS is distributed in the hope that it will be useful, but WITHOUT ANY</span>
+<span class="c1"># WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS</span>
+<span class="c1"># FOR A PARTICULAR PURPOSE. See the GNU General Public License for more</span>
+<span class="c1"># details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along with</span>
+<span class="c1"># TRIQS. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">################################################################################</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Analytic continuation of the lattice Green&#39;s function to the lattice spectral</span>
+<span class="sd">function using maxent.</span>
+
+<span class="sd">Reads G_latt(i omega) from the h5 archive and writes A_latt(omega) back.</span>
+
+<span class="sd">Known problems:</span>
+<span class="sd">    * when using parameter `energy_shift_orbitals` in soliDMFT, this is not</span>
+<span class="sd">      accounted for in this routine. It requires a similar modification of the</span>
+<span class="sd">      hopping matrix of SumkDFT as in dmft_cycle.py.</span>
+
+
+<span class="sd">Author: Max Merkel, 2020</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">triqs_maxent.tau_maxent</span> <span class="kn">import</span> <span class="n">TauMaxEnt</span>
+<span class="kn">from</span> <span class="nn">triqs_maxent.omega_meshes</span> <span class="kn">import</span> <span class="n">HyperbolicOmegaMesh</span>
+<span class="kn">from</span> <span class="nn">triqs_maxent.alpha_meshes</span> <span class="kn">import</span> <span class="n">LogAlphaMesh</span>
+<span class="kn">from</span> <span class="nn">triqs_dft_tools.sumk_dft</span> <span class="kn">import</span> <span class="n">SumkDFT</span>
+<span class="kn">from</span> <span class="nn">h5</span> <span class="kn">import</span> <span class="n">HDFArchive</span>
+<span class="kn">from</span> <span class="nn">triqs.gf</span> <span class="kn">import</span> <span class="n">GfImFreq</span>
+
+
+<span class="k">def</span> <span class="nf">_read_h5</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Reads the block Green&#39;s function G(tau) from h5 archive. &quot;&quot;&quot;</span>
+
+    <span class="n">h5_internal_path</span> <span class="o">=</span> <span class="s1">&#39;DMFT_results/&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;last_iter&#39;</span> <span class="k">if</span> <span class="n">iteration</span> <span class="ow">is</span> <span class="kc">None</span>
+                                          <span class="k">else</span> <span class="s1">&#39;it_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">iteration</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="n">HDFArchive</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+        <span class="n">impurity_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;Sigma_freq_&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">]</span>
+        <span class="c1"># Sorts impurity paths by their indices, not sure if necessary</span>
+        <span class="n">impurity_indices</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">impurity_paths</span><span class="p">]</span>
+        <span class="n">impurity_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">impurity_paths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">impurity_indices</span><span class="p">)]</span>
+
+        <span class="n">sigma_iw</span> <span class="o">=</span> <span class="p">[</span><span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">][</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">impurity_paths</span><span class="p">]</span>
+
+        <span class="n">block_structure</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="s1">&#39;DMFT_input&#39;</span><span class="p">][</span><span class="s1">&#39;block_structure&#39;</span><span class="p">]</span>
+        <span class="c1"># Fix for archives from triqs 2 when corr_to_inequiv was in SumkDFT, not in BlockStructure</span>
+        <span class="k">if</span> <span class="n">block_structure</span><span class="o">.</span><span class="n">corr_to_inequiv</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">block_structure</span><span class="o">.</span><span class="n">corr_to_inequiv</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="s1">&#39;dft_input/corr_to_inequiv&#39;</span><span class="p">]</span>
+
+        <span class="n">dc_energy</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">][</span><span class="s1">&#39;DC_energ&#39;</span><span class="p">]</span>
+        <span class="n">dc_potential</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">][</span><span class="s1">&#39;DC_pot&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s1">&#39;chemical_potential_post&#39;</span> <span class="ow">in</span> <span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">]:</span>
+            <span class="n">chemical_potential</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">][</span><span class="s1">&#39;chemical_potential_post&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Old name for chemical_potential_post</span>
+            <span class="n">chemical_potential</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">][</span><span class="s1">&#39;chemical_potential&#39;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">sigma_iw</span><span class="p">,</span> <span class="n">chemical_potential</span><span class="p">,</span> <span class="n">dc_energy</span><span class="p">,</span> <span class="n">dc_potential</span><span class="p">,</span> <span class="n">block_structure</span>
+
+
+<span class="k">def</span> <span class="nf">_write_lattice_gf_to_h5</span><span class="p">(</span><span class="n">gf_latt_iw</span><span class="p">,</span> <span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Writes the G_latt(i omega) to the h5 archive. Mostly for faster testing. &quot;&quot;&quot;</span>
+    <span class="n">h5_internal_path</span> <span class="o">=</span> <span class="s1">&#39;DMFT_results/&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;last_iter&#39;</span> <span class="k">if</span> <span class="n">iteration</span> <span class="ow">is</span> <span class="kc">None</span>
+                                          <span class="k">else</span> <span class="s1">&#39;it_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">iteration</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="n">HDFArchive</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+        <span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">][</span><span class="s1">&#39;Glatt_iw&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gf_latt_iw</span>
+
+
+<span class="k">def</span> <span class="nf">_read_lattice_gf_from_h5</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Reads the G_latt(i omega) from the h5 archive. Mostly for faster testing. &quot;&quot;&quot;</span>
+    <span class="n">h5_internal_path</span> <span class="o">=</span> <span class="s1">&#39;DMFT_results/&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;last_iter&#39;</span> <span class="k">if</span> <span class="n">iteration</span> <span class="ow">is</span> <span class="kc">None</span>
+                                          <span class="k">else</span> <span class="s1">&#39;it_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">iteration</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="n">HDFArchive</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">][</span><span class="s1">&#39;Glatt_iw&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_get_nondegenerate_greens_functions</span><span class="p">(</span><span class="n">spins_degenerate</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">block_gf</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    If spins_degenerate and there is a corresponding up, down pair (same names),</span>
+<span class="sd">    it returns the averaged from up and down for the up index and None for the down</span>
+<span class="sd">    index. This way, the gf will only be continued analytically once for each spin pair.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">spins_degenerate</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;up&#39;</span> <span class="ow">in</span> <span class="n">block</span><span class="p">:</span>
+            <span class="n">degenerate_block</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;up&#39;</span><span class="p">,</span> <span class="s1">&#39;down&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">degenerate_block</span> <span class="ow">in</span> <span class="n">block_gf</span><span class="o">.</span><span class="n">indices</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="s1">&#39;Block </span><span class="si">{}</span><span class="s1">: &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+                      <span class="o">+</span> <span class="s1">&#39;using average with degenerate block </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">degenerate_block</span><span class="p">))</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">block_gf</span><span class="p">[</span><span class="n">block</span><span class="p">]</span> <span class="o">+</span> <span class="n">block_gf</span><span class="p">[</span><span class="n">degenerate_block</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">elif</span> <span class="s1">&#39;down&#39;</span> <span class="ow">in</span> <span class="n">block</span> <span class="ow">and</span> <span class="n">block</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;down&#39;</span><span class="p">,</span> <span class="s1">&#39;up&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">block_gf</span><span class="o">.</span><span class="n">indices</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="s1">&#39;Block </span><span class="si">{}</span><span class="s1">: skipping, same as degenerate up state.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">block</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">block_gf</span><span class="p">[</span><span class="n">block</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_run_maxent</span><span class="p">(</span><span class="n">gf_latt_iw</span><span class="p">,</span> <span class="n">sum_k</span><span class="p">,</span> <span class="n">spins_degenerate</span><span class="p">,</span> <span class="n">maxent_error</span><span class="o">=.</span><span class="mi">03</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Runs maxent to get the spectral function from the list of block GF.</span>
+<span class="sd">    If spins_degenerate, pairs with the same name except up&lt;-&gt;down switched</span>
+<span class="sd">    will only be calculated once.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Prints information on the blocks found</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Found blocks </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gf_latt_iw</span><span class="o">.</span><span class="n">indices</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">gf_latt_iw</span><span class="o">.</span><span class="n">indices</span><span class="p">:</span>
+        <span class="c1"># Checks if gf is part of a degenerate pair</span>
+        <span class="n">gf</span> <span class="o">=</span> <span class="n">_get_nondegenerate_greens_functions</span><span class="p">(</span><span class="n">spins_degenerate</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">gf_latt_iw</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">gf</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">block</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Take trace of lattice GF. Individual entries do not make sense</span>
+        <span class="c1"># because the KS Hamiltonian ususally has the bands sorted by energy</span>
+        <span class="n">gf</span> <span class="o">=</span> <span class="n">GfImFreq</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="n">gf</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">gf</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">axis1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis2</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="c1"># Initializes and runs the maxent solver</span>
+        <span class="n">num_ks_orbitals</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">hopping</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="c1"># Gets maximal entry on the diagonal of the hopping matrix</span>
+        <span class="n">hopping_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">hopping</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_ks_orbitals</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_ks_orbitals</span><span class="p">)]</span>
+                                    <span class="o">-</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">chemical_potential</span><span class="p">))</span>
+        <span class="n">omega_limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">hopping_max</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calling MaxEnt with omega in +- </span><span class="si">{:.3f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">omega_limit</span><span class="p">))</span>
+        <span class="n">solver</span> <span class="o">=</span> <span class="n">TauMaxEnt</span><span class="p">()</span>
+        <span class="n">solver</span><span class="o">.</span><span class="n">set_G_iw</span><span class="p">(</span><span class="n">gf</span><span class="p">)</span>
+        <span class="n">solver</span><span class="o">.</span><span class="n">set_error</span><span class="p">(</span><span class="n">maxent_error</span><span class="p">)</span>
+        <span class="n">solver</span><span class="o">.</span><span class="n">omega</span> <span class="o">=</span> <span class="n">HyperbolicOmegaMesh</span><span class="p">(</span><span class="n">omega_min</span><span class="o">=-</span><span class="n">omega_limit</span><span class="p">,</span> <span class="n">omega_max</span><span class="o">=</span><span class="n">omega_limit</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">omega_limit</span><span class="p">))</span>
+        <span class="n">solver</span><span class="o">.</span><span class="n">alpha_mesh</span> <span class="o">=</span> <span class="n">LogAlphaMesh</span><span class="p">(</span><span class="n">alpha_min</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">alpha_max</span><span class="o">=</span><span class="mf">1e2</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">block</span><span class="p">]</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+    <span class="c1"># Assign up&#39;s solution to down result for degenerate calculations</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;down&#39;</span><span class="p">,</span> <span class="s1">&#39;up&#39;</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+
+
+<span class="k">def</span> <span class="nf">_unpack_maxent_results</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Converts maxent result to impurity list of dict with mesh and spectral function from each analyzer &quot;&quot;&quot;</span>
+    <span class="n">mesh</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">omega</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="n">data_linefit</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">data_chi2</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">data_linefit</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_A_out</span><span class="p">(</span><span class="s1">&#39;LineFitAnalyzer&#39;</span><span class="p">)</span>
+        <span class="n">data_chi2</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_A_out</span><span class="p">(</span><span class="s1">&#39;Chi2CurvatureAnalyzer&#39;</span><span class="p">)</span>
+
+    <span class="n">data_per_impurity</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mesh&#39;</span><span class="p">:</span> <span class="n">mesh</span><span class="p">,</span> <span class="s1">&#39;Alatt_w_line_fit&#39;</span><span class="p">:</span> <span class="n">data_linefit</span><span class="p">,</span>
+                         <span class="s1">&#39;Alatt_w_chi2_curvature&#39;</span><span class="p">:</span> <span class="n">data_chi2</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">data_per_impurity</span>
+
+
+<span class="k">def</span> <span class="nf">_write_spectral_function_to_h5</span><span class="p">(</span><span class="n">unpacked_results</span><span class="p">,</span> <span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Writes the mesh and the maxent result for each analyzer to h5 archive. &quot;&quot;&quot;</span>
+
+    <span class="n">h5_internal_path</span> <span class="o">=</span> <span class="s1">&#39;DMFT_results/&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;last_iter&#39;</span> <span class="k">if</span> <span class="n">iteration</span> <span class="ow">is</span> <span class="kc">None</span>
+                                          <span class="k">else</span> <span class="s1">&#39;it_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">iteration</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="n">HDFArchive</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+        <span class="n">archive</span><span class="p">[</span><span class="n">h5_internal_path</span><span class="p">][</span><span class="s1">&#39;Alatt_w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">unpacked_results</span>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../_autosummary/postprocessing.maxent_gf_latt.html#postprocessing.maxent_gf_latt.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">read_g_latt_iw</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Main function that reads the lattice Greens function from h5, analytically</span>
+<span class="sd">    continues it and writes the result back to the h5 archive.</span>
+<span class="sd">    Only the trace is used because the Kohn-Sham energies (&quot;hopping&quot;) are not</span>
+<span class="sd">    sorted by &quot;orbital&quot; but by energy, leading to crossovers which can confuse</span>
+<span class="sd">    MaxEnt.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    external_path: string, path of the h5 archive</span>
+<span class="sd">    iteration: int/string, optional, iteration to read from and write to</span>
+<span class="sd">    read_g_latt_iw: bool, optional, reads G_latt from the h5 instead of</span>
+<span class="sd">        generating it from Sigma(i omega). Only works if this code has run before</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of dict, per impurity: dict containing the omega mesh</span>
+<span class="sd">        and A_imp from two different analyzers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">read_g_latt_iw</span><span class="p">:</span>
+        <span class="n">gf_lattice_iw</span> <span class="o">=</span> <span class="n">_read_lattice_gf_from_h5</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sum_k</span> <span class="o">=</span> <span class="n">SumkDFT</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="n">use_dft_blocks</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">sigma_iw</span><span class="p">,</span> <span class="n">chemical_potential</span><span class="p">,</span> <span class="n">dc_energy</span><span class="p">,</span> <span class="n">dc_potential</span><span class="p">,</span> <span class="n">block_structure</span> <span class="o">=</span> <span class="n">_read_h5</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="p">)</span>
+        <span class="n">sum_k</span><span class="o">.</span><span class="n">block_structure</span> <span class="o">=</span> <span class="n">block_structure</span>
+        <span class="n">sum_k</span><span class="o">.</span><span class="n">put_Sigma</span><span class="p">(</span><span class="n">sigma_iw</span><span class="p">)</span>
+        <span class="n">sum_k</span><span class="o">.</span><span class="n">set_mu</span><span class="p">(</span><span class="n">chemical_potential</span><span class="p">)</span>
+        <span class="n">sum_k</span><span class="o">.</span><span class="n">set_dc</span><span class="p">(</span><span class="n">dc_potential</span><span class="p">,</span> <span class="n">dc_energy</span><span class="p">)</span>
+
+        <span class="n">gf_lattice_iw</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">lattice_gf</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">sum_k</span><span class="o">.</span><span class="n">bz_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">n_k</span><span class="p">))</span>
+        <span class="n">_write_lattice_gf_to_h5</span><span class="p">(</span><span class="n">gf_lattice_iw</span><span class="p">,</span> <span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generated the lattice GF. Starting maxent now.&#39;</span><span class="p">)</span>
+
+    <span class="n">maxent_results</span> <span class="o">=</span> <span class="n">_run_maxent</span><span class="p">(</span><span class="n">gf_lattice_iw</span><span class="p">,</span> <span class="n">sum_k</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">unpacked_results</span> <span class="o">=</span> <span class="n">_unpack_maxent_results</span><span class="p">(</span><span class="n">maxent_results</span><span class="p">)</span>
+    <span class="n">_write_spectral_function_to_h5</span><span class="p">(</span><span class="n">unpacked_results</span><span class="p">,</span> <span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="p">)</span>
+
+    <span class="n">total_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">DONE&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The program took </span><span class="si">{:.0f}</span><span class="s1"> s.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_time</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">unpacked_results</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please give the h5 name (and optionally the iteration). Exiting.&#39;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)))</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">function</span> <span class="o">=</span> <span class="n">main</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">function</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
+
+    <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

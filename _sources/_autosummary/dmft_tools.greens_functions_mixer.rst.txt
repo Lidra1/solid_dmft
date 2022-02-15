@@ -1,0 +1,12 @@
+dmft\_tools.greens\_functions\_mixer
+====================================
+
+.. automodule:: dmft_tools.greens_functions_mixer
+
+   
+   
+   
+
+
+
+

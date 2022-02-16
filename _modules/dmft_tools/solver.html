@@ -282,7 +282,7 @@
 <span class="sd">        solve impurity problem</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">solver_params</span><span class="p">,</span> <span class="n">sum_k</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">,</span> <span class="n">h_int</span><span class="p">,</span> <span class="n">iteration_offset</span><span class="p">,</span> <span class="n">solver_struct_ftps</span><span class="p">):</span>
+<div class="viewcode-block" id="SolverStructure.__init__"><a class="viewcode-back" href="../../_autosummary/dmft_tools.solver.SolverStructure.__init__.html#dmft_tools.solver.SolverStructure.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">solver_params</span><span class="p">,</span> <span class="n">sum_k</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">,</span> <span class="n">h_int</span><span class="p">,</span> <span class="n">iteration_offset</span><span class="p">,</span> <span class="n">solver_struct_ftps</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Initialisation of the solver instance with h_int for impurity &quot;icrsh&quot; based on soliDMFT parameters.</span>
 
@@ -377,7 +377,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_init_ImFreq_objects</span><span class="p">()</span>
             <span class="c1"># sets up solver</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">triqs_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_ctseg_solver</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">git_hash</span> <span class="o">=</span> <span class="n">triqs_ctseg_hash</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">git_hash</span> <span class="o">=</span> <span class="n">triqs_ctseg_hash</span></div>
 
     <span class="c1"># ********************************************************************</span>
     <span class="c1"># initialize Freq and Time objects</span>
@@ -471,7 +471,7 @@
     <span class="c1"># solver-specific solve() command</span>
     <span class="c1"># ********************************************************************</span>
 
-<div class="viewcode-block" id="SolverStructure.solve"><a class="viewcode-back" href="../../_autosummary/dmft_tools.solver.SolverStructure.html#dmft_tools.solver.SolverStructure.solve">[docs]</a>    <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SolverStructure.solve"><a class="viewcode-back" href="../../_autosummary/dmft_tools.solver.SolverStructure.solve.html#dmft_tools.solver.SolverStructure.solve">[docs]</a>    <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        solve impurity problem with current solver</span>
 <span class="sd">        &#39;&#39;&#39;</span>

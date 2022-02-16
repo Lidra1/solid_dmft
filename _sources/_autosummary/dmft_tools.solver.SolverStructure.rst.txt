@@ -7,14 +7,13 @@ dmft\_tools.solver.SolverStructure
     :members:                               
     :show-inheritance:                     
     :inherited-members:                   
+    :special-members: __init__
+    :noindex:
 
 
-.. automethod:: __init__
-
-
-.. rubric:: Methods
 
 .. autosummary::
+    :toctree:                             
     
       ~SolverStructure.__init__
       ~SolverStructure.solve

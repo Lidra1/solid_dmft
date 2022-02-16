@@ -2,10 +2,19 @@ dft\_managers.qe\_manager
 =========================
 
 .. automodule:: dft_managers.qe_manager
+    :members:
 
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
+
 
 
 

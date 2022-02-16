@@ -2,10 +2,19 @@
 ===========
 
 .. automodule:: dmft_cycle
+    :members:
 
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
+
 
 
 

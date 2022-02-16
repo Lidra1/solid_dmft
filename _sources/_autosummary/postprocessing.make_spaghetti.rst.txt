@@ -2,10 +2,19 @@ postprocessing.make\_spaghetti
 ==============================
 
 .. automodule:: postprocessing.make_spaghetti
+    :members:
 
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
+
 
 
 

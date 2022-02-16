@@ -305,7 +305,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="print_local_density"><a class="viewcode-back" href="../../_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_local_density">[docs]</a><span class="k">def</span> <span class="nf">print_local_density</span><span class="p">(</span><span class="n">density</span><span class="p">,</span> <span class="n">density_pre</span><span class="p">,</span> <span class="n">density_mat</span><span class="p">,</span> <span class="n">spin_orbit</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">print_local_density</span><span class="p">(</span><span class="n">density</span><span class="p">,</span> <span class="n">density_pre</span><span class="p">,</span> <span class="n">density_mat</span><span class="p">,</span> <span class="n">spin_orbit</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
         <span class="k">return</span>
 
@@ -327,10 +327,10 @@
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">value</span><span class="p">))))</span> <span class="o">&gt;=</span> <span class="mf">0.1</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">!!! WARNING !!!&#39;</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;!!! large off diagonal elements in density matrix detected! I hope you know what you are doing !!!&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;!!! WARNING !!!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;!!! WARNING !!!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="print_summary_energetics"><a class="viewcode-back" href="../../_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_summary_energetics">[docs]</a><span class="k">def</span> <span class="nf">print_summary_energetics</span><span class="p">(</span><span class="n">observables</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">print_summary_energetics</span><span class="p">(</span><span class="n">observables</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
         <span class="k">return</span>
 
@@ -340,10 +340,10 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DFT energy: &#39;</span><span class="p">,</span> <span class="n">observables</span><span class="p">[</span><span class="s1">&#39;E_dft&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;correlation energy: &#39;</span><span class="p">,</span> <span class="n">observables</span><span class="p">[</span><span class="s1">&#39;E_corr_en&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DFT band correction: &#39;</span><span class="p">,</span> <span class="n">observables</span><span class="p">[</span><span class="s1">&#39;E_bandcorr&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="print_summary_observables"><a class="viewcode-back" href="../../_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_summary_observables">[docs]</a><span class="k">def</span> <span class="nf">print_summary_observables</span><span class="p">(</span><span class="n">observables</span><span class="p">,</span> <span class="n">n_inequiv_shells</span><span class="p">,</span> <span class="n">spin_block_names</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">print_summary_observables</span><span class="p">(</span><span class="n">observables</span><span class="p">,</span> <span class="n">n_inequiv_shells</span><span class="p">,</span> <span class="n">spin_block_names</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
         <span class="k">return</span>
 
@@ -360,10 +360,10 @@
         <span class="k">for</span> <span class="n">spin</span> <span class="ow">in</span> <span class="n">spin_block_names</span><span class="p">:</span>
             <span class="n">Z_spin</span> <span class="o">=</span> <span class="n">observables</span><span class="p">[</span><span class="s1">&#39;orb_Z&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">][</span><span class="n">spin</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:&gt;5}</span><span class="s1">: &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spin</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:6.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Z_orb</span><span class="p">)</span> <span class="k">for</span> <span class="n">Z_orb</span> <span class="ow">in</span> <span class="n">Z_spin</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="print_summary_magnetic_occ"><a class="viewcode-back" href="../../_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_summary_magnetic_occ">[docs]</a><span class="k">def</span> <span class="nf">print_summary_magnetic_occ</span><span class="p">(</span><span class="n">observables</span><span class="p">,</span> <span class="n">n_inequiv_shells</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">print_summary_magnetic_occ</span><span class="p">(</span><span class="n">observables</span><span class="p">,</span> <span class="n">n_inequiv_shells</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
         <span class="k">return</span>
 
@@ -378,10 +378,10 @@
 
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;total spin up   occ: &#39;</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">{:6.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">occ</span><span class="p">[</span><span class="s1">&#39;up&#39;</span><span class="p">]))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;total spin down occ: &#39;</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">{:6.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">occ</span><span class="p">[</span><span class="s1">&#39;down&#39;</span><span class="p">]))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="print_summary_convergence"><a class="viewcode-back" href="../../_autosummary/dmft_tools.formatter.html#dmft_tools.formatter.print_summary_convergence">[docs]</a><span class="k">def</span> <span class="nf">print_summary_convergence</span><span class="p">(</span><span class="n">conv_obs</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">n_inequiv_shells</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">print_summary_convergence</span><span class="p">(</span><span class="n">conv_obs</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">n_inequiv_shells</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
         <span class="k">return</span>
 
@@ -401,7 +401,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;δ Σ    : </span><span class="si">{:.4e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">conv_obs</span><span class="p">[</span><span class="s1">&#39;d_Sigma&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
            </div>

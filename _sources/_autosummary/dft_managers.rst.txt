@@ -2,10 +2,18 @@
 =============
 
 .. automodule:: dft_managers
+    :members:
 
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13,13 +21,12 @@
 .. rubric:: Modules
 
 .. autosummary::
-   :toctree:
-   :template: autosummary_module_template.rst 
-   :recursive:
+    :toctree:
+    :template: autosummary_module_template.rst 
+    :recursive:
 
-
+    
     dft_managers.qe_manager
     dft_managers.vasp_manager
-
 
 

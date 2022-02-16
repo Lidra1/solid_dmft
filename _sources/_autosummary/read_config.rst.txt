@@ -2,10 +2,19 @@
 ============
 
 .. automodule:: read_config
+    :members:
 
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
+
 
 
 

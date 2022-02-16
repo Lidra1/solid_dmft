@@ -2,10 +2,19 @@ util.update\_dmft\_config
 =========================
 
 .. automodule:: util.update_dmft_config
+    :members:
 
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
+
 
 
 

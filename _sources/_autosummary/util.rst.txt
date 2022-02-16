@@ -2,10 +2,18 @@
 ====
 
 .. automodule:: util
+    :members:
 
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13,15 +21,14 @@
 .. rubric:: Modules
 
 .. autosummary::
-   :toctree:
-   :template: autosummary_module_template.rst 
-   :recursive:
+    :toctree:
+    :template: autosummary_module_template.rst 
+    :recursive:
 
-
+    
     util.symmetrize_gamma_file
     util.update_dmft_config
     util.update_results_h5
     util.write_kslice_to_h5
-
 
 

@@ -274,7 +274,7 @@
     <span class="k">return</span> <span class="n">general_params</span></div>
 
 
-<div class="viewcode-block" id="apply"><a class="viewcode-back" href="../../_autosummary/dmft_tools.afm_mapping.html#dmft_tools.afm_mapping.apply">[docs]</a><span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">solver_params</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">,</span> <span class="n">gf_struct_solver</span><span class="p">,</span> <span class="n">solvers</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">solver_params</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">,</span> <span class="n">gf_struct_solver</span><span class="p">,</span> <span class="n">solvers</span><span class="p">):</span>
     <span class="n">imp_source</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;afm_mapping&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">invert_spin</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;afm_mapping&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">copying the self-energy for shell </span><span class="si">{}</span><span class="s1"> from shell </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">icrsh</span><span class="p">,</span> <span class="n">imp_source</span><span class="p">))</span>
@@ -316,7 +316,7 @@
     <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;measure_chi_SzSz&#39;</span><span class="p">]:</span>
         <span class="n">solvers</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">O_time</span> <span class="o">=</span> <span class="n">solvers</span><span class="p">[</span><span class="n">imp_source</span><span class="p">]</span><span class="o">.</span><span class="n">O_time</span>
 
-    <span class="k">return</span> <span class="n">solvers</span></div>
+    <span class="k">return</span> <span class="n">solvers</span>
 </pre></div>
 
            </div>

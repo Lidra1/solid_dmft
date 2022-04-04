@@ -47,14 +47,14 @@
 <li class="toctree-l2"><a class="reference internal" href="install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#code-structure">code structure:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#code-structure">Code structure:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#dft-interface-notes">DFT interface notes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="md_notes/w90_interface.html">Wannier90 interface</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/w90_interface.html#orbital-order-in-the-w90-converter">orbital order in the W90 converter</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="md_notes/vasp_csc.html">interface to VASP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="md_notes/vasp_csc.html">Interface to VASP</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#general-remarks">General remarks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#locproj-bug-for-individual-projections">LOCPROJ bug for individual projections:</a></li>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/vasp_csc.html#convergence-of-projectors-with-vasp">convergence of projectors with Vasp</a></li>
@@ -74,14 +74,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#run-solid-dmft">run solid_dmft</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#further-details-for-running">Further details for running</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="md_notes/docker.html">Docker</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="md_notes/run_locally.html">run on your machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="md_notes/run_locally.html">Run on your machine</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="md_notes/run_locally.html#csc-calculations-locally">CSC calculations locally</a></li>
 </ul>
 </li>
@@ -93,7 +93,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#module-reference-manual">module reference manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#module-reference-manual">Module reference manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="_autosummary/csc_flow.html">csc_flow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_autosummary/dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="_autosummary/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
@@ -142,11 +142,46 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials.html">tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/CaFeO3_csc_plo/tutorial.html">CaFeO3 CSC with VASP PLOs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)">Running the initial SCF DFT calculation (~ 1 core hour)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/CaFeO3_csc_plo/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-CSC-DMFT-calculations">Running the CSC DMFT calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/SVO_os_qe/tutorial.html">Running a one-shot DMFT calculation on SrVO<span class="math notranslate nohighlight">\(_3\)</span> (SVO)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/SVO_os_qe/tutorial.html#1.-Starting-out-with-DMFT">1. Starting out with DMFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/SVO_os_qe/tutorial.html#2.-Looking-at-the-Metal-Insulator-Transition">2. Looking at the Metal-Insulator Transition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/SVO_os_qe/tutorial.html#3.-Refinining-the-diagram">3. Refinining the diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/SVO_os_qe/tutorial.html#4.-Plotting-the-spectral-function">4. Plotting the spectral function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/SVO_os_qe/tutorial.html#5-Visualizing-the-MIT">5 Visualizing the MIT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html">Running a charge self-consistent (CSC) calculation on PrNiO3 with VASP PLOs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#1.-Running-the-initial-SCF-DFT-calculation-(~-1-2-core-hours)">1. Running the initial SCF DFT calculation (~ 1-2 core hours)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#2.-Running-the-CSC-DMFT-calculations-(~-x-core-hours)">2. Running the CSC DMFT calculations (~ x core hours)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#3.-Analyzing-the-observables_impn.dat">3. Analyzing the observables_imp<span class="math notranslate nohighlight">\(n\)</span>.dat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#4.-Analyzing-the-h5-archive:-the-Legendre-Green’s-function">4. Analyzing the h5 archive: the Legendre Green’s function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#5.-Further-things-to-try-here">5. Further things to try here</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#To-do">To do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/Ce2O3_csc_w90/tutorial.html">3. CSC with QE/W90 and HubbardI: total energy in Ce2O3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/Ce2O3_csc_w90/tutorial.html#1.-Input-file-preparation">1. Input file preparation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/Ce2O3_csc_w90/tutorial.html#DFT-files">DFT files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/Ce2O3_csc_w90/tutorial.html#DMFT">DMFT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/Ce2O3_csc_w90/tutorial.html#2.-Running-DFT+DMFT">2. Running DFT+DMFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/Ce2O3_csc_w90/tutorial.html#3.-Non-interacting-Hamiltonian-and-convergence-analysis">3. Non-interacting Hamiltonian and convergence analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/Ce2O3_csc_w90/tutorial.html#Tight-binding-Hamiltonian">Tight-binding Hamiltonian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorials/Ce2O3_csc_w90/tutorial.html#Convergence">Convergence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/NNO_os_plo_mag/tutorial.html">4. OS with VASP/PLOs and cthyb: AFM state of NdNiO2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/NNO_os_plo_mag/tutorial.html#1.-Run-DFT">1. Run DFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/NNO_os_plo_mag/tutorial.html#2.-Creating-the-hdf5-archive-/-DMFT-input">2. Creating the hdf5 archive / DMFT input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/NNO_os_plo_mag/tutorial.html#3.-Running-the-AFM-calculation">3. Running the AFM calculation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/NNO_os_plo_mag/tutorial.html#5.-Multiplet-analysis">5. Multiplet analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/correlated_bandstructure/plot_correlated_bands.html">Plotting the spectral function</a><ul>
@@ -163,7 +198,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="issues.html">reporting issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues.html">Reporting issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ChangeLog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
 </ul>

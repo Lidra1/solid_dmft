@@ -44,14 +44,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#code-structure">code structure:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#code-structure">Code structure:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#dft-interface-notes">DFT interface notes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../md_notes/w90_interface.html">Wannier90 interface</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../md_notes/w90_interface.html#orbital-order-in-the-w90-converter">orbital order in the W90 converter</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../md_notes/vasp_csc.html">interface to VASP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/vasp_csc.html">Interface to VASP</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#general-remarks">General remarks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#locproj-bug-for-individual-projections">LOCPROJ bug for individual projections:</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../md_notes/vasp_csc.html#convergence-of-projectors-with-vasp">convergence of projectors with Vasp</a></li>
@@ -71,14 +71,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#run-solid-dmft">run solid_dmft</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#further-details-for-running">Further details for running</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../md_notes/docker.html">Docker</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_locally.html">run on your machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_notes/run_locally.html">Run on your machine</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../md_notes/run_locally.html#csc-calculations-locally">CSC calculations locally</a></li>
 </ul>
 </li>
@@ -90,7 +90,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">module reference manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">Module reference manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/csc_flow.html">csc_flow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../_autosummary/dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_autosummary/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
@@ -139,11 +139,46 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html">CaFeO3 CSC with VASP PLOs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)">Running the initial SCF DFT calculation (~ 1 core hour)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-CSC-DMFT-calculations">Running the CSC DMFT calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html">Running a one-shot DMFT calculation on SrVO<span class="math notranslate nohighlight">\(_3\)</span> (SVO)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html#1.-Starting-out-with-DMFT">1. Starting out with DMFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html#2.-Looking-at-the-Metal-Insulator-Transition">2. Looking at the Metal-Insulator Transition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html#3.-Refinining-the-diagram">3. Refinining the diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html#4.-Plotting-the-spectral-function">4. Plotting the spectral function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html#5-Visualizing-the-MIT">5 Visualizing the MIT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html">Running a charge self-consistent (CSC) calculation on PrNiO3 with VASP PLOs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#1.-Running-the-initial-SCF-DFT-calculation-(~-1-2-core-hours)">1. Running the initial SCF DFT calculation (~ 1-2 core hours)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#2.-Running-the-CSC-DMFT-calculations-(~-x-core-hours)">2. Running the CSC DMFT calculations (~ x core hours)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#3.-Analyzing-the-observables_impn.dat">3. Analyzing the observables_imp<span class="math notranslate nohighlight">\(n\)</span>.dat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#4.-Analyzing-the-h5-archive:-the-Legendre-Green’s-function">4. Analyzing the h5 archive: the Legendre Green’s function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#5.-Further-things-to-try-here">5. Further things to try here</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#To-do">To do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html">3. CSC with QE/W90 and HubbardI: total energy in Ce2O3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html#1.-Input-file-preparation">1. Input file preparation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html#DFT-files">DFT files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html#DMFT">DMFT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html#2.-Running-DFT+DMFT">2. Running DFT+DMFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html#3.-Non-interacting-Hamiltonian-and-convergence-analysis">3. Non-interacting Hamiltonian and convergence analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html#Tight-binding-Hamiltonian">Tight-binding Hamiltonian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html#Convergence">Convergence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/NNO_os_plo_mag/tutorial.html">4. OS with VASP/PLOs and cthyb: AFM state of NdNiO2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/NNO_os_plo_mag/tutorial.html#1.-Run-DFT">1. Run DFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/NNO_os_plo_mag/tutorial.html#2.-Creating-the-hdf5-archive-/-DMFT-input">2. Creating the hdf5 archive / DMFT input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/NNO_os_plo_mag/tutorial.html#3.-Running-the-AFM-calculation">3. Running the AFM calculation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/NNO_os_plo_mag/tutorial.html#5.-Multiplet-analysis">5. Multiplet analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorials/correlated_bandstructure/plot_correlated_bands.html">Plotting the spectral function</a><ul>
@@ -160,7 +195,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../issues.html">reporting issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues.html">Reporting issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
 </ul>
@@ -223,7 +258,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># triqs</span>
-<span class="kn">from</span> <span class="nn">triqs.gf</span> <span class="kn">import</span> <span class="n">MeshImFreq</span>
+<span class="kn">from</span> <span class="nn">triqs.gf</span> <span class="kn">import</span> <span class="n">MeshImFreq</span><span class="p">,</span> <span class="n">MeshImTime</span><span class="p">,</span> <span class="n">MeshReFreq</span><span class="p">,</span> <span class="n">BlockGf</span><span class="p">,</span> <span class="n">make_zero_tail</span>
 
 <span class="k">def</span> <span class="nf">_generate_header</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">sum_k</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -301,45 +336,68 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">obs_file</span><span class="p">:</span>
             <span class="n">obs_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="max_G_diff"><a class="viewcode-back" href="../../_autosummary/dmft_tools.convergence.html#dmft_tools.convergence.max_G_diff">[docs]</a><span class="k">def</span> <span class="nf">max_G_diff</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">wg</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">):</span>
+<div class="viewcode-block" id="max_G_diff"><a class="viewcode-back" href="../../_autosummary/dmft_tools.convergence.html#dmft_tools.convergence.max_G_diff">[docs]</a><span class="k">def</span> <span class="nf">max_G_diff</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">norm_temp</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    calculates difference between two block Gfs</span>
-<span class="sd">    uses numpy linalg norm on the last indices to calculate</span>
-<span class="sd">    norm at then makes a weighted sum 1/w_i^wg to give more</span>
-<span class="sd">    weight to smaller frequencies</span>
+<span class="sd">    uses numpy linalg norm on the last two indices first</span>
+<span class="sd">    and then the norm along the mesh axis. The result is divided</span>
+<span class="sd">    by sqrt(beta) for MeshImFreq and by sqrt(beta/#taupoints) for</span>
+<span class="sd">    MeshImTime.</span>
 
-<span class="sd">    sum_k 1/(w_k^wg) sqrt( sum_ij [abs(G1 - G2)_ij(w_k)]^2 )</span>
+<span class="sd">    1/ (2* sqrt(beta)) sqrt( sum_n sum_ij [abs(G1 - G2)_ij(w_n)]^2 )</span>
 
 <span class="sd">    this is only done for MeshImFreq Gf objects, for all other</span>
 <span class="sd">    meshes the weights are set to 1</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    G1 : block Gf 1 to compare</span>
+<span class="sd">    G1 : Gf or BlockGf to compare</span>
 
-<span class="sd">    G2 : block Gf 2 to compare</span>
+<span class="sd">    G2 : Gf or BlockGf to compare</span>
 
-<span class="sd">    wg: float, default = 0.5</span>
-<span class="sd">        weight for scaling with frequency</span>
+<span class="sd">    norm_temp: bool, default = True</span>
+<span class="sd">       divide by an additional sqrt(beta) to account for temperature scaling</span>
+<span class="sd">       only correct for uniformly distributed error.</span>
 
 <span class="sd">    __Returns:__</span>
 
 <span class="sd">    diff : float</span>
 <span class="sd">           difference between the two Gfs</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">diff</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">block</span><span class="p">,</span> <span class="n">gf</span> <span class="ow">in</span> <span class="n">G1</span><span class="p">:</span>
-        <span class="c1">#  calculate norm over all axis but the first one which are frequencies</span>
-        <span class="n">norm</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">G1</span><span class="p">[</span><span class="n">block</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">G2</span><span class="p">[</span><span class="n">block</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">G1</span><span class="p">[</span><span class="n">block</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span><span class="p">))))</span>
-        <span class="c1"># scale by frequencies (change factor wg to something to scale different)</span>
-        <span class="c1"># for Matsubara Gfs this gives more weight to smaller frequencies</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span> <span class="ow">is</span> <span class="n">MeshImFreq</span><span class="p">:</span>
-            <span class="n">w_scal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">abs</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">**</span><span class="n">wg</span><span class="p">))</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="p">])</span>
-            <span class="n">diff</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">w_scal</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">diff</span> <span class="o">+=</span> <span class="n">norm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
-    <span class="k">return</span> <span class="n">diff</span></div>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">BlockGf</span><span class="p">):</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">block</span><span class="p">,</span> <span class="n">gf</span> <span class="ow">in</span> <span class="n">G1</span><span class="p">:</span>
+            <span class="n">diff</span> <span class="o">+=</span> <span class="n">max_G_diff</span><span class="p">(</span><span class="n">G1</span><span class="p">[</span><span class="n">block</span><span class="p">],</span> <span class="n">G2</span><span class="p">[</span><span class="n">block</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">diff</span>
+
+    <span class="k">assert</span> <span class="n">G1</span><span class="o">.</span><span class="n">mesh</span> <span class="o">==</span> <span class="n">G2</span><span class="o">.</span><span class="n">mesh</span><span class="p">,</span> <span class="s1">&#39;mesh of two input Gfs does not match&#39;</span>
+    <span class="k">assert</span> <span class="n">G1</span><span class="o">.</span><span class="n">target_shape</span> <span class="o">==</span> <span class="n">G2</span><span class="o">.</span><span class="n">target_shape</span><span class="p">,</span> <span class="s1">&#39;can only compare Gfs with same shape&#39;</span>
+
+    <span class="c1"># subtract largest real value to make sure that G1-G2 falls off to 0</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span> <span class="ow">is</span> <span class="n">MeshImFreq</span><span class="p">:</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:]</span><span class="o">.</span><span class="n">real</span> <span class="o">-</span> <span class="n">G2</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:]</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="c1">#  calculate norm over all axis but the first one which are frequencies</span>
+    <span class="n">norm_grid</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">G2</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">offset</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">G1</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span><span class="p">))))</span>
+    <span class="c1"># now calculate Frobenius norm over grid points</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">norm_grid</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span> <span class="ow">is</span> <span class="n">MeshImFreq</span><span class="p">:</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">norm_grid</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">beta</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span> <span class="ow">is</span> <span class="n">MeshImTime</span><span class="p">:</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">norm_grid</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">beta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span> <span class="ow">is</span> <span class="n">MeshReFreq</span><span class="p">:</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">norm_grid</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;MeshReTime is not implemented&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="n">MeshImFreq</span><span class="p">,</span> <span class="n">MeshImTime</span><span class="p">)</span> <span class="ow">and</span> <span class="n">norm_temp</span><span class="p">:</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">norm</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">beta</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">norm</span></div>
 
 <div class="viewcode-block" id="prep_conv_obs"><a class="viewcode-back" href="../../_autosummary/dmft_tools.convergence.html#dmft_tools.convergence.prep_conv_obs">[docs]</a><span class="k">def</span> <span class="nf">prep_conv_obs</span><span class="p">(</span><span class="n">h5_archive</span><span class="p">,</span> <span class="n">sum_k</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -462,8 +520,6 @@
             <span class="n">conv_obs</span><span class="p">[</span><span class="s1">&#39;d_orb_occ&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">observables</span><span class="p">[</span><span class="s1">&#39;orb_occ&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">][</span><span class="s1">&#39;ud&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span>
                                                     <span class="n">observables</span><span class="p">[</span><span class="s1">&#39;imp_occ&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">][</span><span class="s1">&#39;ud&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
 
-        <span class="c1"># difference for Gimp - Gloc calculate as sum of elements of the norm per freq</span>
-        <span class="c1"># sum( ||Gimp(w)-Gloc(w)||  ) (norm calculated for each w on the orbital indices)</span>
         <span class="n">conv_obs</span><span class="p">[</span><span class="s1">&#39;d_Gimp&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_G_diff</span><span class="p">(</span><span class="n">solvers</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">G_freq</span><span class="p">,</span> <span class="n">G_loc_all</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]))</span>
         <span class="n">conv_obs</span><span class="p">[</span><span class="s1">&#39;d_G0&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_G_diff</span><span class="p">(</span><span class="n">solvers</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">G0_freq</span><span class="p">,</span> <span class="n">G0_old</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]))</span>
         <span class="n">conv_obs</span><span class="p">[</span><span class="s1">&#39;d_Sigma&#39;</span><span class="p">][</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_G_diff</span><span class="p">(</span><span class="n">solvers</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">Sigma_freq</span><span class="p">,</span> <span class="n">Sigma_freq_previous</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]))</span>

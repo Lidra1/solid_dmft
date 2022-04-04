@@ -46,14 +46,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#code-structure">code structure:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#dft-code-interfaces">DFT code interfaces</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#code-structure">Code structure:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#dft-interface-notes">DFT interface notes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../md_notes/w90_interface.html">Wannier90 interface</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../md_notes/w90_interface.html#orbital-order-in-the-w90-converter">orbital order in the W90 converter</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../md_notes/vasp_csc.html">interface to VASP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../md_notes/vasp_csc.html">Interface to VASP</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../md_notes/vasp_csc.html#general-remarks">General remarks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../md_notes/vasp_csc.html#locproj-bug-for-individual-projections">LOCPROJ bug for individual projections:</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../md_notes/vasp_csc.html#convergence-of-projectors-with-vasp">convergence of projectors with Vasp</a></li>
@@ -73,14 +73,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#run-solid-dmft">run solid_dmft</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#further-details-for-running">Further details for running</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../md_notes/docker.html">Docker</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../md_notes/docker.html#pulling-a-docker-image">Pulling a docker image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../md_notes/docker.html#getting-docker-images-onto-cscs-daint">Getting docker images onto CSCS daint</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../md_notes/run_locally.html">run on your machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../md_notes/run_locally.html">Run on your machine</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../md_notes/run_locally.html#csc-calculations-locally">CSC calculations locally</a></li>
 </ul>
 </li>
@@ -92,7 +92,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-reference-manual">module reference manual</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-reference-manual">Module reference manual</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="csc_flow.html">csc_flow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
@@ -141,11 +141,46 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../tutorials/CaFeO3_csc_plo/tutorial.html">CaFeO3 CSC with VASP PLOs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-initial-SCF-DFT-calculation-(~-1-core-hour)">Running the initial SCF DFT calculation (~ 1 core hour)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/CaFeO3_csc_plo/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/CaFeO3_csc_plo/tutorial.html#Running-the-CSC-DMFT-calculations">Running the CSC DMFT calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/SVO_os_qe/tutorial.html">Running a one-shot DMFT calculation on SrVO<span class="math notranslate nohighlight">\(_3\)</span> (SVO)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/SVO_os_qe/tutorial.html#1.-Starting-out-with-DMFT">1. Starting out with DMFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/SVO_os_qe/tutorial.html#2.-Looking-at-the-Metal-Insulator-Transition">2. Looking at the Metal-Insulator Transition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/SVO_os_qe/tutorial.html#3.-Refinining-the-diagram">3. Refinining the diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/SVO_os_qe/tutorial.html#4.-Plotting-the-spectral-function">4. Plotting the spectral function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/SVO_os_qe/tutorial.html#5-Visualizing-the-MIT">5 Visualizing the MIT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html">Running a charge self-consistent (CSC) calculation on PrNiO3 with VASP PLOs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#1.-Running-the-initial-SCF-DFT-calculation-(~-1-2-core-hours)">1. Running the initial SCF DFT calculation (~ 1-2 core hours)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#2.-Running-the-CSC-DMFT-calculations-(~-x-core-hours)">2. Running the CSC DMFT calculations (~ x core hours)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#3.-Analyzing-the-observables_impn.dat">3. Analyzing the observables_imp<span class="math notranslate nohighlight">\(n\)</span>.dat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#4.-Analyzing-the-h5-archive:-the-Legendre-Green’s-function">4. Analyzing the h5 archive: the Legendre Green’s function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#5.-Further-things-to-try-here">5. Further things to try here</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#To-do">To do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/Ce2O3_csc_w90/tutorial.html">3. CSC with QE/W90 and HubbardI: total energy in Ce2O3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/Ce2O3_csc_w90/tutorial.html#1.-Input-file-preparation">1. Input file preparation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/Ce2O3_csc_w90/tutorial.html#DFT-files">DFT files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/Ce2O3_csc_w90/tutorial.html#DMFT">DMFT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/Ce2O3_csc_w90/tutorial.html#2.-Running-DFT+DMFT">2. Running DFT+DMFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/Ce2O3_csc_w90/tutorial.html#3.-Non-interacting-Hamiltonian-and-convergence-analysis">3. Non-interacting Hamiltonian and convergence analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/Ce2O3_csc_w90/tutorial.html#Tight-binding-Hamiltonian">Tight-binding Hamiltonian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/Ce2O3_csc_w90/tutorial.html#Convergence">Convergence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/NNO_os_plo_mag/tutorial.html">4. OS with VASP/PLOs and cthyb: AFM state of NdNiO2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/NNO_os_plo_mag/tutorial.html#1.-Run-DFT">1. Run DFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/NNO_os_plo_mag/tutorial.html#2.-Creating-the-hdf5-archive-/-DMFT-input">2. Creating the hdf5 archive / DMFT input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/NNO_os_plo_mag/tutorial.html#3.-Running-the-AFM-calculation">3. Running the AFM calculation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/NNO_os_plo_mag/tutorial.html#5.-Multiplet-analysis">5. Multiplet analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/correlated_bandstructure/plot_correlated_bands.html">Plotting the spectral function</a><ul>
@@ -162,7 +197,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../issues.html">reporting issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Reporting issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
 </ul>
@@ -183,7 +218,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../documentation.html">documentation</a> &raquo;</li>
+          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
           <li><a href="postprocessing.html">postprocessing</a> &raquo;</li>
       <li>postprocessing.maxent_gf_latt</li>
       <li class="wy-breadcrumbs-aside">
@@ -223,7 +258,11 @@
 <span id="postprocessing-maxent-gf-latt"></span><h1>postprocessing.maxent_gf_latt<a class="headerlink" href="#module-postprocessing.maxent_gf_latt" title="Permalink to this headline">¶</a></h1>
 <p>Analytic continuation of the lattice Green’s function to the lattice spectral
 function using maxent.</p>
-<p>Reads G_latt(i omega) from the h5 archive and writes A_latt(omega) back.</p>
+<p>Reads G_latt(i omega) from the h5 archive and writes A_latt(omega) back.  See
+the docstring of main() for more information.</p>
+<p>mpi parallelized for the generation of the imaginary-frequency lattice GF over
+k points.</p>
+<p>Author: Maximilian Merkel, Materials Theory Group, ETH Zurich, 2020 - 2022</p>
 <dl class="docutils">
 <dt>Known problems:</dt><dd><ul class="simple">
 <li>when using parameter <cite>energy_shift_orbitals</cite> in soliDMFT, this is not
@@ -232,30 +271,59 @@ hopping matrix of SumkDFT as in dmft_cycle.py.</li>
 </ul>
 </dd>
 </dl>
-<p>Author: Max Merkel, 2020</p>
 <dl class="py function">
 <dt id="postprocessing.maxent_gf_latt.main">
-<code class="descclassname"><span class="pre">postprocessing.maxent_gf_latt.</span></code><code class="descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">read_g_latt_iw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/maxent_gf_latt.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.maxent_gf_latt.main" title="Permalink to this definition">¶</a></dt>
-<dd><p>Main function that reads the lattice Greens function from h5, analytically
-continues it and writes the result back to the h5 archive.
-Only the trace is used because the Kohn-Sham energies (“hopping”) are not
-sorted by “orbital” but by energy, leading to crossovers which can confuse
-MaxEnt.</p>
+<code class="descclassname"><span class="pre">postprocessing.maxent_gf_latt.</span></code><code class="descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">sum_spins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">maxent_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em><span class="n"><span class="pre">n_points_maxent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em><span class="n"><span class="pre">n_points_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em><span class="n"><span class="pre">omega_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">omega_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/maxent_gf_latt.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.maxent_gf_latt.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function that reads the lattice Green’s function (GF) from h5,
+analytically continues it, writes the result back to the h5 archive and
+also returns the results.
+Only the trace can be used because the Kohn-Sham energies (“hopping”) are not
+sorted by “orbital” but by energy, leading to crossovers.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>external_path: string, path of the h5 archive</strong> :</p>
-<p><strong>iteration: int/string, optional, iteration to read from and write to</strong> :</p>
-<p><strong>read_g_latt_iw: bool, optional, reads G_latt from the h5 instead of</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>external_path: string</strong> :</p>
 <blockquote>
-<div><p>generating it from Sigma(i omega). Only works if this code has run before</p>
+<div><p>Path to the h5 archive to read from and write to.</p>
+</div></blockquote>
+<p><strong>iteration: int/string</strong> :</p>
+<blockquote>
+<div><p>Iteration to read from and write to. Defaults to last_iter.</p>
+</div></blockquote>
+<p><strong>sum_spins: bool</strong> :</p>
+<blockquote>
+<div><p>Whether to sum over the spins or continue the lattice GF
+for the up and down spin separately, for example for magnetized results.</p>
+</div></blockquote>
+<p><strong>maxent_error</strong> : float</p>
+<blockquote>
+<div><p>The error that is used for the analyzers.</p>
+</div></blockquote>
+<p><strong>n_points_maxent</strong> : int</p>
+<blockquote>
+<div><p>Number of omega points on the hyperbolic mesh used in the continuation.</p>
+</div></blockquote>
+<p><strong>n_points_alpha</strong> : int</p>
+<blockquote>
+<div><p>Number of points that the MaxEnt alpha parameter is varied on logarithmically.</p>
+</div></blockquote>
+<p><strong>omega_min</strong> : float</p>
+<blockquote>
+<div><p>Lower end of range where the GF is being continued. Range has to comprise
+all features of the lattice GF for correct normalization.
+If omega_min and omega_max are None, they are chosen automatically based
+on the diagonal entries in the hopping matrix but at least to -20…20 eV.</p>
+</div></blockquote>
+<p><strong>omega_max</strong> : float</p>
+<blockquote>
+<div><p>Upper end of range where the GF is being continued. See omega_min.</p>
 </div></blockquote>
 <p><strong>Returns</strong> :</p>
 <p><strong>——-</strong> :</p>
-<p><strong>list of dict, per impurity: dict containing the omega mesh</strong> :</p>
+<p><strong>unpacked_results</strong> : dict</p>
 <blockquote class="last">
-<div><p>and A_imp from two different analyzers</p>
+<div><p>The omega mesh and lattice spectral function from two different analyzers</p>
 </div></blockquote>
 </td>
 </tr>

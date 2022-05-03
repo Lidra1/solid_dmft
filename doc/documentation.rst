@@ -1,35 +1,65 @@
 .. _documentation:
 
 ***************
-documentation
+Documentation
 ***************
 
-module reference manual
+Code structure:
+===============
+
+.. image:: _static/code_structure.png
+   :width: 100%
+   :align: center
+
+more details in the reference manual below.
+
+To get started with the code after a successful :ref:`installation`, take a look at the :ref:`tutorials` section. Here we provide further special information and a reference manual for all available functions.
+
+
+
+DFT interface notes
+===================
+
+.. toctree::
+    :maxdepth: 1
+
+    md_notes/w90_interface.md
+    md_notes/vasp_csc.md
+    cRPA_VASP/README.md
+
+Input/Output
+===================
+.. toctree::
+    :maxdepth: 1
+
+    input_output/DMFT_input/input
+
+Further details for running
+===========================
+   
+.. toctree::
+    :maxdepth: 1
+    
+    md_notes/docker.md
+    md_notes/run_locally.md
+    md_notes/run_cluster.md
+
+Module reference manual
 =======================
 
-.. toctree::
-   :maxdepth: 4
+.. autosummary::
+    :toctree: _autosummary
+    :template: autosummary_module_template.rst
+    :recursive:
 
-   reference/csc_flow
-   reference/dft_managers
-   reference/dmft_cycle
-   reference/dmft_tools
-   reference/postprocessing
-   reference/read_config
-   reference/util
+    csc_flow
+    dft_managers
+    dmft_cycle
+    dmft_tools
+    postprocessing
+    read_config
+    util
+    
 
-
-DFT code interfaces
-===================
-
-.. toctree::
-   md_notes/w90_interface.md
-   md_notes/vasp_csc.md
-
-run solid_dmft
-===================
    
-   .. toctree::
-      md_notes/docker.md
-      md_notes/run_locally.md
-      md_notes/run_cluster.md
+

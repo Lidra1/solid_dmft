@@ -140,7 +140,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html">Running a one-shot DMFT calculation on SrVO<span class="math notranslate nohighlight">\(_3\)</span> (SVO)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html">1. OS with QE/W90 and cthyb: SrVO3 MIT</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html#1.-Starting-out-with-DMFT">1. Starting out with DMFT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html#2.-Looking-at-the-Metal-Insulator-Transition">2. Looking at the Metal-Insulator Transition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html#3.-Refinining-the-diagram">3. Refinining the diagram</a></li>
@@ -148,18 +148,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/SVO_os_qe/tutorial.html#5-Visualizing-the-MIT">5 Visualizing the MIT</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html">Running a charge self-consistent (CSC) calculation on PrNiO3 with VASP PLOs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#1.-Running-the-initial-SCF-DFT-calculation-(~-1-2-core-hours)">1. Running the initial SCF DFT calculation (~ 1-2 core hours)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#2.-Running-the-CSC-DMFT-calculations-(~-x-core-hours)">2. Running the CSC DMFT calculations (~ x core hours)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html">2. CSC with VASP PLOs: charge order in PrNiO3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#2.1.-Running-the-initial-scf-DFT-calculation">2.1. Running the initial scf DFT calculation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#2.2.-Running-the-CSC-DMFT-calculations">2.2. Running the CSC DMFT calculations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#Input-files-for-CSC-DMFT-calculations">Input files for CSC DMFT calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#Starting-the-calculations">Starting the calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#Analyzing-the-projectors">Analyzing the projectors</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#3.-Analyzing-the-observables_impn.dat">3. Analyzing the observables_imp<span class="math notranslate nohighlight">\(n\)</span>.dat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#4.-Analyzing-the-h5-archive:-the-Legendre-Green’s-function">4. Analyzing the h5 archive: the Legendre Green’s function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#5.-Further-things-to-try-here">5. Further things to try here</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#2.3.-Plotting-the-results:-observables">2.3. Plotting the results: observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#2.4.-Plotting-the-results:-the-Legendre-Green’s-function">2.4. Plotting the results: the Legendre Green’s function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#2.5.-Next-steps-to-try">2.5. Next steps to try</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.html#To-do">To do</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html">3. CSC with QE/W90 and HubbardI: total energy in Ce2O3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html#1.-Input-file-preparation">1. Input file preparation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../tutorials/Ce2O3_csc_w90/tutorial.html#DFT-files">DFT files</a></li>
@@ -349,7 +350,7 @@
         <span class="n">solvers</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">density_matrix</span> <span class="o">=</span> <span class="n">solvers</span><span class="p">[</span><span class="n">imp_source</span><span class="p">]</span><span class="o">.</span><span class="n">density_matrix</span>
         <span class="n">solvers</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">h_loc_diagonalization</span> <span class="o">=</span> <span class="n">solvers</span><span class="p">[</span><span class="n">imp_source</span><span class="p">]</span><span class="o">.</span><span class="n">h_loc_diagonalization</span>
 
-    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;measure_chi_SzSz&#39;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;measure_chi&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>
         <span class="n">solvers</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span><span class="o">.</span><span class="n">O_time</span> <span class="o">=</span> <span class="n">solvers</span><span class="p">[</span><span class="n">imp_source</span><span class="p">]</span><span class="o">.</span><span class="n">O_time</span>
 
     <span class="k">return</span> <span class="n">solvers</span>

@@ -73,6 +73,13 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#input-output">Input/Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../input_output/DMFT_input/input.html">DMFT input</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../input_output/DMFT_input/input.html#input-output">Input/Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation.html#further-details-for-running">Further details for running</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../md_notes/docker.html">Docker</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../md_notes/docker.html#building-the-docker-image">Building the docker image</a></li>
@@ -124,10 +131,9 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">read_config</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#general">general</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solver">solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dft">dft</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#advanced">advanced</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general">[  general  ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solver">[  solver  ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced">[  advanced  ]</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="util.html">util</a><ul>
@@ -266,39 +272,55 @@ the line! For default values, the string ‘none’ is used. NoneType cannot be
 saved in an h5 archive (in the framework that we are using).</p>
 <p>List of all parameters, sorted by sections:</p>
 <div class="section" id="general">
-<h2>general<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<h2>[  general  ]<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>seedname<span class="classifier">str or list of str</span></dt><dd>seedname for h5 archive or for multiple if calculations should be connected</dd>
 <dt>jobname<span class="classifier">str or list of str, optional, default=seedname</span></dt><dd>one or multiple jobnames specifying the output directories</dd>
 <dt>csc<span class="classifier">bool, optional, default=False</span></dt><dd>are we doing a CSC calculation?</dd>
 <dt>plo_cfg<span class="classifier">str, optional, default=’plo.cfg’</span></dt><dd>config file for PLOs for the converter</dd>
-<dt>h_int_type<span class="classifier">string</span></dt><dd>interaction type
-density_density: used for full d-shell or eg- or t2g-subset
-kanamori: only physical for the t2g or the eg subset
-full_slater: used for full d-shell or eg- or t2g-subset
-crpa: use the cRPA matrix as interaction Hamiltonian
-crpa_density_density: use the density-density terms of the cRPA matrix
-dynamic: use dynamic U from h5 archive
-Needs to be stored as Matsubara Gf under dynamic_U/U_iw in the input h5</dd>
+<dt>h_int_type<span class="classifier">string</span></dt><dd><p>interaction type:</p>
+<ul class="simple">
+<li>density_density: used for full d-shell or eg- or t2g-subset</li>
+<li>kanamori: only physical for the t2g or the eg subset</li>
+<li>full_slater: used for full d-shell or eg- or t2g-subset</li>
+<li>crpa: use the cRPA matrix as interaction Hamiltonian</li>
+<li>crpa_density_density: use the density-density terms of the cRPA matrix</li>
+<li>dynamic: use dynamic U from h5 archive</li>
+</ul>
+<p>Needs to be stored as Matsubara Gf under dynamic_U/U_iw in the input h5</p>
+</dd>
 <dt>U<span class="classifier">float or comma separated list of floats</span></dt><dd>U values for impurities if only one value is given, the same U is assumed for all impurities</dd>
 <dt>J<span class="classifier">float or comma separated list of floats</span></dt><dd>J values for impurities if only one value is given, the same J is assumed for all impurities</dd>
 <dt>ratio_F4_F2<span class="classifier">float or comma separated list of floats, optional, default=’none’</span></dt><dd>Ratio between the Slater integrals  F_4 and F_2. Only used for the
 interaction Hamiltonians ‘density_density’ and ‘full_slater’ and
 only for d-shell impurities, where the default is 0.63.</dd>
 <dt>beta<span class="classifier">float, only used if solver ImFreq</span></dt><dd>inverse temperature for Greens function etc</dd>
-<dt>n_iter_dmft_first<span class="classifier">int, optional, default = 10</span></dt><dd>number of iterations in first dmft cycle to converge dmft solution</dd>
-<dt>n_iter_dmft_per<span class="classifier">int, optional, default = 2</span></dt><dd>number of iterations per dmft step in CSC calculations</dd>
+<dt>n_iter_dmft_first<span class="classifier">int, optional, default= 10</span></dt><dd>number of iterations in first dmft cycle to converge dmft solution</dd>
+<dt>n_iter_dmft_per<span class="classifier">int, optional, default= 2</span></dt><dd>number of iterations per dmft step in CSC calculations</dd>
 <dt>n_iter_dmft<span class="classifier">int</span></dt><dd>number of iterations per dmft cycle after first cycle</dd>
-<dt>dc_type<span class="classifier">int</span></dt><dd>0: FLL
-1: held formula, needs to be used with slater-kanamori h_int_type=2
-2: AMF
-3: FLL for eg orbitals only with U,J for Kanamori</dd>
+<dt>dc_type<span class="classifier">int</span></dt><dd>Type of double counting correction considered:
+* 0: FLL
+* 1: held formula, needs to be used with slater-kanamori h_int_type=2
+* 2: AMF
+* 3: FLL for eg orbitals only with U,J for Kanamori</dd>
 <dt>prec_mu<span class="classifier">float</span></dt><dd>general precision for determining the chemical potential at any time calc_mu is called</dd>
-<dt>dc_dmft<span class="classifier">bool</span></dt><dd>DC with DMFT occupation in each iteration -&gt; True
-DC with DFT occupations after each DFT cycle -&gt; False</dd>
+<dt>dc_dmft<span class="classifier">bool</span></dt><dd><p>Whether to use DMFT or DFT occupations:</p>
+<ul class="simple">
+<li>DC with DMFT occupation in each iteration -&gt; True</li>
+<li>DC with DFT occupations after each DFT cycle -&gt; False</li>
+</ul>
+</dd>
 <dt>cpa_zeta<span class="classifier">float or comma separated list of floats</span></dt><dd>shift of local levels per impurity in CPA</dd>
 <dt>cpa_x<span class="classifier">float or comma separated list of floats</span></dt><dd>probability distribution for summing G(tau) in CPA</dd>
-<dt>solver_type: str</dt><dd>‘cthyb’, ‘ctint’, ‘ftps’, ‘hubbardI’, ‘ctseg’</dd>
+<dt>solver_type<span class="classifier">str</span></dt><dd><p>type of solver chosen for the calculation, currently supports:</p>
+<ul class="simple">
+<li>‘cthyb’</li>
+<li>‘ctint’</li>
+<li>‘ftps’</li>
+<li>‘hubbardI’</li>
+<li>‘ctseg’</li>
+</ul>
+</dd>
 <dt>n_iw<span class="classifier">int, optional, default=1025</span></dt><dd>number of Matsubara frequencies</dd>
 <dt>n_tau<span class="classifier">int, optional, default=10001</span></dt><dd>number of imaginary time points</dd>
 <dt>n_l<span class="classifier">int, needed if measure_G_l=True or legendre_fit=True</span></dt><dd>number of Legendre coefficients</dd>
@@ -309,20 +331,20 @@ DC with DFT occupations after each DFT cycle -&gt; False</dd>
 <dt>h5_save_freq<span class="classifier">int, optional, default=5</span></dt><dd>how often is the output saved to the h5 archive</dd>
 <dt>magnetic<span class="classifier">bool, optional, default=False</span></dt><dd>are we doing a magnetic calculations? If yes put magnetic to True.
 Not implemented for CSC calculations</dd>
-<dt>magmom<span class="classifier">list of float seperated by comma, optional default=[]</span></dt><dd>init magnetic moments if magnetic is on. length must be #imps.
+<dt>magmom<span class="classifier">list of float seperated by comma, optional default=[]</span></dt><dd>initialize magnetic moments if magnetic is on. length must be #imps.
 This will be used as factor for each imp in the initial self
 energy, with up (or ud for spin-orbit coupling) (1+fac)*sigma, and
 with down (1-fac)*sigma</dd>
 <dt>enforce_off_diag<span class="classifier">bool, optional, default=False</span></dt><dd>enforce off diagonal elements in block structure finder</dd>
 <dt>h_field<span class="classifier">float, optional, default=0.0</span></dt><dd>magnetic field</dd>
-<dt>energy_shift_orbitals<span class="classifier">list of floats, optional, default = ‘none’</span></dt><dd>orbitals will be shifted by this energy
+<dt>energy_shift_orbitals<span class="classifier">list of floats, optional, default= ‘none’</span></dt><dd>orbitals will be shifted by this energy
 The entries can be python code, to be combined with configparser’s interpolation</dd>
 <dt>sigma_mix<span class="classifier">float, optional, default=1.0</span></dt><dd>careful: Sigma mixing can break orbital symmetries, use G0 mixing
 mixing sigma with previous iteration sigma for better convergency. 1.0 means no mixing</dd>
 <dt>g0_mix<span class="classifier">float, optional, default=1.0</span></dt><dd>mixing the weiss field G0 with previous iteration G0 for better convergency. 1.0 means no mixing</dd>
 <dt>g0_mix_type<span class="classifier">string, optional, default=’linear’</span></dt><dd>which type of mixing is used. Possible values are:
-linear : linear mixing
-broyden : broyden mixing</dd>
+linear: linear mixing
+broyden: broyden mixing</dd>
 <dt>broy_max_it<span class="classifier">int, optional, default=1</span></dt><dd>maximum number of iteration to be considered for broyden mixing
 1 corresponds to simple linear mixing</dd>
 <dt>dc<span class="classifier">bool, optional, default=True</span></dt><dd>dc correction on yes or no?</dd>
@@ -338,27 +360,27 @@ Does not affect spin symmetries.</dd>
 <dt>gimp_conv_crit<span class="classifier">float, optional, default= -1</span></dt><dd>stop the calculation if  sum_w 1/(w^0.6) ||Gimp-Gloc|| is smaller than threshold</dd>
 <dt>g0_conv_crit<span class="classifier">float, optional, default= -1</span></dt><dd>stop the calculation if sum_w 1/(w^0.6) ||G0-G0_prev|| is smaller than threshold</dd>
 <dt>sigma_conv_crit<span class="classifier">float, optional, default= -1</span></dt><dd>stop the calculation if sum_w 1/(w^0.6) ||Sigma-Sigma_prev|| is smaller than threshold</dd>
-<dt>sampling_iterations<span class="classifier">int, optional, default = 0</span></dt><dd>for how many iterations should the solution sampled after the CSC loop is converged</dd>
-<dt>sampling_h5_save_freq<span class="classifier">int, optional, default = 5</span></dt><dd>overwrites h5_save_freq when sampling has started</dd>
-<dt>fixed_mu_value<span class="classifier">float, optional, default = ‘none’</span></dt><dd>If given, the chemical potential remains fixed in calculations</dd>
-<dt>mu_update_freq<span class="classifier">int, optional, default = 1</span></dt><dd>The chemical potential will be updated every # iteration</dd>
-<dt>dft_mu<span class="classifier">float, optional, default = ‘none’</span></dt><dd>The chemical potential of the DFT calculation.
+<dt>sampling_iterations<span class="classifier">int, optional, default= 0</span></dt><dd>for how many iterations should the solution sampled after the CSC loop is converged</dd>
+<dt>sampling_h5_save_freq<span class="classifier">int, optional, default= 5</span></dt><dd>overwrites h5_save_freq when sampling has started</dd>
+<dt>fixed_mu_value<span class="classifier">float, optional, default= ‘none’</span></dt><dd>If given, the chemical potential remains fixed in calculations</dd>
+<dt>mu_update_freq<span class="classifier">int, optional, default= 1</span></dt><dd>The chemical potential will be updated every # iteration</dd>
+<dt>dft_mu<span class="classifier">float, optional, default= ‘none’</span></dt><dd>The chemical potential of the DFT calculation.
 If not given, mu will be calculated from the DFT bands</dd>
-<dt>mu_mix_const<span class="classifier">float, optional, default = 1.0</span></dt><dd>Constant term of the mixing of the chemical potential. See mu_mix_per_occupation_offset.</dd>
-<dt>mu_mix_per_occupation_offset<span class="classifier">float, optional, default = 0.0</span></dt><dd>Mu mixing proportional to the occupation offset.
-Mixing between the dichotomy result and the previous mu,
-mu_next = factor * mu_dichotomy + (1-factor) * mu_previous, with
-factor = mu_mix_per_occupation_offset * abs(n - n_target) + mu_mix_const.
-The program ensures that 0 &lt;= factor &lt;= 1.
-mu_mix_const = 1.0 and mu_mix_per_occupation_offset = 0.0 means no mixing.</dd>
+<dt>mu_mix_const<span class="classifier">float, optional, default= 1.0</span></dt><dd>Constant term of the mixing of the chemical potential. See mu_mix_per_occupation_offset.</dd>
+<dt>mu_mix_per_occupation_offset<span class="classifier">float, optional, default= 0.0</span></dt><dd><p>Mu mixing proportional to the occupation offset.
+Mixing between the dichotomy result and the previous mui,</p>
+<p>mu_next = factor * mu_dichotomy + (1-factor) * mu_previous, with
+factor = mu_mix_per_occupation_offset * abs(n - n_target) + mu_mix_const.</p>
+<p>The program ensures that 0 &lt;= factor &lt;= 1.
+mu_mix_const = 1.0 and mu_mix_per_occupation_offset = 0.0 means no mixing.</p>
+</dd>
 <dt>afm_order<span class="classifier">bool, optional, default=False</span></dt><dd>copy self energies instead of solving explicitly for afm order</dd>
 <dt>set_rot<span class="classifier">string, optional, default=’none’</span></dt><dd>use density_mat_dft to diagonalize occupations = ‘den’
 use hloc_dft to diagonalize occupations = ‘hloc’</dd>
 <dt>oneshot_postproc_gamma_file<span class="classifier">bool, optional, default=False</span></dt><dd>write the GAMMA file for vasp after completed one-shot calculations</dd>
-<dt>measure_chi: string, optional, default=None</dt><dd>measure dynamic suszeptibility &lt;Op(tau) Op(0)&gt; , can be either
-‘SzSz’: &lt; Sz(tau) Sz(0) &gt; , or ‘NN’: &lt; N(tau) N(0) &gt;
+<dt>measure_chi_SzSz<span class="classifier">bool, optional, default=False</span></dt><dd>measure the dynamic spin suszeptibility chi(sz,sz(tau))
 triqs.github.io/cthyb/unstable/guide/dynamic_susceptibility_notebook.html</dd>
-<dt>measure_chi_insertions: int, optional, default=100</dt><dd>number of insertation for measurement of chi</dd>
+<dt>measure_chi_insertions<span class="classifier">int, optional, default=100</span></dt><dd>number of insertation for measurement of chi</dd>
 <dt>mu_gap_gb2_threshold<span class="classifier">float, optional, default=none</span></dt><dd>Threshold of the absolute of the lattice GF at tau=beta/2 for use
 of MaxEnt’s lattice spectral function to put the chemical potential
 into the middle of the gap. Does not work if system completely full
@@ -369,9 +391,9 @@ avoid getting stuck in an insulating state with wrong occupation.</dd>
 </dl>
 </div>
 <div class="section" id="solver">
-<h2>solver<a class="headerlink" href="#solver" title="Permalink to this headline">¶</a></h2>
+<h2>[  solver  ]<a class="headerlink" href="#solver" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
-<dt>store_solver: bool, optional default = False</dt><dd>store the whole solver object under DMFT_input in h5 archive</dd>
+<dt>store_solver<span class="classifier">bool, optional default= False</span></dt><dd>store the whole solver object under DMFT_input in h5 archive</dd>
 </dl>
 <div class="section" id="cthyb-parameters">
 <h3>cthyb parameters<a class="headerlink" href="#cthyb-parameters" title="Permalink to this headline">¶</a></h3>
@@ -384,9 +406,11 @@ avoid getting stuck in an insulating state with wrong occupation.</dd>
 <dt>measure_G_iw<span class="classifier">bool,optional, default=False</span></dt><dd>should the solver measure G(iw)?</dd>
 <dt>measure_density_matrix<span class="classifier">bool, optional, default=False</span></dt><dd>measures the impurity density matrix and sets also
 use_norm_as_weight to true</dd>
-<dt>measure_pert_order: bool, optional, default=False</dt><dd>measure perturbation order histograms: triqs.github.io/cthyb/latest/guide/perturbation_order_notebook.html
-stored in the h5 archive under DMFT_results per iteration stored in pert_order_imp_X and, pert_order_total_imp_X</dd>
-<dt>max_time<span class="classifier">int, optional, default=-1</span></dt><dd>maximum amount the solver is allowed to spend in eacht iteration</dd>
+<dt>measure_pert_order<span class="classifier">bool, optional, default=False</span></dt><dd><p>measure perturbation order histograms: triqs.github.io/cthyb/latest/guide/perturbation_order_notebook.html</p>
+<p>The result is stored in the h5 archive under ‘DMFT_results’ at every iteration
+in the subgroups ‘pert_order_imp_X’ and ‘pert_order_total_imp_X’</p>
+</dd>
+<dt>max_time<span class="classifier">int, optional, default=-1</span></dt><dd>maximum amount the solver is allowed to spend in each iteration</dd>
 <dt>imag_threshold<span class="classifier">float, optional, default= 10e-15</span></dt><dd>threshold for imag part of G0_tau. be warned if symmetries are off in projection scheme imag parts can occur in G0_tau</dd>
 <dt>off_diag_threshold<span class="classifier">float, optional</span></dt><dd>threshold for off-diag elements in Hloc0</dd>
 <dt>delta_interface<span class="classifier">bool, optional, default=False</span></dt><dd>use new delta interface in cthyb instead of input G0</dd>
@@ -397,34 +421,34 @@ stored in the h5 archive under DMFT_results per iteration stored in pert_order_i
 <dt>fit_max_n<span class="classifier">int, optional</span></dt><dd>number of highest matsubara frequency to fit</dd>
 <dt>fit_min_w<span class="classifier">float, optional</span></dt><dd>start matsubara frequency to start with</dd>
 <dt>fit_max_w<span class="classifier">float, optional</span></dt><dd>highest matsubara frequency to fit</dd>
-<dt>random_seed: int, optional default by triqs</dt><dd>if specified the int will be used for random seeds! Careful, this will give the same random
+<dt>random_seed<span class="classifier">int, optional default by triqs</span></dt><dd>if specified the int will be used for random seeds! Careful, this will give the same random
 numbers on all mpi ranks</dd>
-<dt>legendre_fit: bool, optional default = False</dt><dd>filter noise of G(tau) with G_l, cutoff is taken from n_l</dd>
+<dt>legendre_fit<span class="classifier">bool, optional default= False</span></dt><dd>filter noise of G(tau) with G_l, cutoff is taken from n_l</dd>
 </dl>
 </div>
 <div class="section" id="ftps-parameters">
 <h3>ftps parameters<a class="headerlink" href="#ftps-parameters" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
-<dt>n_bath:     int</dt><dd>number of bath sites</dd>
-<dt>bath_fit:   bool, default=False</dt><dd>DiscretizeBath vs BathFitter</dd>
-<dt>refine_factor: int, optional, default=1</dt><dd>rerun ftps cycle with increased accuracy</dd>
-<dt>ph_symm:    bool, optional, default=False</dt><dd>particle-hole symmetric problem</dd>
-<dt>calc_me:    bool, optional, default=True</dt><dd>calculate only symmetry-inequivalent spins/orbitals, symmetrized afterwards</dd>
-<dt>enforce_gap: list of floats, optional, default=’none’</dt><dd>enforce gap in DiscretizeBath between interval</dd>
-<dt>ignore_weight: float, optional, default=0.0</dt><dd>ignore weight of peaks for bath fitter</dd>
-<dt>dt:         float</dt><dd>time step</dd>
-<dt>state_storage: string, default = ‘./’</dt><dd>location of large MPS states</dd>
-<dt>path_to_gs: string, default = ‘none’</dt><dd>location of GS if already present. Use ‘postprocess’ to skip solver and go directly to post-processing
+<dt>n_bath<span class="classifier">int</span></dt><dd>number of bath sites</dd>
+<dt>bath_fit<span class="classifier">bool, default=False</span></dt><dd>DiscretizeBath vs BathFitter</dd>
+<dt>refine_factor<span class="classifier">int, optional, default=1</span></dt><dd>rerun ftps cycle with increased accuracy</dd>
+<dt>ph_symm<span class="classifier">bool, optional, default=False</span></dt><dd>particle-hole symmetric problem</dd>
+<dt>calc_me<span class="classifier">bool, optional, default=True</span></dt><dd>calculate only symmetry-inequivalent spins/orbitals, symmetrized afterwards</dd>
+<dt>enforce_gap<span class="classifier">list of floats, optional, default=’none’</span></dt><dd>enforce gap in DiscretizeBath between interval</dd>
+<dt>ignore_weight<span class="classifier">float, optional, default=0.0</span></dt><dd>ignore weight of peaks for bath fitter</dd>
+<dt>dt<span class="classifier">float</span></dt><dd>time step</dd>
+<dt>state_storage<span class="classifier">string, default= ‘./’</span></dt><dd>location of large MPS states</dd>
+<dt>path_to_gs<span class="classifier">string, default= ‘none’</span></dt><dd>location of GS if already present. Use ‘postprocess’ to skip solver and go directly to post-processing
 of previously terminated time-evolved state</dd>
-<dt>sweeps:     int, optional, default = 10</dt><dd>Number of DMRG sweeps</dd>
-<dt>maxmI:      int, optional, default = 100</dt><dd>maximal imp-imp bond dimensions</dd>
-<dt>maxmIB:     int, optional, default = 100</dt><dd>maximal imp-bath bond dimensions</dd>
-<dt>maxmB:      int, optional, default = 100</dt><dd>maximal bath-bath bond dimensions</dd>
-<dt>tw:         float, default 1E-9</dt><dd>truncated weight for every link</dd>
-<dt>dmrg_maxmI: int, optional, default = 100</dt><dd>maximal imp-imp bond dimensions</dd>
-<dt>dmrg_maxmIB:int, optional, default = 100</dt><dd>maximal imp-bath bond dimensions</dd>
-<dt>dmrg_maxmB: int, optional, default = 100</dt><dd>maximal bath-bath bond dimensions</dd>
-<dt>dmrg_tw:    float, default 1E-9</dt><dd>truncated weight for every link</dd>
+<dt>sweeps<span class="classifier">int, optional, default= 10</span></dt><dd>Number of DMRG sweeps</dd>
+<dt>maxmI<span class="classifier">int, optional, default= 100</span></dt><dd>maximal imp-imp bond dimensions</dd>
+<dt>maxmIB<span class="classifier">int, optional, default= 100</span></dt><dd>maximal imp-bath bond dimensions</dd>
+<dt>maxmB<span class="classifier">int, optional, default= 100</span></dt><dd>maximal bath-bath bond dimensions</dd>
+<dt>tw<span class="classifier">float, default 1E-9</span></dt><dd>truncated weight for every link</dd>
+<dt>dmrg_maxmI<span class="classifier">int, optional, default= 100</span></dt><dd>maximal imp-imp bond dimensions</dd>
+<dt>dmrg_maxmIB<span class="classifier">int, optional, default= 100</span></dt><dd>maximal imp-bath bond dimensions</dd>
+<dt>dmrg_maxmB<span class="classifier">int, optional, default= 100</span></dt><dd>maximal bath-bath bond dimensions</dd>
+<dt>dmrg_tw<span class="classifier">float, default 1E-9</span></dt><dd>truncated weight for every link</dd>
 </dl>
 </div>
 <div class="section" id="ctseg-parameters">
@@ -435,33 +459,40 @@ of previously terminated time-evolved state</dd>
 Sigma_iw will automatically be calculated via
 <a class="reference external" href="http://dx.doi.org/10.1103/PhysRevB.85.205106" rel="noopener noreferrer" target="_blank">http://dx.doi.org/10.1103/PhysRevB.85.205106</a></dd>
 </dl>
-</div>
-</div>
-<div class="section" id="dft">
-<h2>dft<a class="headerlink" href="#dft" title="Permalink to this headline">¶</a></h2>
+<p>[  dft  ]
+—
+dft_code : string</p>
+<blockquote>
+<div><p>Choose the DFT code interface, for now Quantum Espresso and Vasp are available.</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li>‘vasp’</li>
+<li>‘qe’</li>
+</ul>
+</div></blockquote>
 <dl class="docutils">
-<dt>dft_code<span class="classifier">string</span></dt><dd>‘vasp’ or ‘qe’</dd>
 <dt>n_cores<span class="classifier">int</span></dt><dd>number of cores for the DFT code (VASP)</dd>
-<dt>n_iter<span class="classifier">int, optional, default = 6</span></dt><dd>number of dft iterations per cycle</dd>
+<dt>n_iter<span class="classifier">int, optional, default= 6</span></dt><dd>number of dft iterations per cycle</dd>
 <dt>dft_exec<span class="classifier">string, default= ‘vasp_std’</span></dt><dd>command for the DFT / VASP executable</dd>
 <dt>store_eigenvals<span class="classifier">bool, optional, default= False</span></dt><dd>stores the dft eigenvals from LOCPROJ (projector_type=plo) or
 wannier90.eig (projector_type=w90) file in h5 archive</dd>
 <dt>mpi_env<span class="classifier">string, default= ‘local’</span></dt><dd>selection for mpi env for DFT / VASP in default this will only call VASP as mpirun -np n_cores_dft dft_exec</dd>
-<dt>projector_type<span class="classifier">string, optional, default = ‘plo’</span></dt><dd>plo: uses VASP’s PLO formalism, requires LOCPROJ in the INCAR
+<dt>projector_type<span class="classifier">string, optional, default= ‘plo’</span></dt><dd>plo: uses VASP’s PLO formalism, requires LOCPROJ in the INCAR
 w90: uses Wannier90, requires LWANNIER90 in the INCAR</dd>
 <dt>w90_exec<span class="classifier">string, default=’wannier90.x’</span></dt><dd>the command to start a single-core wannier run</dd>
 <dt>w90_tolerance<span class="classifier">float, default=1e-6</span></dt><dd>threshold for mapping of shells and checks of the Hamiltonian</dd>
 </dl>
 </div>
+</div>
 <div class="section" id="advanced">
-<h2>advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
+<h2>[  advanced  ]<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
-<dt>dc_factor<span class="classifier">float, optional, default = ‘none’ (corresponds to 1)</span></dt><dd>If given, scales the dc energy by multiplying with this factor, usually &lt; 1</dd>
-<dt>dc_fixed_value<span class="classifier">float, optional, default = ‘none’</span></dt><dd>If given, it sets the DC (energy/imp) to this fixed value. Overwrites EVERY other DC configuration parameter if DC is turned on</dd>
-<dt>dc_fixed_occ<span class="classifier">list of float, optional, defaul = ‘none’</span></dt><dd>If given, the occupation for the DC for each impurity is set to the provided value.
+<dt>dc_factor<span class="classifier">float, optional, default= ‘none’ (corresponds to 1)</span></dt><dd>If given, scales the dc energy by multiplying with this factor, usually &lt; 1</dd>
+<dt>dc_fixed_value<span class="classifier">float, optional, default= ‘none’</span></dt><dd>If given, it sets the DC (energy/imp) to this fixed value. Overwrites EVERY other DC configuration parameter if DC is turned on</dd>
+<dt>dc_fixed_occ<span class="classifier">list of float, optional, default= ‘none’</span></dt><dd>If given, the occupation for the DC for each impurity is set to the provided value.
 Still uses the same kind of DC!</dd>
-<dt>dc_U<span class="classifier">float or comma seperated list of floats, optional, default = general_params[‘U’]</span></dt><dd>U values for DC determination if only one value is given, the same U is assumed for all impurities</dd>
-<dt>dc_J<span class="classifier">float or comma seperated list of floats, optional, default = general_params[‘J’]</span></dt><dd>J values for DC determination if only one value is given, the same J is assumed for all impurities</dd>
+<dt>dc_U<span class="classifier">float or comma seperated list of floats, optional, default= general_params[‘U’]</span></dt><dd>U values for DC determination if only one value is given, the same U is assumed for all impurities</dd>
+<dt>dc_J<span class="classifier">float or comma seperated list of floats, optional, default= general_params[‘J’]</span></dt><dd>J values for DC determination if only one value is given, the same J is assumed for all impurities</dd>
 <dt>map_solver_struct<span class="classifier">dict, optional, default=no additional mapping</span></dt><dd>Additional manual mapping of the solver block structure, applied
 after the block structure finder to all impurities.</dd>
 <dt>mapped_solver_struct_degeneracies<span class="classifier">list, optional, default=none</span></dt><dd>Degeneracies applied when using map_solver_struct, same for all inmpurities.

@@ -4,7 +4,7 @@
 #
 
 
-sed 's/\(.*\) :\s*\(.*\)/\n.. admonition:: \1: \n \n            \*\*type=\*\* \2\n/g' python_comments.txt > matches_comments.txt
+sed 's/\(.*\) :\s*\(.*\)/\n.. admonition:: \1 \n 	:class: intag  \n \n            \*\*type=\*\* \2\n/g' python_comments.txt > matches_comments.txt
 
 #add blank line after type
 #sed -i 's/\(\*type=.*\),/\1 \n\n           /g'  matches_comments.txt
@@ -20,7 +20,7 @@ cat > input.rst << EOF
 DMFT input
 ------------------------
 
-In this section all the 
+The aim of this section is to provide a comprehensive listing of all the input flags available for the \`dmft_config.ini\` input file. We begin by listing the possible sections and follow with the input parameters.
 
 Input/Output
 ===================
@@ -51,13 +51,13 @@ EOF
 # tr ':\n' '; ' to remove the newline and add a semicolon
 
 awk '/\[  general  \]/{flag=1; c=0} flag; /\[ /&& ++c==2{flag=0}' matches_comments.txt | head -n -2 | tail -n +3 > general.tmp
-grep '::' general.tmp | grep -o '::\(.*\):' | sed 's/:: //g' | tr ':\n' '; ' > general_list.tmp
+grep '::' general.tmp | grep -o ':: \(.*\)' | sed 's/:: //g' | tr ' \n' '; ' > general_list.tmp
 awk '/\[  solver  \]/{flag=1; c=0} flag; /\[ /&& ++c==2{flag=0}' matches_comments.txt | head -n -2 | tail -n +3 > solver.tmp
-grep '::' general.tmp | grep -o '::\(.*\):' | sed 's/:: //g' | tr ':\n' '; ' > solver_list.tmp
+grep '::' solver.tmp | grep -o ':: \(.*\)' | sed 's/:: //g' | tr ' \n' '; ' > solver_list.tmp
 awk '/\[  dft  \]/{flag=1; c=0} flag; /\[ /&& ++c==2{flag=0}' matches_comments.txt | head -n -2 | tail -n +3 > dft.tmp
-grep '::' general.tmp | grep -o '::\(.*\):' | sed 's/:: //g' | tr ':\n' '; ' > dft_list.tmp
+grep '::' dft.tmp | grep -o ':: \(.*\)' | sed 's/:: //g' | tr ' \n' '; ' > dft_list.tmp
 awk '/\[  advanced  \]/{flag=1; c=0} flag; /\[ /&& ++c==2{flag=0}' matches_comments.txt | head -n -2 | tail -n +3 > advanced.tmp
-grep '::' general.tmp | grep -o '::\(.*\):' | sed 's/:: //g' | tr ':\n' '; ' > advanced_list.tmp
+grep '::' advanced.tmp | grep -o ':: \(.*\)' | sed 's/:: //g' | tr ' \n' '; ' > advanced_list.tmp
 
 
 cat general_list.tmp >> input.rst
@@ -90,10 +90,9 @@ cat > general.rst << EOF
 
 Includes the majority of the parameters
 
-List of possible entries:
 
 EOF
-cat general_list.tmp >> general.rst
+#cat general_list.tmp >> general.rst
 echo -e "\n"  >> general.rst
 cat general.tmp >> general.rst
 ##############
@@ -111,10 +110,9 @@ Here are the parameters that are uniquely dependent on the solver chosen. Below 
 
 
 
-List of possible entries:
 
 EOF
-cat solver_list.tmp >> solver.rst
+#cat solver_list.tmp >> solver.rst
 echo -e "\n"  >> solver.rst
 cat solver.tmp >> solver.rst
 ##############
@@ -129,12 +127,11 @@ cat > dft.rst << EOF
 
 List of parameters that relate to the DFT calculation, useful mostly when doing CSC.
 
-List of possible entries:
 
 
 EOF
 
-cat dft_list.tmp >> dft.rst
+#cat dft_list.tmp >> dft.rst
 echo -e "\n"  >> dft.rst
 cat dft.tmp >> dft.rst
 ##############
@@ -146,10 +143,9 @@ cat > advanced.rst << EOF
 
 Advanced parameters, do not modify default value unless you know what you are doing
 
-List of possible entries:
 
 EOF
-cat advanced_list.tmp >> advanced.rst
+#cat advanced_list.tmp >> advanced.rst
 echo -e "\n"  >> advanced.rst
 cat advanced.tmp >> advanced.rst
 ##############

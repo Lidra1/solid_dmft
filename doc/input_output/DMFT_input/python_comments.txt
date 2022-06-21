@@ -31,7 +31,7 @@ ratio_F4_F2 : float or comma separated list of floats, optional, default='none'
             interaction Hamiltonians 'density_density' and 'full_slater' and
             only for d-shell impurities, where the default is 0.63.
 beta : float, only used if solver ImFreq
-            inverse temperature for Greens function etc
+            inverse temperature measured in eV-1, determines the spacing of the matsubara frequencies, beta=40 is about kbT=0.025 eV, a little less            than room temperature 
 n_iter_dmft_first : int, optional, default= 10
             number of iterations in first dmft cycle to converge dmft solution
 n_iter_dmft_per : int, optional, default= 2

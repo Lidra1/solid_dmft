@@ -3,7 +3,18 @@
 # Changes the input from:
 #
 
+#extract the comments from the docstring
+green='\033[1;32m'
+wipe="\033[1m\033[0m"
 
+echo -e "${green}Extracting the comments from read_config.py file${wipe}"
+buildfolder="../../.."
+docfile="$buildfolder/python/solid_dmft/read_config.py"
+
+awk '/---XXX---start/{flag=1; c=0} flag; /---XXX/&& ++c==2{flag=0}' $docfile | tail -n +2 | head -n -2 > python_comments.txt
+
+#from the python comments 
+echo "Generating .rst syntax from the python syntax"
 sed 's/\(.*\) :\s*\(.*\)/\n.. admonition:: \1 \n 	:class: intag  \n \n            \*\*type=\*\* \2\n/g' python_comments.txt > matches_comments.txt
 
 #add blank line after type
@@ -16,6 +27,7 @@ sed -i 's/,.*\(\default=\)/;  \*\*\1\*\* /g'  matches_comments.txt
 
 # grep all admonitions and store them in a file 
 
+echo "Generating input page"
 cat > input.rst << EOF
 DMFT input
 ------------------------
@@ -50,6 +62,7 @@ EOF
 # sed 's/:: //g' to remove the ::
 # tr ':\n' '; ' to remove the newline and add a semicolon
 
+echo "Extracting tags from different sections"
 awk '/\[  general  \]/{flag=1; c=0} flag; /\[ /&& ++c==2{flag=0}' matches_comments.txt | head -n -2 | tail -n +3 > general.tmp
 grep '::' general.tmp | grep -o ':: \(.*\)' | sed 's/:: //g' | tr ' \n' '; ' > general_list.tmp
 awk '/\[  solver  \]/{flag=1; c=0} flag; /\[ /&& ++c==2{flag=0}' matches_comments.txt | head -n -2 | tail -n +3 > solver.tmp
@@ -86,7 +99,7 @@ cat advanced_list.tmp >> input.rst
 ##############
 cat > general.rst << EOF
 [general]: General parameters
-------
+-----------------------------
 
 Includes the majority of the parameters
 
@@ -100,7 +113,7 @@ cat general.tmp >> general.rst
 ##############
 cat > solver.rst << EOF
 [solver]: solver specific parameters
-------
+------------------------------------
 
 Here are the parameters that are uniquely dependent on the solver chosen. Below a list of the supported solvers:
 
@@ -123,7 +136,7 @@ cat solver.tmp >> solver.rst
 cat > dft.rst << EOF
 
 [dft]: DFT related inputs
-------
+-------------------------
 
 List of parameters that relate to the DFT calculation, useful mostly when doing CSC.
 
@@ -139,7 +152,7 @@ cat dft.tmp >> dft.rst
 ##############
 cat > advanced.rst << EOF
 [advanced]: Advanced inputs
-------
+---------------------------
 
 Advanced parameters, do not modify default value unless you know what you are doing
 
@@ -150,4 +163,5 @@ echo -e "\n"  >> advanced.rst
 cat advanced.tmp >> advanced.rst
 ##############
 
+echo "Removing temporary files"
 rm ./*.tmp

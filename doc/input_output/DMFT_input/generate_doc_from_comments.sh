@@ -29,7 +29,7 @@ sed -i 's/,.*\(\default=\)/;  \*\*\1\*\* /g'  matches_comments.txt
 
 echo "Generating input page"
 cat > input.rst << EOF
-DMFT input
+solid_dmft input
 ------------------------
 
 The aim of this section is to provide a comprehensive listing of all the input flags available for the \`dmft_config.ini\` input file. We begin by listing the possible sections and follow with the input parameters.
@@ -117,9 +117,6 @@ cat > solver.rst << EOF
 
 Here are the parameters that are uniquely dependent on the solver chosen. Below a list of the supported solvers:
 
-===================
-.. toctree::
-    :maxdepth: 1
 
 
 

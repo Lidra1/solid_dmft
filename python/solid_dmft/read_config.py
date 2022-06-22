@@ -32,8 +32,7 @@ Comments are in general possible with with the delimiters ';' or
 the line! For default values, the string 'none' is used. NoneType cannot be
 saved in an h5 archive (in the framework that we are using).
 
-List of all parameters, sorted by sections:
-
+---XXX---start
 List of all parameters, sorted by sections:
 
 [  general  ]
@@ -367,6 +366,8 @@ map_solver_struct : dict, optional, default=no additional mapping
 mapped_solver_struct_degeneracies : list, optional, default=none
             Degeneracies applied when using map_solver_struct, same for all inmpurities.
             If not given and map_solver_struct is used, no symmetrization will happen.
+            
+---XXX---end
 """
 
 from configparser import ConfigParser
@@ -562,7 +563,7 @@ PROPERTIES_PARAMS = {'general': {'seedname': {'converter': lambda s: s.replace('
                                  'oneshot_postproc_gamma_file': {'converter': BOOL_PARSER,
                                                                  'used': lambda params: not params['general']['csc'], 'default': False},
 
-                                 'measure_chi_SzSz': {'converter': BOOL_PARSER, 'used': True, 'default': False},
+                                 'measure_chi': {'valid for': lambda x, _: x in ('SzSz', 'NN', 'none'), 'used': True, 'default': 'none'},
 
                                  'measure_chi_insertions': {'converter': int, 'used': True, 'default': 100},
 
@@ -603,6 +604,11 @@ PROPERTIES_PARAMS = {'general': {'seedname': {'converter': lambda s: s.replace('
                              'w90_exec': {'used': lambda params: (params['general']['csc']
                                                                   and params['dft']['projector_type'] == 'w90'),
                                                 'default': 'wannier90.x'},
+
+                             'w90_tolerance': {'converter': lambda s: float(s),
+                                                'used': lambda params: (params['general']['csc']
+                                                                      and params['dft']['projector_type'] == 'w90'),
+                                                'default': 1e-6},
                             },
                      'solver': {
                                 #
@@ -611,30 +617,36 @@ PROPERTIES_PARAMS = {'general': {'seedname': {'converter': lambda s: s.replace('
                                 # cthyb parameters
                                 #
                                 'length_cycle': {'converter': int, 'valid for': lambda x, _: x > 0,
-                                                 'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint','ctseg']},
+                                                 'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint', 'ctseg']},
 
                                 'n_warmup_cycles': {'converter': int, 'valid for': lambda x, _: x > 0,
-                                                    'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint','ctseg']},
+                                                    'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint', 'ctseg']},
 
                                 'n_cycles_tot': {'converter': lambda s: int(float(s)),
                                                  'valid for': lambda x, _: x >= 0,
-                                                 'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint','ctseg']},
+                                                 'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint', 'ctseg']},
 
                                 'max_time': {'converter': int, 'valid for': lambda x, _: x >= 0,
                                              'default': None,
-                                             'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint','ctseg']},
+                                             'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint', 'ctseg']},
 
                                 'imag_threshold': {'converter': float, 'default': None,
                                                    'used': lambda params: params['general']['solver_type'] in ['cthyb']},
 
+                                'off_diag_threshold': {'converter': float, 'default': 0.0,
+                                                   'used': lambda params: params['general']['solver_type'] in ['cthyb']},
+
+                                'delta_interface': {'converter': BOOL_PARSER, 'default': False,
+                                                  'used': lambda params: params['general']['solver_type'] in ['cthyb']},
+
                                 'measure_G_tau': {'converter': BOOL_PARSER, 'default': True,
-                                                  'used': lambda params: params['general']['solver_type'] in ['hubbardI','ctseg']},
+                                                  'used': lambda params: params['general']['solver_type'] in ['hubbardI', 'ctseg']},
 
                                 'measure_G_iw': {'converter': BOOL_PARSER, 'default': False,
                                                   'used': lambda params: params['general']['solver_type'] in ['ctseg']},
 
                                 'measure_G_l': {'converter': BOOL_PARSER, 'default': False,
-                                                'used': lambda params: params['general']['solver_type'] in ['cthyb', 'hubbardI','ctseg']},
+                                                'used': lambda params: params['general']['solver_type'] in ['cthyb', 'hubbardI', 'ctseg']},
 
                                 'measure_density_matrix': {'converter': BOOL_PARSER, 'default': False,
                                                            'used': lambda params: params['general']['solver_type'] in ['cthyb', 'hubbardI']},
@@ -643,13 +655,13 @@ PROPERTIES_PARAMS = {'general': {'seedname': {'converter': lambda s: s.replace('
                                                 'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint']},
 
                                 'measure_pert_order': {'converter': BOOL_PARSER, 'default': False,
-                                                       'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint','ctseg']},
+                                                       'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint', 'ctseg']},
 
                                 'move_shift': {'converter': BOOL_PARSER, 'default': False,
                                                 'used': lambda params: params['general']['solver_type'] in ['cthyb']},
 
                                 'random_seed': {'converter': int, 'default': None,
-                                                'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint','ctseg']},
+                                                'used': lambda params: params['general']['solver_type'] in ['cthyb', 'ctint', 'ctseg']},
 
                                 'perform_tail_fit': {'converter': BOOL_PARSER,
                                                      'used': lambda params: params['general']['solver_type'] in ['cthyb']
@@ -1112,6 +1124,10 @@ def read_config(config_file):
     if parameters['general']['solver_type'] in ['cthyb', 'ctint', 'ctseg']:
         parameters['solver']['n_cycles'] = parameters['solver']['n_cycles_tot'] // mpi.size
         del parameters['solver']['n_cycles_tot']
+
+    if parameters['general']['solver_type'] in ['cthyb']:
+        parameters['general']['cthyb_delta_interface'] = parameters['solver']['delta_interface']
+        del parameters['solver']['delta_interface']
 
     if parameters['general']['solver_type'] in ['ctseg']:
         # some parameters have different names for ctseg

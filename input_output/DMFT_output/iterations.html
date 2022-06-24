@@ -287,9 +287,11 @@ In order to retrieve the indices call the Gf.indices method.</p>
 <p>Legend:</p>
 <ul class="simple">
 <li>iiter = iteration number: range(0, n_dmft_iter)</li>
-<li>iimp = impurity number: range(0, n_imp)</li>
+<li>ish = shell number: range(0, n_shells)</li>
+<li>icrsh = correlated shell number: range(0, n_corr_shells)</li>
+<li>iineq = inequivalent correlated shell number: range(0, n_inequiv_shells)</li>
 <li>iorb = orbital number: range(0, n_orbitals)</li>
-<li>ispin = spin label, ‘up’ or ‘down’ in collinear calculations</li>
+<li>sp = spin label</li>
 <li>ikpt = k-point label, the order is the same as given in the wannier90 input: range(0, n_kpt)</li>
 <li>iband = band label before downfolding, n_bands = number of bands included in the disentanglement window during the wannierization: range(0, n_bands)</li>
 </ul>

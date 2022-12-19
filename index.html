@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>solid_dmft &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="_static/favicon.ico"/>
+  <title>solid_dmft &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -24,10 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="#" class="icon icon-home"> solid_dmft<img src="_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="#" class="icon icon-home"> solid_dmft
+            <img src="_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -40,7 +45,9 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -212,12 +219,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -238,8 +247,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>solid_dmft</li>
+      <li><a href="#" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">solid_dmft</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -274,10 +283,10 @@
 }
 </style>
 <span class="target" id="module-solid_dmft"><span id="index-0"></span></span><div class="section" id="solid-dmft">
-<h1>solid_dmft<a class="headerlink" href="#solid-dmft" title="Permalink to this headline">¶</a></h1>
+<h1>solid_dmft<a class="headerlink" href="#solid-dmft" title="Permalink to this headline"></a></h1>
 <div class="sidebar">
-<p class="first sidebar-title">solid_dmft 3.1.0</p>
-<p>This is the homepage of solid_dmft 3.1.0.
+<p class="first sidebar-title">solid_dmft 3.1.2</p>
+<p>This is the homepage of solid_dmft 3.1.2.
 For changes see the <a class="reference internal" href="ChangeLog.html#changelog"><span class="std std-ref">changelog page</span></a>.
 visit us on:</p>
 <blockquote class="last">
@@ -286,16 +295,18 @@ visit us on:</p>
 </div>
 <p>This program allows to perform DFT+DMFT ‘’one-shot’’ and charge self-consistent
 (CSC) calculations from h5 archives or VASP/Quantum Espresso input files for
-multiband systems using the TRIQS software library, and the DFT code interface
+multiband systems using the <a class="reference external" href="https://triqs.github.io" rel="noopener noreferrer" target="_blank">TRIQS software library</a>, and the DFT code interface
 <a class="reference external" href="https://triqs.github.io/dft_tools" rel="noopener noreferrer" target="_blank">TRIQS/DFTTools</a>. Works with triqs &gt;3.x.x.
-solid_dmft takes advantage of various impurity solvers available in triqs: cthyb,
-HubbardI, ForkTPS, ctint, and ctseg. Postprocessing scripts are available to
+solid_dmft takes advantage of various
+<a class="reference external" href="https://triqs.github.io/triqs/latest/applications.html#impurity-solvers" rel="noopener noreferrer" target="_blank">impurity solvers available</a>
+in triqs: cthyb, HubbardI, ForkTPS, ctint, and ctseg. Postprocessing scripts are available to
 perform analytic continuation and calculate spectral functions.</p>
 <p>For installation use the same branch / tag as your triqs installation. More
 information under <a class="reference internal" href="install.html#installation"><span class="std std-ref">Installation</span></a>.</p>
 <p>Learn how to use solid_dmft in the <a class="reference internal" href="documentation.html#documentation"><span class="std std-ref">Documentation</span></a> and the <a class="reference internal" href="tutorials.html#tutorials"><span class="std std-ref">Tutorials</span></a>.</p>
+<p>For more technical information about the implementation check also the <a class="reference external" href="https://doi.org/10.21105/joss.04623" rel="noopener noreferrer" target="_blank">solid_dmft publication</a> in the JOSS journal. If you are using this code for your research, please cite the paper using this <a class="reference external" href="https://github.com/TRIQS/solid_dmft/blob/unstable/cite_solid_dmft.bib" rel="noopener noreferrer" target="_blank">bib file</a>.</p>
 <div class="section" id="workflow-of-dft-dmft-calculations-with-solid-dmft">
-<h2>Workflow of DFT+DMFT calculations with solid_dmft<a class="headerlink" href="#workflow-of-dft-dmft-calculations-with-solid-dmft" title="Permalink to this headline">¶</a></h2>
+<h2>Workflow of DFT+DMFT calculations with solid_dmft<a class="headerlink" href="#workflow-of-dft-dmft-calculations-with-solid-dmft" title="Permalink to this headline"></a></h2>
 <a class="reference internal image-reference" href="_images/workflow.png"><img alt="_images/workflow.png" class="align-center" src="_images/workflow.png" style="width: 100%;" /></a>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
@@ -315,7 +326,7 @@ information under <a class="reference internal" href="install.html#installation"
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

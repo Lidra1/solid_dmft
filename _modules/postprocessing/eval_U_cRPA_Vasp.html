@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>postprocessing.eval_U_cRPA_Vasp &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>postprocessing.eval_U_cRPA_Vasp &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -23,10 +27,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft
+            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -39,7 +44,9 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -211,12 +218,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -237,9 +246,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>postprocessing.eval_U_cRPA_Vasp</li>
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">postprocessing.eval_U_cRPA_Vasp</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -249,10 +258,11 @@
            <div itemprop="articleBody">
              
   <h1>Source code for postprocessing.eval_U_cRPA_Vasp</h1><div class="highlight"><pre>
-<span></span><span class="ch">#!/usr/bin/python</span>
+<span></span><span class="ch">#!@TRIQS_PYTHON_EXECUTABLE@</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">python functions for reading Uijkl from a VASP cRPA run and the evaluating the matrix</span>
@@ -262,7 +272,8 @@
 <span class="sd">at ETH Zurich</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
-<div class="viewcode-block" id="read_uijkl"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.read_uijkl">[docs]</a><span class="k">def</span> <span class="nf">read_uijkl</span><span class="p">(</span><span class="n">path_to_uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+
+<div class="viewcode-block" id="read_uijkl"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.read_uijkl">[docs]</a><span class="k">def</span> <span class="nf">read_uijkl</span><span class="p">(</span><span class="n">path_to_uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    reads the VASP UIJKL files or the vijkl file if wanted</span>
 
@@ -282,20 +293,64 @@
 
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="n">n_sites</span><span class="o">*</span><span class="n">n_orb</span>
-    <span class="n">uijkl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">dim</span><span class="p">))</span>
-    <span class="n">data</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">path_to_uijkl</span><span class="p">)</span>
+    <span class="n">uijkl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">path_to_uijkl</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])):</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">line</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">uijkl</span></div>
 
 
-<div class="viewcode-block" id="red_to_2ind"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.red_to_2ind">[docs]</a><span class="k">def</span> <span class="nf">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="construct_U_kan"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.construct_U_kan">[docs]</a><span class="k">def</span> <span class="nf">construct_U_kan</span><span class="p">(</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Up</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Jc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    construct Kanamori Uijkl tensor for given U, J, Up, and Jc</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n_orb : int</span>
+<span class="sd">        number of orbitals</span>
+<span class="sd">    U : float</span>
+<span class="sd">        U value for elements Uiiii</span>
+<span class="sd">    J : float</span>
+<span class="sd">        Hunds coupling J for tensor elements Uijji</span>
+<span class="sd">    Up : float, optional, default=U-2J</span>
+<span class="sd">        inter orbital exchange term Uijij</span>
+<span class="sd">    Jc : float, optional, default=J</span>
+<span class="sd">        Uiijj term, is the same as J for real valued wave functions</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    uijkl : numpy array</span>
+<span class="sd">        uijkl Coulomb tensor</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">orb_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">)</span>
+    <span class="n">U_kan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">Up</span><span class="p">:</span>
+        <span class="n">Up</span> <span class="o">=</span> <span class="n">U</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">J</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">Jc</span><span class="p">:</span>
+        <span class="n">Jc</span> <span class="o">=</span> <span class="n">J</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">orb_range</span><span class="p">,</span> <span class="n">orb_range</span><span class="p">,</span> <span class="n">orb_range</span><span class="p">,</span> <span class="n">orb_range</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span> <span class="o">==</span> <span class="n">k</span> <span class="o">==</span> <span class="n">l</span><span class="p">:</span>  <span class="c1"># Uiiii</span>
+            <span class="n">U_kan</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">==</span> <span class="n">l</span><span class="p">:</span>  <span class="c1"># Uijij</span>
+            <span class="n">U_kan</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">Up</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="n">l</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>  <span class="c1"># Uijji</span>
+            <span class="n">U_kan</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">J</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">==</span> <span class="n">l</span><span class="p">:</span>  <span class="c1"># Uiijj</span>
+            <span class="n">U_kan</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">Jc</span>
+    <span class="k">return</span> <span class="n">U_kan</span></div>
+
+
+<div class="viewcode-block" id="red_to_2ind"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.red_to_2ind">[docs]</a><span class="k">def</span> <span class="nf">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    reduces the 4index coulomb matrix to a 2index matrix and</span>
 <span class="sd">    follows the procedure given in PRB96 seth,peil,georges:</span>
@@ -334,26 +389,26 @@
     <span class="n">Uiijj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
     <span class="n">Uijji</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">dim</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">dim</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
             <span class="c1"># the indices in VASP are switched: U_ijkl ---VASP--&gt; U_ikjl</span>
-            <span class="n">Uij_anti</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-            <span class="n">Uij_par</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">Uiijj</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span>  <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-            <span class="n">Uijji</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">Uij_anti</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="n">Uij_par</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+            <span class="n">Uiijj</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="n">Uijji</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
 
-    <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;reduced U anti-parallel = U_mm</span><span class="se">\&#39;</span><span class="s1">\^oo</span><span class="se">\&#39;</span><span class="s1"> = U_mm</span><span class="se">\&#39;</span><span class="s1">mm</span><span class="se">\&#39;</span><span class="s1"> matrix : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uij_anti</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;reduced U anti-parallel = U_mm</span><span class="se">\&#39;</span><span class="s1">\^oo</span><span class="se">\&#39;</span><span class="s1"> = U_mm</span><span class="se">\&#39;</span><span class="s1">mm</span><span class="se">\&#39;</span><span class="s1"> matrix : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uij_anti</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;reduced U parallel = U_mm</span><span class="se">\&#39;</span><span class="s1">\^oo = U_mm</span><span class="se">\&#39;</span><span class="s1">mm</span><span class="se">\&#39;</span><span class="s1"> - U_mm</span><span class="se">\&#39;</span><span class="s1">m</span><span class="se">\&#39;</span><span class="s1">m matrix : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uij_par</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;reduced Uijji : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uijji</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;reduced Uiijj : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uiijj</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;reduced Uijji : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uijji</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;reduced Uiijj : </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Uiijj</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">Uij_anti</span><span class="p">,</span><span class="n">Uiijj</span><span class="p">,</span><span class="n">Uijji</span><span class="p">,</span><span class="n">Uij_par</span></div>
+    <span class="k">return</span> <span class="n">Uij_anti</span><span class="p">,</span> <span class="n">Uiijj</span><span class="p">,</span> <span class="n">Uijji</span><span class="p">,</span> <span class="n">Uij_par</span></div>
 
 
-<div class="viewcode-block" id="calc_kan_params"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calc_kan_params">[docs]</a><span class="k">def</span> <span class="nf">calc_kan_params</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="calc_kan_params"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calc_kan_params">[docs]</a><span class="k">def</span> <span class="nf">calc_kan_params</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    calculates the kanamori interaction parameters from a</span>
 <span class="sd">    given Uijkl matrix. Follows the procedure given in</span>
@@ -378,31 +433,30 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">int_params</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">()</span>
-    <span class="n">dim</span> <span class="o">=</span> <span class="n">n_sites</span><span class="o">*</span><span class="n">n_orb</span>
 
     <span class="c1"># calculate intra-orbital U</span>
     <span class="n">U</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
-        <span class="n">U</span> <span class="o">+=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">):</span>
+        <span class="n">U</span> <span class="o">+=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
     <span class="n">U</span> <span class="o">=</span> <span class="n">U</span><span class="o">/</span><span class="p">(</span><span class="n">n_orb</span><span class="p">)</span>
     <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span>
 
     <span class="c1"># calculate the U&#39;</span>
     <span class="n">Uprime</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
-                <span class="n">Uprime</span> <span class="o">+=</span>  <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-    <span class="n">Uprime</span> <span class="o">=</span> <span class="n">Uprime</span><span class="o">/</span> <span class="p">(</span><span class="n">n_orb</span><span class="o">*</span><span class="p">(</span><span class="n">n_orb</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+                <span class="n">Uprime</span> <span class="o">+=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="n">Uprime</span> <span class="o">=</span> <span class="n">Uprime</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_orb</span><span class="o">*</span><span class="p">(</span><span class="n">n_orb</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
     <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;Uprime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Uprime</span>
 
     <span class="c1"># calculate J</span>
     <span class="n">J</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
-                <span class="n">J</span> <span class="o">+=</span>  <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-    <span class="n">J</span> <span class="o">=</span> <span class="n">J</span><span class="o">/</span> <span class="p">(</span><span class="n">n_orb</span><span class="o">*</span><span class="p">(</span><span class="n">n_orb</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+                <span class="n">J</span> <span class="o">+=</span> <span class="n">uijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">J</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_orb</span><span class="o">*</span><span class="p">(</span><span class="n">n_orb</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
     <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">J</span>
 
     <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
@@ -412,7 +466,107 @@
 
     <span class="k">return</span> <span class="n">int_params</span></div>
 
-<div class="viewcode-block" id="calc_u_avg_fulld"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calc_u_avg_fulld">[docs]</a><span class="k">def</span> <span class="nf">calc_u_avg_fulld</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="fit_kanamori"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.fit_kanamori">[docs]</a><span class="k">def</span> <span class="nf">fit_kanamori</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">switch_jk</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fit_2</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fit_3</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fit_4</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Fit Kanamori Hamiltonian with scipy to 2,3, and / or 4 parameters</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    uijkl: np.array (n_orb x n_orb x n_orb x n_orb)</span>
+<span class="sd">            input four index tensor</span>
+<span class="sd">    n_orb: int</span>
+<span class="sd">            number of orbitals</span>
+<span class="sd">    switch_jk: bool, default=False</span>
+<span class="sd">            flip two inner indices in input U tensor (for Vasp)</span>
+<span class="sd">    fit_2: bool, default=True</span>
+<span class="sd">            fit two parameter form</span>
+<span class="sd">    fit_3: bool, default=False</span>
+<span class="sd">            fit three parameter form (U,Up,J=Jc)</span>
+<span class="sd">    fit_4: bool, default=True</span>
+<span class="sd">            fit four parameter form</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Uijkl_fit: np.array (n_orb x n_orb x n_orb x n_orb)</span>
+<span class="sd">            fitted Uijkl tensor</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+
+    <span class="k">def</span> <span class="nf">minimizer_2params</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+        <span class="n">U</span><span class="p">,</span> <span class="n">J</span> <span class="o">=</span> <span class="n">parameters</span>
+
+        <span class="n">Uijkl_fit</span> <span class="o">=</span> <span class="n">construct_U_kan</span><span class="p">(</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">uijkl</span> <span class="o">-</span> <span class="n">Uijkl_fit</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">minimizer_3params</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+        <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Up</span> <span class="o">=</span> <span class="n">parameters</span>
+
+        <span class="n">Uijkl_fit</span> <span class="o">=</span> <span class="n">construct_U_kan</span><span class="p">(</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Up</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">uijkl</span> <span class="o">-</span> <span class="n">Uijkl_fit</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">minimizer_4params</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+        <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Up</span><span class="p">,</span> <span class="n">Jc</span> <span class="o">=</span> <span class="n">parameters</span>
+
+        <span class="n">Uijkl_fit</span> <span class="o">=</span> <span class="n">construct_U_kan</span><span class="p">(</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Up</span><span class="p">,</span> <span class="n">Jc</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">uijkl</span> <span class="o">-</span> <span class="n">Uijkl_fit</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># check if J = JC (Hunds exchange and pair hopping have same amplitude)</span>
+    <span class="c1"># true for real values wave functions</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">uijkl</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Largest imaginary part of Uijkl: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">uijkl</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span><span class="si">}</span><span class="s2">. Kanamori Hint assumed to be real valued. Neglecting imag part&quot;</span><span class="p">)</span>
+        <span class="n">uijkl</span> <span class="o">=</span> <span class="n">uijkl</span><span class="o">.</span><span class="n">real</span>
+
+    <span class="k">if</span> <span class="n">switch_jk</span><span class="p">:</span>
+        <span class="n">uijkl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">moveaxis</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># fit U, J</span>
+    <span class="k">if</span> <span class="n">fit_2</span><span class="p">:</span>
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">minimizer_2params</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">)</span>
+        <span class="n">U</span><span class="p">,</span> <span class="n">J</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">Uijkl_fit</span> <span class="o">=</span> <span class="n">construct_U_kan</span><span class="p">(</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Result 2 parameter fit: </span><span class="se">\n</span><span class="s1">U = </span><span class="si">{:.4f}</span><span class="s1"> eV, J = </span><span class="si">{:.4f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;optimize error </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="si">:</span><span class="s1">.3e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">max_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Uijkl_fit</span><span class="o">-</span><span class="n">uijkl</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span> <span class="n">Uijkl_fit</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U max diff: U</span><span class="si">{</span><span class="n">max_ind</span><span class="si">}</span><span class="s1">= </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Uijkl_fit</span><span class="o">-</span><span class="n">uijkl</span><span class="p">)[</span><span class="n">max_ind</span><span class="p">]</span><span class="si">:</span><span class="s1">.4e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-------------------------</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># fit U, J, Up</span>
+    <span class="k">if</span> <span class="n">fit_3</span><span class="p">:</span>
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">minimizer_3params</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">)</span>
+        <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Up</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">Uijkl_fit</span> <span class="o">=</span> <span class="n">construct_U_kan</span><span class="p">(</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Up</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Result 3 parameter fit: </span><span class="se">\n</span><span class="s1">U = </span><span class="si">{:.4f}</span><span class="s1"> eV, U</span><span class="se">\&#39;</span><span class="s1"> = </span><span class="si">{:.4f}</span><span class="s1"> eV J = </span><span class="si">{:.4f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">Up</span><span class="p">,</span> <span class="n">J</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;optimize error </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="si">:</span><span class="s1">.3e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">max_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Uijkl_fit</span><span class="o">-</span><span class="n">uijkl</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span> <span class="n">Uijkl_fit</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U max diff: U</span><span class="si">{</span><span class="n">max_ind</span><span class="si">}</span><span class="s1">= </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Uijkl_fit</span><span class="o">-</span><span class="n">uijkl</span><span class="p">)[</span><span class="n">max_ind</span><span class="p">]</span><span class="si">:</span><span class="s1">.4e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U=U</span><span class="se">\&#39;</span><span class="s1">-2J deviation: </span><span class="si">{</span><span class="n">U</span><span class="o">-</span><span class="n">Up</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">J</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">-------------------------</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">fit_4</span><span class="p">:</span>
+        <span class="c1"># fit U, J, Up, Jc</span>
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">minimizer_4params</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">)</span>
+        <span class="n">U</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Up</span><span class="p">,</span> <span class="n">Jc</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">Uijkl_fit</span> <span class="o">=</span> <span class="n">construct_U_kan</span><span class="p">(</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Up</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Jc</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Result 4 parameter fit: </span><span class="se">\n</span><span class="s1">U = </span><span class="si">{:.4f}</span><span class="s1"> eV, U</span><span class="se">\&#39;</span><span class="s1"> = </span><span class="si">{:.4f}</span><span class="s1"> eV, J = </span><span class="si">{:.4f}</span><span class="s1"> eV, Jc = </span><span class="si">{:.4f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">Up</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">Jc</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;optimize error </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="si">:</span><span class="s1">.3e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U max diff: U</span><span class="si">{</span><span class="n">max_ind</span><span class="si">}</span><span class="s1">= </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Uijkl_fit</span><span class="o">-</span><span class="n">uijkl</span><span class="p">)[</span><span class="n">max_ind</span><span class="p">]</span><span class="si">:</span><span class="s1">.4e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">max_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Uijkl_fit</span><span class="o">-</span><span class="n">uijkl</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span> <span class="n">Uijkl_fit</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U=U</span><span class="se">\&#39;</span><span class="s1">-2J deviation: </span><span class="si">{</span><span class="n">U</span><span class="o">-</span><span class="n">Up</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">J</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;J=Jc deviation: </span><span class="si">{</span><span class="n">J</span><span class="o">-</span><span class="n">Jc</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Uijkl_fit</span></div>
+
+
+<div class="viewcode-block" id="calc_u_avg_fulld"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calc_u_avg_fulld">[docs]</a><span class="k">def</span> <span class="nf">calc_u_avg_fulld</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    calculates the coulomb integrals from a</span>
 <span class="sd">    given Uijkl matrix for full d shells. Follows the procedure given</span>
@@ -442,8 +596,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">int_params</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">()</span>
-    <span class="n">dim</span> <span class="o">=</span> <span class="n">n_sites</span><span class="o">*</span><span class="n">n_orb</span>
-    <span class="n">Uij_anti</span><span class="p">,</span><span class="n">Uiijj</span><span class="p">,</span><span class="n">Uijji</span><span class="p">,</span><span class="n">Uij_par</span> <span class="o">=</span> <span class="n">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">Uij_anti</span><span class="p">,</span> <span class="n">Uiijj</span><span class="p">,</span> <span class="n">Uijji</span><span class="p">,</span> <span class="n">Uij_par</span> <span class="o">=</span> <span class="n">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
     <span class="c1"># U_antipar = U_mm&#39;^oo&#39; = U_mm&#39;mm&#39; (Coulomb Int)</span>
     <span class="c1"># U_par = U_mm&#39;^oo = U_mm&#39;mm&#39; - U_mm&#39;m&#39;m (for intersite interaction)</span>
     <span class="c1"># here we assume cubic harmonics (real harmonics) as basis functions in the order</span>
@@ -452,10 +605,10 @@
 
     <span class="c1"># calculate J</span>
     <span class="n">J_cubic</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
-                <span class="n">J_cubic</span> <span class="o">+=</span>  <span class="n">Uijji</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">J_cubic</span> <span class="o">+=</span> <span class="n">Uijji</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
     <span class="n">J_cubic</span> <span class="o">=</span> <span class="n">J_cubic</span><span class="o">/</span><span class="p">(</span><span class="mf">20.0</span><span class="p">)</span>
     <span class="c1"># 20 for 2l(2l+1)</span>
     <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;J_cubic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">J_cubic</span>
@@ -467,13 +620,13 @@
 
     <span class="c1"># calculate intra-orbital U</span>
     <span class="n">U_0</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_orb</span><span class="p">):</span>
-            <span class="n">U_0</span> <span class="o">+=</span> <span class="n">Uij_anti</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">U_0</span> <span class="o">=</span> <span class="n">U_0</span> <span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_orb</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">):</span>
+        <span class="n">U_0</span> <span class="o">+=</span> <span class="n">Uij_anti</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">U_0</span> <span class="o">=</span> <span class="n">U_0</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_orb</span><span class="p">)</span>
     <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;U_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">U_0</span>
 
     <span class="c1"># now conversion from cubic to spherical</span>
-    <span class="n">U</span> <span class="o">=</span> <span class="n">U_0</span> <span class="o">-</span> <span class="p">(</span> <span class="mf">8.0</span><span class="o">*</span><span class="n">J_cubic</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">U_0</span> <span class="o">-</span> <span class="p">(</span><span class="mf">8.0</span><span class="o">*</span><span class="n">J_cubic</span><span class="o">/</span><span class="mf">5.0</span><span class="p">)</span>
 
     <span class="n">int_params</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span>
 
@@ -484,6 +637,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spherical J=(F2+f4)/14 = &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">int_params</span></div>
+
 
 <div class="viewcode-block" id="calculate_interaction_from_averaging"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.calculate_interaction_from_averaging">[docs]</a><span class="k">def</span> <span class="nf">calculate_interaction_from_averaging</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -514,8 +668,7 @@
 
     <span class="n">l</span> <span class="o">=</span> <span class="mi">2</span>
 
-    <span class="n">dim</span> <span class="o">=</span> <span class="n">n_sites</span><span class="o">*</span><span class="n">n_orb</span>
-    <span class="n">Uij_anti</span><span class="p">,</span><span class="n">Uiijj</span><span class="p">,</span><span class="n">Uijji</span><span class="p">,</span><span class="n">Uij_par</span> <span class="o">=</span> <span class="n">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">Uij_anti</span><span class="p">,</span> <span class="n">Uiijj</span><span class="p">,</span> <span class="n">Uijji</span><span class="p">,</span> <span class="n">Uij_par</span> <span class="o">=</span> <span class="n">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
 
     <span class="c1"># Calculates Slater-averaged parameters directly</span>
     <span class="n">U</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_sites</span>
@@ -535,7 +688,8 @@
 
     <span class="k">return</span> <span class="n">U</span><span class="p">,</span> <span class="n">J</span></div>
 
-<div class="viewcode-block" id="fit_slater_fulld"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.fit_slater_fulld">[docs]</a><span class="k">def</span> <span class="nf">fit_slater_fulld</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">U_init</span><span class="p">,</span><span class="n">J_init</span><span class="p">,</span><span class="n">fixed_F4_F2</span><span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+
+<div class="viewcode-block" id="fit_slater_fulld"><a class="viewcode-back" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html#postprocessing.eval_U_cRPA_Vasp.fit_slater_fulld">[docs]</a><span class="k">def</span> <span class="nf">fit_slater_fulld</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">U_init</span><span class="p">,</span> <span class="n">J_init</span><span class="p">,</span> <span class="n">fixed_F4_F2</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    finds best Slater parameters U, J for given Uijkl tensor</span>
 <span class="sd">    using the triqs U_matrix operator routine</span>
@@ -545,8 +699,9 @@
     <span class="kn">from</span> <span class="nn">triqs.operators.util.U_matrix</span> <span class="kn">import</span> <span class="n">U_matrix</span><span class="p">,</span> <span class="n">reduce_4index_to_2index</span>
     <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
     <span class="c1"># transform U matrix orbital basis ijkl to nmop, note the last two indices need to be switched in the T matrices</span>
+
     <span class="k">def</span> <span class="nf">transformU</span><span class="p">(</span><span class="n">U_matrix</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;im,jn,ijkl,lo,kp-&gt;mnpo&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">U_matrix</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;im,jn,ijkl,lo,kp-&gt;mnpo&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">U_matrix</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">minimizer</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
         <span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span> <span class="o">=</span> <span class="n">parameters</span>
@@ -554,21 +709,21 @@
         <span class="n">Umat_full</span> <span class="o">=</span> <span class="n">transformU</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">,</span> <span class="n">rot_def_to_w90</span><span class="p">)</span>
 
         <span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span> <span class="o">=</span> <span class="n">reduce_4index_to_2index</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">)</span>
-        <span class="n">u_iijj_crpa</span> <span class="o">=</span> <span class="n">Uiijj</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">u_iijj_crpa</span> <span class="o">=</span> <span class="n">Uiijj</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
         <span class="n">u_iijj_slater</span> <span class="o">=</span> <span class="n">Upmat</span> <span class="o">-</span> <span class="n">Umat</span>
-        <span class="n">u_ijij_crpa</span> <span class="o">=</span> <span class="n">Uij_anti</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">u_ijij_crpa</span> <span class="o">=</span> <span class="n">Uij_anti</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
         <span class="n">u_ijij_slater</span> <span class="o">=</span> <span class="n">Upmat</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">u_iijj_crpa</span> <span class="o">-</span> <span class="n">u_iijj_slater</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">u_ijij_crpa</span> <span class="o">-</span> <span class="n">u_ijij_slater</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">minimizer_radial</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
         <span class="n">F0</span><span class="p">,</span> <span class="n">F2</span><span class="p">,</span> <span class="n">F4</span> <span class="o">=</span> <span class="n">parameters</span>
-        <span class="n">Umat_full</span> <span class="o">=</span> <span class="n">U_matrix</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">radial_integrals</span><span class="o">=</span><span class="p">[</span><span class="n">F0</span><span class="p">,</span><span class="n">F2</span><span class="p">,</span><span class="n">F4</span><span class="p">],</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+        <span class="n">Umat_full</span> <span class="o">=</span> <span class="n">U_matrix</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">radial_integrals</span><span class="o">=</span><span class="p">[</span><span class="n">F0</span><span class="p">,</span> <span class="n">F2</span><span class="p">,</span> <span class="n">F4</span><span class="p">],</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
         <span class="n">Umat_full</span> <span class="o">=</span> <span class="n">transformU</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">,</span> <span class="n">rot_def_to_w90</span><span class="p">)</span>
 
         <span class="n">Umat</span><span class="p">,</span> <span class="n">Upmat</span> <span class="o">=</span> <span class="n">reduce_4index_to_2index</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">)</span>
-        <span class="n">u_iijj_crpa</span> <span class="o">=</span> <span class="n">Uiijj</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">u_iijj_crpa</span> <span class="o">=</span> <span class="n">Uiijj</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
         <span class="n">u_iijj_slater</span> <span class="o">=</span> <span class="n">Upmat</span> <span class="o">-</span> <span class="n">Umat</span>
-        <span class="n">u_ijij_crpa</span> <span class="o">=</span> <span class="n">Uij_anti</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">u_ijij_crpa</span> <span class="o">=</span> <span class="n">Uij_anti</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
         <span class="n">u_ijij_slater</span> <span class="o">=</span> <span class="n">Upmat</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">u_iijj_crpa</span> <span class="o">-</span> <span class="n">u_iijj_slater</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">u_ijij_crpa</span> <span class="o">-</span> <span class="n">u_ijij_slater</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
@@ -581,10 +736,10 @@
                                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
                                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 
-    <span class="n">Uij_anti</span><span class="p">,</span><span class="n">Uiijj</span><span class="p">,</span><span class="n">Uijji</span><span class="p">,</span><span class="n">Uij_par</span> <span class="o">=</span> <span class="n">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span><span class="n">n_sites</span><span class="p">,</span><span class="n">n_orb</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">Uij_anti</span><span class="p">,</span> <span class="n">Uiijj</span><span class="p">,</span> <span class="n">Uijji</span><span class="p">,</span> <span class="n">Uij_par</span> <span class="o">=</span> <span class="n">red_to_2ind</span><span class="p">(</span><span class="n">uijkl</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">,</span> <span class="n">n_orb</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">fixed_F4_F2</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">minimizer</span><span class="p">,</span> <span class="p">(</span><span class="n">U_init</span><span class="p">,</span><span class="n">J_init</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">minimizer</span><span class="p">,</span> <span class="p">(</span><span class="n">U_init</span><span class="p">,</span> <span class="n">J_init</span><span class="p">))</span>
 
         <span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Final results from fit: U = </span><span class="si">{:.3f}</span><span class="s1"> eV, J = </span><span class="si">{:.3f}</span><span class="s1"> eV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span><span class="p">))</span>
@@ -607,7 +762,6 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimize error&#39;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
         <span class="n">U_int</span> <span class="o">=</span> <span class="n">F0</span>
         <span class="n">J_hund</span> <span class="o">=</span> <span class="p">(</span><span class="n">F2</span><span class="o">+</span><span class="n">F4</span><span class="p">)</span><span class="o">/</span><span class="mi">14</span>
-
 
     <span class="k">return</span> <span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span></div>
 
@@ -634,7 +788,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

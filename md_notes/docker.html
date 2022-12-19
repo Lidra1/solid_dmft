@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Docker &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>Docker &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -25,10 +29,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft
+            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -41,7 +46,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -213,12 +220,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -239,9 +248,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
-      <li>Docker</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../documentation.html">Documentation</a></li>
+      <li class="breadcrumb-item active">Docker</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/md_notes/docker.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -276,10 +285,10 @@
 }
 </style>
 <div class="tex2jax_ignore mathjax_ignore section" id="docker">
-<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
+<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline"></a></h1>
 <p>There are Dockerfiles for images based on Ubuntu 20 (“focal”) with OpenMPI (for non-Cray clusters) or MPICH (for Cray clusters like Daint), IntelMKL, VASP, wannier90 2.1, triqs 3.x.x, and Triqs MaxEnt included.</p>
 <div class="section" id="building-the-docker-image">
-<h2>Building the docker image<a class="headerlink" href="#building-the-docker-image" title="Permalink to this headline">¶</a></h2>
+<h2>Building the docker image<a class="headerlink" href="#building-the-docker-image" title="Permalink to this headline"></a></h2>
 <p>The Dockerfile is built with this command, where <code class="docutils literal notranslate"><span class="pre">&lt;version</span> <span class="pre">name&gt;</span></code> could be <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">triqs_mpich</span><span class="p">:</span><span class="o">&lt;</span><span class="n">version</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">f</span> <span class="n">mpich_dockerfile</span> <span class="o">./</span>
 <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">triqs_openmpi</span><span class="p">:</span><span class="o">&lt;</span><span class="n">version</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">f</span> <span class="n">openmpi_dockerfile</span> <span class="o">./</span>
@@ -288,7 +297,7 @@
 <p>Note that you need a working, modified vasp version as archive (csc_vasp.tar.gz) in this directory to make the CSC calculation work.</p>
 </div>
 <div class="section" id="pulling-a-docker-image">
-<h2>Pulling a docker image<a class="headerlink" href="#pulling-a-docker-image" title="Permalink to this headline">¶</a></h2>
+<h2>Pulling a docker image<a class="headerlink" href="#pulling-a-docker-image" title="Permalink to this headline"></a></h2>
 <p>Alternatively, you can pull an already-compiled image from the ETH gitlab container registry.
 First <a class="reference external" href="https://gitlab.ethz.ch/help/user/packages/container_registry/index#authenticating-to-the-gitlab-container-registry" rel="noopener noreferrer" target="_blank">log in with a personal access token</a>.
 This token you can save into a file and then log in into the registry with</p>
@@ -302,7 +311,7 @@ This token you can save into a file and then log in into the registry with</p>
 <p>Just make sure that the version is the one that you want to have, it might not yet contain recent changes or bug fixes. Alternatively, there is the <a class="reference external" href="https://hub.docker.com/r/flatironinstitute/triqs/" rel="noopener noreferrer" target="_blank">official triqs docker image</a>, which however is not optimized for use on Daint.</p>
 </div>
 <div class="section" id="getting-docker-images-onto-cscs-daint">
-<h2>Getting docker images onto CSCS daint<a class="headerlink" href="#getting-docker-images-onto-cscs-daint" title="Permalink to this headline">¶</a></h2>
+<h2>Getting docker images onto CSCS daint<a class="headerlink" href="#getting-docker-images-onto-cscs-daint" title="Permalink to this headline"></a></h2>
 <p>First, you load the desired docker images with <a class="reference external" href="https://user.cscs.ch/tools/containers/sarus/" rel="noopener noreferrer" target="_blank">sarus on daint</a>.
 Then there are two ways of getting the image on daint:</p>
 <p>(1) For gitlab images (don’t forget that you need the personal access token) or other, public image this can be done via:</p>
@@ -321,7 +330,7 @@ Then there are two ways of getting the image on daint:</p>
 </div>
 <p>then you can run it as shown in the example files.</p>
 <div class="section" id="running-a-docker-container">
-<h3>Running a docker container<a class="headerlink" href="#running-a-docker-container" title="Permalink to this headline">¶</a></h3>
+<h3>Running a docker container<a class="headerlink" href="#running-a-docker-container" title="Permalink to this headline"></a></h3>
 <p>You can start a docker container with either of these commands</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run --rm -it -u $(id -u) -v ~$PWD:/work &lt;image name&gt;:&lt;version name&gt; bash
 docker run --rm -it --shm-size=4g -e USER_ID=`id -u` -e GROUP_ID=`id -g` -p 8378:8378 -v $PWD:/work &lt;image name&gt;:&lt;version name&gt; bash
@@ -364,7 +373,7 @@ Make sure you mount all the directories you need (where you save your data, wher
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

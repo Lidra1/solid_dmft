@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>postprocessing.eval_U_cRPA_Vasp &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>postprocessing.eval_U_cRPA_Vasp &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -25,10 +29,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft
+            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -41,7 +46,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -213,12 +220,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -239,10 +248,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
-          <li><a href="postprocessing.html">postprocessing</a> &raquo;</li>
-      <li>postprocessing.eval_U_cRPA_Vasp</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../documentation.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="postprocessing.html">postprocessing</a></li>
+      <li class="breadcrumb-item active">postprocessing.eval_U_cRPA_Vasp</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/_ref/postprocessing.eval_U_cRPA_Vasp.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -277,10 +286,10 @@
 }
 </style>
 <div class="section" id="module-postprocessing.eval_U_cRPA_Vasp">
-<span id="postprocessing-eval-u-crpa-vasp"></span><h1>postprocessing.eval_U_cRPA_Vasp<a class="headerlink" href="#module-postprocessing.eval_U_cRPA_Vasp" title="Permalink to this headline">¶</a></h1>
+<span id="postprocessing-eval-u-crpa-vasp"></span><h1>postprocessing.eval_U_cRPA_Vasp<a class="headerlink" href="#module-postprocessing.eval_U_cRPA_Vasp" title="Permalink to this headline"></a></h1>
 <dl class="py function">
-<dt id="postprocessing.eval_U_cRPA_Vasp.calc_kan_params">
-<code class="descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="descname"><span class="pre">calc_kan_params</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#calc_kan_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.calc_kan_params" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="postprocessing.eval_U_cRPA_Vasp.calc_kan_params">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="sig-name descname"><span class="pre">calc_kan_params</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#calc_kan_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.calc_kan_params" title="Permalink to this definition"></a></dt>
 <dd><p>calculates the kanamori interaction parameters from a
 given Uijkl matrix. Follows the procedure given in
 PHYSICAL REVIEW B 86, 165105 (2012) Vaugier,Biermann
@@ -318,8 +327,8 @@ formula 30,31,32</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="postprocessing.eval_U_cRPA_Vasp.calc_u_avg_fulld">
-<code class="descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="descname"><span class="pre">calc_u_avg_fulld</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#calc_u_avg_fulld"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.calc_u_avg_fulld" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="postprocessing.eval_U_cRPA_Vasp.calc_u_avg_fulld">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="sig-name descname"><span class="pre">calc_u_avg_fulld</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#calc_u_avg_fulld"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.calc_u_avg_fulld" title="Permalink to this definition"></a></dt>
 <dd><p>calculates the coulomb integrals from a
 given Uijkl matrix for full d shells. Follows the procedure given
 in Pavarini  - 2014 - arXiv - 1411 6906 - julich school U matrix
@@ -361,8 +370,8 @@ works atm only for full d shell (l=2)</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="postprocessing.eval_U_cRPA_Vasp.calculate_interaction_from_averaging">
-<code class="descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="descname"><span class="pre">calculate_interaction_from_averaging</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#calculate_interaction_from_averaging"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.calculate_interaction_from_averaging" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="postprocessing.eval_U_cRPA_Vasp.calculate_interaction_from_averaging">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="sig-name descname"><span class="pre">calculate_interaction_from_averaging</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#calculate_interaction_from_averaging"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.calculate_interaction_from_averaging" title="Permalink to this definition"></a></dt>
 <dd><p>calculates U,J by averaging directly the Uijkl matrix
 ignoring if tensor is given in spherical or cubic basis.
 The assumption here is that the averaging gives indepentendly
@@ -402,16 +411,100 @@ if Uijkl is a true Slater matrix.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="postprocessing.eval_U_cRPA_Vasp.fit_slater_fulld">
-<code class="descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="descname"><span class="pre">fit_slater_fulld</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">U_init</span></span></em>, <em><span class="n"><span class="pre">J_init</span></span></em>, <em><span class="n"><span class="pre">fixed_F4_F2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#fit_slater_fulld"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.fit_slater_fulld" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="postprocessing.eval_U_cRPA_Vasp.construct_U_kan">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="sig-name descname"><span class="pre">construct_U_kan</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">U</span></span></em>, <em><span class="n"><span class="pre">J</span></span></em>, <em><span class="n"><span class="pre">Up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">Jc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#construct_U_kan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.construct_U_kan" title="Permalink to this definition"></a></dt>
+<dd><p>construct Kanamori Uijkl tensor for given U, J, Up, and Jc</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_orb</strong> : int</p>
+<blockquote>
+<div><p>number of orbitals</p>
+</div></blockquote>
+<p><strong>U</strong> : float</p>
+<blockquote>
+<div><p>U value for elements Uiiii</p>
+</div></blockquote>
+<p><strong>J</strong> : float</p>
+<blockquote>
+<div><p>Hunds coupling J for tensor elements Uijji</p>
+</div></blockquote>
+<p><strong>Up</strong> : float, optional, default=U-2J</p>
+<blockquote>
+<div><p>inter orbital exchange term Uijij</p>
+</div></blockquote>
+<p><strong>Jc</strong> : float, optional, default=J</p>
+<blockquote>
+<div><p>Uiijj term, is the same as J for real valued wave functions</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>uijkl</strong> : numpy array</p>
+<blockquote class="last">
+<div><p>uijkl Coulomb tensor</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postprocessing.eval_U_cRPA_Vasp.fit_kanamori">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="sig-name descname"><span class="pre">fit_kanamori</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">switch_jk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">fit_2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em><span class="n"><span class="pre">fit_3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">fit_4</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#fit_kanamori"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.fit_kanamori" title="Permalink to this definition"></a></dt>
+<dd><p>Fit Kanamori Hamiltonian with scipy to 2,3, and / or 4 parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>uijkl: np.array (n_orb x n_orb x n_orb x n_orb)</strong> :</p>
+<blockquote>
+<div><p>input four index tensor</p>
+</div></blockquote>
+<p><strong>n_orb: int</strong> :</p>
+<blockquote>
+<div><p>number of orbitals</p>
+</div></blockquote>
+<p><strong>switch_jk: bool, default=False</strong> :</p>
+<blockquote>
+<div><p>flip two inner indices in input U tensor (for Vasp)</p>
+</div></blockquote>
+<p><strong>fit_2: bool, default=True</strong> :</p>
+<blockquote>
+<div><p>fit two parameter form</p>
+</div></blockquote>
+<p><strong>fit_3: bool, default=False</strong> :</p>
+<blockquote>
+<div><p>fit three parameter form (U,Up,J=Jc)</p>
+</div></blockquote>
+<p><strong>fit_4: bool, default=True</strong> :</p>
+<blockquote>
+<div><p>fit four parameter form</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Uijkl_fit: np.array (n_orb x n_orb x n_orb x n_orb)</strong> :</p>
+<blockquote class="last">
+<div><p>fitted Uijkl tensor</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="postprocessing.eval_U_cRPA_Vasp.fit_slater_fulld">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="sig-name descname"><span class="pre">fit_slater_fulld</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">U_init</span></span></em>, <em><span class="n"><span class="pre">J_init</span></span></em>, <em><span class="n"><span class="pre">fixed_F4_F2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#fit_slater_fulld"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.fit_slater_fulld" title="Permalink to this definition"></a></dt>
 <dd><p>finds best Slater parameters U, J for given Uijkl tensor
 using the triqs U_matrix operator routine
 assumes F4/F2=0.625</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="postprocessing.eval_U_cRPA_Vasp.read_uijkl">
-<code class="descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="descname"><span class="pre">read_uijkl</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">path_to_uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#read_uijkl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.read_uijkl" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="postprocessing.eval_U_cRPA_Vasp.read_uijkl">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="sig-name descname"><span class="pre">read_uijkl</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">path_to_uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#read_uijkl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.read_uijkl" title="Permalink to this definition"></a></dt>
 <dd><p>reads the VASP UIJKL files or the vijkl file if wanted</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -442,8 +535,8 @@ assumes F4/F2=0.625</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="postprocessing.eval_U_cRPA_Vasp.red_to_2ind">
-<code class="descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="descname"><span class="pre">red_to_2ind</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#red_to_2ind"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.red_to_2ind" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="postprocessing.eval_U_cRPA_Vasp.red_to_2ind">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.eval_U_cRPA_Vasp.</span></code><code class="sig-name descname"><span class="pre">red_to_2ind</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">uijkl</span></span></em>, <em><span class="n"><span class="pre">n_sites</span></span></em>, <em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/eval_U_cRPA_Vasp.html#red_to_2ind"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.eval_U_cRPA_Vasp.red_to_2ind" title="Permalink to this definition"></a></dt>
 <dd><p>reduces the 4index coulomb matrix to a 2index matrix and
 follows the procedure given in PRB96 seth,peil,georges:
 U_antipar = U_mm’^oo’ = U_mm’mm’ (Coulomb Int)
@@ -507,7 +600,7 @@ the indices in VASP are switched: U_ijkl —VASP–&gt; U_ikjl</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

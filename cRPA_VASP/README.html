@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to do cRPA calculations with VASP &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>How to do cRPA calculations with VASP &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=default"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+        <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=default"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -27,10 +31,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft
+            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -43,7 +48,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -215,12 +222,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -241,9 +250,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
-      <li>How to do cRPA calculations with VASP</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../documentation.html">Documentation</a></li>
+      <li class="breadcrumb-item active">How to do cRPA calculations with VASP</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/cRPA_VASP/README.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -278,7 +287,7 @@
 }
 </style>
 <div class="tex2jax_ignore mathjax_ignore section" id="how-to-do-crpa-calculations-with-vasp">
-<h1>How to do cRPA calculations with VASP<a class="headerlink" href="#how-to-do-crpa-calculations-with-vasp" title="Permalink to this headline">¶</a></h1>
+<h1>How to do cRPA calculations with VASP<a class="headerlink" href="#how-to-do-crpa-calculations-with-vasp" title="Permalink to this headline"></a></h1>
 <p>This is just a small tutorial and help on how to do cRPA calculations within
 VASP (<a class="reference external" href="https://cms.mpi.univie.ac.at/wiki/index.php/CRPA_of_SrVO3" rel="noopener noreferrer" target="_blank">https://cms.mpi.univie.ac.at/wiki/index.php/CRPA_of_SrVO3</a>) . Moreover, the
 python script <code class="docutils literal notranslate"><span class="pre">eval_U.py</span></code> contains helper functions to extract the full
@@ -288,14 +297,14 @@ the pdf included in this folder. Moreover, there is a small collection of
 examples for SrVO3 and LuNiO3. For more details please take a look at the PhD
 thesis of Merzuk Kaltak (<a class="reference external" href="http://othes.univie.ac.at/38099/" rel="noopener noreferrer" target="_blank">http://othes.univie.ac.at/38099/</a>).</p>
 <div class="section" id="file-description">
-<h2>file description<a class="headerlink" href="#file-description" title="Permalink to this headline">¶</a></h2>
+<h2>file description<a class="headerlink" href="#file-description" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">eval_U.py</span></code> extraction of Coulomb tensor, calculation of reduced two-index matrices, and calculation / fitting of Kanamori or Slater parameters</li>
 <li><code class="docutils literal notranslate"><span class="pre">ext_eps.sh</span></code> a small bash script that can extract <span class="math notranslate nohighlight">\(\epsilon^-1(|q+G|)=[1-VP^r]^-1\)</span> from a given vasprun.xml file</li>
 </ul>
 </div>
 <div class="section" id="workflow">
-<h2>Workflow:<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<h2>Workflow:<a class="headerlink" href="#workflow" title="Permalink to this headline"></a></h2>
 <ol class="arabic simple">
 <li>DFT NM normal like:<ul>
 <li>SYSTEM = SrVO3</li>
@@ -346,7 +355,7 @@ thesis of Merzuk Kaltak (<a class="reference external" href="http://othes.univie
 </ol>
 </div>
 <div class="section" id="important-flags">
-<h2>important flags:<a class="headerlink" href="#important-flags" title="Permalink to this headline">¶</a></h2>
+<h2>important flags:<a class="headerlink" href="#important-flags" title="Permalink to this headline"></a></h2>
 <p>if you get sigsevs while calculating the polarization make sure your local stack
 size is large enough by setting:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ulimit</span> <span class="o">-</span><span class="n">s</span> <span class="n">unlimited</span>
@@ -367,12 +376,12 @@ size is large enough by setting:</p>
 and is written in the OUTCAR as two sets of bare interaction, where for one of them
 it says: low cutoff result for V_ijkl. Here ENCUT was used and for the one above 1.1*ENCUT or VCUTOFF was used.</li>
 <li>usually a converged ENCUT gives also a reasonably high VCUTOFF, so that explicitly setting VCUTOFF is not necessary. Moreover, the effect of the VCUTOFF convergence is included by subtracting the constant shift between LOW and HIGH VCUTOFF test output in the OUTCAR</li>
-<li>One can see in the convergence plot “examples/LaTiO3/VCUTOFF_convergence.png” the effect of ENCUT and VCUTOFF:</li>
+<li>One can see in the convergence plot “debugging_examples/LaTiO3/VCUTOFF_convergence.png” the effect of ENCUT and VCUTOFF:</li>
 </ul>
 <p><img alt="vcutoff_test" src="cRPA_VASP/VCUTOFF_convergence.png" /></p>
 </div>
 <div class="section" id="convergency-tests">
-<h2>convergency tests:<a class="headerlink" href="#convergency-tests" title="Permalink to this headline">¶</a></h2>
+<h2>convergency tests:<a class="headerlink" href="#convergency-tests" title="Permalink to this headline"></a></h2>
 <p><span class="math notranslate nohighlight">\(`E_{corr}^{RPA}`\)</span>  converges for NBANDS,ENCUT to <span class="math notranslate nohighlight">\(`\infty`\)</span>, where the asymptotic
 behavior goes like <span class="math notranslate nohighlight">\(`1/N_{bands} \approx ENCUT^{-3/2} `\)</span>. The ENCUT for the GW part
 is set automatically by VASP with the ratio: <span class="math notranslate nohighlight">\(`ENCUTGW = 2/3 \ ENCUT`\)</span>. Moreover,
@@ -388,7 +397,7 @@ bands must be used. A good choice is 3*NELECT (# of electrons in the systems).</
 <p>The procedure is then to first convergence KPOINTS and ENCUT, where KPOINTS dependency of the results seems to be weak. Then increase NBANDS until U does not change anymore.</p>
 </div>
 <div class="section" id="parameterization-of-u-and-j-from-crpa-calculations">
-<h2>Parameterization of U and J from cRPA calculations<a class="headerlink" href="#parameterization-of-u-and-j-from-crpa-calculations" title="Permalink to this headline">¶</a></h2>
+<h2>Parameterization of U and J from cRPA calculations<a class="headerlink" href="#parameterization-of-u-and-j-from-crpa-calculations" title="Permalink to this headline"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">eval_u.py</span></code> provides four different methods:</p>
 <ul class="simple">
 <li>Kanamori: <code class="docutils literal notranslate"><span class="pre">calc_kan_params(...)</span></code> for extracting Kanamori parameters for a cubic system</li>
@@ -399,7 +408,7 @@ bands must be used. A good choice is 3*NELECT (# of electrons in the systems).</
 <p>These three methods give the same results if the cRPA matrix is of the Slater type already. Be aware of the order of your basis functions and the basis in which the <span class="math notranslate nohighlight">\(U\)</span> tensor is written!</p>
 </div>
 <div class="section" id="general-sidemarks">
-<h2>general sidemarks:<a class="headerlink" href="#general-sidemarks" title="Permalink to this headline">¶</a></h2>
+<h2>general sidemarks:<a class="headerlink" href="#general-sidemarks" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li>careful with the averaged U,u,J values in the end of the OUTCAR, because they sum all off-diagonal elements! Also inter-site, if the unit cell contains more than one target atom</li>
 <li>in VASP the two inner indices are exchanged compared to the notation in PRB 86, 165105 (2012): U_ijkl = U_ikjl^VASP</li>
@@ -409,7 +418,7 @@ bands must be used. A good choice is 3*NELECT (# of electrons in the systems).</
 </ul>
 </div>
 <div class="section" id="version-and-compilation">
-<h2>version and compilation:<a class="headerlink" href="#version-and-compilation" title="Permalink to this headline">¶</a></h2>
+<h2>version and compilation:<a class="headerlink" href="#version-and-compilation" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li>supported vasp version 6 or higher</li>
 <li>wannier90 upto v3.1 works, if no features exclusively to wannier90 v3 are used</li>
@@ -428,7 +437,7 @@ bands must be used. A good choice is 3*NELECT (# of electrons in the systems).</
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

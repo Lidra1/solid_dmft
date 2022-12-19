@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>csc_flow &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>csc_flow &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -25,10 +29,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft
+            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -41,7 +46,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -213,12 +220,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -239,9 +248,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
-      <li>csc_flow</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../documentation.html">Documentation</a></li>
+      <li class="breadcrumb-item active">csc_flow</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/_ref/csc_flow.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -276,11 +285,11 @@
 }
 </style>
 <div class="section" id="module-csc_flow">
-<span id="csc-flow"></span><h1>csc_flow<a class="headerlink" href="#module-csc_flow" title="Permalink to this headline">¶</a></h1>
+<span id="csc-flow"></span><h1>csc_flow<a class="headerlink" href="#module-csc_flow" title="Permalink to this headline"></a></h1>
 <p>contains the charge self-consistency flow control functions</p>
 <dl class="py function">
-<dt id="csc_flow.csc_flow_control">
-<code class="descclassname"><span class="pre">csc_flow.</span></code><code class="descname"><span class="pre">csc_flow_control</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">solver_params</span></span></em>, <em><span class="n"><span class="pre">dft_params</span></span></em>, <em><span class="n"><span class="pre">advanced_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/csc_flow.html#csc_flow_control"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csc_flow.csc_flow_control" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="csc_flow.csc_flow_control">
+<code class="sig-prename descclassname"><span class="pre">csc_flow.</span></code><code class="sig-name descname"><span class="pre">csc_flow_control</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">solver_params</span></span></em>, <em><span class="n"><span class="pre">dft_params</span></span></em>, <em><span class="n"><span class="pre">advanced_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/csc_flow.html#csc_flow_control"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csc_flow.csc_flow_control" title="Permalink to this definition"></a></dt>
 <dd><p>function to run the csc cycle. It writes and removes the vasp.lock file to
 start and stop Vasp, run the converter, run the dmft cycle and abort the job
 if all iterations are finished.</p>
@@ -314,14 +323,14 @@ if all iterations are finished.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="csc_flow.read_dft_energy_qe">
-<code class="descclassname"><span class="pre">csc_flow.</span></code><code class="descname"><span class="pre">read_dft_energy_qe</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">seedname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/csc_flow.html#read_dft_energy_qe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csc_flow.read_dft_energy_qe" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="csc_flow.read_dft_energy_qe">
+<code class="sig-prename descclassname"><span class="pre">csc_flow.</span></code><code class="sig-name descname"><span class="pre">read_dft_energy_qe</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">seedname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/csc_flow.html#read_dft_energy_qe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csc_flow.read_dft_energy_qe" title="Permalink to this definition"></a></dt>
 <dd><p>Reads DFT energy from quantum espresso’s seedname.scf.out.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="csc_flow.read_dft_energy_vasp">
-<code class="descclassname"><span class="pre">csc_flow.</span></code><code class="descname"><span class="pre">read_dft_energy_vasp</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/csc_flow.html#read_dft_energy_vasp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csc_flow.read_dft_energy_vasp" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="csc_flow.read_dft_energy_vasp">
+<code class="sig-prename descclassname"><span class="pre">csc_flow.</span></code><code class="sig-name descname"><span class="pre">read_dft_energy_vasp</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/csc_flow.html#read_dft_energy_vasp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csc_flow.read_dft_energy_vasp" title="Permalink to this definition"></a></dt>
 <dd><p>Reads DFT energy from the last line of Vasp’s OSZICAR.</p>
 </dd></dl>
 
@@ -338,7 +347,7 @@ if all iterations are finished.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

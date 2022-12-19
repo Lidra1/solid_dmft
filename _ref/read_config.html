@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>read_config &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>read_config &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -25,10 +29,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft
+            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -41,7 +46,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -213,12 +220,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -239,9 +248,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
-      <li>read_config</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../documentation.html">Documentation</a></li>
+      <li class="breadcrumb-item active">read_config</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/_ref/read_config.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -276,7 +285,7 @@
 }
 </style>
 <div class="section" id="module-read_config">
-<span id="read-config"></span><h1>read_config<a class="headerlink" href="#module-read_config" title="Permalink to this headline">¶</a></h1>
+<span id="read-config"></span><h1>read_config<a class="headerlink" href="#module-read_config" title="Permalink to this headline"></a></h1>
 <p>Provides the read_config function to read the config file</p>
 <p>Reads the config file (default dmft_config.ini) with python’s configparser
 module. It consists of at least the section ‘general’, and optionally of the
@@ -289,7 +298,7 @@ saved in an h5 archive (in the framework that we are using).</p>
 <p>—XXX—start
 List of all parameters, sorted by sections:</p>
 <div class="section" id="general">
-<h2>[  general  ]<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<h2>[  general  ]<a class="headerlink" href="#general" title="Permalink to this headline"></a></h2>
 <dl class="docutils">
 <dt>seedname<span class="classifier">str or list of str</span></dt><dd>seedname for h5 archive or for multiple if calculations should be connected</dd>
 <dt>jobname<span class="classifier">str or list of str, optional, default=seedname</span></dt><dd>one or multiple jobnames specifying the output directories</dd>
@@ -306,6 +315,12 @@ List of all parameters, sorted by sections:</p>
 </ul>
 <p>Needs to be stored as Matsubara Gf under dynamic_U/U_iw in the input h5</p>
 </dd>
+<dt>h_int_basis<span class="classifier">string</span></dt><dd>cubic basis convention to compute the interaction U matrix
+* ‘triqs’
+* ‘vasp’ (equivalent to ‘triqs’)
+* ‘wien2k’
+* ‘wannier90’
+* ‘qe’ (equivalent to ‘wannier90’)</dd>
 <dt>U<span class="classifier">float or comma separated list of floats</span></dt><dd>U values for impurities if only one value is given, the same U is assumed for all impurities</dd>
 <dt>J<span class="classifier">float or comma separated list of floats</span></dt><dd>J values for impurities if only one value is given, the same J is assumed for all impurities</dd>
 <dt>ratio_F4_F2<span class="classifier">float or comma separated list of floats, optional, default=’none’</span></dt><dd>Ratio between the Slater integrals  F_4 and F_2. Only used for the
@@ -354,6 +369,7 @@ energy, with up (or ud for spin-orbit coupling) (1+fac)*sigma, and
 with down (1-fac)*sigma</dd>
 <dt>enforce_off_diag<span class="classifier">bool, optional, default=False</span></dt><dd>enforce off diagonal elements in block structure finder</dd>
 <dt>h_field<span class="classifier">float, optional, default=0.0</span></dt><dd>magnetic field</dd>
+<dt>h_field_it<span class="classifier">int, optional, default=0</span></dt><dd>number of iterations the magnetic field is kept on</dd>
 <dt>energy_shift_orbitals<span class="classifier">list of floats, optional, default= ‘none’</span></dt><dd>orbitals will be shifted by this energy
 The entries can be python code, to be combined with configparser’s interpolation</dd>
 <dt>sigma_mix<span class="classifier">float, optional, default=1.0</span></dt><dd>careful: Sigma mixing can break orbital symmetries, use G0 mixing
@@ -381,7 +397,7 @@ Does not affect spin symmetries.</dd>
 <dt>sampling_h5_save_freq<span class="classifier">int, optional, default= 5</span></dt><dd>overwrites h5_save_freq when sampling has started</dd>
 <dt>fixed_mu_value<span class="classifier">float, optional, default= ‘none’</span></dt><dd>If given, the chemical potential remains fixed in calculations</dd>
 <dt>mu_update_freq<span class="classifier">int, optional, default= 1</span></dt><dd>The chemical potential will be updated every # iteration</dd>
-<dt>dft_mu<span class="classifier">float, optional, default= ‘none’</span></dt><dd>The chemical potential of the DFT calculation.
+<dt>mu_initial_guess<span class="classifier">float, optional, default= ‘none’</span></dt><dd>The chemical potential of the DFT calculation.
 If not given, mu will be calculated from the DFT bands</dd>
 <dt>mu_mix_const<span class="classifier">float, optional, default= 1.0</span></dt><dd>Constant term of the mixing of the chemical potential. See mu_mix_per_occupation_offset.</dd>
 <dt>mu_mix_per_occupation_offset<span class="classifier">float, optional, default= 0.0</span></dt><dd><p>Mu mixing proportional to the occupation offset.
@@ -408,12 +424,12 @@ avoid getting stuck in an insulating state with wrong occupation.</dd>
 </dl>
 </div>
 <div class="section" id="solver">
-<h2>[  solver  ]<a class="headerlink" href="#solver" title="Permalink to this headline">¶</a></h2>
+<h2>[  solver  ]<a class="headerlink" href="#solver" title="Permalink to this headline"></a></h2>
 <dl class="docutils">
 <dt>store_solver<span class="classifier">bool, optional default= False</span></dt><dd>store the whole solver object under DMFT_input in h5 archive</dd>
 </dl>
 <div class="section" id="cthyb-parameters">
-<h3>cthyb parameters<a class="headerlink" href="#cthyb-parameters" title="Permalink to this headline">¶</a></h3>
+<h3>cthyb parameters<a class="headerlink" href="#cthyb-parameters" title="Permalink to this headline"></a></h3>
 <dl class="docutils">
 <dt>length_cycle<span class="classifier">int</span></dt><dd>length of each cycle; number of sweeps before measurement is taken</dd>
 <dt>n_warmup_cycles<span class="classifier">int</span></dt><dd>number of warmup cycles before real measurement sets in</dd>
@@ -444,7 +460,7 @@ numbers on all mpi ranks</dd>
 </dl>
 </div>
 <div class="section" id="ftps-parameters">
-<h3>ftps parameters<a class="headerlink" href="#ftps-parameters" title="Permalink to this headline">¶</a></h3>
+<h3>ftps parameters<a class="headerlink" href="#ftps-parameters" title="Permalink to this headline"></a></h3>
 <dl class="docutils">
 <dt>n_bath<span class="classifier">int</span></dt><dd>number of bath sites</dd>
 <dt>bath_fit<span class="classifier">bool, default=False</span></dt><dd>DiscretizeBath vs BathFitter</dd>
@@ -469,7 +485,7 @@ of previously terminated time-evolved state</dd>
 </dl>
 </div>
 <div class="section" id="ctseg-parameters">
-<h3>ctseg parameters<a class="headerlink" href="#ctseg-parameters" title="Permalink to this headline">¶</a></h3>
+<h3>ctseg parameters<a class="headerlink" href="#ctseg-parameters" title="Permalink to this headline"></a></h3>
 <dl class="docutils">
 <dt>measure_hist<span class="classifier">bool, optional, default=False</span></dt><dd>measure perturbation_order histograms</dd>
 <dt>improved_estimator<span class="classifier">bool, optional, default=False</span></dt><dd>measure improved estimators
@@ -479,7 +495,7 @@ Sigma_iw will automatically be calculated via
 </div>
 </div>
 <div class="section" id="dft">
-<h2>[  dft  ]<a class="headerlink" href="#dft" title="Permalink to this headline">¶</a></h2>
+<h2>[  dft  ]<a class="headerlink" href="#dft" title="Permalink to this headline"></a></h2>
 <dl class="docutils">
 <dt>dft_code<span class="classifier">string</span></dt><dd><p>Choose the DFT code interface, for now Quantum Espresso and Vasp are available.</p>
 <p>Possible values:</p>
@@ -501,7 +517,7 @@ w90: uses Wannier90, requires LWANNIER90 in the INCAR</dd>
 </dl>
 </div>
 <div class="section" id="advanced">
-<h2>[  advanced  ]<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
+<h2>[  advanced  ]<a class="headerlink" href="#advanced" title="Permalink to this headline"></a></h2>
 <dl class="docutils">
 <dt>dc_factor<span class="classifier">float, optional, default= ‘none’ (corresponds to 1)</span></dt><dd>If given, scales the dc energy by multiplying with this factor, usually &lt; 1</dd>
 <dt>dc_fixed_value<span class="classifier">float, optional, default= ‘none’</span></dt><dd>If given, it sets the DC (energy/imp) to this fixed value. Overwrites EVERY other DC configuration parameter if DC is turned on</dd>
@@ -509,15 +525,21 @@ w90: uses Wannier90, requires LWANNIER90 in the INCAR</dd>
 Still uses the same kind of DC!</dd>
 <dt>dc_U<span class="classifier">float or comma seperated list of floats, optional, default= general_params[‘U’]</span></dt><dd>U values for DC determination if only one value is given, the same U is assumed for all impurities</dd>
 <dt>dc_J<span class="classifier">float or comma seperated list of floats, optional, default= general_params[‘J’]</span></dt><dd>J values for DC determination if only one value is given, the same J is assumed for all impurities</dd>
-<dt>map_solver_struct<span class="classifier">dict, optional, default=no additional mapping</span></dt><dd>Additional manual mapping of the solver block structure, applied
-after the block structure finder to all impurities.</dd>
-<dt>mapped_solver_struct_degeneracies<span class="classifier">list, optional, default=none</span></dt><dd>Degeneracies applied when using map_solver_struct, same for all inmpurities.
+<dt>map_solver_struct<span class="classifier">list of dict, optional, default=no additional mapping</span></dt><dd>Additional manual mapping of the solver block structure, applied
+after the block structure finder for each impurity.
+Give exactly one dict per ineq impurity.
+see also triqs.github.io/dft_tools/latest/_python_api/triqs_dft_tools.block_structure.BlockStructure.map_gf_struct_solver.html</dd>
+<dt>mapped_solver_struct_degeneracies<span class="classifier">list, optional, default=none</span></dt><dd>Degeneracies applied when using map_solver_struct, for each impurity.
 If not given and map_solver_struct is used, no symmetrization will happen.</dd>
+<dt>pick_solver_struct<span class="classifier">list of dict, optional, default=no additional picking</span></dt><dd>input a solver dictionary for each ineq impurity to reduce dimensionality of
+solver block structure. Similar to to map_solver_struct, but with simpler syntax.
+Not listed blocks / orbitals will be not treated in impurity solver.
+Keeps degenerate shells.</dd>
 </dl>
 <p>—XXX—end</p>
 <dl class="py function">
-<dt id="read_config.read_config">
-<code class="descclassname"><span class="pre">read_config.</span></code><code class="descname"><span class="pre">read_config</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/read_config.html#read_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#read_config.read_config" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="read_config.read_config">
+<code class="sig-prename descclassname"><span class="pre">read_config.</span></code><code class="sig-name descname"><span class="pre">read_config</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">config_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/read_config.html#read_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#read_config.read_config" title="Permalink to this definition"></a></dt>
 <dd><p>Reads in the config file, checks its sections and parameters and returns
 the parameters sorted by their categories.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -561,7 +583,7 @@ validity criterion.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

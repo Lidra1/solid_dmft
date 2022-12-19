@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>postprocessing.plot_correlated_bands &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>postprocessing.plot_correlated_bands &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -25,10 +29,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft
+            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -41,7 +46,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -213,12 +220,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -239,10 +248,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
-          <li><a href="postprocessing.html">postprocessing</a> &raquo;</li>
-      <li>postprocessing.plot_correlated_bands</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../documentation.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="postprocessing.html">postprocessing</a></li>
+      <li class="breadcrumb-item active">postprocessing.plot_correlated_bands</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/_ref/postprocessing.plot_correlated_bands.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -277,7 +286,7 @@
 }
 </style>
 <div class="section" id="module-postprocessing.plot_correlated_bands">
-<span id="postprocessing-plot-correlated-bands"></span><h1>postprocessing.plot_correlated_bands<a class="headerlink" href="#module-postprocessing.plot_correlated_bands" title="Permalink to this headline">¶</a></h1>
+<span id="postprocessing-plot-correlated-bands"></span><h1>postprocessing.plot_correlated_bands<a class="headerlink" href="#module-postprocessing.plot_correlated_bands" title="Permalink to this headline"></a></h1>
 <p>Reads DMFT_ouput observables such as real-frequency Sigma and a Wannier90
 TB Hamiltonian to compute spectral properties. It runs in two modes,
 either calculating the bandstructure or Fermi slice.</p>
@@ -285,6 +294,100 @@ either calculating the bandstructure or Fermi slice.</p>
 <p>TODO:
 - extend to multi impurity systems
 - make proper use of rot_mat from DFT_Tools (atm it assumed that wannier_hr and Sigma are written in the same basis)</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="postprocessing.plot_correlated_bands.get_dmft_bands">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.plot_correlated_bands.</span></code><code class="sig-name descname"><span class="pre">get_dmft_bands</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">n_orb</span></span></em>, <em><span class="n"><span class="pre">w90_path</span></span></em>, <em><span class="n"><span class="pre">w90_seed</span></span></em>, <em><span class="n"><span class="pre">mu_tb</span></span></em>, <em><span class="n"><span class="pre">add_spin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">add_lambda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">add_local</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">with_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">fermi_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">qp_bands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">orbital_order_to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">add_mu_tb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">band_basis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">proj_on_orb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">trace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em><span class="n"><span class="pre">eta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em><span class="n"><span class="pre">mu_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em><span class="n"><span class="pre">proj_nuk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">specs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/plot_correlated_bands.html#get_dmft_bands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.plot_correlated_bands.get_dmft_bands" title="Permalink to this definition"></a></dt>
+<dd><p>Extract tight-binding from given w90 seed_hr.dat and seed.wout files, and then extract from
+given solid_dmft calculation the self-energy and construct the spectral function A(k,w) on
+given k-path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_orb</strong> : int</p>
+<blockquote>
+<div><p>Number of Wannier orbitals in seed_hr.dat</p>
+</div></blockquote>
+<p><strong>w90_path</strong> : string</p>
+<blockquote>
+<div><p>Path to w90 files</p>
+</div></blockquote>
+<p><strong>w90_seed</strong> : string</p>
+<blockquote>
+<div><p>Seed of wannier90 calculation, i.e. seed_hr.dat and seed.wout</p>
+</div></blockquote>
+<p><strong>add_spin</strong> : bool, default=False</p>
+<blockquote>
+<div><p>Extend w90 Hamiltonian by spin indices</p>
+</div></blockquote>
+<p><strong>add_lambda</strong> : float, default=None</p>
+<blockquote>
+<div><p>Add SOC term with strength add_lambda (works only for t2g shells)</p>
+</div></blockquote>
+<p><strong>add_local</strong> : numpy array, default=None</p>
+<blockquote>
+<div><p>Add local term of dimension (n_orb x n_orb)</p>
+</div></blockquote>
+<p><strong>with_sigma</strong> : str, or BlockGf, default=None</p>
+<blockquote>
+<div><p>Add self-energy to spectral function? Can be either directly take
+a triqs BlockGf object or can be either ‘calc’ or ‘model’
+‘calc’ reads results from h5 archive (solid_dmft)
+in case ‘calc’ or ‘model’ are specified a extra kwargs dict has
+to be given sigma_dict containing information about the self-energy</p>
+</div></blockquote>
+<p><strong>add_mu_tb</strong> : bool, default=False</p>
+<blockquote>
+<div><p>Add the TB specified chemical potential to the lattice Green function
+set to True if DMFT calculation was performed with DFT fermi subtracted.</p>
+</div></blockquote>
+<p><strong>proj_on_orb</strong> : int or list of int, default=None</p>
+<blockquote>
+<div><p>orbital projections to be made for the spectral function and TB bands
+the integer refer to the orbitals read</p>
+</div></blockquote>
+<p><strong>trace</strong> : bool, default=True</p>
+<blockquote>
+<div><p>Return trace over orbitals for spectral function. For special
+post-processing purposes this can be set to False giving the returned
+alatt_k_w an extra dimension n_orb</p>
+</div></blockquote>
+<p><strong>eta</strong> : float, default=0.0</p>
+<blockquote>
+<div><p>Broadening of spectral function, finitie shift on imaginary axis
+if with_sigma=None it has to be provided !=0.0</p>
+</div></blockquote>
+<p><strong>mu_shift</strong> : float, default=0.0</p>
+<blockquote>
+<div><p>Manual extra shift when calculating the spectral function</p>
+</div></blockquote>
+<p><strong>proj_nuk</strong> : numpy array, default [None]</p>
+<blockquote>
+<div><p>Extra projections to be applied to the final spectral function
+per orbital and k-point. Has to match shape of final lattice Green
+function. Will be applied together with proj_on_orb if specified.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tb_data</strong> : dict</p>
+<blockquote>
+<div><p>tight binding dict containing the kpoint mesh, dispersion / emat, and eigenvectors</p>
+</div></blockquote>
+<p><strong>alatt_k_w</strong> : numpy array (float) of dim n_k x n_w ( x n_orb if trace=False)</p>
+<blockquote>
+<div><p>lattice spectral function data on the kpoint mesh defined in tb_data and frequency
+mesh defined in freq_dict</p>
+</div></blockquote>
+<p><strong>freq_dict</strong> : dict</p>
+<blockquote class="last">
+<div><p>frequency mesh information on which alatt_k_w is evaluated</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 
@@ -298,7 +401,7 @@ either calculating the bandstructure or Fermi slice.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

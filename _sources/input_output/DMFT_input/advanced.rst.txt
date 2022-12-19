@@ -46,13 +46,26 @@ Advanced parameters, do not modify default value unless you know what you are do
 .. admonition:: map_solver_struct 
  	:class: intag  
  
-            **type=** dict;  **optional**;  **default=** no additional mapping
+            **type=** list of dict;  **optional**;  **default=** no additional mapping
 
             Additional manual mapping of the solver block structure, applied
-            after the block structure finder to all impurities.
+            after the block structure finder for each impurity.
+            Give exactly one dict per ineq impurity.
+            see also triqs.github.io/dft_tools/latest/_python_api/triqs_dft_tools.block_structure.BlockStructure.map_gf_struct_solver.html
 
 .. admonition:: mapped_solver_struct_degeneracies 
  	:class: intag  
  
             **type=** list;  **optional**;  **default=** none
 
+            Degeneracies applied when using map_solver_struct, for each impurity.
+            If not given and map_solver_struct is used, no symmetrization will happen.
+
+.. admonition:: pick_solver_struct 
+ 	:class: intag  
+ 
+            **type=** list of dict;  **optional**;  **default=** no additional picking
+
+            input a solver dictionary for each ineq impurity to reduce dimensionality of
+            solver block structure. Similar to to map_solver_struct, but with simpler syntax.
+            Not listed blocks / orbitals will be not treated in impurity solver.

@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2. CSC with VASP PLOs: charge order in PrNiO3 &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>2. CSC with VASP PLOs: charge order in PrNiO3 &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=default"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+        <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=default"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -27,10 +31,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft
+            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -43,7 +48,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -215,12 +222,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -241,9 +250,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../tutorials.html">Tutorials</a> &raquo;</li>
-      <li>2. CSC with VASP PLOs: charge order in PrNiO3</li>
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../tutorials.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">2. CSC with VASP PLOs: charge order in PrNiO3</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/tutorials/PrNiO3_csc_vasp_plo_cthyb/tutorial.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -548,7 +557,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Disclaimer: charge self-consistent (CSC) calculations are heavy. The current parameters won’t give well converged solution but are tuned down to give results in roughly 150 core hours.</p>
 <div class="section" id="2.-CSC-with-VASP-PLOs:-charge-order-in-PrNiO3">
-<h1>2. CSC with VASP PLOs: charge order in PrNiO3<a class="headerlink" href="#2.-CSC-with-VASP-PLOs:-charge-order-in-PrNiO3" title="Permalink to this headline">¶</a></h1>
+<h1>2. CSC with VASP PLOs: charge order in PrNiO3<a class="headerlink" href="#2.-CSC-with-VASP-PLOs:-charge-order-in-PrNiO3" title="Permalink to this headline"></a></h1>
 <p>Set the variable <code class="docutils literal notranslate"><span class="pre">read_from_ref</span></code> below to False if you want to plot your own calculated results. Otherwise, the provided reference files are used.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -563,7 +572,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>PrNiO3 is a perovskite that exhibits a metal-insulator transition coupled to a breathing distortion and charge disproportionation, see <a class="reference external" href="https://doi.org/10.1038/s41535-019-0145-4" rel="noopener noreferrer" target="_blank">here</a>. In this tutorial, we will run DMFT calculation on the low-temperature insulating state. We will do this in a CSC way, where the correlated orbitals are defined by <a class="reference external" href="https://doi.org/10.1088/1361-648x/aae80a" rel="noopener noreferrer" target="_blank">projected localized orbitals (PLOs)</a> calculated with VASP.</p>
 <div class="section" id="1.-Running-the-initial-scf-DFT-calculation">
-<h2>1. Running the initial scf DFT calculation<a class="headerlink" href="#1.-Running-the-initial-scf-DFT-calculation" title="Permalink to this headline">¶</a></h2>
+<h2>1. Running the initial scf DFT calculation<a class="headerlink" href="#1.-Running-the-initial-scf-DFT-calculation" title="Permalink to this headline"></a></h2>
 <p>(~ 2 core hours)</p>
 <p>To get started, we run a self-consistent field (scf) DFT calculation:</p>
 <ul class="simple">
@@ -628,13 +637,13 @@ div.rendered_html tbody tr:hover {
 <p>We will use the Fe-eg range to construct our correlated subspace.</p>
 </div>
 <div class="section" id="2.-Running-the-CSC-DMFT-calculations">
-<h2>2. Running the CSC DMFT calculations<a class="headerlink" href="#2.-Running-the-CSC-DMFT-calculations" title="Permalink to this headline">¶</a></h2>
+<h2>2. Running the CSC DMFT calculations<a class="headerlink" href="#2.-Running-the-CSC-DMFT-calculations" title="Permalink to this headline"></a></h2>
 <p>(~ 150 core hours)</p>
 <p>We now run the DMFT calculation. In CSC calculations, the corrected charge density from DMFT is fed back into the DFT calculation to re-calculate the Kohn-Sham energies and projectors onto correlated orbitals.</p>
 <p>With VASP, the procedure works as described <a class="reference external" href="https://triqs.github.io/dft_tools/latest/guide/dftdmft_selfcons.html#vasp-plovasp" rel="noopener noreferrer" target="_blank">here</a>, where the GAMMA file written by DMFT contains the charge density <em>correction</em>. In the VASP-CSC implementation, we first converge a non-scf DFT calculation based on the CHGCAR from before, then run DMFT on the results. The VASP process stays alive but idle during the DMFT calculation. Then, when we want to update the DFT-derived quantities energies, we need to
 run multiple DFT steps in between the DMFT steps because the density correction is fed into VASP iteratively through mixing to ensure stability.</p>
 <div class="section" id="Input-files-for-CSC-DMFT-calculations">
-<h3>Input files for CSC DMFT calculations<a class="headerlink" href="#Input-files-for-CSC-DMFT-calculations" title="Permalink to this headline">¶</a></h3>
+<h3>Input files for CSC DMFT calculations<a class="headerlink" href="#Input-files-for-CSC-DMFT-calculations" title="Permalink to this headline"></a></h3>
 <p>We first take a look into the input file <a class="reference external" href="2_dmft_csc/dmft_config.ini" rel="noopener noreferrer" target="_blank">dmft_config.ini</a> and discuss some parameters. Please make sure you understand the role of the other parameters as well, as documented in the <a class="reference external" href="https://triqs.github.io/solid_dmft/_ref/read_config.html" rel="noopener noreferrer" target="_blank">reference manual of the read_config.py</a> on the solid_dmft website. This is a selection of parameters from the dmft_config.ini:</p>
 <p>Group [general]:</p>
 <ul class="simple">
@@ -661,7 +670,7 @@ run multiple DFT steps in between the DMFT steps because the density correction 
 <p>The <a class="reference external" href="2_dmft_csc/plo.cfg" rel="noopener noreferrer" target="_blank">plo.cfg</a> file is described <a class="reference external" href="https://triqs.github.io/dft_tools/latest/guide/conv_vasp.html" rel="noopener noreferrer" target="_blank">here</a>. The <a class="reference external" href="2_dmft_csc/rotations.dat" rel="noopener noreferrer" target="_blank">rotations.dat</a> file is generated by diagonalizing the local d-shell density matrix and identifying the least occupied eigenstates as eg states.</p>
 </div>
 <div class="section" id="Starting-the-calculations">
-<h3>Starting the calculations<a class="headerlink" href="#Starting-the-calculations" title="Permalink to this headline">¶</a></h3>
+<h3>Starting the calculations<a class="headerlink" href="#Starting-the-calculations" title="Permalink to this headline"></a></h3>
 <p>Now we can start the calculations:</p>
 <ul class="simple">
 <li>Go into the folder <code class="docutils literal notranslate"><span class="pre">2_dmft_csc</span></code></li>
@@ -670,7 +679,7 @@ run multiple DFT steps in between the DMFT steps because the density correction 
 </ul>
 </div>
 <div class="section" id="Analyzing-the-projectors">
-<h3>Analyzing the projectors<a class="headerlink" href="#Analyzing-the-projectors" title="Permalink to this headline">¶</a></h3>
+<h3>Analyzing the projectors<a class="headerlink" href="#Analyzing-the-projectors" title="Permalink to this headline"></a></h3>
 <p>Now we plot the DOS of the PLOs we are using to make sure that our correlated subspace works out as expected. You can speed up the calculation of the PLOs by removing the calculation of the DOS from the plo.cfg file.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -721,7 +730,7 @@ run multiple DFT steps in between the DMFT steps because the density correction 
 </div>
 </div>
 <div class="section" id="3.-Plotting-the-results:-observables">
-<h2>3. Plotting the results: observables<a class="headerlink" href="#3.-Plotting-the-results:-observables" title="Permalink to this headline">¶</a></h2>
+<h2>3. Plotting the results: observables<a class="headerlink" href="#3.-Plotting-the-results:-observables" title="Permalink to this headline"></a></h2>
 <p>We first read in the pre-computed observables from the h5 archive and print their names:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -776,7 +785,7 @@ dict_keys([&#39;E_DC&#39;, &#39;E_bandcorr&#39;, &#39;E_corr_en&#39;, &#39;E_dft
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Iterations&#39;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=.</span><span class="mi">08</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">.08</span><span class="p">)</span>
 <span class="k">pass</span>
 </pre></div>
 </div>
@@ -797,7 +806,7 @@ dict_keys([&#39;E_DC&#39;, &#39;E_bandcorr&#39;, &#39;E_corr_en&#39;, &#39;E_dft
 <p>Therefore, we can conclude that we managed to capture the desired paramagnetic, insulating state that PrNiO3 shows in the experiments.</p>
 </div>
 <div class="section" id="4.-Plotting-the-results:-the-Legendre-Green’s-function">
-<h2>4. Plotting the results: the Legendre Green’s function<a class="headerlink" href="#4.-Plotting-the-results:-the-Legendre-Green’s-function" title="Permalink to this headline">¶</a></h2>
+<h2>4. Plotting the results: the Legendre Green’s function<a class="headerlink" href="#4.-Plotting-the-results:-the-Legendre-Green’s-function" title="Permalink to this headline"></a></h2>
 <p>We now take a look at the imaginary-time Green’s function expressed in Legendre coefficients <span class="math notranslate nohighlight">\(G_l\)</span>. This is the main solver output (if we are measuring it) and also saved in the h5 archive.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
@@ -851,7 +860,7 @@ look <a class="reference external" href="https://doi.org/10.1103/PhysRevB.84.075
 <p>The noise itself should reduce with sqrt(<code class="docutils literal notranslate"><span class="pre">n_cycles_tot</span></code>) for QMC calculations but the prefactor always depends on material and its Hamiltonian, the electron filling, etc. But if you increase <code class="docutils literal notranslate"><span class="pre">n_cycles_tot</span></code>, make sure to test if you can include more Legendre coefficients.</p>
 </div>
 <div class="section" id="5.-Next-steps-to-try">
-<h2>5. Next steps to try<a class="headerlink" href="#5.-Next-steps-to-try" title="Permalink to this headline">¶</a></h2>
+<h2>5. Next steps to try<a class="headerlink" href="#5.-Next-steps-to-try" title="Permalink to this headline"></a></h2>
 <p>Here are some suggestions on how continue on this type of DMFT calculations:</p>
 <ul class="simple">
 <li>change U and J and try to see if you can reach a metallic state. What does the occupation look like?</li>
@@ -875,7 +884,7 @@ look <a class="reference external" href="https://doi.org/10.1103/PhysRevB.84.075
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -52,6 +52,18 @@ Includes the majority of the parameters
 
             Needs to be stored as Matsubara Gf under dynamic_U/U_iw in the input h5
 
+.. admonition:: h_int_basis 
+ 	:class: intag  
+ 
+            **type=** string
+
+              cubic basis convention to compute the interaction U matrix
+              * 'triqs'
+              * 'vasp' (equivalent to 'triqs')
+              * 'wien2k'
+              * 'wannier90'
+              * 'qe' (equivalent to 'wannier90')
+
 .. admonition:: U 
  	:class: intag  
  
@@ -249,6 +261,13 @@ Includes the majority of the parameters
 
             magnetic field
 
+.. admonition:: h_field_it 
+ 	:class: intag  
+ 
+            **type=** int;  **optional**;  **default=** 0
+
+            number of iterations the magnetic field is kept on
+
 .. admonition:: energy_shift_orbitals 
  	:class: intag  
  
@@ -402,7 +421,7 @@ Includes the majority of the parameters
 
             The chemical potential will be updated every # iteration
 
-.. admonition:: dft_mu 
+.. admonition:: mu_initial_guess 
  	:class: intag  
  
             **type=** float;  **optional**;  **default=**  'none'

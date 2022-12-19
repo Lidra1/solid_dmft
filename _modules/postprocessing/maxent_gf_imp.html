@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>postprocessing.maxent_gf_imp &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>postprocessing.maxent_gf_imp &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -23,10 +27,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft
+            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -39,7 +44,9 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -211,12 +218,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -237,9 +246,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>postprocessing.maxent_gf_imp</li>
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">postprocessing.maxent_gf_imp</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -361,7 +370,7 @@
 
 
 <span class="k">def</span> <span class="nf">_run_maxent</span><span class="p">(</span><span class="n">gf_imp_tau</span><span class="p">,</span> <span class="n">maxent_error</span><span class="p">,</span> <span class="n">n_points_maxent</span><span class="p">,</span> <span class="n">n_points_alpha</span><span class="p">,</span>
-                <span class="n">omega_min</span><span class="p">,</span> <span class="n">omega_max</span><span class="p">):</span>
+                <span class="n">omega_min</span><span class="p">,</span> <span class="n">omega_max</span><span class="p">,</span> <span class="n">analyzer</span><span class="o">=</span><span class="s1">&#39;LineFitAnalyzer&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Runs maxent to get the spectral functions from the list of block GFs.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -386,6 +395,23 @@
             <span class="n">solver</span><span class="o">.</span><span class="n">alpha_mesh</span> <span class="o">=</span> <span class="n">LogAlphaMesh</span><span class="p">(</span><span class="n">alpha_min</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">alpha_max</span><span class="o">=</span><span class="mf">1e2</span><span class="p">,</span>
                                              <span class="n">n_points</span><span class="o">=</span><span class="n">n_points_alpha</span><span class="p">)</span>
             <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">block</span><span class="p">]</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+            <span class="n">n_orb</span> <span class="o">=</span> <span class="n">gf</span><span class="o">.</span><span class="n">target_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">opt_alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+            <span class="n">opt_alpha</span><span class="p">[:,:,:]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># set results to -1 to distinguish them from 0</span>
+            <span class="k">for</span> <span class="n">i_orb</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_orb</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">j_orb</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_orb</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">l_com</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>  <span class="c1"># loop over complex numbers</span>
+                        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">block</span><span class="p">]</span><span class="o">.</span><span class="n">analyzer_results</span><span class="p">[</span><span class="n">i_orb</span><span class="p">][</span><span class="n">j_orb</span><span class="p">][</span><span class="n">l_com</span><span class="p">]</span> <span class="o">==</span> <span class="p">{}:</span>
+                            <span class="k">continue</span>
+                        <span class="n">opt_alpha</span><span class="p">[</span><span class="n">i_orb</span><span class="p">,</span> <span class="n">j_orb</span><span class="p">,</span> <span class="n">l_com</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">block</span><span class="p">]</span><span class="o">.</span><span class="n">analyzer_results</span><span class="p">[</span><span class="n">i_orb</span><span class="p">][</span><span class="n">j_orb</span><span class="p">][</span><span class="n">l_com</span><span class="p">][</span><span class="n">analyzer</span><span class="p">][</span><span class="s1">&#39;alpha_index&#39;</span><span class="p">]</span>
+
+            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Optimal alphas , block </span><span class="si">{</span><span class="n">block</span><span class="si">}</span><span class="s1">:&#39;</span><span class="p">)</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;--- Real part ---&#39;</span><span class="p">,</span> <span class="n">opt_alpha</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">opt_alpha</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;--- Imag part ---&#39;</span><span class="p">,</span> <span class="n">opt_alpha</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">opt_alpha</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;(a -1 indicates that maxent did not run for this block due to symmetry)&#39;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">results</span><span class="p">,</span> <span class="n">omega_mesh</span>
 
@@ -453,27 +479,25 @@
 <span class="sd">        in a dict for each impurity</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-    <span class="n">gf_imp_tau</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># Not mpi parallelized</span>
+    <span class="n">unpacked_results</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
         <span class="n">gf_imp_tau</span> <span class="o">=</span> <span class="n">_read_h5</span><span class="p">(</span><span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">gf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gf_imp_tau</span><span class="p">):</span>
             <span class="n">gf_imp_tau</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_sum_greens_functions</span><span class="p">(</span><span class="n">gf</span><span class="p">,</span> <span class="n">sum_spins</span><span class="p">)</span>
-    <span class="n">gf_imp_tau</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">gf_imp_tau</span><span class="p">)</span>
 
-    <span class="n">maxent_results</span><span class="p">,</span> <span class="n">omega_mesh</span> <span class="o">=</span> <span class="n">_run_maxent</span><span class="p">(</span><span class="n">gf_imp_tau</span><span class="p">,</span> <span class="n">maxent_error</span><span class="p">,</span> <span class="n">n_points_maxent</span><span class="p">,</span>
-                                             <span class="n">n_points_alpha</span><span class="p">,</span> <span class="n">omega_min</span><span class="p">,</span> <span class="n">omega_max</span><span class="p">)</span>
+        <span class="n">maxent_results</span><span class="p">,</span> <span class="n">omega_mesh</span> <span class="o">=</span> <span class="n">_run_maxent</span><span class="p">(</span><span class="n">gf_imp_tau</span><span class="p">,</span> <span class="n">maxent_error</span><span class="p">,</span> <span class="n">n_points_maxent</span><span class="p">,</span>
+                                                 <span class="n">n_points_alpha</span><span class="p">,</span> <span class="n">omega_min</span><span class="p">,</span> <span class="n">omega_max</span><span class="p">)</span>
 
-    <span class="n">unpacked_results</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
         <span class="n">unpacked_results</span> <span class="o">=</span> <span class="n">_unpack_maxent_results</span><span class="p">(</span><span class="n">maxent_results</span><span class="p">,</span> <span class="n">omega_mesh</span><span class="p">)</span>
         <span class="n">_write_spectral_function_to_h5</span><span class="p">(</span><span class="n">unpacked_results</span><span class="p">,</span> <span class="n">external_path</span><span class="p">,</span> <span class="n">iteration</span><span class="p">)</span>
-    <span class="n">unpacked_results</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">unpacked_results</span><span class="p">)</span>
 
-    <span class="n">total_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
-    <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;DONE&#39;</span><span class="p">)</span>
-    <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total run time: </span><span class="si">{</span><span class="n">total_time</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> s.&#39;</span><span class="p">)</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;DONE&#39;</span><span class="p">)</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total run time: </span><span class="si">{</span><span class="n">total_time</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> s.&#39;</span><span class="p">)</span>
+    <span class="n">unpacked_results</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">unpacked_results</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">unpacked_results</span></div>
 
@@ -506,7 +530,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

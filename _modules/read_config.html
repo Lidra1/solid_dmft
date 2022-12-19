@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>read_config &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>read_config &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -23,10 +27,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft
+            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -39,7 +44,9 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -211,12 +218,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -237,9 +246,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Module code</a> &raquo;</li>
-      <li>read_config</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">read_config</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -310,6 +319,13 @@
 <span class="sd">            * dynamic: use dynamic U from h5 archive</span>
 
 <span class="sd">            Needs to be stored as Matsubara Gf under dynamic_U/U_iw in the input h5</span>
+<span class="sd">h_int_basis : string</span>
+<span class="sd">              cubic basis convention to compute the interaction U matrix</span>
+<span class="sd">              * &#39;triqs&#39;</span>
+<span class="sd">              * &#39;vasp&#39; (equivalent to &#39;triqs&#39;)</span>
+<span class="sd">              * &#39;wien2k&#39;</span>
+<span class="sd">              * &#39;wannier90&#39;</span>
+<span class="sd">              * &#39;qe&#39; (equivalent to &#39;wannier90&#39;)</span>
 <span class="sd">U :  float or comma separated list of floats</span>
 <span class="sd">            U values for impurities if only one value is given, the same U is assumed for all impurities</span>
 <span class="sd">J :  float or comma separated list of floats</span>
@@ -382,6 +398,8 @@
 <span class="sd">            enforce off diagonal elements in block structure finder</span>
 <span class="sd">h_field : float, optional, default=0.0</span>
 <span class="sd">            magnetic field</span>
+<span class="sd">h_field_it : int, optional, default=0</span>
+<span class="sd">            number of iterations the magnetic field is kept on</span>
 <span class="sd">energy_shift_orbitals : list of floats, optional, default= &#39;none&#39;</span>
 <span class="sd">            orbitals will be shifted by this energy</span>
 <span class="sd">            The entries can be python code, to be combined with configparser&#39;s interpolation</span>
@@ -430,7 +448,7 @@
 <span class="sd">            If given, the chemical potential remains fixed in calculations</span>
 <span class="sd">mu_update_freq : int, optional, default= 1</span>
 <span class="sd">            The chemical potential will be updated every # iteration</span>
-<span class="sd">dft_mu : float, optional, default= &#39;none&#39;</span>
+<span class="sd">mu_initial_guess : float, optional, default= &#39;none&#39;</span>
 <span class="sd">            The chemical potential of the DFT calculation.</span>
 <span class="sd">            If not given, mu will be calculated from the DFT bands</span>
 <span class="sd">mu_mix_const : float, optional, default= 1.0</span>
@@ -613,12 +631,20 @@
 <span class="sd">            U values for DC determination if only one value is given, the same U is assumed for all impurities</span>
 <span class="sd">dc_J :  float or comma seperated list of floats, optional, default= general_params[&#39;J&#39;]</span>
 <span class="sd">            J values for DC determination if only one value is given, the same J is assumed for all impurities</span>
-<span class="sd">map_solver_struct : dict, optional, default=no additional mapping</span>
+<span class="sd">map_solver_struct : list of dict, optional, default=no additional mapping</span>
 <span class="sd">            Additional manual mapping of the solver block structure, applied</span>
-<span class="sd">            after the block structure finder to all impurities.</span>
+<span class="sd">            after the block structure finder for each impurity.</span>
+<span class="sd">            Give exactly one dict per ineq impurity.</span>
+<span class="sd">            see also triqs.github.io/dft_tools/latest/_python_api/triqs_dft_tools.block_structure.BlockStructure.map_gf_struct_solver.html</span>
 <span class="sd">mapped_solver_struct_degeneracies : list, optional, default=none</span>
-<span class="sd">            Degeneracies applied when using map_solver_struct, same for all inmpurities.</span>
+<span class="sd">            Degeneracies applied when using map_solver_struct, for each impurity.</span>
 <span class="sd">            If not given and map_solver_struct is used, no symmetrization will happen.</span>
+<span class="sd">pick_solver_struct : list of dict, optional, default=no additional picking</span>
+<span class="sd">            input a solver dictionary for each ineq impurity to reduce dimensionality of</span>
+<span class="sd">            solver block structure. Similar to to map_solver_struct, but with simpler syntax.</span>
+<span class="sd">            Not listed blocks / orbitals will be not treated in impurity solver.</span>
+<span class="sd">            Keeps degenerate shells.</span>
+
 
 <span class="sd">---XXX---end</span>
 
@@ -647,8 +673,14 @@
 <span class="c1">#              is True, the parameter becomes an optional parameter</span>
 <span class="n">PROPERTIES_PARAMS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;general&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;seedname&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">),</span> <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 
-                                 <span class="s1">&#39;h_int_type&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;density_density&#39;</span><span class="p">,</span> <span class="s1">&#39;kanamori&#39;</span><span class="p">,</span> <span class="s1">&#39;full_slater&#39;</span><span class="p">,</span>
-                                                                                <span class="s1">&#39;crpa&#39;</span><span class="p">,</span> <span class="s1">&#39;crpa_density_density&#39;</span><span class="p">,</span><span class="s1">&#39;dynamic&#39;</span><span class="p">),</span>
+                                 <span class="s1">&#39;h_int_type&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="nb">all</span><span class="p">(</span><span class="n">hint</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;density_density&#39;</span><span class="p">,</span>
+                                                                                       <span class="s1">&#39;kanamori&#39;</span><span class="p">,</span>
+                                                                                       <span class="s1">&#39;full_slater&#39;</span><span class="p">,</span>
+                                                                                       <span class="s1">&#39;crpa&#39;</span><span class="p">,</span>
+                                                                                       <span class="s1">&#39;crpa_density_density&#39;</span><span class="p">,</span>
+                                                                                       <span class="s1">&#39;dynamic&#39;</span><span class="p">,</span>
+                                                                                       <span class="s1">&#39;ntot&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">hint</span> <span class="ow">in</span> <span class="n">x</span><span class="p">),</span>
+                                                <span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))),</span>
                                                 <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 
                                  <span class="s1">&#39;U&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))),</span> <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
@@ -656,8 +688,10 @@
                                  <span class="s1">&#39;J&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))),</span> <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 
                                  <span class="s1">&#39;ratio_F4_F2&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))),</span>
-                                                 <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;density_density&#39;</span><span class="p">,</span> <span class="s1">&#39;full_slater&#39;</span><span class="p">],</span>
-                                                 <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">]},</span>
+                                                 <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">],</span>
+                                                 <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">all</span><span class="p">(</span><span class="n">r</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span> <span class="ow">or</span> <span class="n">hint</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;density_density&#39;</span><span class="p">,</span><span class="s1">&#39;full_slater&#39;</span><span class="p">)</span>
+                                                                                    <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">hint</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;h_int_type&#39;</span><span class="p">])),</span>
+                                                 <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 
                                  <span class="s1">&#39;beta&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>
                                           <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;solver_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;cthyb&#39;</span><span class="p">,</span> <span class="s1">&#39;ctint&#39;</span><span class="p">,</span> <span class="s1">&#39;inchworm&#39;</span><span class="p">,</span> <span class="s1">&#39;hubbardI&#39;</span><span class="p">,</span><span class="s1">&#39;ctseg&#39;</span><span class="p">]},</span>
@@ -726,13 +760,15 @@
                                                   <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
 
                                  <span class="s1">&#39;magnetic&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="n">BOOL_PARSER</span><span class="p">,</span>
-                                              <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="ow">not</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;csc&#39;</span><span class="p">],</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+                                              <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
 
                                  <span class="s1">&#39;magmom&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))),</span>
                                             <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="ow">not</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;csc&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;magnetic&#39;</span><span class="p">],</span>
                                             <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">[]},</span>
 
                                  <span class="s1">&#39;h_field&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
+
+                                 <span class="s1">&#39;h_field_it&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
 
                                  <span class="s1">&#39;energy_shift_orbitals&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)],</span>
                                                            <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="ow">not</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;csc&#39;</span><span class="p">],</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">},</span>
@@ -799,7 +835,7 @@
                                                     <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;fixed_mu_value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
                                                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
 
-                                 <span class="s1">&#39;dft_mu&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">},</span>
+                                 <span class="s1">&#39;mu_initial_guess&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">},</span>
 
                                  <span class="s1">&#39;mu_mix_const&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                                                   <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
@@ -831,7 +867,10 @@
                                                           <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
                                                           <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;solver_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;cthyb&#39;</span><span class="p">,</span> <span class="s1">&#39;ctint&#39;</span><span class="p">,</span><span class="s1">&#39;ctseg&#39;</span><span class="p">]</span>
                                                                                   <span class="ow">and</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;mu_gap_gb2_threshold&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;none&#39;</span><span class="p">),</span>
-                                                          <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">}</span>
+                                                          <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">},</span>
+
+                                 <span class="s1">&#39;h_int_basis&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;triqs&#39;</span><span class="p">,</span> <span class="s1">&#39;wien2k&#39;</span><span class="p">,</span> <span class="s1">&#39;wannier90&#39;</span><span class="p">,</span> <span class="s1">&#39;qe&#39;</span><span class="p">,</span> <span class="s1">&#39;vasp&#39;</span><span class="p">),</span>
+                                            <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span> <span class="p">:</span> <span class="s1">&#39;triqs&#39;</span><span class="p">}</span>
 
                                 <span class="p">},</span>
                      <span class="s1">&#39;dft&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dft_code&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;csc&#39;</span><span class="p">],</span>
@@ -873,7 +912,8 @@
                                 <span class="s1">&#39;length_cycle&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>
                                                  <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;solver_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;cthyb&#39;</span><span class="p">,</span> <span class="s1">&#39;ctint&#39;</span><span class="p">,</span> <span class="s1">&#39;ctseg&#39;</span><span class="p">]},</span>
 
-                                <span class="s1">&#39;n_warmup_cycles&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>
+                                <span class="s1">&#39;n_warmup_cycles&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span>
+                                                    <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>
                                                     <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;solver_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;cthyb&#39;</span><span class="p">,</span> <span class="s1">&#39;ctint&#39;</span><span class="p">,</span> <span class="s1">&#39;ctseg&#39;</span><span class="p">]},</span>
 
                                 <span class="s1">&#39;n_cycles_tot&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span>
@@ -1031,13 +1071,16 @@
                                            <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;J&#39;</span><span class="p">]},</span>
 
                                   <span class="s1">&#39;map_solver_struct&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">eval</span><span class="p">,</span>
-                                                        <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span><span class="o">==</span><span class="s1">&#39;none&#39;</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span>
+                                                        <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span><span class="s1">&#39;none&#39;</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span>
                                                         <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">},</span>
 
                                   <span class="s1">&#39;mapped_solver_struct_degeneracies&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">eval</span><span class="p">,</span>
                                             <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span><span class="o">==</span><span class="s1">&#39;none&#39;</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span>
                                             <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;advanced&#39;</span><span class="p">][</span><span class="s1">&#39;map_solver_struct&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
                                             <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">},</span>
+                                  <span class="s1">&#39;pick_solver_struct&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;converter&#39;</span><span class="p">:</span> <span class="nb">eval</span><span class="p">,</span>
+                                                        <span class="s1">&#39;valid for&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span><span class="s1">&#39;none&#39;</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span>
+                                                        <span class="s1">&#39;used&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">},</span>
                                  <span class="p">}</span>
                     <span class="p">}</span>
 
@@ -1375,6 +1418,14 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You shall not use Sigma and G0 mixing together!&#39;</span><span class="p">)</span>
 
     <span class="c1"># Workarounds for some parameters</span>
+
+    <span class="c1"># make sure that pick_solver_struct and map_solver_struct are a list of dict</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;advanced&#39;</span><span class="p">][</span><span class="s1">&#39;pick_solver_struct&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;advanced&#39;</span><span class="p">][</span><span class="s1">&#39;pick_solver_struct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;advanced&#39;</span><span class="p">][</span><span class="s1">&#39;pick_solver_struct&#39;</span><span class="p">]]</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;advanced&#39;</span><span class="p">][</span><span class="s1">&#39;map_solver_struct&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;advanced&#39;</span><span class="p">][</span><span class="s1">&#39;map_solver_struct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;advanced&#39;</span><span class="p">][</span><span class="s1">&#39;map_solver_struct&#39;</span><span class="p">]]</span>
+
     <span class="k">if</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">][</span><span class="s1">&#39;solver_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;cthyb&#39;</span><span class="p">,</span> <span class="s1">&#39;ctint&#39;</span><span class="p">,</span> <span class="s1">&#39;ctseg&#39;</span><span class="p">]:</span>
         <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;solver&#39;</span><span class="p">][</span><span class="s1">&#39;n_cycles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;solver&#39;</span><span class="p">][</span><span class="s1">&#39;n_cycles_tot&#39;</span><span class="p">]</span> <span class="o">//</span> <span class="n">mpi</span><span class="o">.</span><span class="n">size</span>
         <span class="k">del</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;solver&#39;</span><span class="p">][</span><span class="s1">&#39;n_cycles_tot&#39;</span><span class="p">]</span>
@@ -1433,7 +1484,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

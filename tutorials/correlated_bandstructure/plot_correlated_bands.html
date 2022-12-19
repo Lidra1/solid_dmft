@@ -3,22 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5. Plotting the spectral function &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <title>5. Plotting the spectral function &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=default"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+        <script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=default"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="How to contribute" href="../../issues.html" />
+    <link rel="next" title="Support &amp; contribute" href="../../issues.html" />
     <link rel="prev" title="4. OS with VASP/PLOs and cthyb: AFM state of NdNiO2" href="../NNO_os_plo_mag/tutorial.html" /> 
 </head>
 
@@ -27,10 +31,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft<img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../../index.html" class="icon icon-home"> solid_dmft
+            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -43,7 +48,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -215,12 +222,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -241,9 +250,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../tutorials.html">Tutorials</a> &raquo;</li>
-      <li>5. Plotting the spectral function</li>
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../tutorials.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">5. Plotting the spectral function</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/tutorials/correlated_bandstructure/plot_correlated_bands.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -524,7 +533,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <div class="section" id="5.-Plotting-the-spectral-function">
-<h1>5. Plotting the spectral function<a class="headerlink" href="#5.-Plotting-the-spectral-function" title="Permalink to this headline">¶</a></h1>
+<h1>5. Plotting the spectral function<a class="headerlink" href="#5.-Plotting-the-spectral-function" title="Permalink to this headline"></a></h1>
 <p>In this tutorial we go through the steps to plot tight-binding bands from a Wannier90 Hamiltonian and spectralfunctions with analytically continued (real-frequency) self-energies obtained from DMFT.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -548,12 +557,12 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="1.-Configuration">
-<h2>1. Configuration<a class="headerlink" href="#1.-Configuration" title="Permalink to this headline">¶</a></h2>
+<h2>1. Configuration<a class="headerlink" href="#1.-Configuration" title="Permalink to this headline"></a></h2>
 <p>The script makes use of the <code class="docutils literal notranslate"><span class="pre">triqs.lattice.utils</span></code> class, which allows to set up a tight-binding model based on a Wannier90 Hamiltonian. Additionally, you may upload a self-energy in the usual <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> format to compute correlated spectral properties. Currently, the following options are implemented:</p>
 <ol><li><p>bandstructure</p>
 </li><li><p>Fermi slice</p>
 </li></ol><div class="section" id="Basic-options">
-<h3>Basic options<a class="headerlink" href="#Basic-options" title="Permalink to this headline">¶</a></h3>
+<h3>Basic options<a class="headerlink" href="#Basic-options" title="Permalink to this headline"></a></h3>
 <div class="line-block">
 <div class="line">We start with configuring these options. For this example we try a tight-binding bandstructure including the correlated bands (<code class="docutils literal notranslate"><span class="pre">kslice</span> <span class="pre">=</span> <span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">'tb':</span> <span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">'alatt':</span> <span class="pre">True</span></code>), but feel free to come back here to explore. Alternatively to an intensity plot of the correlated bands (<code class="docutils literal notranslate"><span class="pre">qp_bands</span></code>), you can compute the correlated quasiparticle bands assuming a Fermi liquid regime.</div>
 <div class="line">The options for <span class="math notranslate nohighlight">\(\Sigma(\omega)\)</span> are <code class="docutils literal notranslate"><span class="pre">calc</span></code> or <code class="docutils literal notranslate"><span class="pre">model</span></code>, which performs a Fermi liquid linearization in the low-frequency regime. The latter will be reworked, so better stick with <code class="docutils literal notranslate"><span class="pre">calc</span></code> for now.</div>
@@ -573,7 +582,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Wannier90">
-<h3>Wannier90<a class="headerlink" href="#Wannier90" title="Permalink to this headline">¶</a></h3>
+<h3>Wannier90<a class="headerlink" href="#Wannier90" title="Permalink to this headline"></a></h3>
 <p>Next we will set up the Wannier90 Input. Provide the path, seedname, chemical potential and orbital order used in Wannier90. You may add a spin-component, and any other local Hamiltonian. For <code class="docutils literal notranslate"><span class="pre">t2g</span></code> models the orbital order can be changed (to <code class="docutils literal notranslate"><span class="pre">orbital_order_to</span></code>) and a local spin-orbit coupling term can be added (<code class="docutils literal notranslate"><span class="pre">add_lambda</span></code>). The spectral properties can be viewed projected on a specific orbital.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -581,8 +590,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">w90_path</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
-<span class="n">w90_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;w90_seed&#39;</span><span class="p">:</span> <span class="s1">&#39;svo&#39;</span><span class="p">,</span> <span class="s1">&#39;w90_path&#39;</span><span class="p">:</span> <span class="n">w90_path</span><span class="p">,</span> <span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mf">12.3958</span><span class="p">,</span> <span class="s1">&#39;n_orb&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;add_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">w90_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;w90_seed&#39;</span><span class="p">:</span> <span class="s1">&#39;svo&#39;</span><span class="p">,</span> <span class="s1">&#39;w90_path&#39;</span><span class="p">:</span> <span class="n">w90_path</span><span class="p">,</span> <span class="s1">&#39;mu_tb&#39;</span><span class="p">:</span> <span class="mf">12.3958</span><span class="p">,</span> <span class="s1">&#39;n_orb&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s1">&#39;orbital_order_w90&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">,</span> <span class="s1">&#39;dxy&#39;</span><span class="p">],</span> <span class="s1">&#39;add_spin&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
 
 <span class="n">orbital_order_to</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dxy&#39;</span><span class="p">,</span> <span class="s1">&#39;dxz&#39;</span><span class="p">,</span> <span class="s1">&#39;dyz&#39;</span><span class="p">]</span>
 <span class="n">proj_on_orb</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># or &#39;dxy&#39; etc</span>
@@ -591,9 +600,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="BZ-configuration">
-<h3>BZ configuration<a class="headerlink" href="#BZ-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>BZ configuration<a class="headerlink" href="#BZ-configuration" title="Permalink to this headline"></a></h3>
 <div class="section" id="Optional:-ASE-Brillouin-Zone">
-<h4>Optional: ASE Brillouin Zone<a class="headerlink" href="#Optional:-ASE-Brillouin-Zone" title="Permalink to this headline">¶</a></h4>
+<h4>Optional: ASE Brillouin Zone<a class="headerlink" href="#Optional:-ASE-Brillouin-Zone" title="Permalink to this headline"></a></h4>
 <p>It might be helpful to have a brief look at the Brillouin Zone by loading an input file of your favorite DFT code (Quantum Espresso in this case). ASE will write out the special <span class="math notranslate nohighlight">\(k\)</span>-points, which we can use to configure the BZ path. Alternatively, you can of course define the dictionary <code class="docutils literal notranslate"><span class="pre">kpts_dict</span></code> yourself. Careful, it might not define <span class="math notranslate nohighlight">\(Z\)</span>, which is needed and added below.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -666,7 +675,7 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 </div>
 </div>
 <div class="section" id="Self-energy">
-<h3>Self-energy<a class="headerlink" href="#Self-energy" title="Permalink to this headline">¶</a></h3>
+<h3>Self-energy<a class="headerlink" href="#Self-energy" title="Permalink to this headline"></a></h3>
 <p>Here we provide the info needed from the h5Archive, like the self-energy, iteration count, spin and block component and the frequency mesh used for the interpolation. The values for the mesh of course depend on the quantity of interest. For a kslice the resolution around <span class="math notranslate nohighlight">\(\omega=0\)</span> is crucial and we need only a small energy window, while for a bandstructure we are also interested in high energy features.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -679,8 +688,9 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 
 <span class="n">dmft_path</span> <span class="o">=</span> <span class="s1">&#39;./svo_example.h5&#39;</span>
 
+<span class="n">proj_on_orb</span> <span class="o">=</span> <span class="n">orbital_order_to</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">proj_on_orb</span><span class="p">)</span> <span class="k">if</span> <span class="n">proj_on_orb</span> <span class="k">else</span> <span class="kc">None</span>
 <span class="n">sigma_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dmft_path&#39;</span><span class="p">:</span> <span class="n">dmft_path</span><span class="p">,</span> <span class="s1">&#39;it&#39;</span><span class="p">:</span> <span class="s1">&#39;last_iter&#39;</span><span class="p">,</span> <span class="s1">&#39;orbital_order_dmft&#39;</span><span class="p">:</span> <span class="n">orbital_order_to</span><span class="p">,</span> <span class="s1">&#39;spin&#39;</span><span class="p">:</span> <span class="s1">&#39;up&#39;</span><span class="p">,</span>
-              <span class="s1">&#39;block&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;eta&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;w_mesh&#39;</span><span class="p">:</span> <span class="n">freq_mesh</span><span class="p">,</span> <span class="s1">&#39;linearize&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+              <span class="s1">&#39;block&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;eta&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;w_mesh&#39;</span><span class="p">:</span> <span class="n">freq_mesh</span><span class="p">,</span> <span class="s1">&#39;linearize&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;proj_on_orb&#39;</span> <span class="p">:</span> <span class="n">proj_on_orb</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -720,23 +730,22 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 </div>
 </div>
 <div class="section" id="Plotting-options">
-<h3>Plotting options<a class="headerlink" href="#Plotting-options" title="Permalink to this headline">¶</a></h3>
+<h3>Plotting options<a class="headerlink" href="#Plotting-options" title="Permalink to this headline"></a></h3>
 <p>Finally, you can choose colormaps for each of the functionalities from any of the available on matplotlib colormaps. <code class="docutils literal notranslate"><span class="pre">vmin</span></code> determines the scaling of the logarithmically scaled colorplots. The corresponding tight-binding bands will have the maximum value of the colormap. By the way, colormaps can be reversed by appending <code class="docutils literal notranslate"><span class="pre">_r</span></code> to the identifier.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">proj_on_orb</span> <span class="o">=</span> <span class="n">orbital_order_to</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">proj_on_orb</span><span class="p">)</span> <span class="k">if</span> <span class="n">proj_on_orb</span> <span class="k">else</span> <span class="kc">None</span>
-<span class="n">plot_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;colorscheme_bands&#39;</span><span class="p">:</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="s1">&#39;colorscheme_kslice&#39;</span><span class="p">:</span> <span class="s1">&#39;PuBuGn&#39;</span><span class="p">,</span>
-               <span class="s1">&#39;colorscheme_qpbands&#39;</span><span class="p">:</span> <span class="s1">&#39;Greens&#39;</span><span class="p">,</span> <span class="s1">&#39;vmin&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;proj_on_orb&#39;</span><span class="p">:</span> <span class="n">proj_on_orb</span><span class="p">}</span>
+<span></span><span class="n">plot_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;colorscheme_alatt&#39;</span><span class="p">:</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="s1">&#39;colorscheme_bands&#39;</span><span class="p">:</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="s1">&#39;colorscheme_kslice&#39;</span><span class="p">:</span> <span class="s1">&#39;PuBuGn&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;colorscheme_qpbands&#39;</span><span class="p">:</span> <span class="s1">&#39;Greens&#39;</span><span class="p">,</span> <span class="s1">&#39;vmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="2.-Run-and-Plotting">
-<h2>2. Run and Plotting<a class="headerlink" href="#2.-Run-and-Plotting" title="Permalink to this headline">¶</a></h2>
+<h2>2. Run and Plotting<a class="headerlink" href="#2.-Run-and-Plotting" title="Permalink to this headline"></a></h2>
 <p>Now that everything is set up we may hit run. Caution, if you use a lot of <span class="math notranslate nohighlight">\(k\)</span>-points, this may take a while! In the current example, it should be done within a second.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -745,9 +754,9 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">start_time</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
 
-<span class="n">tb_data</span><span class="p">,</span> <span class="n">alatt_k_w</span><span class="p">,</span> <span class="n">freq_dict</span><span class="p">,</span> <span class="n">dft_mu</span> <span class="o">=</span> <span class="n">pcb</span><span class="o">.</span><span class="n">get_dmft_bands</span><span class="p">(</span><span class="n">fermi_slice</span><span class="o">=</span><span class="n">kslice</span><span class="p">,</span> <span class="n">with_sigma</span><span class="o">=</span><span class="n">bands_config</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span>
-                                                           <span class="n">orbital_order_to</span><span class="o">=</span><span class="n">orbital_order_to</span><span class="p">,</span> <span class="n">qp_bands</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;qp_bands&#39;</span><span class="p">],</span>
-                                                           <span class="o">**</span><span class="n">w90_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">tb_config</span><span class="p">,</span> <span class="o">**</span><span class="n">sigma_dict</span><span class="p">)</span>
+<span class="n">tb_data</span><span class="p">,</span> <span class="n">alatt_k_w</span><span class="p">,</span> <span class="n">freq_dict</span> <span class="o">=</span> <span class="n">pcb</span><span class="o">.</span><span class="n">get_dmft_bands</span><span class="p">(</span><span class="n">fermi_slice</span><span class="o">=</span><span class="n">kslice</span><span class="p">,</span> <span class="n">with_sigma</span><span class="o">=</span><span class="n">bands_config</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="n">add_mu_tb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                   <span class="n">orbital_order_to</span><span class="o">=</span><span class="n">orbital_order_to</span><span class="p">,</span> <span class="n">qp_bands</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;qp_bands&#39;</span><span class="p">],</span>
+                                                   <span class="o">**</span><span class="n">w90_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">tb_config</span><span class="p">,</span> <span class="o">**</span><span class="n">sigma_dict</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Run took </span><span class="si">{0:.3f}</span><span class="s1"> s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timer</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
 </pre></div>
@@ -759,11 +768,6 @@ of the plotted Brillouin zone, followed by the lower left corner and the lower r
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Warning: could not identify MPI environment!
-H(R=0):
-      0.5811  0.0000  0.0000
-      0.0000  0.5811  0.0000
-      0.0000  0.0000  0.5811
-Setting Sigma from ./svo_example.h5
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -771,7 +775,7 @@ Setting Sigma from ./svo_example.h5
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Starting serial run at: 2022-05-13 11:25:57.209684
+Starting serial run at: 2022-08-01 11:33:20.627842
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -779,7 +783,14 @@ Starting serial run at: 2022-05-13 11:25:57.209684
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Run took 0.335 s
+H(R=0):
+     12.9769  0.0000  0.0000
+      0.0000 12.9769  0.0000
+      0.0000  0.0000 12.9769
+Setting Sigma from ./svo_example.h5
+Adding mu_tb to DMFT μ; assuming DMFT was run with subtracted dft μ.
+μ=12.2143 eV set for calculating A(k,ω)
+Run took 0.588 s
 </pre></div></div>
 </div>
 <p>That’s it. Now you can look at the output:</p>
@@ -820,13 +831,13 @@ Run took 0.335 s
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../NNO_os_plo_mag/tutorial.html" class="btn btn-neutral float-left" title="4. OS with VASP/PLOs and cthyb: AFM state of NdNiO2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../issues.html" class="btn btn-neutral float-right" title="How to contribute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../issues.html" class="btn btn-neutral float-right" title="Support &amp; contribute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

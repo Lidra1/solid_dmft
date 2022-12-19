@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>postprocessing.maxent_gf_imp &mdash; solid_dmft  documentation</title><link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <title>postprocessing.maxent_gf_imp &mdash; solid_dmft  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -25,10 +29,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft<img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+            <a href="../index.html" class="icon icon-home"> solid_dmft
+            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.0
+                3.1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -41,7 +46,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-steps">Installation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#manual-installation-via-cmake">Manual installation via CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker-files-images">Docker files &amp; images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#version-compatibility">Version compatibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#custom-cmake-options">Custom CMake options</a></li>
 </ul>
@@ -213,12 +220,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../issues.html">How to contribute</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../issues.html">Support &amp; contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../issues.html#seeking-help">Seeking help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#improving-solid-dmft">Improving solid_dmft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../issues.html#reporting-issues">Reporting issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-0-0">Version 3.0.0</a></li>
@@ -239,10 +248,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
-          <li><a href="postprocessing.html">postprocessing</a> &raquo;</li>
-      <li>postprocessing.maxent_gf_imp</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../documentation.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="postprocessing.html">postprocessing</a></li>
+      <li class="breadcrumb-item active">postprocessing.maxent_gf_imp</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/_ref/postprocessing.maxent_gf_imp.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -277,7 +286,7 @@
 }
 </style>
 <div class="section" id="module-postprocessing.maxent_gf_imp">
-<span id="postprocessing-maxent-gf-imp"></span><h1>postprocessing.maxent_gf_imp<a class="headerlink" href="#module-postprocessing.maxent_gf_imp" title="Permalink to this headline">¶</a></h1>
+<span id="postprocessing-maxent-gf-imp"></span><h1>postprocessing.maxent_gf_imp<a class="headerlink" href="#module-postprocessing.maxent_gf_imp" title="Permalink to this headline"></a></h1>
 <p>Analytic continuation of the impurity Green’s function to the impurity spectral
 function using maxent.</p>
 <p>Reads G_imp(i omega) from the h5 archive and writes A_imp(omega) back. See
@@ -285,8 +294,8 @@ the docstring of main() for more information.</p>
 <p>Not mpi parallelized.</p>
 <p>Author: Maximilian Merkel, Materials Theory Group, ETH Zurich, 2020 - 2022</p>
 <dl class="py function">
-<dt id="postprocessing.maxent_gf_imp.main">
-<code class="descclassname"><span class="pre">postprocessing.maxent_gf_imp.</span></code><code class="descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">sum_spins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">maxent_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em><span class="n"><span class="pre">n_points_maxent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em><span class="n"><span class="pre">n_points_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em><span class="n"><span class="pre">omega_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">20</span></span></em>, <em><span class="n"><span class="pre">omega_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/maxent_gf_imp.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.maxent_gf_imp.main" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="postprocessing.maxent_gf_imp.main">
+<code class="sig-prename descclassname"><span class="pre">postprocessing.maxent_gf_imp.</span></code><code class="sig-name descname"><span class="pre">main</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">external_path</span></span></em>, <em><span class="n"><span class="pre">iteration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">sum_spins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">maxent_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em><span class="n"><span class="pre">n_points_maxent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em><span class="n"><span class="pre">n_points_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em><span class="n"><span class="pre">omega_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">20</span></span></em>, <em><span class="n"><span class="pre">omega_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/postprocessing/maxent_gf_imp.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#postprocessing.maxent_gf_imp.main" title="Permalink to this definition"></a></dt>
 <dd><p>Main function that reads the impurity Greens (GF) function from h5,
 analytically continues it, writes the result back to the h5 archive and
 also returns the results.</p>
@@ -354,7 +363,7 @@ in a dict for each impurity</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021, The Simons Foundation authors: A. Hampel, M. Merkel, and S. Beck.</p>
+    <p>&#169; Copyright Copyright (C) 2018-2020, ETH Zurich Copyright (C) 2021-2022, The Simons Foundation authors: A. Hampel, M. Merkel, A. Carta, and S. Beck.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

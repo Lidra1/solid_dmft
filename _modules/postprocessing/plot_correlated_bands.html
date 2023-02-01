@@ -31,7 +31,7 @@
             <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.2
+                3.1.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -136,6 +136,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/postprocessing.html">postprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/postprocessing.eval_U_cRPA_RESPACK.html">postprocessing.eval_U_cRPA_RESPACK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/postprocessing.eval_U_cRPA_Vasp.html">postprocessing.eval_U_cRPA_Vasp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/postprocessing.maxent_gf_imp.html">postprocessing.maxent_gf_imp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/postprocessing.maxent_gf_latt.html">postprocessing.maxent_gf_latt</a></li>
@@ -300,6 +301,7 @@
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">brentq</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">argrelextrema</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">skimage.measure</span>
@@ -633,13 +635,24 @@
 
     <span class="k">else</span><span class="p">:</span>
         <span class="k">assert</span> <span class="n">n_kx</span> <span class="o">==</span> <span class="n">n_ky</span><span class="p">,</span> <span class="s1">&#39;Not implemented for N_kx != N_ky&#39;</span>
+
+        <span class="k">def</span> <span class="nf">search_for_extrema</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="c1"># return None for no extrema, [] if ends of interval are the only extrema,</span>
+            <span class="c1"># list of indices if local extrema are present</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">data</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">answer</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">roots</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">roots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">argrelextrema</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">greater</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+                <span class="n">roots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">argrelextrema</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">less</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+                <span class="n">roots</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">roots</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">roots</span>
+
         <span class="n">alatt_k_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_kx</span><span class="p">,</span> <span class="n">n_ky</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">))</span>
+        <span class="c1"># go through grid horizontally, then vertically</span>
         <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
             <span class="n">kslice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_kx</span><span class="p">,</span> <span class="n">n_ky</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">it</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="k">def</span> <span class="nf">kslice_interp</span><span class="p">(</span><span class="n">ik</span><span class="p">,</span> <span class="n">orb</span><span class="p">):</span> <span class="k">return</span> <span class="n">interp1d</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_kx</span><span class="p">),</span> <span class="n">kslice</span><span class="p">[:,</span> <span class="n">ik</span><span class="p">,</span> <span class="n">orb</span><span class="p">])</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">def</span> <span class="nf">kslice_interp</span><span class="p">(</span><span class="n">ik</span><span class="p">,</span> <span class="n">orb</span><span class="p">):</span> <span class="k">return</span> <span class="n">interp1d</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_kx</span><span class="p">),</span> <span class="n">kslice</span><span class="p">[</span><span class="n">ik</span><span class="p">,</span> <span class="p">:,</span> <span class="n">orb</span><span class="p">])</span>
 
             <span class="k">for</span> <span class="n">ik1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_kx</span><span class="p">):</span>
                 <span class="n">e_temp</span> <span class="o">=</span> <span class="n">e_mat</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">ik1</span><span class="p">]</span> <span class="k">if</span> <span class="n">it</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">e_mat</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">ik1</span><span class="p">,</span> <span class="p">:]</span>
@@ -649,12 +662,21 @@
                     <span class="n">kslice</span><span class="p">[</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">]</span> <span class="o">=</span> <span class="n">e_val</span>
 
                 <span class="k">for</span> <span class="n">orb</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_orb</span><span class="p">):</span>
-                    <span class="k">try</span><span class="p">:</span>
-                        <span class="n">x0</span> <span class="o">=</span> <span class="n">brentq</span><span class="p">(</span><span class="n">kslice_interp</span><span class="p">(</span><span class="n">ik1</span><span class="p">,</span> <span class="n">orb</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n_kx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-                        <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x0</span><span class="p">)),</span> <span class="n">ik1</span><span class="p">]</span> <span class="k">if</span> <span class="n">it</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">[</span><span class="n">ik1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x0</span><span class="p">))]</span>
-                        <span class="n">alatt_k_w</span><span class="p">[</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">orb</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-                    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                        <span class="k">pass</span>
+                    <span class="n">temp_kslice</span> <span class="o">=</span> <span class="n">kslice</span><span class="p">[:,</span><span class="n">ik1</span><span class="p">,</span><span class="n">orb</span><span class="p">]</span> <span class="k">if</span> <span class="n">it</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">kslice</span><span class="p">[</span><span class="n">ik1</span><span class="p">,:,</span><span class="n">orb</span><span class="p">]</span>
+                    <span class="n">roots</span> <span class="o">=</span> <span class="n">search_for_extrema</span><span class="p">(</span><span class="n">temp_kslice</span><span class="p">)</span>
+                    <span class="c1"># iterate through sections between extrema</span>
+                    <span class="k">if</span> <span class="n">roots</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">idx_1</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">for</span> <span class="n">root_ct</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                            <span class="n">idx_2</span> <span class="o">=</span> <span class="n">roots</span><span class="p">[</span><span class="n">root_ct</span><span class="p">]</span> <span class="k">if</span> <span class="n">root_ct</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span> <span class="k">else</span> <span class="n">n_kx</span>
+                            <span class="n">root_section</span> <span class="o">=</span> <span class="n">temp_kslice</span><span class="p">[</span><span class="n">idx_1</span><span class="p">:</span><span class="n">idx_2</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">x0</span> <span class="o">=</span> <span class="n">brentq</span><span class="p">(</span><span class="n">interp1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">idx_1</span><span class="p">,</span> <span class="n">idx_2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">root_section</span><span class="p">)),</span> <span class="n">root_section</span><span class="p">),</span> <span class="n">idx_1</span><span class="p">,</span> <span class="n">idx_2</span><span class="p">)</span>
+                                <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x0</span><span class="p">)),</span> <span class="n">ik1</span><span class="p">]</span> <span class="k">if</span> <span class="n">it</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">[</span><span class="n">ik1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x0</span><span class="p">))]</span>
+                                <span class="n">alatt_k_w</span><span class="p">[</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">orb</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">except</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+                                <span class="k">pass</span>
+                            <span class="n">idx_1</span> <span class="o">=</span> <span class="n">idx_2</span>
 
         <span class="n">alatt_k_w</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">alatt_k_w</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -818,7 +840,8 @@
             <span class="n">colorbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$A(k, \omega)$&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">tb</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_on_orb</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="c1"># if projection is requested, _get_tb_bands() ran already</span>
+        <span class="k">if</span> <span class="n">proj_on_orb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">eps_nuk</span> <span class="o">=</span> <span class="n">tb_data</span><span class="p">[</span><span class="s1">&#39;e_mat&#39;</span><span class="p">]</span>
             <span class="n">evec_nuk</span> <span class="o">=</span> <span class="n">tb_data</span><span class="p">[</span><span class="s1">&#39;e_vecs&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -973,20 +996,17 @@
     <span class="k">assert</span> <span class="n">with_sigma</span> <span class="ow">or</span> <span class="n">eta</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if no Sigma is provided eta has to be different from 0.0&#39;</span>
 
     <span class="c1"># proj_on_orb</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_on_orb</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_on_orb</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)))</span> <span class="ow">or</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proj_on_orb</span><span class="p">),</span> <span class="s1">&#39;proj_on_orb should be &#39;</span>\
-            <span class="sa">f</span><span class="s1">&#39;an integer or list of integers, but is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">specs</span><span class="p">[</span><span class="s2">&quot;proj_on_orb&quot;</span><span class="p">])</span><span class="si">}</span><span class="s1">.&#39;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_on_orb</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)))</span> <span class="ow">or</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proj_on_orb</span><span class="p">),</span> <span class="s1">&#39;proj_on_orb should be &#39;</span>\
+        <span class="sa">f</span><span class="s1">&#39;an integer or list of integers, but is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">specs</span><span class="p">[</span><span class="s2">&quot;proj_on_orb&quot;</span><span class="p">])</span><span class="si">}</span><span class="s1">.&#39;</span>
 
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_on_orb</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))):</span>
-            <span class="n">proj_on_orb</span> <span class="o">=</span> <span class="p">[</span><span class="n">proj_on_orb</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">proj_on_orb</span> <span class="o">=</span> <span class="n">proj_on_orb</span>
-
-        <span class="c1"># if projection is requested we have to use band_basis</span>
-        <span class="k">if</span> <span class="n">proj_on_orb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">band_basis</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_on_orb</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))):</span>
+        <span class="n">proj_on_orb</span> <span class="o">=</span> <span class="p">[</span><span class="n">proj_on_orb</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">proj_on_orb</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+        <span class="n">proj_on_orb</span> <span class="o">=</span> <span class="n">proj_on_orb</span>
+
+    <span class="c1"># if projection is requested we have to use band_basis</span>
+    <span class="k">if</span> <span class="n">proj_on_orb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">band_basis</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="c1"># if proj_nuk is given we need to use the band_basis</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_nuk</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">band_basis</span><span class="p">:</span>
@@ -1047,6 +1067,12 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">e_vecs</span> <span class="o">=</span> <span class="n">total_proj</span> <span class="o">=</span> <span class="n">orb_proj</span> <span class="o">=</span> <span class="kc">None</span>
 
+    <span class="c1"># now we merge proj_nuk and orb_proj (has reverse shape)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_nuk</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">orb_proj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="n">proj_nuk</span> <span class="o">=</span> <span class="n">proj_nuk</span> <span class="o">*</span> <span class="n">orb_proj</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_nuk</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">orb_proj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="n">proj_nuk</span> <span class="o">=</span> <span class="n">orb_proj</span>
+
     <span class="c1"># dmft output</span>
     <span class="k">if</span> <span class="n">with_sigma</span><span class="p">:</span>
         <span class="n">sigma_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;calc&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">]</span>
@@ -1081,12 +1107,6 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">assert</span> <span class="n">proj_nuk</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">n_orb</span><span class="p">,</span> <span class="n">e_vecs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">e_vecs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
                                                <span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;shape of projectors </span><span class="si">{</span><span class="n">proj_nuk</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> does not match expected shape of [</span><span class="si">{</span><span class="n">n_orb</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">e_vecs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">e_vecs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s1">]&#39;</span>
-
-        <span class="c1"># now we merge proj_nuk and orb_proj (has reverse shape)</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_nuk</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">orb_proj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-            <span class="n">proj_nuk</span> <span class="o">=</span> <span class="n">proj_nuk</span> <span class="o">*</span> <span class="n">orb_proj</span>
-        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">proj_nuk</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">orb_proj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-            <span class="n">proj_nuk</span> <span class="o">=</span> <span class="n">orb_proj</span>
 
         <span class="c1"># calculate alatt</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">fermi_slice</span><span class="p">:</span>

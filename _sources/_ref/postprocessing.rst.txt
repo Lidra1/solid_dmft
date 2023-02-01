@@ -26,6 +26,7 @@
     :recursive:
 
     
+    postprocessing.eval_U_cRPA_RESPACK
     postprocessing.eval_U_cRPA_Vasp
     postprocessing.maxent_gf_imp
     postprocessing.maxent_gf_latt

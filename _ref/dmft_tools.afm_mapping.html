@@ -13,9 +13,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft
-            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            solid_dmft
+              <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.3
+                3.1.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -115,14 +118,20 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-reference-manual">Module reference manual</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csc_flow.html">csc_flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="csc_flow.html#csc_flow.csc_flow_control"><code class="docutils literal notranslate"><span class="pre">csc_flow_control()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dft_managers.mpi_helpers.html">dft_managers.mpi_helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dmft_cycle.html">dmft_cycle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dmft_cycle.html#dmft_cycle.dmft_cycle"><code class="docutils literal notranslate"><span class="pre">dmft_cycle()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3 current"><a class="reference internal" href="dmft_tools.html">dmft_tools</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">dmft_tools.afm_mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dmft_tools.convergence.html">dmft_tools.convergence</a></li>
@@ -151,6 +160,7 @@
 <li class="toctree-l4"><a class="reference internal" href="read_config.html#solver">[  solver  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="read_config.html#dft">[  dft  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="read_config.html#advanced">[  advanced  ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="read_config.html#read_config.read_config"><code class="docutils literal notranslate"><span class="pre">read_config()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="util.html">util</a><ul>
@@ -228,6 +238,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-4">Version 3.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-3">Version 3.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
@@ -249,7 +261,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../documentation.html">Documentation</a></li>
           <li class="breadcrumb-item"><a href="dmft_tools.html">dmft_tools</a></li>
       <li class="breadcrumb-item active">dmft_tools.afm_mapping</li>
@@ -287,7 +299,7 @@
 }
 </style>
 <div class="section" id="module-dmft_tools.afm_mapping">
-<span id="dmft-tools-afm-mapping"></span><h1>dmft_tools.afm_mapping<a class="headerlink" href="#module-dmft_tools.afm_mapping" title="Permalink to this headline"></a></h1>
+<span id="dmft-tools-afm-mapping"></span><h1>dmft_tools.afm_mapping<a class="headerlink" href="#module-dmft_tools.afm_mapping" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="dmft_tools.afm_mapping.determine">
 <code class="sig-prename descclassname"><span class="pre">dmft_tools.afm_mapping.</span></code><code class="sig-name descname"><span class="pre">determine</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">general_params</span></span></em>, <em><span class="n"><span class="pre">archive</span></span></em>, <em><span class="n"><span class="pre">n_inequiv_shells</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dmft_tools/afm_mapping.html#determine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dmft_tools.afm_mapping.determine" title="Permalink to this definition"></a></dt>

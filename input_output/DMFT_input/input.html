@@ -13,9 +13,8 @@
   <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -29,15 +28,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            solid_dmft
+              <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.3
+                3.1.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -115,14 +118,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">Module reference manual</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../_ref/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_ref/csc_flow.html">csc_flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/csc_flow.html#csc_flow.csc_flow_control"><code class="docutils literal notranslate"><span class="pre">csc_flow_control()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dft_managers.mpi_helpers.html">dft_managers.mpi_helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../_ref/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_ref/dmft_cycle.html">dmft_cycle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/dmft_cycle.html#dmft_cycle.dmft_cycle"><code class="docutils literal notranslate"><span class="pre">dmft_cycle()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/dmft_tools.html">dmft_tools</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
@@ -151,6 +160,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#solver">[  solver  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#dft">[  dft  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#advanced">[  advanced  ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#read_config.read_config"><code class="docutils literal notranslate"><span class="pre">read_config()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/util.html">util</a><ul>
@@ -228,6 +238,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-4">Version 3.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-3">Version 3.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
@@ -249,7 +261,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../documentation.html">Documentation</a></li>
       <li class="breadcrumb-item active">Input</li>
       <li class="wy-breadcrumbs-aside">
@@ -286,7 +298,7 @@
 }
 </style>
 <div class="section" id="input">
-<h1>Input<a class="headerlink" href="#input" title="Permalink to this headline"></a></h1>
+<h1>Input<a class="headerlink" href="#input" title="Permalink to this heading"></a></h1>
 <p>The aim of this section is to provide a comprehensive listing of all the input flags available for the <cite>dmft_config.ini</cite> input file. We begin by listing the possible sections and follow with the input parameters.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -298,11 +310,11 @@
 </div>
 <p>Below an exhaustive list containing all the parameters marked by section.</p>
 <p><strong>[general]</strong></p>
-<p>seedname; jobname; csc; plo_cfg; h_int_type; h_int_basis; U; J; ratio_F4_F2; beta; n_iter_dmft_first; n_iter_dmft_per; n_iter_dmft; dc_type; prec_mu; dc_dmft; cpa_zeta; cpa_x; solver_type; n_iw; n_tau; n_l; n_w; w_range; eta; diag_delta; h5_save_freq; magnetic; magmom; enforce_off_diag; h_field; h_field_it; energy_shift_orbitals; sigma_mix; g0_mix; g0_mix_type; broy_max_it; dc; calc_energies; block_threshold; block_suppress_orbital_symm; load_sigma; path_to_sigma; load_sigma_iter; noise_level_initial_sigma; occ_conv_crit; gimp_conv_crit; g0_conv_crit; sigma_conv_crit; sampling_iterations; sampling_h5_save_freq; fixed_mu_value; mu_update_freq; mu_initial_guess; mu_mix_const; mu_mix_per_occupation_offset; afm_order; set_rot; oneshot_postproc_gamma_file; measure_chi_SzSz; measure_chi_insertions; mu_gap_gb2_threshold; mu_gap_occ_deviation;</p>
+<p>seedname; jobname; csc; plo_cfg; h_int_type; h_int_basis; U; J; ratio_F4_F2; beta; n_iter_dmft_first; n_iter_dmft_per; n_iter_dmft; dc_type; dc_dmft; cpa_zeta; cpa_x; solver_type; n_iw; n_tau; n_l; n_w; w_range; eta; diag_delta; h5_save_freq; magnetic; magmom; enforce_off_diag; h_field; h_field_it; sigma_mix; g0_mix; g0_mix_type; broy_max_it; dc; calc_energies; block_threshold; block_suppress_orbital_symm; load_sigma; path_to_sigma; load_sigma_iter; noise_level_initial_sigma; occ_conv_crit; gimp_conv_crit; g0_conv_crit; sigma_conv_crit; sampling_iterations; sampling_h5_save_freq; calc_mu_method; prec_mu; fixed_mu_value; mu_update_freq; mu_initial_guess; mu_mix_const; mu_mix_per_occupation_offset; afm_order; set_rot; measure_chi_SzSz; measure_chi_insertions; mu_gap_gb2_threshold; mu_gap_occ_deviation;</p>
 <p><strong>[solver]</strong></p>
-<p>store_solver; length_cycle; n_warmup_cycles; n_cycles_tot; measure_G_l; measure_G_tau; measure_G_iw; measure_density_matrix; measure_pert_order; max_time; imag_threshold; off_diag_threshold; delta_interface; move_double; perform_tail_fit; fit_max_moment; fit_min_n; fit_max_n; fit_min_w; fit_max_w; random_seed; legendre_fit; n_bath; bath_fit; refine_factor; ph_symm; calc_me; enforce_gap; ignore_weight; dt; state_storage; path_to_gs; sweeps; maxmI; maxmIB; maxmB; tw; dmrg_maxmI; dmrg_maxmIB; dmrg_maxmB; dmrg_tw; measure_hist; improved_estimator;;</p>
+<p>store_solver; length_cycle; n_warmup_cycles; n_cycles_tot; measure_G_l; measure_G_tau; measure_G_iw; measure_density_matrix; measure_pert_order; max_time; imag_threshold; off_diag_threshold; delta_interface; move_double; perform_tail_fit; fit_max_moment; fit_min_n; fit_max_n; fit_min_w; fit_max_w; random_seed; legendre_fit; n_bath; bath_fit; refine_factor; ph_symm; calc_me; enforce_gap; ignore_weight; dt; state_storage; path_to_gs; sweeps; maxmI; maxmIB; maxmB; tw; dmrg_maxmI; dmrg_maxmIB; dmrg_maxmB; dmrg_tw; measure_hist; improved_estimator;; with_fock; force_real; one_shot; method; tol;</p>
 <p><strong>[dft]</strong></p>
-<p>dft_code; n_cores; n_iter; dft_exec; store_eigenvals; mpi_env; projector_type; w90_exec; w90_tolerance;</p>
+<p>dft_code; n_cores; n_iter; n_iter_first; dft_exec; store_eigenvals; mpi_env; projector_type; w90_exec; w90_tolerance;</p>
 <p><strong>[advanced]</strong></p>
 <p>dc_factor; dc_fixed_value; dc_fixed_occ; dc_U; dc_J; map_solver_struct; mapped_solver_struct_degeneracies; pick_solver_struct;</p>
 </div>

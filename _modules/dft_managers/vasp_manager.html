@@ -13,9 +13,8 @@
   <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -27,15 +26,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            solid_dmft
+              <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.3
+                3.1.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -113,14 +116,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">Module reference manual</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../_ref/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_ref/csc_flow.html">csc_flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/csc_flow.html#csc_flow.csc_flow_control"><code class="docutils literal notranslate"><span class="pre">csc_flow_control()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dft_managers.mpi_helpers.html">dft_managers.mpi_helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../_ref/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_ref/dmft_cycle.html">dmft_cycle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/dmft_cycle.html#dmft_cycle.dmft_cycle"><code class="docutils literal notranslate"><span class="pre">dmft_cycle()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/dmft_tools.html">dmft_tools</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
@@ -149,6 +158,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#solver">[  solver  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#dft">[  dft  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#advanced">[  advanced  ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#read_config.read_config"><code class="docutils literal notranslate"><span class="pre">read_config()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/util.html">util</a><ul>
@@ -226,6 +236,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-4">Version 3.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-3">Version 3.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
@@ -247,7 +259,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
       <li class="breadcrumb-item active">dft_managers.vasp_manager</li>
       <li class="wy-breadcrumbs-aside">
@@ -288,10 +300,14 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Contains the handling of the VASP process. It can start VASP, reactivate it,</span>
 <span class="sd">check if the lock file is there and finally kill VASP. Needed for CSC calculations.</span>
+
+<span class="sd">This functionality is contained in the simpler public functions.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">import</span> <span class="nn">triqs.utility.mpi</span> <span class="k">as</span> <span class="nn">mpi</span>
 
@@ -299,7 +315,7 @@
 
 
 <span class="k">def</span> <span class="nf">_fork_and_start_vasp</span><span class="p">(</span><span class="n">mpi_exe</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">env_vars</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Forks a process from the master process that then calls mpi to start vasp.</span>
 <span class="sd">    The child process running VASP never leaves this function whereas the main</span>
 <span class="sd">    process returns the child&#39;s process id and continues. We use explicitly</span>
@@ -335,11 +351,33 @@
     <span class="k">return</span> <span class="n">vasp_process_id</span>
 
 
-<div class="viewcode-block" id="start"><a class="viewcode-back" href="../../_ref/dft_managers.vasp_manager.html#dft_managers.vasp_manager.start">[docs]</a><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">number_cores</span><span class="p">,</span> <span class="n">vasp_command</span><span class="p">,</span> <span class="n">cluster_name</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">_is_lock_file_present</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks if the lock file &#39;vasp.lock&#39; is there, i.e. if VASP is still working.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">res_bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
+        <span class="n">res_bool</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;./vasp.lock&#39;</span><span class="p">)</span>
+    <span class="n">res_bool</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">res_bool</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res_bool</span>
+
+
+<div class="viewcode-block" id="remove_legacy_projections_suppressed"><a class="viewcode-back" href="../../_ref/dft_managers.vasp_manager.html#dft_managers.vasp_manager.remove_legacy_projections_suppressed">[docs]</a><span class="k">def</span> <span class="nf">remove_legacy_projections_suppressed</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Removes legacy file vasp.suppress_projs if present. &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;./vasp.suppress_projs&#39;</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Removing legacy file vasp.suppress_projs&#39;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;./vasp.suppress_projs&#39;</span><span class="p">)</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="run_initial_scf"><a class="viewcode-back" href="../../_ref/dft_managers.vasp_manager.html#dft_managers.vasp_manager.run_initial_scf">[docs]</a><span class="k">def</span> <span class="nf">run_initial_scf</span><span class="p">(</span><span class="n">number_cores</span><span class="p">,</span> <span class="n">vasp_command</span><span class="p">,</span> <span class="n">cluster_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Starts the VASP child process. Takes care of initializing a clean</span>
 <span class="sd">    environment for the child process. This is needed so that VASP does not</span>
-<span class="sd">    get confused with all the standard slurm environment variables.</span>
+<span class="sd">    get confused with all the standard slurm environment variables. Returns when</span>
+<span class="sd">    VASP has completed its initial scf cycle.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -351,6 +389,7 @@
     <span class="c1"># Removes STOPCAR</span>
     <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">()</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;STOPCAR&#39;</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;STOPCAR&#39;</span><span class="p">)</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 
     <span class="c1"># get MPI env</span>
     <span class="n">vasp_process_id</span> <span class="o">=</span> <span class="mi">0</span>
@@ -375,31 +414,101 @@
     <span class="n">mpi_helpers</span><span class="o">.</span><span class="n">poll_barrier</span><span class="p">(</span><span class="n">mpi</span><span class="o">.</span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="p">)</span>
     <span class="n">vasp_process_id</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">vasp_process_id</span><span class="p">)</span>
 
+    <span class="c1"># Waits for VASP to start</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">_is_lock_file_present</span><span class="p">():</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+    <span class="c1"># Waits for VASP to finish</span>
+    <span class="k">while</span> <span class="n">_is_lock_file_present</span><span class="p">():</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
     <span class="k">return</span> <span class="n">vasp_process_id</span></div>
 
 
-<div class="viewcode-block" id="reactivate"><a class="viewcode-back" href="../../_ref/dft_managers.vasp_manager.html#dft_managers.vasp_manager.reactivate">[docs]</a><span class="k">def</span> <span class="nf">reactivate</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot; Reactivates VASP by creating the vasp.lock file. &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="run_charge_update"><a class="viewcode-back" href="../../_ref/dft_managers.vasp_manager.html#dft_managers.vasp_manager.run_charge_update">[docs]</a><span class="k">def</span> <span class="nf">run_charge_update</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs one step of the charge update with VASP by creating the vasp.lock</span>
+<span class="sd">    file and then waiting until it gets delete by VASP when it has finished.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
         <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./vasp.lock&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+    <span class="c1"># Waits for VASP to finish</span>
+    <span class="k">while</span> <span class="n">_is_lock_file_present</span><span class="p">():</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="is_lock_file_present"><a class="viewcode-back" href="../../_ref/dft_managers.vasp_manager.html#dft_managers.vasp_manager.is_lock_file_present">[docs]</a><span class="k">def</span> <span class="nf">is_lock_file_present</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Checks if the lock file &#39;vasp.lock&#39; is there, i.e. if VASP is still working.</span>
+<div class="viewcode-block" id="read_dft_energy"><a class="viewcode-back" href="../../_ref/dft_managers.vasp_manager.html#dft_managers.vasp_manager.read_dft_energy">[docs]</a><span class="k">def</span> <span class="nf">read_dft_energy</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads DFT energy from the last line of Vasp&#39;s OSZICAR.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;OSZICAR&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">nextline</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="k">while</span> <span class="n">nextline</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">nextline</span>
+            <span class="n">nextline</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">dft_energy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">])</span>
 
-    <span class="n">res_bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">dft_energy</span></div>
+
+
+<div class="viewcode-block" id="read_irred_kpoints"><a class="viewcode-back" href="../../_ref/dft_managers.vasp_manager.html#dft_managers.vasp_manager.read_irred_kpoints">[docs]</a><span class="k">def</span> <span class="nf">read_irred_kpoints</span><span class="p">(</span><span class="n">kpts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Reads the indices of the irreducible k-points from the OUTCAR. &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">read_outcar</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+        <span class="n">has_started_reading</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;IBZKPT_HF&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">has_started_reading</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">has_started_reading</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="s1">&#39;t-inv&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">line</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">10</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">break</span>
+
+    <span class="n">irred_indices</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
-        <span class="n">res_bool</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;./vasp.lock&#39;</span><span class="p">)</span>
-    <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
-    <span class="n">res_bool</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">res_bool</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">res_bool</span></div>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;OUTCAR&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">outcar_data_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">read_outcar</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+        <span class="n">outcar_kpoints</span> <span class="o">=</span> <span class="n">outcar_data_raw</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">outcar_indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">outcar_data_raw</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="mf">.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">outcar_kpoints</span><span class="p">,</span> <span class="n">kpts</span><span class="p">)</span>
+
+        <span class="n">symmetry_mapping</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">outcar_kpoints</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">kpt_outcar</span><span class="p">,</span> <span class="n">outcar_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">outcar_kpoints</span><span class="p">,</span> <span class="n">outcar_indices</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">kpt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kpts</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">kpt_outcar</span><span class="p">,</span> <span class="n">kpt</span><span class="p">):</span>
+                    <span class="c1"># Symmetry-irreducible k points</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">outcar_index</span><span class="p">:</span>
+                        <span class="n">symmetry_mapping</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">outcar_index</span>
+                    <span class="c1"># Symmetry-reducible</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">symmetry_mapping</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">outcar_index</span>
+                    <span class="k">break</span>
+
+            <span class="c1"># Asserts that loop left through break, i.e. a pair was found</span>
+            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">kpt_outcar</span><span class="p">,</span> <span class="n">kpt</span><span class="p">)</span>
+
+        <span class="n">irreds</span><span class="p">,</span> <span class="n">irred_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">symmetry_mapping</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">irreds</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">symmetry_mapping</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">irred_indices</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="kill"><a class="viewcode-back" href="../../_ref/dft_managers.vasp_manager.html#dft_managers.vasp_manager.kill">[docs]</a><span class="k">def</span> <span class="nf">kill</span><span class="p">(</span><span class="n">vasp_process_id</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Kills the VASP process. &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Kills the VASP process. &quot;&quot;&quot;</span>
     <span class="c1"># TODO: if we kill the process in the next step, does it make a difference if we write the STOPCAR</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;STOPCAR&#39;</span><span class="p">,</span> <span class="s1">&#39;wt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_stop</span><span class="p">:</span>
         <span class="n">f_stop</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;LABORT = .TRUE.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>

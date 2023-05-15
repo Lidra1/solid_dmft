@@ -13,9 +13,8 @@
   <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -27,15 +26,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../../index.html" class="icon icon-home"> solid_dmft
-            <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            solid_dmft
+              <img src="../../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.3
+                3.1.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -113,14 +116,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../documentation.html#module-reference-manual">Module reference manual</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../_ref/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_ref/csc_flow.html">csc_flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/csc_flow.html#csc_flow.csc_flow_control"><code class="docutils literal notranslate"><span class="pre">csc_flow_control()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dft_managers.mpi_helpers.html">dft_managers.mpi_helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../_ref/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_ref/dmft_cycle.html">dmft_cycle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/dmft_cycle.html#dmft_cycle.dmft_cycle"><code class="docutils literal notranslate"><span class="pre">dmft_cycle()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/dmft_tools.html">dmft_tools</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
@@ -149,6 +158,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#solver">[  solver  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#dft">[  dft  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#advanced">[  advanced  ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_ref/read_config.html#read_config.read_config"><code class="docutils literal notranslate"><span class="pre">read_config()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../_ref/util.html">util</a><ul>
@@ -226,6 +236,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-4">Version 3.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-3">Version 3.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
@@ -247,7 +259,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
       <li class="breadcrumb-item active">dmft_tools.interaction_hamiltonian</li>
       <li class="wy-breadcrumbs-aside">
@@ -305,7 +317,7 @@
 
 
 <span class="k">def</span> <span class="nf">_extract_U_J_list</span><span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">n_inequiv_shells</span><span class="p">,</span> <span class="n">general_params</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if param_name (&#39;U&#39; or &#39;J&#39;) are a single value or different per</span>
 <span class="sd">    inequivalent shell. If just a single value is given, this value is</span>
 <span class="sd">    applied to each shell.</span>
@@ -331,7 +343,7 @@
 
 
 <span class="k">def</span> <span class="nf">_load_crpa_interaction_matrix</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;UIJKL&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Loads VASP cRPA data to use as an interaction Hamiltonian.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">_round_to_int</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -409,7 +421,7 @@
 
 
 <span class="k">def</span> <span class="nf">_adapt_U_4index_for_SO</span><span class="p">(</span><span class="n">Umat_full</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Changes the four-index U matrix such that for a system consisting of a</span>
 <span class="sd">    single block &#39;ud&#39; with the entries (1, up), (1, down), (2, up), (2, down),</span>
 <span class="sd">    ... the matrix is consistent with the case without spin-orbit coupling.</span>
@@ -435,7 +447,7 @@
 
 
 <span class="k">def</span> <span class="nf">_construct_kanamori</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constructs the Kanamori interaction Hamiltonian. Only Kanamori does not</span>
 <span class="sd">    need the full four-index matrix. Therefore, we can construct it directly</span>
 <span class="sd">    from the parameters U and J.</span>
@@ -475,7 +487,7 @@
 
 
 <span class="k">def</span> <span class="nf">_construct_kanamori_soc</span><span class="p">(</span><span class="n">U_int</span><span class="p">,</span> <span class="n">J_hund</span><span class="p">,</span> <span class="n">n_orb</span><span class="p">,</span> <span class="n">map_operator_structure</span><span class="p">,</span> <span class="n">H_dump</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Adapted from triqs.operators.util.hamiltonians.h_int_kanamori. Assumes</span>
 <span class="sd">    that spin_names == [&#39;ud&#39;] and that map_operator_structure is given.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -561,7 +573,7 @@
 
 
 <span class="k">def</span> <span class="nf">_construct_dynamic</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constructs the interaction Hamiltonian for a frequency-dependent interaction.</span>
 <span class="sd">    Works only without spin-orbit coupling and only for one orbital.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -588,7 +600,7 @@
 
 
 <span class="k">def</span> <span class="nf">_generate_four_index_u_matrix</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates the four-index interaction matrix per impurity with the interaction</span>
 <span class="sd">    parameters U and J (and ratio_F4_F2 for the d shell).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -644,7 +656,7 @@
 
 
 <span class="k">def</span> <span class="nf">_rotate_four_index_matrix</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">Umat_full</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Rotates the four index matrix into the local frame. &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Rotates the four index matrix into the local frame. &quot;&quot;&quot;</span>
 
     <span class="n">ish</span> <span class="o">=</span> <span class="n">sum_k</span><span class="o">.</span><span class="n">inequiv_to_corr</span><span class="p">[</span><span class="n">icrsh</span><span class="p">]</span>
     <span class="c1"># Transposes rotation matrix here because TRIQS has a slightly different definition</span>
@@ -663,7 +675,7 @@
 
 
 <span class="k">def</span> <span class="nf">_construct_density_density</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">Umat_full_rotated</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constructs the density-density Slater-Hamiltonian from the four-index</span>
 <span class="sd">    interaction matrix.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -680,7 +692,7 @@
 
 
 <span class="k">def</span> <span class="nf">_construct_slater</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">Umat_full_rotated</span><span class="p">,</span> <span class="n">icrsh</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constructs the full Slater-Hamiltonian from the four-index interaction</span>
 <span class="sd">    matrix.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -696,7 +708,7 @@
 
 
 <div class="viewcode-block" id="construct"><a class="viewcode-back" href="../../_ref/dmft_tools.interaction_hamiltonian.html#dmft_tools.interaction_hamiltonian.construct">[docs]</a><span class="k">def</span> <span class="nf">construct</span><span class="p">(</span><span class="n">sum_k</span><span class="p">,</span> <span class="n">general_params</span><span class="p">,</span> <span class="n">advanced_params</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constructs the interaction Hamiltonian. Currently implemented are the</span>
 <span class="sd">    Kanamori Hamiltonian (usually for 2 or 3 orbitals), the density-density and</span>
 <span class="sd">    the full Slater Hamiltonian (for 2, 3, or 5 orbitals).</span>

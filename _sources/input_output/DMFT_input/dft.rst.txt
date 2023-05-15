@@ -33,14 +33,25 @@ List of parameters that relate to the DFT calculation, useful mostly when doing 
  
             **type=** int;  **optional**;  **default=**  6
 
-            number of dft iterations per cycle
+            only needed for VASP. Number of DFT iterations to feed the DMFT
+            charge density into DFT, which generally takes multiple Davidson steps.
+            For every DFT iterations, the charge-density correction is recalculated
+            using newly generated projectors and hoppings from the previous DFT run
+
+.. admonition:: n_iter_first 
+ 	:class: intag  
+ 
+            **type=** int;  **optional**;  **default=**  dft/n_iter
+
+            number of DFT iterations in the first charge correction because this
+            first charge correction usually changes the DFT wave functions the most.
 
 .. admonition:: dft_exec 
  	:class: intag  
  
             **type=** string;  **default=**  'vasp_std'
 
-            command for the DFT / VASP executable
+            command for the DFT executable
 
 .. admonition:: store_eigenvals 
  	:class: intag  
@@ -60,10 +71,10 @@ List of parameters that relate to the DFT calculation, useful mostly when doing 
 .. admonition:: projector_type 
  	:class: intag  
  
-            **type=** string;  **optional**;  **default=**  'plo'
+            **type=** string;  **optional**;  **default=**  'w90'
 
             plo: uses VASP's PLO formalism, requires LOCPROJ in the INCAR
-            w90: uses Wannier90, requires LWANNIER90 in the INCAR
+            w90: uses Wannier90 (for VASP and QuantumEspresso)
 
 .. admonition:: w90_exec 
  	:class: intag  

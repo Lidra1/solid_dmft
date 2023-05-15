@@ -13,9 +13,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -27,15 +26,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft
-            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            solid_dmft
+              <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.3
+                3.1.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -113,14 +116,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-reference-manual">Module reference manual</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../_ref/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_ref/csc_flow.html">csc_flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../_ref/csc_flow.html#csc_flow.csc_flow_control"><code class="docutils literal notranslate"><span class="pre">csc_flow_control()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../_ref/dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dft_managers.mpi_helpers.html">dft_managers.mpi_helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../_ref/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_ref/dmft_cycle.html">dmft_cycle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../_ref/dmft_cycle.html#dmft_cycle.dmft_cycle"><code class="docutils literal notranslate"><span class="pre">dmft_cycle()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../_ref/dmft_tools.html">dmft_tools</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
@@ -149,6 +158,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../_ref/read_config.html#solver">[  solver  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/read_config.html#dft">[  dft  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/read_config.html#advanced">[  advanced  ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../_ref/read_config.html#read_config.read_config"><code class="docutils literal notranslate"><span class="pre">read_config()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../_ref/util.html">util</a><ul>
@@ -226,6 +236,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-4">Version 3.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-3">Version 3.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
@@ -247,7 +259,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
       <li class="breadcrumb-item active">csc_flow</li>
       <li class="wy-breadcrumbs-aside">
@@ -286,7 +298,6 @@
 <span class="sd">contains the charge self-consistency flow control functions</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">shlex</span>
@@ -296,13 +307,11 @@
 <span class="c1"># triqs</span>
 <span class="kn">from</span> <span class="nn">h5</span> <span class="kn">import</span> <span class="n">HDFArchive</span>
 <span class="kn">import</span> <span class="nn">triqs.utility.mpi</span> <span class="k">as</span> <span class="nn">mpi</span>
+
 <span class="kn">from</span> <span class="nn">triqs_dft_tools.converters.wannier90</span> <span class="kn">import</span> <span class="n">Wannier90Converter</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">triqs_dft_tools.converters.vasp</span> <span class="kn">import</span> <span class="n">VaspConverter</span>
-    <span class="kn">from</span> <span class="nn">triqs_dft_tools.converters.plovasp.vaspio</span> <span class="kn">import</span> <span class="n">VaspData</span>
-    <span class="kn">import</span> <span class="nn">triqs_dft_tools.converters.plovasp.converter</span> <span class="k">as</span> <span class="nn">plo_converter</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="k">pass</span>
+<span class="kn">from</span> <span class="nn">triqs_dft_tools.converters.vasp</span> <span class="kn">import</span> <span class="n">VaspConverter</span>
+<span class="kn">from</span> <span class="nn">triqs_dft_tools.converters.plovasp.vaspio</span> <span class="kn">import</span> <span class="n">VaspData</span>
+<span class="kn">import</span> <span class="nn">triqs_dft_tools.converters.plovasp.converter</span> <span class="k">as</span> <span class="nn">plo_converter</span>
 
 <span class="kn">from</span> <span class="nn">solid_dmft.dmft_cycle</span> <span class="kn">import</span> <span class="n">dmft_cycle</span>
 <span class="kn">from</span> <span class="nn">solid_dmft.dft_managers</span> <span class="kn">import</span> <span class="n">vasp_manager</span> <span class="k">as</span> <span class="n">vasp</span>
@@ -357,143 +366,37 @@
             <span class="k">assert</span> <span class="n">archive</span><span class="p">[</span><span class="s1">&#39;dft_input&#39;</span><span class="p">][</span><span class="s1">&#39;use_rotations&#39;</span><span class="p">],</span> <span class="s1">&#39;Creation of rot_mat failed in W90 converter&#39;</span>
     <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">_run_qe</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">,</span> <span class="n">iter_dmft</span><span class="p">,</span> <span class="n">iteration_offset</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_full_qe_run</span><span class="p">(</span><span class="n">seedname</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;initial&#39;</span><span class="p">,</span> <span class="s1">&#39;restart&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">)</span>
+
     <span class="c1"># runs a full iteration of DFT</span>
-    <span class="n">start_qe</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n_cores</span><span class="p">,</span> <span class="n">calc_type</span><span class="p">:</span> <span class="n">qe</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">n_cores</span><span class="p">,</span> <span class="n">calc_type</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_exec&#39;</span><span class="p">],</span>
-                                                   <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;mpi_env&#39;</span><span class="p">],</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">])</span>
+    <span class="n">qe_wrapper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">calc_type</span><span class="p">:</span> <span class="n">qe</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="n">calc_type</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_exec&#39;</span><span class="p">],</span>
+                                          <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;mpi_env&#39;</span><span class="p">],</span> <span class="n">seedname</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">iter_dmft</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># scf</span>
-        <span class="n">qe_scf</span> <span class="o">=</span> <span class="n">start_qe</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="s1">&#39;scf&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span> <span class="c1"># use modified scf</span>
+    <span class="c1"># Initially run an scf calculation</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;initial&#39;</span><span class="p">:</span>
+        <span class="n">qe_wrapper</span><span class="p">(</span><span class="s1">&#39;scf&#39;</span><span class="p">)</span>
+    <span class="c1"># For charge update, use mode scf</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;update&#39;</span><span class="p">:</span>
+        <span class="n">qe_wrapper</span><span class="p">(</span><span class="s1">&#39;mod_scf&#39;</span><span class="p">)</span>
 
-        <span class="c1"># if calculation is restarted, need to check in first iteration if DFT step needs to be skipped</span>
-        <span class="n">iter_one_shot</span> <span class="o">=</span> <span class="p">(</span><span class="n">iter_dmft</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;n_iter_dmft_first&#39;</span><span class="p">])</span><span class="o">%</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;n_iter_dmft_per&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">iteration_offset</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">iter_dmft</span> <span class="o">==</span> <span class="n">iteration_offset</span> <span class="o">+</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">iter_one_shot</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: ...skipping DFT step&#39;</span><span class="p">)</span>
-            <span class="k">return</span>
-
-        <span class="n">qe_scf</span> <span class="o">=</span> <span class="n">start_qe</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="s1">&#39;mod_scf&#39;</span><span class="p">)</span>
-    <span class="c1"># optionally do bnd, bands, proj if files are present</span>
+    <span class="c1"># Rest is executed regardless of mode</span>
+    <span class="c1"># Optionally does bnd, bands, proj if files are present</span>
     <span class="k">for</span> <span class="n">nscf</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;bnd&#39;</span><span class="p">,</span> <span class="s1">&#39;bands&#39;</span><span class="p">,</span> <span class="s1">&#39;proj&#39;</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">general_params</span><span class="p">[</span><span class="s2">&quot;seedname&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">nscf</span><span class="si">}</span><span class="s1">.in&#39;</span><span class="p">):</span>
-            <span class="n">qe_nscf</span> <span class="o">=</span> <span class="n">start_qe</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="n">nscf</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">nscf</span><span class="si">}</span><span class="s1">.in&#39;</span><span class="p">):</span>
+            <span class="n">qe_wrapper</span><span class="p">(</span><span class="n">nscf</span><span class="p">)</span>
+
     <span class="c1"># nscf</span>
-    <span class="n">qe_nscf</span> <span class="o">=</span> <span class="n">start_qe</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="s1">&#39;nscf&#39;</span><span class="p">)</span>
+    <span class="n">qe_wrapper</span><span class="p">(</span><span class="s1">&#39;nscf&#39;</span><span class="p">)</span>
     <span class="c1"># w90 parts</span>
-    <span class="n">qe_w90</span> <span class="o">=</span> <span class="n">start_qe</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="s1">&#39;win_pp&#39;</span><span class="p">)</span>
-    <span class="n">qe_pw2wan</span> <span class="o">=</span> <span class="n">start_qe</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="s1">&#39;pw2wan&#39;</span><span class="p">)</span>
-    <span class="n">qe_w90</span> <span class="o">=</span> <span class="n">start_qe</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="s1">&#39;win&#39;</span><span class="p">)</span>
+    <span class="n">qe_wrapper</span><span class="p">(</span><span class="s1">&#39;win_pp&#39;</span><span class="p">)</span>
+    <span class="n">qe_wrapper</span><span class="p">(</span><span class="s1">&#39;pw2wan&#39;</span><span class="p">)</span>
+    <span class="n">qe_wrapper</span><span class="p">(</span><span class="s1">&#39;win&#39;</span><span class="p">)</span>
+    <span class="n">_run_w90converter</span><span class="p">(</span><span class="n">seedname</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;w90_tolerance&#39;</span><span class="p">])</span>
 
-    <span class="c1"># launch Wannier90Converter</span>
-    <span class="n">_run_w90converter</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">],</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;w90_tolerance&#39;</span><span class="p">])</span>
-
-<div class="viewcode-block" id="read_dft_energy_vasp"><a class="viewcode-back" href="../_ref/csc_flow.html#csc_flow.read_dft_energy_vasp">[docs]</a><span class="k">def</span> <span class="nf">read_dft_energy_vasp</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Reads DFT energy from the last line of Vasp&#39;s OSZICAR.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;OSZICAR&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-            <span class="n">nextline</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-            <span class="k">while</span> <span class="n">nextline</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
-                <span class="n">line</span> <span class="o">=</span> <span class="n">nextline</span>
-                <span class="n">nextline</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-        <span class="n">dft_energy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">])</span>
-    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OSZICAR not found, cannot read DFT energy&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to read DFT energy from OSZICAR&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DFT energy read from OSZICAR&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">dft_energy</span></div>
-
-<div class="viewcode-block" id="read_dft_energy_qe"><a class="viewcode-back" href="../_ref/csc_flow.html#csc_flow.read_dft_energy_qe">[docs]</a><span class="k">def</span> <span class="nf">read_dft_energy_qe</span><span class="p">(</span><span class="n">seedname</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Reads DFT energy from quantum espresso&#39;s seedname.scf.out.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">RYDBERG</span> <span class="o">=</span> <span class="mf">13.605698066</span> <span class="c1"># eV</span>
-
-    <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;mod_scf&#39;</span><span class="p">,</span> <span class="s1">&#39;scf&#39;</span><span class="p">]:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1">.out&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-                <span class="n">dft_output</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">dft_output</span><span class="p">:</span>
-                <span class="k">if</span> <span class="s1">&#39;total energy&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-                    <span class="n">dft_energy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">RYDBERG</span>
-            <span class="k">break</span>
-        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;scf&#39;</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1">.out not found, cannot read DFT energy.&#39;</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-            <span class="k">pass</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;DFT energy read from </span><span class="si">{</span><span class="n">seedname</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1">.out&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">dft_energy</span></div>
-
-
-<span class="k">def</span> <span class="nf">_set_projections_suppressed</span><span class="p">(</span><span class="n">suppressed</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">suppressed</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Writing suppress projectors file&#39;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./vasp.suppress_projs&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;./vasp.suppress_projs&#39;</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Removing suppress projectors file&#39;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;./vasp.suppress_projs&#39;</span><span class="p">)</span>
-    <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">_read_irred_kpoints_from_vasp</span><span class="p">(</span><span class="n">general_params</span><span class="p">):</span>
-    <span class="n">irred_indices</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
-        <span class="k">with</span> <span class="n">HDFArchive</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
-            <span class="n">kpts</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="s1">&#39;dft_input/kpts&#39;</span><span class="p">]</span>
-
-        <span class="k">def</span> <span class="nf">read_outcar</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
-            <span class="n">has_started_reading</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-                <span class="k">if</span> <span class="s1">&#39;IBZKPT_HF&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-                    <span class="n">has_started_reading</span> <span class="o">=</span> <span class="kc">True</span>
-                    <span class="k">continue</span>
-
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">has_started_reading</span><span class="p">:</span>
-                    <span class="k">continue</span>
-
-                <span class="k">if</span> <span class="s1">&#39;t-inv&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-                    <span class="k">yield</span> <span class="n">line</span>
-                    <span class="k">continue</span>
-
-                <span class="k">if</span> <span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">10</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-                    <span class="k">break</span>
-
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;OUTCAR&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-            <span class="n">outcar_data_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">read_outcar</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-        <span class="n">outcar_kpoints</span> <span class="o">=</span> <span class="n">outcar_data_raw</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-        <span class="n">outcar_indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">outcar_data_raw</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="mf">.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-        <span class="n">symmetry_mapping</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">outcar_kpoints</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">kpt_outcar</span><span class="p">,</span> <span class="n">outcar_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">outcar_kpoints</span><span class="p">,</span> <span class="n">outcar_indices</span><span class="p">)):</span>
-            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">kpt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kpts</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">kpt_outcar</span><span class="p">,</span> <span class="n">kpt</span><span class="p">):</span>
-                    <span class="c1"># Symmetry-irreducible k points</span>
-                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">outcar_index</span><span class="p">:</span>
-                        <span class="n">symmetry_mapping</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">outcar_index</span>
-                    <span class="c1"># Symmetry-reducible</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">symmetry_mapping</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">outcar_index</span>
-                    <span class="k">break</span>
-
-            <span class="c1"># Asserts that loop left through break, i.e. a pair was found</span>
-            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">kpt_outcar</span><span class="p">,</span> <span class="n">kpt</span><span class="p">)</span>
-
-        <span class="n">irreds</span><span class="p">,</span> <span class="n">irred_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">symmetry_mapping</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">irreds</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">symmetry_mapping</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">irred_indices</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">_store_dft_eigvals</span><span class="p">(</span><span class="n">path_to_h5</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">projector_type</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    save the eigenvalues from LOCPROJ/wannier90 file to h5 archive</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="n">HDFArchive</span><span class="p">(</span><span class="n">path_to_h5</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
@@ -513,10 +416,93 @@
 
         <span class="n">archive</span><span class="p">[</span><span class="s1">&#39;dft_eigvals&#39;</span><span class="p">][</span><span class="s1">&#39;it_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">iteration</span><span class="p">)]</span> <span class="o">=</span> <span class="n">eigenvals</span>
 
+<span class="k">def</span> <span class="nf">_full_vasp_run</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">,</span> <span class="n">initial_run</span><span class="p">,</span> <span class="n">n_iter_dft</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sum_k</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs a complete DFT cycle in Vasp and the correct converter. If</span>
+<span class="sd">    initial_run, Vasp is starting and performing a normal scf calculation</span>
+<span class="sd">    followed by a converter run. Otherwise, it performs n_iter_dft runs of DFT,</span>
+<span class="sd">    generating the projectors with the converter, and recalculating the charge</span>
+<span class="sd">    density correction with the new projectors.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    general_params : dict</span>
+<span class="sd">        general parameters as a dict</span>
+<span class="sd">    dft_params : dict</span>
+<span class="sd">        dft parameters as a dict</span>
+<span class="sd">    initial_run : bool</span>
+<span class="sd">        True when VASP is called for the first time. initial_run = True requires</span>
+<span class="sd">        n_iter_dft = 1.</span>
+<span class="sd">    n_iter_dft : int, optional</span>
+<span class="sd">        Number of DFT iterations to perform. The default is 1.</span>
+<span class="sd">    sum_k : SumkDFT, optional</span>
+<span class="sd">        The SumkDFT object required to recalculate the charge-density correction</span>
+<span class="sd">        if n_iter_dft &gt; 1. The default is None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    vasp_process_id : int</span>
+<span class="sd">        The process ID of the forked VASP process.</span>
+<span class="sd">    irred_indices : np.array</span>
+<span class="sd">        Integer indices of kpts in the irreducible Brillouin zone. Only needed</span>
+<span class="sd">        for Wannier projectors, which are normally run with symmetries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="k">if</span> <span class="n">initial_run</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">n_iter_dft</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">n_iter_dft</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">sum_k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Sumk object needed to run multiple DFT iterations&#39;</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter_dft</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">initial_run</span><span class="p">:</span>
+            <span class="n">vasp_process_id</span> <span class="o">=</span> <span class="n">vasp</span><span class="o">.</span><span class="n">run_initial_scf</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_exec&#39;</span><span class="p">],</span>
+                                                   <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;mpi_env&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vasp_process_id</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">vasp</span><span class="o">.</span><span class="n">run_charge_update</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;projector_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;plo&#39;</span><span class="p">:</span>
+            <span class="n">_run_plo_converter</span><span class="p">(</span><span class="n">general_params</span><span class="p">)</span>
+            <span class="n">irred_indices</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;projector_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;w90&#39;</span><span class="p">:</span>
+            <span class="n">_run_wannier90</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">)</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+            <span class="n">_run_w90converter</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">],</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;w90_tolerance&#39;</span><span class="p">])</span>
+            <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+            <span class="n">kpts</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
+                <span class="k">with</span> <span class="n">HDFArchive</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+                    <span class="n">kpts</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="s1">&#39;dft_input/kpts&#39;</span><span class="p">]</span>
+            <span class="n">irred_indices</span> <span class="o">=</span> <span class="n">vasp</span><span class="o">.</span><span class="n">read_irred_kpoints</span><span class="p">(</span><span class="n">kpts</span><span class="p">)</span>
+
+        <span class="c1"># No need for recalculation of density correction if we run DMFT next</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n_iter_dft</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="c1"># Recalculates the density correction</span>
+        <span class="c1"># Reads in new projectors and hopping and updates chemical potential</span>
+        <span class="c1"># rot_mat is not updated since it&#39;s more closely related to the local problem than DFT</span>
+        <span class="c1"># New fermi weights are directly read in calc_density_correction</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
+            <span class="k">with</span> <span class="n">HDFArchive</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+                <span class="n">sum_k</span><span class="o">.</span><span class="n">proj_mat</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="s1">&#39;dft_input/proj_mat&#39;</span><span class="p">]</span>
+                <span class="n">sum_k</span><span class="o">.</span><span class="n">hopping</span> <span class="o">=</span> <span class="n">archive</span><span class="p">[</span><span class="s1">&#39;dft_input/hopping&#39;</span><span class="p">]</span>
+        <span class="n">sum_k</span><span class="o">.</span><span class="n">proj_mat</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">proj_mat</span><span class="p">)</span>
+        <span class="n">sum_k</span><span class="o">.</span><span class="n">hopping</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">sum_k</span><span class="o">.</span><span class="n">hopping</span><span class="p">)</span>
+        <span class="n">sum_k</span><span class="o">.</span><span class="n">calc_mu</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;prec_mu&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Writes out GAMMA file</span>
+        <span class="n">sum_k</span><span class="o">.</span><span class="n">calc_density_correction</span><span class="p">(</span><span class="n">dm_type</span><span class="o">=</span><span class="s1">&#39;vasp&#39;</span><span class="p">,</span>  <span class="n">kpts_to_write</span><span class="o">=</span><span class="n">irred_indices</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">vasp_process_id</span><span class="p">,</span> <span class="n">irred_indices</span>
+
+
 <span class="c1"># Main CSC flow method</span>
 <div class="viewcode-block" id="csc_flow_control"><a class="viewcode-back" href="../_ref/csc_flow.html#csc_flow.csc_flow_control">[docs]</a><span class="k">def</span> <span class="nf">csc_flow_control</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">solver_params</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">,</span> <span class="n">advanced_params</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    function to run the csc cycle. It writes and removes the vasp.lock file to</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to run the csc cycle. It writes and removes the vasp.lock file to</span>
 <span class="sd">    start and stop Vasp, run the converter, run the dmft cycle and abort the job</span>
 <span class="sd">    if all iterations are finished.</span>
 
@@ -530,28 +516,16 @@
 <span class="sd">        dft parameters as a dict</span>
 <span class="sd">    advanced_params : dict</span>
 <span class="sd">        advanced parameters as a dict</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    nothing</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">iter_dft</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">irred_indices</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span><span class="p">:</span>
-        <span class="c1"># if GAMMA file already exists, load it by doing extra DFT iterations</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;GAMMA&#39;</span><span class="p">):</span>
-            <span class="n">iter_dft</span> <span class="o">=</span> <span class="o">-</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_iter&#39;</span><span class="p">]</span>
-            <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="c1"># Removes legacy file vasp.suppress_projs if present</span>
+    <span class="n">vasp</span><span class="o">.</span><span class="n">remove_legacy_projections_suppressed</span><span class="p">()</span>
 
-        <span class="n">vasp_process_id</span> <span class="o">=</span> <span class="n">vasp</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_cores&#39;</span><span class="p">],</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_exec&#39;</span><span class="p">],</span>
-                                     <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;mpi_env&#39;</span><span class="p">])</span>
-        <span class="c1"># Removes projection suppression file if present</span>
-        <span class="n">_set_projections_suppressed</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Waiting for VASP to start (lock appears)...&#39;</span><span class="p">)</span>
-        <span class="k">while</span> <span class="ow">not</span> <span class="n">vasp</span><span class="o">.</span><span class="n">is_lock_file_present</span><span class="p">():</span>
-            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># if GAMMA file already exists, load it by doing extra DFT iterations</span>
+    <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;GAMMA&#39;</span><span class="p">):</span>
+        <span class="c1"># TODO: implement</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;GAMMA file found but restarting from updated &#39;</span>
+                                  <span class="o">+</span> <span class="s1">&#39;charge density not yet implemented for Vasp.&#39;</span><span class="p">)</span>
 
     <span class="c1"># Reads in iteration offset if restarting</span>
     <span class="n">iteration_offset</span> <span class="o">=</span> <span class="mi">0</span>
@@ -562,68 +536,51 @@
     <span class="n">iteration_offset</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">iteration_offset</span><span class="p">)</span>
 
     <span class="n">iter_dmft</span> <span class="o">=</span> <span class="n">iteration_offset</span><span class="o">+</span><span class="mi">1</span>
+
+    <span class="c1"># Runs DFT once and converter</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="n">irred_indices</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">start_time_dft</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
-    <span class="k">while</span> <span class="n">iter_dmft</span> <span class="o">&lt;=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;n_iter_dmft&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">iteration_offset</span><span class="p">:</span>
-        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Running </span><span class="si">{}</span><span class="s1">...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span>
-        <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Running </span><span class="si">{}</span><span class="s1">...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span>
 
-        <span class="c1"># vasp dft run</span>
-        <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span><span class="p">:</span>
-            <span class="k">while</span> <span class="n">vasp</span><span class="o">.</span><span class="n">is_lock_file_present</span><span class="p">():</span>
-                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="c1"># qe dft run</span>
-        <span class="k">elif</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;qe&#39;</span><span class="p">:</span>
-            <span class="n">_run_qe</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">,</span> <span class="n">iter_dmft</span><span class="p">,</span> <span class="n">iteration_offset</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;qe&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">iteration_offset</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">_full_qe_run</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">],</span> <span class="n">dft_params</span><span class="p">,</span> <span class="s1">&#39;initial&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_full_qe_run</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">],</span> <span class="n">dft_params</span><span class="p">,</span> <span class="s1">&#39;restart&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span><span class="p">:</span>
+        <span class="n">vasp_process_id</span><span class="p">,</span> <span class="n">irred_indices</span> <span class="o">=</span> <span class="n">_full_vasp_run</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
-        <span class="c1"># check if we should do another DFT iteration or go on with DMFT</span>
-        <span class="n">iter_dft</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span> <span class="ow">and</span> <span class="p">((</span><span class="n">iter_dft</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_iter&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">iter_dft</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="n">suppressed</span> <span class="o">=</span> <span class="n">iter_dft</span><span class="o">%</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_iter&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">iter_dft</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">0</span>
-            <span class="n">_set_projections_suppressed</span><span class="p">(</span><span class="n">suppressed</span><span class="p">)</span>
-            <span class="n">vasp</span><span class="o">.</span><span class="n">reactivate</span><span class="p">()</span>
-            <span class="k">continue</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="n">end_time_dft</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+    <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: DFT cycle took </span><span class="si">{:10.3f}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end_time_dft</span><span class="o">-</span><span class="n">start_time_dft</span><span class="p">))</span>
 
-        <span class="n">end_time_dft</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
-        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: DFT cycle took </span><span class="si">{:10.4f}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end_time_dft</span><span class="o">-</span><span class="n">start_time_dft</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span><span class="p">:</span>
-            <span class="c1"># Runs the converter</span>
-            <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;projector_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;plo&#39;</span><span class="p">:</span>
-                <span class="n">_run_plo_converter</span><span class="p">(</span><span class="n">general_params</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;projector_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;w90&#39;</span><span class="p">:</span>
-                <span class="n">_run_wannier90</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">)</span>
-                <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
-                <span class="n">_run_w90converter</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">],</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;w90_tolerance&#39;</span><span class="p">])</span>
-                <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
-                <span class="n">irred_indices</span> <span class="o">=</span> <span class="n">_read_irred_kpoints_from_vasp</span><span class="p">(</span><span class="n">general_params</span><span class="p">)</span>
-                <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
-
-        <span class="c1"># Writes eigenvals to archive if requested</span>
+    <span class="c1"># Now that everything is ready, starts DFT+DMFT loop</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">dft_energy</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
-            <span class="c1"># TODO: not yet compatible with dft_code = qe</span>
+            <span class="c1"># Writes eigenvals to archive if requested</span>
             <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;store_eigenvals&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;qe&#39;</span><span class="p">:</span>
+                    <span class="c1"># TODO: implement</span>
+                    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;store_eigenvals not yet compatible with dft_code = qe&#39;</span><span class="p">)</span>
                 <span class="n">_store_dft_eigvals</span><span class="p">(</span><span class="n">path_to_h5</span><span class="o">=</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.h5&#39;</span><span class="p">,</span>
                                    <span class="n">iteration</span><span class="o">=</span><span class="n">iter_dmft</span><span class="p">,</span>
                                    <span class="n">projector_type</span><span class="o">=</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;projector_type&#39;</span><span class="p">])</span>
 
+            <span class="c1"># Reads the DFT energy</span>
             <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span><span class="p">:</span>
-                <span class="n">dft_energy</span> <span class="o">=</span> <span class="n">read_dft_energy_vasp</span><span class="p">()</span>
+                <span class="n">dft_energy</span> <span class="o">=</span> <span class="n">vasp</span><span class="o">.</span><span class="n">read_dft_energy</span><span class="p">()</span>
             <span class="k">elif</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;qe&#39;</span><span class="p">:</span>
-                <span class="n">dft_energy</span> <span class="o">=</span> <span class="n">read_dft_energy_qe</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">])</span>
+                <span class="n">dft_energy</span> <span class="o">=</span> <span class="n">qe</span><span class="o">.</span><span class="n">read_dft_energy</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">],</span> <span class="n">iter_dmft</span><span class="p">)</span>
         <span class="n">dft_energy</span> <span class="o">=</span> <span class="n">mpi</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">dft_energy</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calling dmft_cycle&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DMFT iteration </span><span class="si">{}</span><span class="s1"> / </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">iter_dmft</span><span class="p">,</span>
-                                                  <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;n_iter_dmft&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">iteration_offset</span><span class="p">))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">80</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span><span class="o">*</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;Calling dmft_cycle&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
             <span class="n">start_time_dmft</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
 
-        <span class="c1"># Determines number of steps</span>
+        <span class="c1"># Determines number of DMFT steps</span>
         <span class="k">if</span> <span class="n">iter_dmft</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">iter_one_shot</span> <span class="o">=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;n_iter_dmft_first&#39;</span><span class="p">]</span>
         <span class="k">elif</span> <span class="n">iteration_offset</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">iter_dmft</span> <span class="o">==</span> <span class="n">iteration_offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
@@ -637,8 +594,8 @@
 
         <span class="c1">############################################################</span>
         <span class="c1"># run the dmft_cycle</span>
-        <span class="n">is_converged</span> <span class="o">=</span> <span class="n">dmft_cycle</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">solver_params</span><span class="p">,</span> <span class="n">advanced_params</span><span class="p">,</span>
-                                  <span class="n">dft_params</span><span class="p">,</span> <span class="n">iter_one_shot</span><span class="p">,</span> <span class="n">irred_indices</span><span class="p">,</span> <span class="n">dft_energy</span><span class="p">)</span>
+        <span class="n">is_converged</span><span class="p">,</span> <span class="n">sum_k</span> <span class="o">=</span> <span class="n">dmft_cycle</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">solver_params</span><span class="p">,</span> <span class="n">advanced_params</span><span class="p">,</span>
+                                         <span class="n">dft_params</span><span class="p">,</span> <span class="n">iter_one_shot</span><span class="p">,</span> <span class="n">irred_indices</span><span class="p">,</span> <span class="n">dft_energy</span><span class="p">)</span>
         <span class="c1">############################################################</span>
 
         <span class="n">iter_dmft</span> <span class="o">+=</span> <span class="n">iter_one_shot</span>
@@ -646,27 +603,37 @@
         <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
             <span class="n">end_time_dmft</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DMFT cycle took </span><span class="si">{:10.4f}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end_time_dmft</span><span class="o">-</span><span class="n">start_time_dmft</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DMFT cycle took </span><span class="si">{:10.3f}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end_time_dmft</span><span class="o">-</span><span class="n">start_time_dmft</span><span class="p">))</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">80</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">is_converged</span><span class="p">:</span>
+        <span class="c1"># If all steps are executed or calculation is converged, finish DFT+DMFT loop</span>
+        <span class="k">if</span> <span class="n">is_converged</span> <span class="ow">or</span> <span class="n">iter_dmft</span> <span class="o">&gt;</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;n_iter_dmft&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">iteration_offset</span><span class="p">:</span>
             <span class="k">break</span>
 
-        <span class="c1"># Reactivates Vasp if we do another run</span>
-        <span class="k">if</span> <span class="n">iter_dmft</span> <span class="o">&lt;=</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;n_iter_dmft&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">iteration_offset</span><span class="p">:</span>
-            <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="c1"># Restarts DFT</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="n">start_time_dft</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Running </span><span class="si">{}</span><span class="s1">...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span>
 
-            <span class="n">start_time_dft</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span><span class="p">:</span>
-                <span class="n">_set_projections_suppressed</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_iter&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
-                <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Reactivating VASP&#39;</span><span class="p">)</span>
-                <span class="n">vasp</span><span class="o">.</span><span class="n">reactivate</span><span class="p">()</span>
+        <span class="c1"># Runs DFT and converter</span>
+        <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;qe&#39;</span><span class="p">:</span>
+            <span class="n">_full_qe_run</span><span class="p">(</span><span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;seedname&#39;</span><span class="p">],</span> <span class="n">dft_params</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span><span class="p">:</span>
+            <span class="c1"># Determines number of DFT steps</span>
+            <span class="k">if</span> <span class="n">iter_dmft</span> <span class="o">==</span> <span class="n">general_params</span><span class="p">[</span><span class="s1">&#39;n_iter_dmft_first&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">n_iter_dft</span> <span class="o">=</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_iter_first&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">n_iter_dft</span> <span class="o">=</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;n_iter&#39;</span><span class="p">]</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">irred_indices</span> <span class="o">=</span> <span class="n">_full_vasp_run</span><span class="p">(</span><span class="n">general_params</span><span class="p">,</span> <span class="n">dft_params</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">n_iter_dft</span><span class="p">,</span> <span class="n">sum_k</span><span class="p">)</span>
 
-    <span class="c1"># Stops after maximum number of dmft iterations or convergence</span>
-    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Stopping </span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()),</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span><span class="p">:</span>
-            <span class="n">vasp</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">vasp_process_id</span><span class="p">)</span></div>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="n">end_time_dft</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+        <span class="n">mpi</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: DFT cycle took </span><span class="si">{:10.3f}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end_time_dft</span><span class="o">-</span><span class="n">start_time_dft</span><span class="p">))</span>
+
+    <span class="c1"># Kills background VASP process for clean end</span>
+    <span class="k">if</span> <span class="n">mpi</span><span class="o">.</span><span class="n">is_master_node</span><span class="p">()</span> <span class="ow">and</span> <span class="n">dft_params</span><span class="p">[</span><span class="s1">&#39;dft_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;vasp&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  solid_dmft: Stopping VASP</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">vasp</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">vasp_process_id</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

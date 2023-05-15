@@ -13,9 +13,8 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -29,15 +28,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="index.html" class="icon icon-home"> solid_dmft
-            <img src="_static/logo_no_text.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            solid_dmft
+              <img src="_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.3
+                3.1.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -115,14 +118,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="documentation.html#module-reference-manual">Module reference manual</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_ref/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_ref/csc_flow.html">csc_flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_ref/csc_flow.html#csc_flow.csc_flow_control"><code class="docutils literal notranslate"><span class="pre">csc_flow_control()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="_ref/dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="_ref/dft_managers.mpi_helpers.html">dft_managers.mpi_helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_ref/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_ref/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="_ref/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_ref/dmft_cycle.html">dmft_cycle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_ref/dmft_cycle.html#dmft_cycle.dmft_cycle"><code class="docutils literal notranslate"><span class="pre">dmft_cycle()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="_ref/dmft_tools.html">dmft_tools</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="_ref/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_ref/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
@@ -151,6 +160,7 @@
 <li class="toctree-l4"><a class="reference internal" href="_ref/read_config.html#solver">[  solver  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_ref/read_config.html#dft">[  dft  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="_ref/read_config.html#advanced">[  advanced  ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="_ref/read_config.html#read_config.read_config"><code class="docutils literal notranslate"><span class="pre">read_config()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="_ref/util.html">util</a><ul>
@@ -228,6 +238,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-1-4">Version 3.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-1-3">Version 3.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
@@ -249,7 +261,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Installation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
@@ -285,27 +297,27 @@
 }
 </style>
 <div class="section" id="installation">
-<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p class="first">The <a class="reference external" href="https://triqs.github.io/triqs/latest/index.html#welcome" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.1.1)"><span class="xref std std-ref">TRIQS</span></a> library, see <a class="reference external" href="https://triqs.github.io/triqs/latest/install.html" rel="noopener noreferrer" target="_blank">TRIQS installation instruction</a>.
 In the following, we assume that <a class="reference external" href="https://triqs.github.io/triqs/latest/index.html#welcome" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.1.1)"><span class="xref std std-ref">TRIQS</span></a>, <a class="reference external" href="https://triqs.github.io/dft_tools" rel="noopener noreferrer" target="_blank">triqs/dft_tools</a>, and at least one of the impurity solvers <a class="reference external" href="https://triqs.github.io/triqs/latest/applications.html" rel="noopener noreferrer" target="_blank">available in TRIQS</a>, e.g. cthyb, HubbardI, ctseg, FTPS, or ctint is installed in the directory <code class="docutils literal notranslate"><span class="pre">path_to_triqs</span></code>.</p>
 </li>
 <li><p class="first">Make sure to install besides the triqs requirements also the python packages:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip3 install --user scipy argparse pytest
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>scipy<span class="w"> </span>argparse<span class="w"> </span>pytest
 </pre></div>
 </div>
 </li>
 <li><p class="first">To build the documentation the following extra python packages are needed:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip3 install --user sphinx sphinx-autobuild pandoc nbsphinx linkify-it-py sphinx_rtd_theme myst-parser
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>sphinx<span class="w"> </span>sphinx-autobuild<span class="w"> </span>pandoc<span class="w"> </span>nbsphinx<span class="w"> </span>linkify-it-py<span class="w"> </span>sphinx_rtd_theme<span class="w"> </span>myst-parser
 </pre></div>
 </div>
 </li>
 </ol>
 </div>
 <div class="section" id="installation-via-pip">
-<h2>Installation via pip<a class="headerlink" href="#installation-via-pip" title="Permalink to this headline"></a></h2>
+<h2>Installation via pip<a class="headerlink" href="#installation-via-pip" title="Permalink to this heading"></a></h2>
 <p>You can install the latest solid_dmft release simply via pip (PyPi):
 <code class="docutils literal notranslate"><span class="pre">`</span>
 <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">solid_dmft</span>
@@ -313,66 +325,66 @@ In the following, we assume that <a class="reference external" href="https://tri
 However, please make sure that you have a valid TRIQS and TRIQS/DFTTools installation matching the version of solid_dmft. Furthermore, you need at least one of the supported DMFT impurity solvers installed to use solid_dmft.</p>
 </div>
 <div class="section" id="manual-installation-via-cmake">
-<h2>Manual installation via CMake<a class="headerlink" href="#manual-installation-via-cmake" title="Permalink to this headline"></a></h2>
+<h2>Manual installation via CMake<a class="headerlink" href="#manual-installation-via-cmake" title="Permalink to this heading"></a></h2>
 <p>We provide hereafter the build instructions in the form of a documented bash script. Please change the variable INSTALL_PREFIX to point to your TRIQS installation directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">INSTALL_PREFIX</span><span class="o">=</span>/path/to/triqs
 <span class="c1"># source the triqsvars.sh file from your TRIQS installation to load the TRIQS environment</span>
-<span class="nb">source</span> <span class="k">$(</span>INSTALL_PREFIX<span class="k">)</span>/share/triqs/triqsvars.sh
+<span class="nb">source</span><span class="w"> </span><span class="k">$(</span>INSTALL_PREFIX<span class="k">)</span>/share/triqs/triqsvars.sh
 
 <span class="c1"># clone the flatironinstitute/solid_dmft repository from GitHub</span>
-git clone https://github.com/flatironinstitute/solid_dmft solid_dmft.src
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flatironinstitute/solid_dmft<span class="w"> </span>solid_dmft.src
 
 <span class="c1"># checkout the branch of solid_dmft matching your triqs version.</span>
 <span class="c1"># For example if you use the 3.1.x branch of triqs, dfttools. and cthyb</span>
-git checkout <span class="m">3</span>.1.x
+git<span class="w"> </span>checkout<span class="w"> </span><span class="m">3</span>.1.x
 
 <span class="c1"># Create and move to a new directory where you will compile the code</span>
-mkdir solid_dmft.build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> solid_dmft.build
+mkdir<span class="w"> </span>solid_dmft.build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>solid_dmft.build
 
 <span class="c1"># In the build directory call cmake, including any additional custom CMake options, see below</span>
-cmake ../solid_dmft.src
+cmake<span class="w"> </span>../solid_dmft.src
 
 <span class="c1"># Compile the code, run the tests, and install the application</span>
-make <span class="nb">test</span>
-make install
+make<span class="w"> </span><span class="nb">test</span>
+make<span class="w"> </span>install
 </pre></div>
 </div>
 <p>This installs solid_dmft into your TRIQS installation folder.</p>
 <p>To build <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> with documentation you should run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cmake path/to/solid_dmft.src -DBuild_Documentation<span class="o">=</span>ON
-$ make
-$ sphinx-autobuild path/to/solid_dmft.src/doc ./doc/html -c ./doc/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>path/to/solid_dmft.src<span class="w"> </span>-DBuild_Documentation<span class="o">=</span>ON
+$<span class="w"> </span>make
+$<span class="w"> </span>sphinx-autobuild<span class="w"> </span>path/to/solid_dmft.src/doc<span class="w"> </span>./doc/html<span class="w"> </span>-c<span class="w"> </span>./doc/
 </pre></div>
 </div>
 <p>The last line will automatically search for changes in your src dir, rebuild the documentation,
 and serve it locally as under <cite>127.0.0.1:8000</cite>.</p>
 </div>
 <div class="section" id="docker-files-images">
-<h2>Docker files &amp; images<a class="headerlink" href="#docker-files-images" title="Permalink to this headline"></a></h2>
+<h2>Docker files &amp; images<a class="headerlink" href="#docker-files-images" title="Permalink to this heading"></a></h2>
 <p>We <a class="reference external" href="https://github.com/TRIQS/solid_dmft/tree/3.1.x/Docker" rel="noopener noreferrer" target="_blank">provide docker files</a> to build solid_dmft inside a docker container with all dependencies and instructions on how to integrate the connected DFT codes as well. Additionally, we host a most recent unstable version of the docker image used for the github CI <a class="reference external" href="https://hub.docker.com/r/materialstheory/solid_dmft_ci" rel="noopener noreferrer" target="_blank">on dockerhub</a>. To use this version, which includes the cthyb solver, the hubbardI solver, dfttools, and the maxent package, pull the following image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker pull materialstheory/solid_dmft_ci
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </span>materialstheory/solid_dmft_ci
 </pre></div>
 </div>
 </div>
 <div class="section" id="version-compatibility">
-<h2>Version compatibility<a class="headerlink" href="#version-compatibility" title="Permalink to this headline"></a></h2>
+<h2>Version compatibility<a class="headerlink" href="#version-compatibility" title="Permalink to this heading"></a></h2>
 <p>Keep in mind that the version of <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> must be compatible with your TRIQS library version,
 see <a class="reference external" href="https://triqs.github.io/triqs/latest/versions.html#versions" rel="noopener noreferrer" target="_blank" title="(in TRIQS v3.1.1)"><span class="xref std std-ref">TRIQS website</span></a>.
 In particular the Major Version numbers have to be the same.
 To use a particular version, go into the directory with the sources, and look at all available branches:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> solid_dmft.src <span class="o">&amp;&amp;</span> git branch -vv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>solid_dmft.src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-vv
 </pre></div>
 </div>
 <p>Checkout the version of the code that you want:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout <span class="m">3</span>.1.x
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="m">3</span>.1.x
 </pre></div>
 </div>
 <p>and follow steps 3 to 6 above to compile the code.</p>
 </div>
 <div class="section" id="custom-cmake-options">
-<h2>Custom CMake options<a class="headerlink" href="#custom-cmake-options" title="Permalink to this headline"></a></h2>
+<h2>Custom CMake options<a class="headerlink" href="#custom-cmake-options" title="Permalink to this heading"></a></h2>
 <p>The compilation of <code class="docutils literal notranslate"><span class="pre">solid_dmft</span></code> can be configured using CMake-options:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake ../solid_dmft.src -DOPTION1<span class="o">=</span>value1 -DOPTION2<span class="o">=</span>value2 ...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>../solid_dmft.src<span class="w"> </span>-DOPTION1<span class="o">=</span>value1<span class="w"> </span>-DOPTION2<span class="o">=</span>value2<span class="w"> </span>...
 </pre></div>
 </div>
 <table border="1" class="docutils align-default">

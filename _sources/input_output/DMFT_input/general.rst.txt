@@ -11,16 +11,16 @@ Includes the majority of the parameters
 .. admonition:: seedname 
  	:class: intag  
  
-            **type=** str or list of str
+            **type=** str
 
-            seedname for h5 archive or for multiple if calculations should be connected
+            seedname for h5 archive with DMFT input and output
 
 .. admonition:: jobname 
  	:class: intag  
  
-            **type=** str or list of str;  **optional**;  **default=** seedname
+            **type=** str;  **optional**;  **default=** 'dmft_dir'
 
-            one or multiple jobnames specifying the output directories
+            the output directory for one-shot calculations
 
 .. admonition:: csc 
  	:class: intag  
@@ -126,13 +126,6 @@ Includes the majority of the parameters
             * 2: AMF
             * 3: FLL for eg orbitals only with U,J for Kanamori
 
-.. admonition:: prec_mu 
- 	:class: intag  
- 
-            **type=** float
-
-            general precision for determining the chemical potential at any time calc_mu is called
-
 .. admonition:: dc_dmft 
  	:class: intag  
  
@@ -168,6 +161,7 @@ Includes the majority of the parameters
             * 'ctint'
             * 'ftps'
             * 'hubbardI'
+            * 'hartree'
             * 'ctseg'
 
 
@@ -242,10 +236,11 @@ Includes the majority of the parameters
  
             **type=** list of float seperated by comma;  **optional** default=[]
 
-            initialize magnetic moments if magnetic is on. length must be #imps.
-            This will be used as factor for each imp in the initial self
-            energy, with up (or ud for spin-orbit coupling) (1+fac)*sigma, and
-            with down (1-fac)*sigma
+            Initialize magnetic moments if magnetic is on. length must be #imps.
+            List composed of energetic shifts written in electronvolts.
+            This will initialize the spin blocks of the sigma with a diagonal shift
+            With -shift for the up block, and +shift for the down block
+            (positive shift favours the up spin component, not compatible with spin-orbit coupling)
 
 .. admonition:: enforce_off_diag 
  	:class: intag  
@@ -267,14 +262,6 @@ Includes the majority of the parameters
             **type=** int;  **optional**;  **default=** 0
 
             number of iterations the magnetic field is kept on
-
-.. admonition:: energy_shift_orbitals 
- 	:class: intag  
- 
-            **type=** list of floats;  **optional**;  **default=**  'none'
-
-            orbitals will be shifted by this energy
-            The entries can be python code, to be combined with configparser's interpolation
 
 .. admonition:: sigma_mix 
  	:class: intag  
@@ -407,6 +394,24 @@ Includes the majority of the parameters
 
             overwrites h5_save_freq when sampling has started
 
+.. admonition:: calc_mu_method 
+ 	:class: intag  
+ 
+            **type=** string;  **optional**, default = 'dichotomy'
+
+            optimization method used for finding the chemical potential:
+
+            * 'dichotomy': usual method from TRIQS, should always converge but may be slow
+            * 'newton': scipy Newton root finder, much faster but might be unstable
+            * 'brent': scipy hyperbolic Brent root finder preconditioned with dichotomy to find edge, a compromise between speed and stability
+
+.. admonition:: prec_mu 
+ 	:class: intag  
+ 
+            **type=** float
+
+            general precision for determining the chemical potential at any time calc_mu is called
+
 .. admonition:: fixed_mu_value 
  	:class: intag  
  
@@ -464,13 +469,6 @@ Includes the majority of the parameters
 
             use density_mat_dft to diagonalize occupations = 'den'
             use hloc_dft to diagonalize occupations = 'hloc'
-
-.. admonition:: oneshot_postproc_gamma_file 
- 	:class: intag  
- 
-            **type=** bool;  **optional**;  **default=** False
-
-            write the GAMMA file for vasp after completed one-shot calculations
 
 .. admonition:: measure_chi_SzSz 
  	:class: intag  

@@ -13,9 +13,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,15 +28,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: #7E588A" >
-            <a href="../index.html" class="icon icon-home"> solid_dmft
-            <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            solid_dmft
+              <img src="../_static/logo_no_text.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                3.1.3
+                3.1.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -115,14 +118,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-reference-manual">Module reference manual</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../_ref/csc_flow.html">csc_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_ref/csc_flow.html">csc_flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../_ref/csc_flow.html#csc_flow.csc_flow_control"><code class="docutils literal notranslate"><span class="pre">csc_flow_control()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../_ref/dft_managers.html">dft_managers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dft_managers.mpi_helpers.html">dft_managers.mpi_helpers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dft_managers.qe_manager.html">dft_managers.qe_manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dft_managers.vasp_manager.html">dft_managers.vasp_manager</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../_ref/dmft_cycle.html">dmft_cycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_ref/dmft_cycle.html">dmft_cycle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../_ref/dmft_cycle.html#dmft_cycle.dmft_cycle"><code class="docutils literal notranslate"><span class="pre">dmft_cycle()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../_ref/dmft_tools.html">dmft_tools</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dmft_tools.afm_mapping.html">dmft_tools.afm_mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/dmft_tools.convergence.html">dmft_tools.convergence</a></li>
@@ -151,6 +160,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../_ref/read_config.html#solver">[  solver  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/read_config.html#dft">[  dft  ]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../_ref/read_config.html#advanced">[  advanced  ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../_ref/read_config.html#read_config.read_config"><code class="docutils literal notranslate"><span class="pre">read_config()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../_ref/util.html">util</a><ul>
@@ -228,6 +238,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ChangeLog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-4">Version 3.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-3">Version 3.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-2">Version 3.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-1">Version 3.1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ChangeLog.html#version-3-1-0">Version 3.1.0</a></li>
@@ -249,7 +261,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../documentation.html">Documentation</a></li>
       <li class="breadcrumb-item active">Docker</li>
       <li class="wy-breadcrumbs-aside">
@@ -286,10 +298,10 @@
 }
 </style>
 <div class="tex2jax_ignore mathjax_ignore section" id="docker">
-<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline"></a></h1>
+<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this heading"></a></h1>
 <p>There are Dockerfiles for images based on Ubuntu 20 (“focal”) with OpenMPI (for non-Cray clusters) or MPICH (for Cray clusters like Daint), IntelMKL, VASP, wannier90 2.1, triqs 3.x.x, and Triqs MaxEnt included.</p>
 <div class="section" id="building-the-docker-image">
-<h2>Building the docker image<a class="headerlink" href="#building-the-docker-image" title="Permalink to this headline"></a></h2>
+<h2>Building the docker image<a class="headerlink" href="#building-the-docker-image" title="Permalink to this heading"></a></h2>
 <p>The Dockerfile is built with this command, where <code class="docutils literal notranslate"><span class="pre">&lt;version</span> <span class="pre">name&gt;</span></code> could be <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">triqs_mpich</span><span class="p">:</span><span class="o">&lt;</span><span class="n">version</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">f</span> <span class="n">mpich_dockerfile</span> <span class="o">./</span>
 <span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">triqs_openmpi</span><span class="p">:</span><span class="o">&lt;</span><span class="n">version</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">f</span> <span class="n">openmpi_dockerfile</span> <span class="o">./</span>
@@ -298,7 +310,7 @@
 <p>Note that you need a working, modified vasp version as archive (csc_vasp.tar.gz) in this directory to make the CSC calculation work.</p>
 </div>
 <div class="section" id="pulling-a-docker-image">
-<h2>Pulling a docker image<a class="headerlink" href="#pulling-a-docker-image" title="Permalink to this headline"></a></h2>
+<h2>Pulling a docker image<a class="headerlink" href="#pulling-a-docker-image" title="Permalink to this heading"></a></h2>
 <p>Alternatively, you can pull an already-compiled image from the ETH gitlab container registry.
 First <a class="reference external" href="https://gitlab.ethz.ch/help/user/packages/container_registry/index#authenticating-to-the-gitlab-container-registry" rel="noopener noreferrer" target="_blank">log in with a personal access token</a>.
 This token you can save into a file and then log in into the registry with</p>
@@ -312,7 +324,7 @@ This token you can save into a file and then log in into the registry with</p>
 <p>Just make sure that the version is the one that you want to have, it might not yet contain recent changes or bug fixes. Alternatively, there is the <a class="reference external" href="https://hub.docker.com/r/flatironinstitute/triqs/" rel="noopener noreferrer" target="_blank">official triqs docker image</a>, which however is not optimized for use on Daint.</p>
 </div>
 <div class="section" id="getting-docker-images-onto-cscs-daint">
-<h2>Getting docker images onto CSCS daint<a class="headerlink" href="#getting-docker-images-onto-cscs-daint" title="Permalink to this headline"></a></h2>
+<h2>Getting docker images onto CSCS daint<a class="headerlink" href="#getting-docker-images-onto-cscs-daint" title="Permalink to this heading"></a></h2>
 <p>First, you load the desired docker images with <a class="reference external" href="https://user.cscs.ch/tools/containers/sarus/" rel="noopener noreferrer" target="_blank">sarus on daint</a>.
 Then there are two ways of getting the image on daint:</p>
 <p>(1) For gitlab images (don’t forget that you need the personal access token) or other, public image this can be done via:</p>
@@ -331,7 +343,7 @@ Then there are two ways of getting the image on daint:</p>
 </div>
 <p>then you can run it as shown in the example files.</p>
 <div class="section" id="running-a-docker-container">
-<h3>Running a docker container<a class="headerlink" href="#running-a-docker-container" title="Permalink to this headline"></a></h3>
+<h3>Running a docker container<a class="headerlink" href="#running-a-docker-container" title="Permalink to this heading"></a></h3>
 <p>You can start a docker container with either of these commands</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run --rm -it -u $(id -u) -v ~$PWD:/work &lt;image name&gt;:&lt;version name&gt; bash
 docker run --rm -it --shm-size=4g -e USER_ID=`id -u` -e GROUP_ID=`id -g` -p 8378:8378 -v $PWD:/work &lt;image name&gt;:&lt;version name&gt; bash
